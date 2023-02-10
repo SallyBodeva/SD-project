@@ -3,15 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32922.545
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureCompany.Data", "ArchitectureCompany.Data\ArchitectureCompany.Data.csproj", "{964F20CC-74F4-4AFE-8B6C-4DE52B1BAD8D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchitectureCompany.Data", "ArchitectureCompany.Data\ArchitectureCompany.Data.csproj", "{964F20CC-74F4-4AFE-8B6C-4DE52B1BAD8D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureCompany.ConsoleApp", "ArchitectureCompany.ConsoleApp\ArchitectureCompany.ConsoleApp.csproj", "{55C91858-3255-420B-94DA-FD86369ECD8E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchitectureCompany.FormApp", "ArchitectureCompany.FormApp\ArchitectureCompany.FormApp.csproj", "{C59B2EC0-5CE8-4E3C-8A64-40EBF2B05ACF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureCompany.FormApp", "ArchitectureCompany.FormApp\ArchitectureCompany.FormApp.csproj", "{C59B2EC0-5CE8-4E3C-8A64-40EBF2B05ACF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchitectureCompany.Models", "ArchitectureCompany.Models\ArchitectureCompany.Models.csproj", "{350CD802-E12C-4D10-B55A-DA749E33785C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureCompany.Models", "ArchitectureCompany.Models\ArchitectureCompany.Models.csproj", "{350CD802-E12C-4D10-B55A-DA749E33785C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchitectureCompany.Services", "ArchitectureCompany.Services\ArchitectureCompany.Services.csproj", "{1663EA07-0EC4-469C-9D8D-DD5D3989A495}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureCompany.Services", "ArchitectureCompany.Services\ArchitectureCompany.Services.csproj", "{1663EA07-0EC4-469C-9D8D-DD5D3989A495}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureCompany.ConsoleApp", "ArchitectureCompany.ConsoleApp\ArchitectureCompany.ConsoleApp.csproj", "{1E33DEC8-9D6D-4DD8-889F-1155E2A45157}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,6 @@ Global
 		{964F20CC-74F4-4AFE-8B6C-4DE52B1BAD8D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{964F20CC-74F4-4AFE-8B6C-4DE52B1BAD8D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{964F20CC-74F4-4AFE-8B6C-4DE52B1BAD8D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{55C91858-3255-420B-94DA-FD86369ECD8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{55C91858-3255-420B-94DA-FD86369ECD8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{55C91858-3255-420B-94DA-FD86369ECD8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{55C91858-3255-420B-94DA-FD86369ECD8E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{C59B2EC0-5CE8-4E3C-8A64-40EBF2B05ACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{C59B2EC0-5CE8-4E3C-8A64-40EBF2B05ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C59B2EC0-5CE8-4E3C-8A64-40EBF2B05ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +35,10 @@ Global
 		{1663EA07-0EC4-469C-9D8D-DD5D3989A495}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1663EA07-0EC4-469C-9D8D-DD5D3989A495}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1663EA07-0EC4-469C-9D8D-DD5D3989A495}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E33DEC8-9D6D-4DD8-889F-1155E2A45157}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E33DEC8-9D6D-4DD8-889F-1155E2A45157}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E33DEC8-9D6D-4DD8-889F-1155E2A45157}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E33DEC8-9D6D-4DD8-889F-1155E2A45157}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
