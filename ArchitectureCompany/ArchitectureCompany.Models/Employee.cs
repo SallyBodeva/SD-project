@@ -21,6 +21,6 @@ namespace ArchitectureCompany.Data
         [Required]
         [MaxLength(100)]
         public string Email { get; set; }
-        
+
     }
 }

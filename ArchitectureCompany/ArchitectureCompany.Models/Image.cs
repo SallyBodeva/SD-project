@@ -2,6 +2,7 @@
 
 namespace ArchitectureCompany.Data
 {
+    using ArchitectureCompany.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -13,6 +14,7 @@ namespace ArchitectureCompany.Data
         [Required]
         [MaxLength(50)]
         public string Url { get; set; }
+        public virtual ICollection<Project> Project { get; } = new List<Project>();
 
     }
 }
