@@ -17,9 +17,8 @@
         public int TownId { get; set; }
 
         public virtual Town Town { get; set; }
-
-        public virtual Client Client { get; set; }
+        public virtual ICollection<Client> Clients { get; set; } = new List<Client>();
         public virtual Project Project { get; set; }
-        public virtual Employee Emplolyee { get; set; }
+        public virtual ICollection<Employee> Employees { get; set; } = new List<Employee>();
     }
 }

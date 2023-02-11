@@ -31,5 +31,7 @@ namespace ArchitectureCompany.Data
         public virtual Address Address { get; set; }
         public virtual Department Department { get; set; }
 
+        public virtual ICollection<ProjectEmployee> ProjectsEmployee { get; set; } = new List<ProjectEmployee>();
+
     }
 }

@@ -23,10 +23,10 @@
         [MaxLength(10)]
         public string PhoneNumber { get; set; }
 
-        [Required]
         [MaxLength(100)]
         public string Email { get; set; }
 
         public virtual Address Address { get; set; }
+        public virtual ICollection<ProjectClient> ProjectClients { get; set; } = new List<ProjectClient>();
     }
 }

@@ -15,7 +15,6 @@ namespace ArchitectureCompany.Data
         [Required]
         [MaxLength(100)]
         public string TypeName { get; set; }
-
         public virtual ICollection<Project> Projects { get; } = new List<Project>();
     }
 }
