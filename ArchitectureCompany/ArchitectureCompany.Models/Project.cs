@@ -1,5 +1,6 @@
 ﻿namespace ArchitectureCompany.Models
 {
+    using ArchitectureCompany.Data;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -28,5 +29,7 @@
         public int ImageId { get; set; }
 
         public virtual Address Address{ get; set; }
+        public virtual BuildingType BuildingsType { get; set; }
+        public virtual ICollection<Image> Images { get; } = new List<Image>();
     }
 }

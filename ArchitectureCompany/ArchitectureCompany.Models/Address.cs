@@ -1,5 +1,6 @@
 ﻿namespace ArchitectureCompany.Models
 {
+    using ArchitectureCompany.Data;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -19,5 +20,6 @@
 
         public virtual Client Client { get; set; }
         public virtual Project Project { get; set; }
+        public virtual Employee Emplolyee { get; set; }
     }
 }

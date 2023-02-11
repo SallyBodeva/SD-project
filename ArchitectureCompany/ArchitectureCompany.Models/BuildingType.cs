@@ -11,9 +11,11 @@ namespace ArchitectureCompany.Data
     {
         [Key]
         public int Id { get; set; }
+
         [Required]
         [MaxLength(100)]
         public string TypeName { get; set; }
+
         public virtual ICollection<Project> Projects { get; } = new List<Project>();
     }
 }
