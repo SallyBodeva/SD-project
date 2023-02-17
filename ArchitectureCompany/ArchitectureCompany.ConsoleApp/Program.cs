@@ -1,12 +1,12 @@
-﻿using System;
-
-namespace ArchitectureCompany.ConsoleApp
+﻿namespace ArchitectureCompany.ConsoleApp
 {
+    using System;
+    using Services;
     internal class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-
+            AppService service = new AppService();
         }
     }
 }
