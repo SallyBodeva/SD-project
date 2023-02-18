@@ -8,6 +8,7 @@
     using System.Security.Cryptography.X509Certificates;
     using System.Linq;
     using System.Runtime.ExceptionServices;
+    using System.Drawing;
 
     public class AppService
     {
@@ -24,30 +25,30 @@
         }
         public Department GetDepartmentByName(string name)
         {
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentException("Invalid department name ......!");
+                throw new ArgumentException("Invalid department name ......");
 
             }
             Department department = this.context.Departments.FirstOrDefault(x=>x.Name == name);
             return department;
         }
-        public Employee GetEmployeeById(int id)
+        public Employee GetEmployeeById(string id)
         {
-            if (id==null)
+            if (string.IsNullOrWhiteSpace(id))
             {
-                throw new ArgumentException("Invalid employee id ......!");
+                throw new ArgumentException("Invalid employee id ......");
             }
-            Employee employee = this.context.Employees.FirstOrDefault(x => x.Id == id);
+            Employee employee = this.context.Employees.FirstOrDefault(x => x.Id == (int.Parse(id)));
             return employee;
 
         }
         public Client GetClientByFullName(string firstName,string lastName)
         {
             string fullName = firstName + " " + lastName;
-            if (string.IsNullOrEmpty(fullName))
+            if (string.IsNullOrWhiteSpace(fullName))
             {
-                throw new ArgumentException("Invalid client  full name...!");
+                throw new ArgumentException("Invalid client full name...");
 
             }
             Client client = this.context.Clients.FirstOrDefault(x => x.FirstName+" " + lastName == fullName);
@@ -56,18 +57,19 @@
         }
         public Project GetProjectByReleaseDate(DateTime releaseDate)
         {
-            if (releaseDate == null)
-            {
-                throw new ArgumentException("Invalid release date ...!");
-            }
+            // За довършване
             Project project = this.context.Projects.FirstOrDefault(x => x.ReleaseDate == releaseDate);
             return project;
         }
-        public string AddProject(string name, int builidingTypeId, int capacity, DateTime releaseDate, int totalFloorArea, int numberFloors, int addressId, int imageId)
+        public string AddProject(string name, string builidingTypeId, int capacity, DateTime releaseDate, int totalFloorArea, int numberFloors, int addressId, int imageId)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentException("Invalid name...");
+            }
+            if (string.IsNullOrWhiteSpace(builidingTypeId))
+            {
+                throw new ArgumentException("Invalid building type id...");
             }
             if (capacity <= 0)
             {
@@ -81,6 +83,10 @@
             {
                 throw new ArgumentException("Floor Area cannot be less or equal to zero");
             }
+            if (!int.TryParse(builidingTypeId, out _))
+            {
+                throw new ArgumentException("Invalid size!");
+            }
             Project p = GetProjectByName(name);
             if (p != null)
             {
@@ -89,10 +95,12 @@
             p = new Project()
             {
                 Name = name,
-                BuildingTypeId = builidingTypeId,
+                // Трябва да се довърши
+               // BuildingTypeId = builidingTypeId,
                 ReleaseDate = releaseDate,
                 TotalFloorArea = totalFloorArea,
                 NumberOfFloors = numberFloors,
+                // Трябва да се довърши
                 AddressId = addressId,
                 ImageId = imageId
             };
@@ -117,26 +125,26 @@
             return $"New town registered successfully ";
 
         }
-        public void DeleteProject( string name)
+        public void DeleteProject(string name)
         {
-            if (string.IsNullOrEmpty(name))
+            if (string.IsNullOrWhiteSpace(name))
             {
              throw new AggregateException("Invalid project name..!");
 
             }
-            var project = GetProjectByName(name);
+            Project project = GetProjectByName(name);
             context.Projects.Remove(project);
             context.SaveChanges();
 
         }
-        public void DeleteEmployee(int id)
+        public void DeleteEmployee(string refId)
         {
-            if (id==null)
+            if (string.IsNullOrWhiteSpace(refId))
             {
                 throw new AggregateException("Invalid employee id..!");
 
             }
-            var employee = GetEmployeeById(id);
+            Employee employee = GetEmployeeById(refId);
             context.Employees.Remove(employee);
             context.SaveChanges();
 
