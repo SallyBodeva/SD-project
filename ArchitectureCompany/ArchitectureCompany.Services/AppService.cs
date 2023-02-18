@@ -161,7 +161,7 @@
 
             }
             Address ad = this.context.Addresses.FirstOrDefault(x => x.Name == name);
-            if (t ad= null)
+            if ( ad!= null)
             {
                 return "Address is already registered...";
             }
@@ -186,7 +186,7 @@
                 throw new ArgumentException("Department doesn't exist");
             }
             Department d = this.context.Departments.FirstOrDefault(x => x.Name == name);
-            if (t != null)
+            if (d != null)
             {
                 return "Address already exists";
             }
@@ -195,9 +195,21 @@
             context.SaveChanges();
             return $"New address is added successfully ";
         }
-        public void AddBuildingType()
+        public void AddBuildingType(string typeName)
         {
-
+            if (string.IsNullOrWhiteSpace(typeName))
+            {
+                throw new ArgumentException("Building type doesn't exist");
+            }
+            BuildingType bt = this.context.BuildingTypes.FirstOrDefault(x => x.Name == name);
+            if (bt != null)
+            {
+                return "Building type already exists";
+            }
+            bt = new BuildingType() { Name = name };
+            this.context.BuildingType.Add(bt);
+            context.SaveChanges();
+            return $"New building type is added successfully ";
         }
 
     }
