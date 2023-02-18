@@ -157,7 +157,7 @@
             }
             if(string.IsNullOrWhiteSpace(townId))
             {
-                throw new AggregateException("Invalid address id..!");
+                throw new AggregateException("Invalid town id..!");
 
             }
             Address ad = this.context.Addresses.FirstOrDefault(x => x.Name == name);
@@ -165,23 +165,35 @@
             {
                 return "Address is already registered...";
             }
-            t = new Town() { Name = name };
-            this.context.Addresses.Add(t);
-            context.SaveChanges();
-            return $"New address is registered successfully ";
+            ad = new Address() { Name = name };
+
             ad = new Address()
             {
                 Name = name,
                 // Трябва да се довърши
                 // TownId = townId,
-                
-            };
-          
-            
-        }
-        public void AddDepartment()
-        {
 
+            };
+            this.context.Addresses.Add(ad);
+            context.SaveChanges();       
+            return $"New address is registered successfully ";
+                          
+       }
+        public void AddDepartment(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException("Department doesn't exist");
+            }
+            Department d = this.context.Departments.FirstOrDefault(x => x.Name == name);
+            if (t != null)
+            {
+                return "Address already exists";
+            }
+            d = new Department() { Name = name };
+            this.context.Department.Add(d);
+            context.SaveChanges();
+            return $"New address is added successfully ";
         }
         public void AddBuildingType()
         {
