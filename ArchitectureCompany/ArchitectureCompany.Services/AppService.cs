@@ -149,5 +149,44 @@
             context.SaveChanges();
 
         }
+       public void AddAddress(string name, strinf townId)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException("Invalid address");
+            }
+            if(string.IsNullOrWhiteSpace(townId))
+            {
+                throw new AggregateException("Invalid address id..!");
+
+            }
+            Address ad = this.context.Addresses.FirstOrDefault(x => x.Name == name);
+            if (t ad= null)
+            {
+                return "Address is already registered...";
+            }
+            t = new Town() { Name = name };
+            this.context.Addresses.Add(t);
+            context.SaveChanges();
+            return $"New address is registered successfully ";
+            ad = new Address()
+            {
+                Name = name,
+                // Трябва да се довърши
+                // TownId = townId,
+                
+            };
+          
+            
+        }
+        public void AddDepartment()
+        {
+
+        }
+        public void AddBuildingType()
+        {
+
+        }
+
     }
 }
