@@ -149,7 +149,7 @@
             context.SaveChanges();
 
         }
-       public void AddAddress(string name, strinf townId)
+       public string AddAddress(string name, string townId)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -179,7 +179,7 @@
             return $"New address is registered successfully ";
                           
        }
-        public void AddDepartment(string name)
+        public string AddDepartment(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -191,23 +191,23 @@
                 return "Address already exists";
             }
             d = new Department() { Name = name };
-            this.context.Department.Add(d);
+            this.context.Departments.Add(d);
             context.SaveChanges();
             return $"New address is added successfully ";
         }
-        public void AddBuildingType(string typeName)
+        public string AddBuildingType(string typeName)
         {
             if (string.IsNullOrWhiteSpace(typeName))
             {
                 throw new ArgumentException("Building type doesn't exist");
             }
-            BuildingType bt = this.context.BuildingTypes.FirstOrDefault(x => x.Name == name);
+            BuildingType bt = this.context.BuildingTypes.FirstOrDefault(x => x.TypeName == typeName);
             if (bt != null)
             {
                 return "Building type already exists";
             }
-            bt = new BuildingType() { Name = name };
-            this.context.BuildingType.Add(bt);
+            bt = new BuildingType() { TypeName = typeName };
+            this.context.BuildingTypes.Add(bt);
             context.SaveChanges();
             return $"New building type is added successfully ";
         }
