@@ -5,10 +5,7 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
-    using System.Security.Cryptography.X509Certificates;
     using System.Linq;
-    using System.Runtime.ExceptionServices;
-    using System.Drawing;
 
     public class AppService
     {
@@ -30,7 +27,7 @@
                 throw new ArgumentException("Invalid department name ......");
 
             }
-            Department department = this.context.Departments.FirstOrDefault(x=>x.Name == name);
+            Department department = this.context.Departments.FirstOrDefault(x => x.Name == name);
             return department;
         }
         public Employee GetEmployeeById(string id)
@@ -43,7 +40,7 @@
             return employee;
 
         }
-        public Client GetClientByFullName(string firstName,string lastName)
+        public Client GetClientByFullName(string firstName, string lastName)
         {
             string fullName = firstName + " " + lastName;
             if (string.IsNullOrWhiteSpace(fullName))
@@ -51,7 +48,7 @@
                 throw new ArgumentException("Invalid client full name...");
 
             }
-            Client client = this.context.Clients.FirstOrDefault(x => x.FirstName+" " + lastName == fullName);
+            Client client = this.context.Clients.FirstOrDefault(x => x.FirstName + " " + x.LastName == fullName);
             return client;
 
         }
@@ -96,7 +93,7 @@
             {
                 Name = name,
                 // Трябва да се довърши
-               // BuildingTypeId = builidingTypeId,
+                // BuildingTypeId = builidingTypeId,
                 ReleaseDate = releaseDate,
                 TotalFloorArea = totalFloorArea,
                 NumberOfFloors = numberFloors,
@@ -115,7 +112,7 @@
                 throw new ArgumentException("Town`s name is invalid");
             }
             Town t = this.context.Towns.FirstOrDefault(x => x.Name == name);
-            if (t!=null)
+            if (t != null)
             {
                 return "Town is already registered...";
             }
@@ -129,44 +126,40 @@
         {
             if (string.IsNullOrWhiteSpace(name))
             {
-             throw new AggregateException("Invalid project name..!");
-
+                throw new ArgumentException("Invalid project name..!");
             }
             Project project = GetProjectByName(name);
             context.Projects.Remove(project);
             context.SaveChanges();
 
         }
-        public void DeleteEmployee(string refId)
+        public void DeleteEmployee(string Id)
         {
-            if (string.IsNullOrWhiteSpace(refId))
+            if (string.IsNullOrWhiteSpace(Id))
             {
-                throw new AggregateException("Invalid employee id..!");
+                throw new ArgumentException("Invalid employee id..!");
 
             }
-            Employee employee = GetEmployeeById(refId);
+            Employee employee = GetEmployeeById(Id);
             context.Employees.Remove(employee);
             context.SaveChanges();
 
         }
-       public string AddAddress(string name, string townId)
+        public string AddAddress(string name, string townId)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
                 throw new ArgumentException("Invalid address");
             }
-            if(string.IsNullOrWhiteSpace(townId))
+            if (string.IsNullOrWhiteSpace(townId))
             {
-                throw new AggregateException("Invalid town id..!");
-
+                throw new ArgumentException("Invalid town id..!");
             }
             Address ad = this.context.Addresses.FirstOrDefault(x => x.Name == name);
-            if ( ad!= null)
+            if (ad != null)
             {
                 return "Address is already registered...";
             }
-            ad = new Address() { Name = name };
-
             ad = new Address()
             {
                 Name = name,
@@ -175,10 +168,10 @@
 
             };
             this.context.Addresses.Add(ad);
-            context.SaveChanges();       
+            context.SaveChanges();
             return $"New address is registered successfully ";
-                          
-       }
+
+        }
         public string AddDepartment(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
