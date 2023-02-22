@@ -6,6 +6,8 @@
     using System.Collections.Generic;
     using System.Text;
     using System.Linq;
+    using System.Drawing;
+    using System.Globalization;
 
     public class AppService
     {
@@ -36,6 +38,10 @@
             {
                 throw new ArgumentException("Invalid employee id ......");
             }
+            if (!int.TryParse(id, out _))
+            {
+                throw new ArgumentException("Invalid employee id!");
+            }
             Employee employee = this.context.Employees.FirstOrDefault(x => x.Id == (int.Parse(id)));
             return employee;
 
@@ -52,9 +58,14 @@
             return client;
 
         }
-        public Project GetProjectByReleaseDate(DateTime releaseDate)
+        public Project GetProjectByReleaseDate(string date)
         {
-            // За довършване
+            DateTime releaseDate = new DateTime();
+            bool isValid = DateTime.TryParseExact(date,"dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out releaseDate);
+            if (!isValid)
+            {
+                throw new ArgumentException("Invalid date time format... ");
+            }
             Project project = this.context.Projects.FirstOrDefault(x => x.ReleaseDate == releaseDate);
             return project;
         }
@@ -154,6 +165,10 @@
             if (string.IsNullOrWhiteSpace(townId))
             {
                 throw new ArgumentException("Invalid town id..!");
+            }
+            if (!int.TryParse(townId, out _))
+            {
+                throw new ArgumentException("Invalid town id!");
             }
             Address ad = this.context.Addresses.FirstOrDefault(x => x.Name == name);
             if (ad != null)
