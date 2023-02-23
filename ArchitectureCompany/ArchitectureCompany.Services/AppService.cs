@@ -69,6 +69,32 @@
             Project project = this.context.Projects.FirstOrDefault(x => x.ReleaseDate == releaseDate);
             return project;
         }
+        public Department GetDepartmentId(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                throw new ArgumentException("Department id is not found!");
+            }
+            if (!int.TryParse(id, out _))
+            {
+                throw new ArgumentException("Invalid department id!");
+            }
+            Department department = this.context.Departments.FirstOrDefault(x => x.Id == (int.Parse(id)));
+            return department;
+        }
+        public Project GetProjectById(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                throw new ArgumentException("Project id is not found!");
+            }
+            if (!int.TryParse(id, out _))
+            {
+                throw new ArgumentException("Invalid project id!");
+            }
+            Project project = this.context.Projects.FirstOrDefault(x => x.Id == (int.Parse(id)));
+            return project;
+        }
         public string AddProject(string name, string builidingTypeId, int capacity, DateTime releaseDate, int totalFloorArea, int numberFloors, int addressId, int imageId)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -133,29 +159,7 @@
             return $"New town registered successfully ";
 
         }
-        public void DeleteProject(string name)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentException("Invalid project name..!");
-            }
-            Project project = GetProjectByName(name);
-            context.Projects.Remove(project);
-            context.SaveChanges();
-
-        }
-        public void DeleteEmployee(string Id)
-        {
-            if (string.IsNullOrWhiteSpace(Id))
-            {
-                throw new ArgumentException("Invalid employee id..!");
-
-            }
-            Employee employee = GetEmployeeById(Id);
-            context.Employees.Remove(employee);
-            context.SaveChanges();
-
-        }
+       
         public string AddAddress(string name, string townId)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -219,23 +223,29 @@
             context.SaveChanges();
             return $"New building type is added successfully ";
         }
-        public Department GetDepartmentId(string id)
+        public void DeleteProject(string name)
         {
-            if (string.IsNullOrWhiteSpace(id))
+            if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentException("Department id is not found");
+                throw new ArgumentException("Invalid project name..!");
             }
-            if (!int.TryParse(id, out _))
-            {
-                throw new ArgumentException("Invalid department id!");
-            }
-            Department department = this.context.Departments.FirstOrDefault(x => x.Id == (int.Parse(id)));
-            return department;
-        }
-        //public Project GetProjectById(string id)
-        //{
+            Project project = GetProjectByName(name);
+            context.Projects.Remove(project);
+            context.SaveChanges();
 
-        //}
+        }
+        public void DeleteEmployee(string Id)
+        {
+            if (string.IsNullOrWhiteSpace(Id))
+            {
+                throw new ArgumentException("Invalid employee id..!");
+
+            }
+            Employee employee = GetEmployeeById(Id);
+            context.Employees.Remove(employee);
+            context.SaveChanges();
+
+        }
 
     }
 }
