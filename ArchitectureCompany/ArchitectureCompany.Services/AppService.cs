@@ -219,6 +219,23 @@
             context.SaveChanges();
             return $"New building type is added successfully ";
         }
+        public Department GetDepartmentId(string id)
+        {
+            if (string.IsNullOrWhiteSpace(id))
+            {
+                throw new ArgumentException("Department id is not found");
+            }
+            if (!int.TryParse(id, out _))
+            {
+                throw new ArgumentException("Invalid department id!");
+            }
+            Department department = this.context.Departments.FirstOrDefault(x => x.Id == (int.Parse(id)));
+            return department;
+        }
+        //public Project GetProjectById(string id)
+        //{
+
+        //}
 
     }
 }
