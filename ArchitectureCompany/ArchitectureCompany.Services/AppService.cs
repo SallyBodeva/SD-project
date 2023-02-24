@@ -8,6 +8,7 @@
     using System.Linq;
     using System.Drawing;
     using System.Globalization;
+    using System.Net;
 
     public class AppService
     {
@@ -61,7 +62,7 @@
         public Project GetProjectByReleaseDate(string date)
         {
             DateTime releaseDate = new DateTime();
-            bool isValid = DateTime.TryParseExact(date,"dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out releaseDate);
+            bool isValid = DateTime.TryParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out releaseDate);
             if (!isValid)
             {
                 throw new ArgumentException("Invalid date time format... ");
@@ -159,7 +160,7 @@
             return $"New town registered successfully ";
 
         }
-       
+
         public string AddAddress(string name, string townId)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -223,7 +224,7 @@
             context.SaveChanges();
             return $"New building type is added successfully ";
         }
-        public void DeleteProject(string name)
+        public void DeleteProjectById(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -234,7 +235,7 @@
             context.SaveChanges();
 
         }
-        public void DeleteEmployee(string Id)
+        public void DeleteEmployeeById(string Id)
         {
             if (string.IsNullOrWhiteSpace(Id))
             {
@@ -246,6 +247,27 @@
             context.SaveChanges();
 
         }
-
+        public ICollection<Project> GetFinishedProjects(string id)
+        {
+            Project p = GetProjectById(id);
+            List<Project> finishedProjects = new List<Project>();
+            bool isFinished = p.ReleaseDate < DateTime.Now;
+            if (isFinished)
+            {
+                finishedProjects.Add(p);
+            }
+            return finishedProjects;
+        }
+        public ICollection<Project> GetUnfinishedProjects(string id)
+        {
+            Project p = GetProjectById(id);
+            List<Project> unfinishedProjects = new List<Project>();
+            bool isFinished = p.ReleaseDate < DateTime.Now;
+            if (!isFinished)
+            {
+                unfinishedProjects.Add(p);
+            }
+            return unfinishedProjects;
+        }
     }
 }
