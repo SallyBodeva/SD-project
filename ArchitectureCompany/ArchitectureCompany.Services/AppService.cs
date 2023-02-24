@@ -96,6 +96,36 @@
             Project project = this.context.Projects.FirstOrDefault(x => x.Id == (int.Parse(id)));
             return project;
         }
+        public Address GetAdressId(string id) 
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentException("Adress id is not found!");
+
+            }
+            if (!int.TryParse(id,out _))
+            {
+                throw new ArgumentException("Invalid adress id!");
+            }
+            Address address = this.context.Addresses.FirstOrDefault(x => x.Id == (int.Parse(id)));
+            return address;
+             
+        }
+        public Image GetImageId(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                throw new ArgumentException("Image id is not found!");
+
+            }
+            if (!int.TryParse(id, out _))
+            {
+                throw new ArgumentException("Invalid image id!");
+            }
+            Image image = this.context.Images.FirstOrDefault(x => x.Id == (int.Parse(id)));
+            return image;
+
+        }
         public string AddProject(string name, string builidingTypeId, int capacity, DateTime releaseDate, int totalFloorArea, int numberFloors, int addressId, int imageId)
         {
             if (string.IsNullOrWhiteSpace(name))
