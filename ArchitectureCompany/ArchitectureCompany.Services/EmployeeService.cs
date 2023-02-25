@@ -14,51 +14,68 @@ namespace ArchitectureCompany.Services
     {
         private AppDbContext context;
 
-        public string AddEmployee(string firstName, string lastName, int address_id, int department_id, string phoneNumber, string email)
+        public string AddEmployee(string firstName, string lastName, string address_id, string department_id, string phoneNumber, string email)
         {
-            StringBuilder masege = new StringBuilder();
-            bool isValud = true;
+            StringBuilder message = new StringBuilder();
+            bool isValid = true;
             if (string.IsNullOrWhiteSpace(firstName))
             {
-                masege.AppendLine($"Invalid {(nameof(firstName))}");
-                isValud = false;
-
+                message.AppendLine($"Invalid {(nameof(firstName))}");
+                isValid = false;
             }
             if (string.IsNullOrWhiteSpace(lastName))
             {
-                masege.AppendLine($"Invalid {(nameof(lastName))}");
-                isValud = false;
-
+                message.AppendLine($"Invalid {(nameof(lastName))}");
+                isValid = false;
             }
-            if (address_id == 0)
+            if (string.IsNullOrWhiteSpace(address_id))
             {
-                masege.AppendLine($"Invalid {(nameof(address_id))}");
-                isValud = false;
-
+                message.AppendLine($"Invalid {(nameof(address_id))}");
+                isValid = false;
             }
-            if (department_id == 0)
+            if (!int.TryParse(address_id, out _))
             {
-                masege.AppendLine($"Invalid {(nameof(department_id))}");
-                isValud = false;
+                message.AppendLine($"Invalid {(nameof(address_id))}");
+                isValid = false;
+            }
+            if (int.Parse(department_id) < 0)
+            {
+                message.AppendLine($"Invalid {(nameof(department_id))}");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(department_id))
+            {
+                message.AppendLine($"Invalid {(nameof(department_id))}");
+                isValid = false;
+            }
+            if (!int.TryParse(department_id, out _))
+            {
+                message.AppendLine($"Invalid {(nameof(department_id))}");
+                isValid = false;
+            }
+            if (int.Parse(department_id)<0)
+            {
+                message.AppendLine($"Invalid {(nameof(department_id))}");
+                isValid = false;
             }
             if (string.IsNullOrWhiteSpace(phoneNumber))
             {
-                masege.AppendLine($"Invalid {(nameof(phoneNumber))}");
-                isValud = false;
+                message.AppendLine($"Invalid {(nameof(phoneNumber))}");
+                isValid = false;
             }
             if (string.IsNullOrWhiteSpace(email))
             {
-                masege.AppendLine($"Invalid {(nameof(email))}");
-                isValud = false;
+                message.AppendLine($"Invalid {(nameof(email))}");
+                isValid = false;
             }
-            if (isValud)
+            if (isValid)
             {
                 Employee employee = new Employee()
                 {
                     FirstName = firstName,
                     LastName = lastName,
-                    AddressId = address_id,
-                    DepartmentId = department_id,
+                    AddressId = int.Parse(address_id),
+                    DepartmentId = int.Parse(department_id),
                     PhoneNumber = phoneNumber,
                     Email = email
                 };
@@ -66,12 +83,12 @@ namespace ArchitectureCompany.Services
                 {
                     context.Employees.Add(employee);
                     context.SaveChanges();
-                    masege.AppendLine($"Employee {firstName} {lastName} is added!");
+                    message.AppendLine($"Employee {firstName} {lastName} is added!");
                 }
             }
-            return masege.ToString().TrimEnd();
+            return message.ToString().TrimEnd();
         }
-        public string GetPilotInfoById(int id)
+        public string GetEmployeeInfoById(int id)
         {
             Employee employee = null;
             using (context = new AppDbContext())
@@ -96,28 +113,21 @@ namespace ArchitectureCompany.Services
                 return $"{nameof(Employee)} not found!";
             }
         }
-        //public string GetPilotInfo()
-        //{
-        //ToDo
-        //}
-        public string GetAllPilotsInfo(int page = 1, int count = 10)
+        public string GetAllEmployeesInfo(int page = 1, int count = 10)
         {
             StringBuilder msg = new StringBuilder();
-            string firstRow = $"| {"Id",-4} | {"First name",-12} | {"Last name",-12} | {"Age",-3} | {"Rating",-6}|";
+            string firstRow = $"| {"Id",-4} | {"First name",-12} | {"Last name",-12} | {"Adress id",-3} | {"Dpartmenmt id",-3} | {"Phone number",-3} | {"Email",-15}";
 
             string line = $"|{new string('-', firstRow.Length - 2)}|";
 
             using (context = new AppDbContext())
             {
-                List<Employee> pilots = context.Employees
-                    .Skip((page - 1) * count)
-                    .Take(count)
-                    .ToList();
+                List<Employee> employees = context.Employees.Skip((page - 1) * count).Take(count).ToList();
                 msg.AppendLine(firstRow);
                 msg.AppendLine(line);
-                foreach (var p in pilots)
+                foreach (var e in employees)
                 {
-                    string info = $"| {p.Id,-4} | {p.FirstName,-12} | {p.LastName,-12} | {p.AddressId,-20} | {p.DepartmentId,-10} | {p.PhoneNumber,-15}| {p.Email,-15} |";
+                    string info = $"| {e.Id,-4} | {e.FirstName,-12} | {e.LastName,-12} | {e.AddressId,-20} | {e.DepartmentId,-10} | {e.PhoneNumber,-15}| {e.Email,-15} |";
                     msg.AppendLine(info);
                     msg.AppendLine(line);
                 }
@@ -127,12 +137,15 @@ namespace ArchitectureCompany.Services
 
             return msg.ToString().TrimEnd();
         }
-        public string DeletePilotById(int id)
+        public string DeleteEmployeeById(int id)
         {
             using (context = new AppDbContext())
             {
                 Employee employee = context.Employees.Find(id);
-                if (employee == null) { return $"{nameof(Employee)} not found!"; }
+                if (employee == null)
+                {
+                    return $"{nameof(Employee)} not found!";
+                }
                 context.Employees.Remove(employee);
                 context.SaveChanges();
                 return $"{nameof(Employee)} {employee.FirstName} {employee.LastName} was deleted!";
