@@ -20,6 +20,8 @@ namespace ArchitectureCompany.Data
         [MaxLength(50)]
         public string LastName { get; set; }
 
+        public int AddressId { get; set; }
+
         public int DepartmentId { get; set; }
 
         public string PhoneNumber { get; set; }
