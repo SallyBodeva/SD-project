@@ -1,6 +1,4 @@
-﻿
-
-namespace ArchitectureCompany.Services
+﻿namespace ArchitectureCompany.Services
 {
     using System;
 
