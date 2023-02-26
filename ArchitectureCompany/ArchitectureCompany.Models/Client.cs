@@ -18,6 +18,7 @@
         public string LastName { get; set; }
 
         public int AddressId { get; set; }
+        public virtual Address Address { get; set; }
 
         [Required]
         [MaxLength(10)]
@@ -26,7 +27,7 @@
         [MaxLength(100)]
         public string Email { get; set; }
 
-        public virtual Address Address { get; set; }
+        
         public virtual ICollection<ProjectClient> ProjectClients { get; set; } = new List<ProjectClient>();
     }
 }

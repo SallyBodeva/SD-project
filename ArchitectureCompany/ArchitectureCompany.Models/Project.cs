@@ -14,6 +14,7 @@
         public string Name { get; set; }
 
         public int BuildingTypeId { get; set; }
+        public virtual BuildingType BuildingsType { get; set; }
 
         public int Capacity { get; set; }
 
@@ -25,11 +26,10 @@
         public int NumberOfFloors { get; set; }
 
         public int AddressId { get; set; }
+        public virtual Address Address { get; set; }
 
         public int ImageId { get; set; }
-
-        public virtual Address Address{ get; set; }
-        public virtual BuildingType BuildingsType { get; set; }
+        
         public virtual ICollection<Image> Images { get; } = new List<Image>();
         public virtual ICollection<ProjectEmployee> ProjectsEmployee { get; set; } = new List<ProjectEmployee>();
         public virtual ICollection<ProjectClient> ProjectClients { get; set; } = new List<ProjectClient>();
