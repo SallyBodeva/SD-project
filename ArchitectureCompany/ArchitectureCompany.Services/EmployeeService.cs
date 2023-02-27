@@ -86,6 +86,31 @@
             }
             return message.ToString().TrimEnd();
         }
+        public string GetEmployeeInfo()
+        {
+            Employee employee = null;
+            using (context = new AppDbContext())
+            {
+                employee = context.Employees.Find(employee);
+            }
+            if (employee != null)
+            {
+                StringBuilder masege = new StringBuilder();
+                masege.AppendLine($"{nameof(employee)} info: ");
+                masege.AppendLine($"\tId: {employee.Id}");
+                masege.AppendLine($"\tFirst name: {employee.FirstName}");
+                masege.AppendLine($"\tLast name: {employee.LastName}");
+                masege.AppendLine($"\tAddres id: {employee.AddressId}");
+                masege.AppendLine($"\tDepartment id: {employee.DepartmentId}");
+                masege.AppendLine($"\tPhobe number: {employee.PhoneNumber}");
+                masege.AppendLine($"\t Email: {employee.Email}");
+                return masege.ToString().TrimEnd();
+            }
+            else
+            {
+                return $"{nameof(Employee)} not found!";
+            }
+        }
         public string GetEmployeeInfoById(int id)
         {
             Employee employee = null;
@@ -111,7 +136,7 @@
                 return $"{nameof(Employee)} not found!";
             }
         }
-        public string GetAllEmployeesInfo(int page = 1, int count = 10)
+    public string GetAllEmployeesInfo(int page = 1, int count = 10)
         {
             StringBuilder msg = new StringBuilder();
             string firstRow = $"| {"Id",-4} | {"First name",-12} | {"Last name",-12} | {"Adress id",-3} | {"Dpartmenmt id",-3} | {"Phone number",-3} | {"Email",-15}";
