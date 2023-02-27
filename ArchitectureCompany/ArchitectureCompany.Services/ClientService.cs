@@ -2,6 +2,7 @@
 using ArchitectureCompany.Models;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace ArchitectureCompany.Services
@@ -10,7 +11,7 @@ namespace ArchitectureCompany.Services
     public class ClientService
     {
         private AppDbContext context;
-        public string AddClient(string firstName, string lastName, string address_id, string phoneNumber, string email)
+        public string AddClient(string firstName, string lastName, string address,string town, string phoneNumber, string email)
         {
             StringBuilder message = new StringBuilder();
             bool isValid = true;
@@ -24,14 +25,9 @@ namespace ArchitectureCompany.Services
                 message.AppendLine($"Invalid {(nameof(lastName))}");
                 isValid = false;
             }
-            if (string.IsNullOrWhiteSpace(address_id))
+            if (string.IsNullOrWhiteSpace(address))
             {
-                message.AppendLine($"Invalid {(nameof(address_id))}");
-                isValid = false;
-            }
-            if (!int.TryParse(address_id, out _))
-            {
-                message.AppendLine($"Invalid {(nameof(address_id))}");
+                message.AppendLine($"Invalid {(nameof(address))}");
                 isValid = false;
             }
             if (string.IsNullOrWhiteSpace(phoneNumber))
@@ -44,13 +40,20 @@ namespace ArchitectureCompany.Services
                 message.AppendLine($"Invalid {(nameof(email))}");
                 isValid = false;
             }
+            Address a = null;
+            Town t = null;
+            using (context = new AppDbContext())
+            {
+                a = context.Addresses.FirstOrDefault(x => x.Name == address);
+                t = context.Towns.FirstOrDefault(x => x.Name == town);
+            }
             if (isValid)
             {
                 Client client = new Client()
                 {
                     FirstName = firstName,
                     LastName = lastName,
-                    AddressId = int.Parse(address_id),
+                    Address = a,
                     PhoneNumber = phoneNumber,
                     Email = email
                 };

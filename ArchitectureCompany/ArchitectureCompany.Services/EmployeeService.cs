@@ -57,7 +57,7 @@
                 d = context.Departments.FirstOrDefault(x => x.Name == department);
                 t = context.Towns.FirstOrDefault(x => x.Name == town);
             }
-            if (a == null) { t = new Town() { Name = town }; }
+            if (t == null) { t = new Town() { Name = town }; }
             if (a == null) { a = new Address() { Name = address, Town = t }; }
             if (d == null) { d = new Department() { Name = department }; }
             if (isValid)
@@ -149,7 +149,7 @@
                 }
                 context.Employees.Remove(employee);
                 context.SaveChanges();
-                return $"{nameof(Employee)} {employee.FirstName} {employee.LastName} was deleted!";
+                return $"{nameof(Employee)} {employee.FirstName} {employee.LastName} was fired!";
             }
         }
 

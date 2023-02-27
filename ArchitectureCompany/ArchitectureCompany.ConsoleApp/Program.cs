@@ -6,8 +6,9 @@
     {
         static void Main()
         {
-            EmployeeService es = new EmployeeService();
-            Console.WriteLine(es.AddEmployee("Eda","Yaldis","Karadja 10","Instanbul","Landscape Architecture","9807587909","eda_1998"));
+            ClientService cs = new ClientService();
+            Console.WriteLine(cs.AddClient("Lara","Bologne","Wall Street 8","Chicago","1234556790","Lara_W2021"));
         }
     }
+
 }
