@@ -12,7 +12,7 @@
     {
         private AppDbContext context;
 
-        public string AddEmployee(string firstName, string lastName, string address_id, string department_id, string phoneNumber, string email)
+        public string AddEmployee(string firstName, string lastName, string address, string town, string department, string phoneNumber, string email)
         {
             StringBuilder message = new StringBuilder();
             bool isValid = true;
@@ -26,36 +26,18 @@
                 message.AppendLine($"Invalid {(nameof(lastName))}");
                 isValid = false;
             }
-            if (string.IsNullOrWhiteSpace(address_id))
+            if (string.IsNullOrWhiteSpace(address))
             {
-                message.AppendLine($"Invalid {(nameof(address_id))}");
+                message.AppendLine($"Invalid {(nameof(address))}");
                 isValid = false;
             }
-            if (!int.TryParse(address_id, out _))
+
+            if (string.IsNullOrWhiteSpace(department))
             {
-                message.AppendLine($"Invalid {(nameof(address_id))}");
+                message.AppendLine($"Invalid {(nameof(department))}");
                 isValid = false;
             }
-            if (int.Parse(department_id) < 0)
-            {
-                message.AppendLine($"Invalid {(nameof(department_id))}");
-                isValid = false;
-            }
-            if (string.IsNullOrWhiteSpace(department_id))
-            {
-                message.AppendLine($"Invalid {(nameof(department_id))}");
-                isValid = false;
-            }
-            if (!int.TryParse(department_id, out _))
-            {
-                message.AppendLine($"Invalid {(nameof(department_id))}");
-                isValid = false;
-            }
-            if (int.Parse(department_id)<0)
-            {
-                message.AppendLine($"Invalid {(nameof(department_id))}");
-                isValid = false;
-            }
+
             if (string.IsNullOrWhiteSpace(phoneNumber))
             {
                 message.AppendLine($"Invalid {(nameof(phoneNumber))}");
@@ -66,19 +48,31 @@
                 message.AppendLine($"Invalid {(nameof(email))}");
                 isValid = false;
             }
+            Address a = null;
+            Department d = null;
+            Town t = null;
+            using (context = new AppDbContext())
+            {
+                a = context.Addresses.FirstOrDefault(x => x.Name == address);
+                d = context.Departments.FirstOrDefault(x => x.Name == department);
+                t = context.Towns.FirstOrDefault(x => x.Name == town);
+            }
+            if (a == null) { t = new Town() { Name = town }; }
+            if (a == null) { a = new Address() { Name = address, Town = t }; }
+            if (d == null) { d = new Department() { Name = department }; }
             if (isValid)
             {
-                Employee employee = new Employee()
-                {
-                    FirstName = firstName,
-                    LastName = lastName,
-                    AddressId = int.Parse(address_id),
-                    DepartmentId = int.Parse(department_id),
-                    PhoneNumber = phoneNumber,
-                    Email = email
-                };
                 using (context = new AppDbContext())
                 {
+                    Employee employee = new Employee()
+                    {
+                        FirstName = firstName,
+                        LastName = lastName,
+                        Address = a,
+                        Department = d,
+                        PhoneNumber = phoneNumber,
+                        Email = email
+                    };
                     context.Employees.Add(employee);
                     context.SaveChanges();
                     message.AppendLine($"Employee {firstName} {lastName} is added!");
@@ -111,32 +105,16 @@
                 return $"{nameof(Employee)} not found!";
             }
         }
-        public string GetEmployeeInfoById(int id)
+        public Employee GetEmployeeInfoById(int id)
         {
-            Employee employee = null;
             using (context = new AppDbContext())
             {
-                employee = context.Employees.Find(id);
-            }
-            if (employee != null)
-            {
-                StringBuilder masege = new StringBuilder();
-                masege.AppendLine($"{nameof(employee)} info: ");
-                masege.AppendLine($"\tId: {employee.Id}");
-                masege.AppendLine($"\tFirst name: {employee.FirstName}");
-                masege.AppendLine($"\tLast name: {employee.LastName}");
-                masege.AppendLine($"\tAddres id: {employee.AddressId}");
-                masege.AppendLine($"\tDepartment id: {employee.DepartmentId}");
-                masege.AppendLine($"\tPhobe number: {employee.PhoneNumber}");
-                masege.AppendLine($"\t Email: {employee.Email}");
-                return masege.ToString().TrimEnd();
-            }
-            else
-            {
-                return $"{nameof(Employee)} not found!";
+                Employee e = context.Employees.FirstOrDefault(x => x.Id == id);
+                return e;
+
             }
         }
-    public string GetAllEmployeesInfo(int page = 1, int count = 10)
+        public string GetAllEmployeesInfo(int page = 1, int count = 10)
         {
             StringBuilder msg = new StringBuilder();
             string firstRow = $"| {"Id",-4} | {"First name",-12} | {"Last name",-12} | {"Adress id",-3} | {"Dpartmenmt id",-3} | {"Phone number",-3} | {"Email",-15}";

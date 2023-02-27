@@ -65,10 +65,12 @@ namespace ArchitectureCompany.Services
         }
         public string GetAllClientsInfo(int page = 1, int count = 10)
         {
+            return null;
         }
         public string GetAllClientsInfo()
         {
-            
+            return null;
+
         }
         public string DeleteClientById(int id)
         {
