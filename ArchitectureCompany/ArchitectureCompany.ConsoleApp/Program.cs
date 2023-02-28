@@ -6,8 +6,9 @@
     {
         static void Main()
         {
+            EmployeeService es = new EmployeeService();
             ClientService cs = new ClientService();
-            Console.WriteLine(cs.AddClient("Lara","Bologne","Wall Street 8","Chicago","1234556790","Lara_W2021"));
+            DepartmentService ds = new DepartmentService();
         }
     }
 

@@ -6,30 +6,53 @@ namespace ArchitectureCompany.Services
     using ArchitectureCompany.Data;
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
 
     public class DepartmentService
     {
         private AppDbContext context;
-
-        public Department GetDepartmentById(string id)
+        public string AddDepartment(string name)
         {
-            if (string.IsNullOrWhiteSpace(id))
+            StringBuilder msg = new StringBuilder();
+            bool isValid = true;
+            if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentException("Department id is not found!");
+                msg.AppendLine($"Invalid department name");
+                isValid = false;
             }
-            if (!int.TryParse(id, out _))
+            if (isValid)
             {
-                throw new ArgumentException("Invalid department id!");
+                Department d = new Department() { Name = name };
+                using (context = new AppDbContext())
+                {
+                    context.Add(d);
+                    context.SaveChanges();
+                    msg.AppendLine($"{nameof(Department)} {name} is created");
+                }
             }
-            if (int.Parse(id)<0)
-            {
-                throw new ArgumentException("Invalid department id!");
-            }
+            return msg.ToString().TrimEnd();
+        }
+        public Department GetDepartmentById(int id)
+        {
             using (context = new AppDbContext())
             {
-                Department d = context.Departments.Find(id);
+                Department d = context.Departments.FirstOrDefault(x => x.Id == id);
                 return d;
+            }
+        }
+        public string DeleteDepartment(int id)
+        {
+            Department d = GetDepartmentById(id);
+            using (context = new AppDbContext())
+            {
+                if (d == null)
+                {
+                    return $"Department is not found!";
+                }
+                context.Remove(d);
+                context.SaveChanges();
+                return $"Department {d.Name} is closed!";
             }
         }
     }

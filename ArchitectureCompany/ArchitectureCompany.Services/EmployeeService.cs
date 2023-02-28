@@ -1,7 +1,6 @@
 ﻿namespace ArchitectureCompany.Services
 {
     using System;
-
     using Models;
     using System.Collections.Generic;
     using System.Text;
@@ -58,8 +57,8 @@
                 t = context.Towns.FirstOrDefault(x => x.Name == town);
             }
             if (t == null) { t = new Town() { Name = town }; }
-            if (a == null) { a = new Address() { Name = address, Town = t }; }
             if (d == null) { d = new Department() { Name = department }; }
+            if (a == null) { a = new Address() { Name = address, Town = t }; }
             if (isValid)
             {
                 using (context = new AppDbContext())
@@ -105,7 +104,7 @@
                 return $"{nameof(Employee)} not found!";
             }
         }
-        public Employee GetEmployeeInfoById(int id)
+        public Employee GetEmployeeById(int id)
         {
             using (context = new AppDbContext())
             {

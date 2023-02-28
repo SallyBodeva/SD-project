@@ -1,5 +1,6 @@
 ﻿using ArchitectureCompany.Data;
 using ArchitectureCompany.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,11 +8,11 @@ using System.Text;
 
 namespace ArchitectureCompany.Services
 {
-     
+
     public class ClientService
     {
         private AppDbContext context;
-        public string AddClient(string firstName, string lastName, string address,string town, string phoneNumber, string email)
+        public string AddClient(string firstName, string lastName, string address, string town, string phoneNumber, string email)
         {
             StringBuilder message = new StringBuilder();
             bool isValid = true;
@@ -44,27 +45,37 @@ namespace ArchitectureCompany.Services
             Town t = null;
             using (context = new AppDbContext())
             {
-                a = context.Addresses.FirstOrDefault(x => x.Name == address);
                 t = context.Towns.FirstOrDefault(x => x.Name == town);
+                a = context.Addresses.FirstOrDefault(x => x.Name == address);
             }
+            if (t == null) { t = new Town() { Name = town }; }
+            if (a == null) { a = new Address() { Name = address, Town = t }; }
             if (isValid)
             {
-                Client client = new Client()
-                {
-                    FirstName = firstName,
-                    LastName = lastName,
-                    Address = a,
-                    PhoneNumber = phoneNumber,
-                    Email = email
-                };
                 using (context = new AppDbContext())
                 {
+                    Client client = new Client()
+                    {
+                        FirstName = firstName,
+                        LastName = lastName,
+                        Address = a,
+                        PhoneNumber = phoneNumber,
+                        Email = email
+                    };
+
                     context.Clients.Add(client);
                     context.SaveChanges();
                     message.AppendLine($"New client {firstName} {lastName} is added!");
                 }
             }
             return message.ToString().TrimEnd();
+        }
+        public Client GetClientById(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                return context.Clients.FirstOrDefault(x => x.Id == id);
+            }
         }
         public string GetAllClientsInfo(int page = 1, int count = 10)
         {
