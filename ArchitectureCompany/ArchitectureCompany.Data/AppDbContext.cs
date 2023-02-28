@@ -10,7 +10,7 @@ namespace ArchitectureCompany.Data
 
     public class AppDbContext : DbContext
     {
-        private const string connectionString = @"Server=DESKTOP-0FTTVGR; Initial Catalog=ArchitectureCompanyEf; Integrated Security=true; Trusted_Connection=true";
+        private const string connectionString = @"Server=DESKTOP-0FTTVGR; Initial Catalog=EfArchitectureCompany; Integrated Security=true; Trusted_Connection=true";
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<BuildingType> BuildingTypes { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
@@ -63,6 +63,13 @@ namespace ArchitectureCompany.Data
                 .WithOne(p => p.Project)
                 .HasForeignKey(pc => pc.ProjectId)
                 .OnDelete(DeleteBehavior.Restrict);
+     
+            modelBuilder.Entity<Employee>()
+                .HasMany(pe=>pe.ProjectsEmployee)
+                .WithOne(e=>e.Employee)
+                .HasForeignKey(pc => pc.ProjectId)
+                .OnDelete(DeleteBehavior.Restrict);
+
         }
     }
 }

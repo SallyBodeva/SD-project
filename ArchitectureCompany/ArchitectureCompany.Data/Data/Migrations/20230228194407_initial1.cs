@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ArchitectureCompany.Data.Data.Migrations
 {
-    public partial class initial : Migration
+    public partial class initial1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -97,10 +97,10 @@ namespace ArchitectureCompany.Data.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(maxLength: 50, nullable: false),
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
+                    AddressId = table.Column<int>(nullable: false),
                     DepartmentId = table.Column<int>(nullable: false),
                     PhoneNumber = table.Column<string>(fixedLength: true, nullable: true),
-                    Email = table.Column<string>(maxLength: 100, nullable: false),
-                    AddressId = table.Column<int>(nullable: true)
+                    Email = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -110,7 +110,7 @@ namespace ArchitectureCompany.Data.Data.Migrations
                         column: x => x.AddressId,
                         principalTable: "Addresses",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Employees_Departments_DepartmentId",
                         column: x => x.DepartmentId,
@@ -200,20 +200,21 @@ namespace ArchitectureCompany.Data.Data.Migrations
                 columns: table => new
                 {
                     ProjectId = table.Column<int>(nullable: false),
-                    EmployeeId = table.Column<int>(nullable: false)
+                    EmployeeId = table.Column<int>(nullable: false),
+                    ProjectId1 = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProjectEmployees", x => new { x.ProjectId, x.EmployeeId });
                     table.ForeignKey(
-                        name: "FK_ProjectEmployees_Employees_EmployeeId",
-                        column: x => x.EmployeeId,
+                        name: "FK_ProjectEmployees_Employees_ProjectId",
+                        column: x => x.ProjectId,
                         principalTable: "Employees",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ProjectEmployees_Projects_ProjectId",
-                        column: x => x.ProjectId,
+                        name: "FK_ProjectEmployees_Projects_ProjectId1",
+                        column: x => x.ProjectId1,
                         principalTable: "Projects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -263,9 +264,9 @@ namespace ArchitectureCompany.Data.Data.Migrations
                 column: "ClientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProjectEmployees_EmployeeId",
+                name: "IX_ProjectEmployees_ProjectId1",
                 table: "ProjectEmployees",
-                column: "EmployeeId");
+                column: "ProjectId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projects_AddressId",

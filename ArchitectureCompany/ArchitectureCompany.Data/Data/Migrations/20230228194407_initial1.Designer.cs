@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArchitectureCompany.Data.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230211160547_initial")]
-    partial class initial
+    [Migration("20230228194407_initial1")]
+    partial class initial1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -62,7 +62,7 @@ namespace ArchitectureCompany.Data.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("AddressId")
+                    b.Property<int>("AddressId")
                         .HasColumnType("int");
 
                     b.Property<int>("DepartmentId")
@@ -253,9 +253,12 @@ namespace ArchitectureCompany.Data.Data.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
+                    b.Property<int>("ProjectId1")
+                        .HasColumnType("int");
+
                     b.HasKey("ProjectId", "EmployeeId");
 
-                    b.HasIndex("EmployeeId");
+                    b.HasIndex("ProjectId1");
 
                     b.ToTable("ProjectEmployees");
                 });
@@ -281,7 +284,9 @@ namespace ArchitectureCompany.Data.Data.Migrations
                 {
                     b.HasOne("ArchitectureCompany.Models.Address", "Address")
                         .WithMany("Employees")
-                        .HasForeignKey("AddressId");
+                        .HasForeignKey("AddressId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.HasOne("ArchitectureCompany.Data.Department", "Department")
                         .WithMany("Employees")
@@ -349,13 +354,13 @@ namespace ArchitectureCompany.Data.Data.Migrations
                 {
                     b.HasOne("ArchitectureCompany.Data.Employee", "Employee")
                         .WithMany("ProjectsEmployee")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("ArchitectureCompany.Models.Project", "Project")
                         .WithMany("ProjectsEmployee")
-                        .HasForeignKey("ProjectId")
+                        .HasForeignKey("ProjectId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
