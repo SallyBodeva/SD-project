@@ -55,5 +55,12 @@ namespace ArchitectureCompany.Services
                 return $"Department {d.Name} is closed!";
             }
         }
+        public int GetDepartmentsCount()
+        {
+            using (context= new AppDbContext())
+            {
+                return context.Departments.Count();
+            }
+        }
     }
 }

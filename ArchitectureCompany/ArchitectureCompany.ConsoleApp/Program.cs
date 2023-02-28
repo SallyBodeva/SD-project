@@ -9,6 +9,7 @@
             EmployeeService es = new EmployeeService();
             ClientService cs = new ClientService();
             DepartmentService ds = new DepartmentService();
+            Console.WriteLine(ds.GetDepartmentsCount());
         }
     }
 
