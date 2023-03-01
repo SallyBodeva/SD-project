@@ -77,13 +77,30 @@ namespace ArchitectureCompany.Services
                 return context.Clients.FirstOrDefault(x => x.Id == id);
             }
         }
+       
         public string GetAllClientsInfo(int page = 1, int count = 10)
         {
-            return null;
-        }
-        public string GetAllClientsInfo()
-        {
-            return null;
+            StringBuilder msg = new StringBuilder();
+            string firstRow = $"| {"Id",-4} | {"First name",-12} | {"Last name",-12} | {"Adress id",-3} | {"Phone number",-3} | {"Email",-15}";
+
+            string line = $"|{new string('-', firstRow.Length - 2)}|";
+
+            using (context = new AppDbContext())
+            {
+                List<Client> clients = context.Clients.Skip((page - 1) * count).Take(count).ToList();
+                msg.AppendLine(firstRow);
+                msg.AppendLine(line);
+                foreach (var c in clients)
+                {
+                    string info = $"| {c.Id,-4} | {c.FirstName,-12} | {c.LastName,-12} | {c.AddressId,-20} | {c.PhoneNumber,-15}| {c.Email,-15} |";
+                    msg.AppendLine(info);
+                    msg.AppendLine(line);
+                }
+                int pageCount = (int)Math.Ceiling(context.Employees.Count() / (decimal)count);
+                msg.AppendLine($"Page: {page} / {pageCount}");
+            }
+
+            return msg.ToString().TrimEnd();
 
         }
         public string DeleteClientById(int id)
