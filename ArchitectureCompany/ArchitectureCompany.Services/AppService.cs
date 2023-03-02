@@ -14,15 +14,7 @@
     {
         private AppDbContext context = new AppDbContext();
 
-        public Project GetProjectByName(string name)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentException("Invalid project name...");
-            }
-            Project p = this.context.Projects.FirstOrDefault(x => x.Name == name);
-            return p;
-        }
+     
         public Department GetDepartmentByName(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -59,17 +51,7 @@
             return client;
 
         }
-        public Project GetProjectByReleaseDate(string date)
-        {
-            DateTime releaseDate = new DateTime();
-            bool isValid = DateTime.TryParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out releaseDate);
-            if (!isValid)
-            {
-                throw new ArgumentException("Invalid date time format... ");
-            }
-            Project project = this.context.Projects.FirstOrDefault(x => x.ReleaseDate == releaseDate);
-            return project;
-        }
+      
         public Department GetDepartmentId(string id)
         {
             if (string.IsNullOrWhiteSpace(id))
@@ -83,19 +65,7 @@
             Department department = this.context.Departments.FirstOrDefault(x => x.Id == (int.Parse(id)));
             return department;
         }
-        public Project GetProjectById(string id)
-        {
-            if (string.IsNullOrWhiteSpace(id))
-            {
-                throw new ArgumentException("Project id is not found!");
-            }
-            if (!int.TryParse(id, out _))
-            {
-                throw new ArgumentException("Invalid project id!");
-            }
-            Project project = this.context.Projects.FirstOrDefault(x => x.Id == (int.Parse(id)));
-            return project;
-        }
+     
         public Address GetAdressId(string id) 
         {
             if (string.IsNullOrEmpty(id))
@@ -126,53 +96,7 @@
             return image;
 
         }
-        public string AddProject(string name, string builidingTypeId, int capacity, DateTime releaseDate, int totalFloorArea, int numberFloors, int addressId, int imageId)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentException("Invalid name...");
-            }
-            if (string.IsNullOrWhiteSpace(builidingTypeId))
-            {
-                throw new ArgumentException("Invalid building type id...");
-            }
-            if (capacity <= 0)
-            {
-                throw new ArgumentException("Capacity cannot be less or equal to zero");
-            }
-            if (totalFloorArea <= 0)
-            {
-                throw new ArgumentException("Floor Area cannot be less or equal to zero");
-            }
-            if (numberFloors <= 0)
-            {
-                throw new ArgumentException("Floor Area cannot be less or equal to zero");
-            }
-            if (!int.TryParse(builidingTypeId, out _))
-            {
-                throw new ArgumentException("Invalid size!");
-            }
-            Project p = GetProjectByName(name);
-            if (p != null)
-            {
-                return $"Project {name} already exists!";
-            }
-            p = new Project()
-            {
-                Name = name,
-                // Трябва да се довърши
-                // BuildingTypeId = builidingTypeId,
-                ReleaseDate = releaseDate,
-                TotalFloorArea = totalFloorArea,
-                NumberOfFloors = numberFloors,
-                // Трябва да се довърши
-                AddressId = addressId,
-                ImageId = imageId
-            };
-            this.context.Projects.Add(p);
-            context.SaveChanges();
-            return "Project added successfully";
-        }
+        
         public string AddTown(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -254,17 +178,7 @@
             context.SaveChanges();
             return $"New building type is added successfully ";
         }
-        public void DeleteProjectById(string name)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentException("Invalid project name..!");
-            }
-            Project project = GetProjectByName(name);
-            context.Projects.Remove(project);
-            context.SaveChanges();
-
-        }
+      
         public void DeleteEmployeeById(string Id)
         {
             if (string.IsNullOrWhiteSpace(Id))
@@ -277,28 +191,8 @@
             context.SaveChanges();
 
         }
-        public ICollection<Project> GetFinishedProjects(string id)
-        {
-            Project p = GetProjectById(id);
-            List<Project> finishedProjects = new List<Project>();
-            bool isFinished = p.ReleaseDate < DateTime.Now;
-            if (isFinished)
-            {
-                finishedProjects.Add(p);
-            }
-            return finishedProjects;
-        }
-        public ICollection<Project> GetUnfinishedProjects(string id)
-        {
-            Project p = GetProjectById(id);
-            List<Project> unfinishedProjects = new List<Project>();
-            bool isFinished = p.ReleaseDate < DateTime.Now;
-            if (!isFinished)
-            {
-                unfinishedProjects.Add(p);
-            }
-            return unfinishedProjects;
-        }
+     
+     
        
 
         
