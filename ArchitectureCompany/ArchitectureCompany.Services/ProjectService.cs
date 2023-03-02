@@ -28,6 +28,76 @@ namespace ArchitectureCompany.Services
             Project project = this.context.Projects.FirstOrDefault(x => x.Id == (int.Parse(id)));
             return project;
         }
+        public Project GetProjectByName(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException("Invalid project name...");
+            }
+            Project p = this.context.Projects.FirstOrDefault(x => x.Name == name);
+            return p;
+        }
+        public Project GetProjectByReleaseDate(string date)
+        {
+            DateTime releaseDate = new DateTime();
+            bool isValid = DateTime.TryParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out releaseDate);
+            if (!isValid)
+            {
+                throw new ArgumentException("Invalid date time format... ");
+            }
+            Project project = this.context.Projects.FirstOrDefault(x => x.ReleaseDate == releaseDate);
+            return project;
+        }
+        public string GetAllEmployeesInfo(int page = 1, int count = 10)
+        {
+            StringBuilder message = new StringBuilder();
+            string firstRow = $"| {"Id",-4} | {"Name",-24} | {"BuildingTypeId",-3} | {"BuildingsType",-15} | {"Capacity",-5} | {"ReleaseDate",-15} | {"TotalFloorArea",-10} | {"NumberOfFloors ",-3} | {"AddressId",-5}| {"Address",-15} | {"ImageId ",-3}";
+
+            string line = $"|{new string('-', firstRow.Length - 2)}|";
+
+            using (context = new AppDbContext())
+            {
+                List<Project> project = context.Projects
+                    .Skip((page - 1) * count)
+                    .Take(count)
+                    .ToList();
+                message.AppendLine(firstRow);
+                message.AppendLine(line);
+                foreach (var e in project)
+                {
+                    string info = $"| {"Id",-4} | {"Name",-24} | {"BuildingTypeId",-5} | {"BuildingsType",-15} | {"Capacity",-5} | {"ReleaseDate",-15} | {"TotalFloorArea",-10} | {"NumberOfFloors ",-3} | {"AddressId",-20}| {"Address",-15} | {"ImageId ",-5}";
+                    message.AppendLine(info);
+                    message.AppendLine(line);
+                }
+                int pageCount = (int)Math.Ceiling(context.Projects.Count() / (decimal)count);
+                message.AppendLine($"Page: {page} / {pageCount}");
+            }
+
+            return message.ToString().TrimEnd();
+        }
+
+        public ICollection<Project> GetFinishedProjects(string id)
+        {
+            Project p = GetProjectById(id);
+            List<Project> finishedProjects = new List<Project>();
+            bool isFinished = p.ReleaseDate < DateTime.Now;
+            if (isFinished)
+            {
+                finishedProjects.Add(p);
+            }
+            return finishedProjects;
+        }
+        public ICollection<Project> GetUnfinishedProjects(string id)
+        {
+            Project p = GetProjectById(id);
+            List<Project> unfinishedProjects = new List<Project>();
+            bool isFinished = p.ReleaseDate < DateTime.Now;
+            if (!isFinished)
+            {
+                unfinishedProjects.Add(p);
+            }
+            return unfinishedProjects;
+        }
         public string AddProject(string name, string builidingTypeId, int capacity, DateTime releaseDate, int totalFloorArea, int numberFloors, int addressId, int imageId)
         {
             if (string.IsNullOrWhiteSpace(name))
@@ -75,76 +145,7 @@ namespace ArchitectureCompany.Services
             context.SaveChanges();
             return "Project added successfully";
         }
-        public Project GetProjectByReleaseDate(string date)
-        {
-            DateTime releaseDate = new DateTime();
-            bool isValid = DateTime.TryParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out releaseDate);
-            if (!isValid)
-            {
-                throw new ArgumentException("Invalid date time format... ");
-            }
-            Project project = this.context.Projects.FirstOrDefault(x => x.ReleaseDate == releaseDate);
-            return project;
-        }
-        public Project GetProjectByName(string name)
-        {
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                throw new ArgumentException("Invalid project name...");
-            }
-            Project p = this.context.Projects.FirstOrDefault(x => x.Name == name);
-            return p;
-        }
-        public ICollection<Project> GetFinishedProjects(string id)
-        {
-            Project p = GetProjectById(id);
-            List<Project> finishedProjects = new List<Project>();
-            bool isFinished = p.ReleaseDate < DateTime.Now;
-            if (isFinished)
-            {
-                finishedProjects.Add(p);
-            }
-            return finishedProjects;
-        }
-        public ICollection<Project> GetUnfinishedProjects(string id)
-        {
-            Project p = GetProjectById(id);
-            List<Project> unfinishedProjects = new List<Project>();
-            bool isFinished = p.ReleaseDate < DateTime.Now;
-            if (!isFinished)
-            {
-                unfinishedProjects.Add(p);
-            }
-            return unfinishedProjects;
-        }
-        public string GetAllEmployeesInfo(int page = 1, int count = 10)
-        {
-            StringBuilder message = new StringBuilder();
-            string firstRow = $"| {"Id",-4} | {"Name",-24} | {"BuildingTypeId",-3} | {"BuildingsType",-15} | {"Capacity",-5} | {"ReleaseDate",-15} | {"TotalFloorArea",-10} | {"NumberOfFloors ",-3} | {"AddressId",-5}| {"Address",-15} | {"ImageId ",-3}";
-
-            string line = $"|{new string('-', firstRow.Length - 2)}|";
-
-            using (context = new AppDbContext())
-            {
-                List<Project> project = context.Projects
-                    .Skip((page - 1) * count)
-                    .Take(count)
-                    .ToList();
-                message.AppendLine(firstRow);
-                message.AppendLine(line);
-                foreach (var e in project)
-                {
-                    string info = $"| {"Id",-4} | {"Name",-24} | {"BuildingTypeId",-5} | {"BuildingsType",-15} | {"Capacity",-5} | {"ReleaseDate",-15} | {"TotalFloorArea",-10} | {"NumberOfFloors ",-3} | {"AddressId",-20}| {"Address",-15} | {"ImageId ",-5}";
-                    message.AppendLine(info);
-                    message.AppendLine(line);
-                }
-                int pageCount = (int)Math.Ceiling(context.Projects.Count() / (decimal)count);
-                message.AppendLine($"Page: {page} / {pageCount}");
-            }
-
-            return message.ToString().TrimEnd();
-        }
-        public void DeleteProjectById(string name)
+     public void DeleteProjectById(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
