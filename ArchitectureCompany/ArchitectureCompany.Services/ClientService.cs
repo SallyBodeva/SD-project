@@ -81,7 +81,7 @@ namespace ArchitectureCompany.Services
         public string GetAllClientsInfo(int page = 1, int count = 10)
         {
             StringBuilder msg = new StringBuilder();
-            string firstRow = $"| {"Id",-4} | {"First name",-12} | {"Last name",-12} | {"Adress id",-3} | {"Phone number",-3} | {"Email",-15}";
+            string firstRow = $"| {"Id",-4} | {"First name",-12} | {"Last name",-12} | {"Adress: ",-3} | {"Phone number",-10} | {"Email",-9}";
 
             string line = $"|{new string('-', firstRow.Length - 2)}|";
 

@@ -52,13 +52,14 @@
             Town t = null;
             using (context = new AppDbContext())
             {
-                a = context.Addresses.FirstOrDefault(x => x.Name == address);
-                d = context.Departments.FirstOrDefault(x => x.Name == department);
-                t = context.Towns.FirstOrDefault(x => x.Name == town);
+                a = context.Addresses.FirstOrDefault(a => a.Name == address);
+                d = context.Departments.FirstOrDefault(d => d.Name == department);
+                t = context.Towns.FirstOrDefault(t => t.Name == town);
+                if (t == null) { t = new Town() { Name = town }; }
+                if (d == null) { d = new Department() { Name = department }; }
+                if (a == null) { a = new Address() { Name = address, Town = t }; }
             }
-            if (t == null) { t = new Town() { Name = town }; }
-            if (d == null) { d = new Department() { Name = department }; }
-            if (a == null) { a = new Address() { Name = address, Town = t }; }
+           
             if (isValid)
             {
                 using (context = new AppDbContext())
