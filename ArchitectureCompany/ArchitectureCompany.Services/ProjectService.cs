@@ -1,8 +1,5 @@
-﻿
-
-namespace ArchitectureCompany.Services
+﻿namespace ArchitectureCompany.Services
 {
-
     using Models;
     using Data;
     using System;
@@ -12,20 +9,18 @@ namespace ArchitectureCompany.Services
     using System.Drawing;
     using System.Globalization;
     using System.Net;
+    using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
+
     public class ProjectService
     {
         private AppDbContext context;
-        public Project GetProjectById(string id)
+        public Project GetProjectById(int id)
         {
-            if (string.IsNullOrWhiteSpace(id))
+            if (id < 0)
             {
-                throw new ArgumentException("Project id is not found!");
+                throw new ArgumentException("Invalid Project id!");
             }
-            if (!int.TryParse(id, out _))
-            {
-                throw new ArgumentException("Invalid project id!");
-            }
-            Project project = this.context.Projects.FirstOrDefault(x => x.Id == (int.Parse(id)));
+            Project project = this.context.Projects.FirstOrDefault(x => x.Id == (id));
             return project;
         }
         public Project GetProjectByName(string name)
@@ -34,8 +29,11 @@ namespace ArchitectureCompany.Services
             {
                 throw new ArgumentException("Invalid project name...");
             }
-            Project p = this.context.Projects.FirstOrDefault(x => x.Name == name);
-            return p;
+            using (context = new AppDbContext())
+            {
+                Project p = this.context.Projects.FirstOrDefault(x => x.Name == name);
+                return p;
+            }         
         }
         public Project GetProjectByReleaseDate(string date)
         {
@@ -45,32 +43,41 @@ namespace ArchitectureCompany.Services
             {
                 throw new ArgumentException("Invalid date time format... ");
             }
-            Project project = this.context.Projects.FirstOrDefault(x => x.ReleaseDate == releaseDate);
-            return project;
+            using (context= new AppDbContext())
+            {
+                Project project = this.context.Projects.FirstOrDefault(x => x.ReleaseDate == releaseDate);
+                return project;
+            }
         }
 
 
-        public ICollection<Project> GetFinishedProjects(string id)
+        public ICollection<Project> GetFinishedProjects(int id)
         {
-            Project p = GetProjectById(id);
-            List<Project> finishedProjects = new List<Project>();
-            bool isFinished = p.ReleaseDate < DateTime.Now;
-            if (isFinished)
+            using (context = new AppDbContext())
             {
-                finishedProjects.Add(p);
+                Project p = GetProjectById(id);
+                List<Project> finishedProjects = new List<Project>();
+                bool isFinished = p.ReleaseDate < DateTime.Now;
+                if (isFinished)
+                {
+                    finishedProjects.Add(p);
+                }
+                return finishedProjects;
             }
-            return finishedProjects;
         }
-        public ICollection<Project> GetUnfinishedProjects(string id)
+        public ICollection<Project> GetUnfinishedProjects(int id)
         {
-            Project p = GetProjectById(id);
-            List<Project> unfinishedProjects = new List<Project>();
-            bool isFinished = p.ReleaseDate < DateTime.Now;
-            if (!isFinished)
+            using (context= new AppDbContext())
             {
-                unfinishedProjects.Add(p);
+                Project p = GetProjectById(id);
+                List<Project> unfinishedProjects = new List<Project>();
+                bool isFinished = p.ReleaseDate < DateTime.Now;
+                if (!isFinished)
+                {
+                    unfinishedProjects.Add(p);
+                }
+                return unfinishedProjects;
             }
-            return unfinishedProjects;
         }
         public string AddProject(string name, string builidingType, int capacity, DateTime releaseDate, int totalFloorArea, int numberOfFloors, string address, string town, string url)
         {
@@ -88,24 +95,18 @@ namespace ArchitectureCompany.Services
             }
             if (capacity < 0)
             {
-                message.AppendLine("Capacity cannot be less or equal to zero");
+                message.AppendLine("Capacity cannot be less than zero");
                 isValid = false;
             }
             if (totalFloorArea < 0)
             {
-                message.AppendLine("Floor Area cannot be less or equal to zero");
+                message.AppendLine("Floor Area cannot be less than zero");
                 isValid = false;
             }
             if (numberOfFloors < 0)
             {
-                message.AppendLine("Floor number cannot be less or equal to zero");
+                message.AppendLine("Floor number cannot be less than zero");
             }
-            // Да се провери дали е нужно- според мен не, aма да съм сигурна
-            //if (!int.TryParse(builidingType, out _))
-            //{
-            //    message.AppendLine("Invalid size!");
-            //    isValid = false;
-            //}
             if (string.IsNullOrWhiteSpace(address))
             {
                 message.AppendLine($"Invalid {(nameof(address))}");
@@ -125,18 +126,21 @@ namespace ArchitectureCompany.Services
             Address a = null;
             Town t = null;
             BuildingType bt = null;
+            Image i = null;
             using (context = new AppDbContext())
             {
                 if (p != null)
                 {
                     message.AppendLine($"Project {name} already exists!");
                 }
-                a = context.Addresses.FirstOrDefault(a => a.Name == address);
-                t = context.Towns.FirstOrDefault(t => t.Name == town);
-                bt = context.BuildingTypes.FirstOrDefault(t => t.TypeName == builidingType);
+                a = context.Addresses.FirstOrDefault(x => x.Name == address);
+                t = context.Towns.FirstOrDefault(x => x.Name == town);
+                bt = context.BuildingTypes.FirstOrDefault(x => x.TypeName == builidingType);
+                i = context.Images.FirstOrDefault(x => x.Url == url);
                 if (a == null) { a = new Address() { Name = address, Town = t }; }
                 if (t == null) { t = new Town() { Name = town }; }
                 if (bt == null) { bt = new BuildingType() { TypeName = builidingType }; }
+                if (i == null) { i = new Image() { Url = url };}
 
             }
 
@@ -147,14 +151,12 @@ namespace ArchitectureCompany.Services
                     p = new Project()
                     {
                         Name = name,
-                        //  BuildingType = bt,
+                        BuildingsType = bt,
                         ReleaseDate = releaseDate,
                         TotalFloorArea = totalFloorArea,
                         NumberOfFloors = numberOfFloors,
-
                         Address = a,
-
-                        //   ImageId = url
+                        //images
                     };
                     this.context.Projects.Add(p);
                     context.SaveChanges();
@@ -163,16 +165,16 @@ namespace ArchitectureCompany.Services
             }
             return message.ToString().TrimEnd();
         }
-        public void DeleteProjectById(string name)
+        public string DeleteProjectById(int id)
         {
-            if (string.IsNullOrWhiteSpace(name))
+            Project project = GetProjectById(id);
+            if (project==null)
             {
-                throw new ArgumentException("Invalid project name..!");
+                return $"Project not found!";
             }
-            Project project = GetProjectByName(name);
             context.Projects.Remove(project);
             context.SaveChanges();
-
+            return "Project is suspended!";
         }
 
         public string GetProjectInfo()
@@ -225,7 +227,33 @@ namespace ArchitectureCompany.Services
             }
 
             return msg.ToString().TrimEnd();
-
+        }
+        public string UpdateImages(int imageId, string url)
+        {
+            StringBuilder sb = new StringBuilder();
+            bool isValid = true;
+            if (imageId < 0)
+            {
+                sb.AppendLine("Invalid image id");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                sb.AppendLine("Invalid url");
+                isValid = false;
+            }
+            using (context= new AppDbContext())
+            {
+               Image i= context.Images.FirstOrDefault(x => x.Id == imageId);
+                i.Url = url;
+                context.Images.Update(i);
+                context.SaveChanges();
+            }
+            if (isValid)
+            {
+                sb.AppendLine("Project images are updated!");
+            }
+            return sb.ToString().TrimEnd();
         }
     }
 }

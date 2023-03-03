@@ -47,6 +47,7 @@
                 message.AppendLine($"Invalid {(nameof(email))}");
                 isValid = false;
             }
+
             Address a = null;
             Department d = null;
             Town t = null;
@@ -59,7 +60,7 @@
                 if (d == null) { d = new Department() { Name = department }; }
                 if (a == null) { a = new Address() { Name = address, Town = t }; }
             }
-           
+
             if (isValid)
             {
                 using (context = new AppDbContext())
