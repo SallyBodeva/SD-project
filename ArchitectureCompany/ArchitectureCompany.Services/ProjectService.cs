@@ -48,7 +48,7 @@ namespace ArchitectureCompany.Services
             Project project = this.context.Projects.FirstOrDefault(x => x.ReleaseDate == releaseDate);
             return project;
         }
-        
+
 
         public ICollection<Project> GetFinishedProjects(string id)
         {
@@ -72,9 +72,9 @@ namespace ArchitectureCompany.Services
             }
             return unfinishedProjects;
         }
-        public string AddProject(string name, string builidingType, int capacity, DateTime releaseDate, int totalFloorArea, int numberFloors, string address,string town, string url)
+        public string AddProject(string name, string builidingType, int capacity, DateTime releaseDate, int totalFloorArea, int numberOfFloors, string address, string town, string url)
         {
-            StringBuilder message=new StringBuilder();
+            StringBuilder message = new StringBuilder();
             bool isValid = true;
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -86,17 +86,17 @@ namespace ArchitectureCompany.Services
                 message.AppendLine($"Invalid {(nameof(builidingType))}");
                 isValid = false;
             }
-            if (capacity<0)
+            if (capacity < 0)
             {
                 message.AppendLine("Capacity cannot be less or equal to zero");
                 isValid = false;
             }
-            if (totalFloorArea<0)
+            if (totalFloorArea < 0)
             {
                 message.AppendLine("Floor Area cannot be less or equal to zero");
                 isValid = false;
             }
-            if (numberFloors<0)
+            if (numberOfFloors < 0)
             {
                 message.AppendLine("Floor number cannot be less or equal to zero");
             }
@@ -125,45 +125,45 @@ namespace ArchitectureCompany.Services
             Address a = null;
             Town t = null;
             BuildingType bt = null;
-            using (context=new AppDbContext())
+            using (context = new AppDbContext())
             {
                 if (p != null)
                 {
-                    message.AppendLine( $"Project {name} already exists!");
+                    message.AppendLine($"Project {name} already exists!");
                 }
                 a = context.Addresses.FirstOrDefault(a => a.Name == address);
-                t=context.Towns.FirstOrDefault(t => t.Name == town);
+                t = context.Towns.FirstOrDefault(t => t.Name == town);
                 bt = context.BuildingTypes.FirstOrDefault(t => t.TypeName == builidingType);
-                if (a==null){a = new Address() { Name = address, Town= t };}
-                if (t == null) { t = new Town() { Name =town }; }
+                if (a == null) { a = new Address() { Name = address, Town = t }; }
+                if (t == null) { t = new Town() { Name = town }; }
                 if (bt == null) { bt = new BuildingType() { TypeName = builidingType }; }
-                
+
             }
-   
+
             if (isValid)
             {
                 using (context = new AppDbContext())
                 {
                     p = new Project()
                     {
-                        Name = name,                      
-                     //  BuildingType = bt,
+                        Name = name,
+                        //  BuildingType = bt,
                         ReleaseDate = releaseDate,
                         TotalFloorArea = totalFloorArea,
-                        NumberOfFloors = numberFloors,
-                       
+                        NumberOfFloors = numberOfFloors,
+
                         Address = a,
-                      
-                    //   ImageId = url
+
+                        //   ImageId = url
                     };
                     this.context.Projects.Add(p);
                     context.SaveChanges();
                     message.AppendLine($"Project {name} is added");
                 }
-             }
+            }
             return message.ToString().TrimEnd();
         }
-     public void DeleteProjectById(string name)
+        public void DeleteProjectById(string name)
         {
             if (string.IsNullOrWhiteSpace(name))
             {
@@ -173,6 +173,34 @@ namespace ArchitectureCompany.Services
             context.Projects.Remove(project);
             context.SaveChanges();
 
+        }
+
+        public string GetProjectInfo()
+        {
+            Project project = null;
+            using (context = new AppDbContext())
+            {
+                project = context.Projects.Find(project);
+            }
+            if (project != null)
+            {
+                StringBuilder message = new StringBuilder();
+                message.AppendLine($"{nameof(project)} info: ");
+                message.AppendLine($"\tId: {project.Id}");
+                message.AppendLine($"\tName: {project.Name}");
+                message.AppendLine($"\tBuildingTypeId id: {project.BuildingTypeId}");
+                message.AppendLine($"\tCapacity: {project.Capacity}");
+                message.AppendLine($"\tRelease date: {project.ReleaseDate}");
+                message.AppendLine($"\tTotal floor area: {project.TotalFloorArea}");
+                message.AppendLine($"\tNumber of floors: {project.NumberOfFloors}");
+                message.AppendLine($"\tAddres id: {project.AddressId}");
+                message.AppendLine($"\t Image id: {project.ImageId}");
+                return message.ToString().TrimEnd();
+            }
+            else
+            {
+                return $"{nameof(Employee)} not found!";
+            }
         }
     }
 }
