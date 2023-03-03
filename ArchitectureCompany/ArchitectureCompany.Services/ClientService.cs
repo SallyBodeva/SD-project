@@ -92,11 +92,11 @@ namespace ArchitectureCompany.Services
                 msg.AppendLine(line);
                 foreach (var c in clients)
                 {
-                    string info = $"| {c.Id,-4} | {c.FirstName,-12} | {c.LastName,-12} | {c.AddressId,-20} | {c.PhoneNumber,-15}| {c.Email,-15} |";
+                    string info = $"| {c.Id,-4} | {c.FirstName,-12} | {c.LastName,-12} | {c.AddressId,-3} | {c.PhoneNumber,-10}| {c.Email,-9} |";
                     msg.AppendLine(info);
                     msg.AppendLine(line);
                 }
-                int pageCount = (int)Math.Ceiling(context.Employees.Count() / (decimal)count);
+                int pageCount = (int)Math.Ceiling(context.Clients.Count() / (decimal)count);
                 msg.AppendLine($"Page: {page} / {pageCount}");
             }
 

@@ -202,5 +202,30 @@ namespace ArchitectureCompany.Services
                 return $"{nameof(Employee)} not found!";
             }
         }
+        public string GetAllProjectsInfo(int page = 1, int count = 10)
+        {
+            StringBuilder msg = new StringBuilder();
+            string firstRow = $"| {"Id",-4} | {"Name",-12} | {"Building Type Id: ",-4} | {"Capacity",-5} | {"Release date",-10} | {"Total Floor area",-9} | {"Number of Floors",-3} | {"Address id",-3} | {"Image id",-3}";
+
+            string line = $"|{new string('-', firstRow.Length - 2)}|";
+
+            using (context = new AppDbContext())
+            {
+                List<Project> projects = context.Projects.Skip((page - 1) * count).Take(count).ToList();
+                msg.AppendLine(firstRow);
+                msg.AppendLine(line);
+                foreach (var c in projects)
+                {
+                    string info = $"| {"Id",-4} | {"Name",-12} | {"Building Type Id: ",-4} | {"Capacity",-5} | {"Release date",-10} | {"Total Floor area",-9} | {"Number of Floors",-3} | {"Address id",-3} | {"Image id",-3}";
+                    msg.AppendLine(info);
+                    msg.AppendLine(line);
+                }
+                int pageCount = (int)Math.Ceiling(context.Projects.Count() / (decimal)count);
+                msg.AppendLine($"Page: {page} / {pageCount}");
+            }
+
+            return msg.ToString().TrimEnd();
+
+        }
     }
 }
