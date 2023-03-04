@@ -106,6 +106,7 @@
             if (numberOfFloors < 0)
             {
                 message.AppendLine("Floor number cannot be less than zero");
+                isValid = false;
             }
             if (string.IsNullOrWhiteSpace(address))
             {
@@ -201,7 +202,7 @@
             }
             else
             {
-                return $"{nameof(Employee)} not found!";
+                return $"{nameof(Project)} not found!";
             }
         }
         public string GetAllProjectsInfo(int page = 1, int count = 10)
