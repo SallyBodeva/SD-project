@@ -73,17 +73,30 @@
                 t = context.Towns.FirstOrDefault(x => x.Name == town);
                 bt = context.BuildingTypes.FirstOrDefault(x => x.TypeName == builidingType);
                 i = context.Images.FirstOrDefault(x => x.Url == url);
-                if (a == null) { a = new Address() { Name = address, Town = t }; }
-                if (t == null) { t = new Town() { Name = town }; }
-                if (bt == null) { bt = new BuildingType() { TypeName = builidingType }; }
-                if (i == null) { i = new Image() { Url = url }; }
-
-            }
-
-            if (isValid)
-            {
-                using (context = new AppDbContext())
+                if (a == null) 
                 {
+                    a = new Address() { Name = address, Town = t };
+                    context.SaveChanges();
+                }
+                if (t == null) 
+                {
+                    t = new Town() { Name = town };
+                    context.SaveChanges();
+                }
+                if (bt == null)
+                
+                {
+                    bt = new BuildingType() { TypeName = builidingType };
+                    context.SaveChanges();
+                }
+                if (i == null)
+                {
+                    i = new Image() { Url = url };
+                    context.SaveChanges();
+                }
+                if (isValid)
+                {
+
                     p = new Project()
                     {
                         Name = name,
@@ -92,11 +105,12 @@
                         TotalFloorArea = totalFloorArea,
                         NumberOfFloors = numberOfFloors,
                         Address = a,
-                        //images
+                        //
                     };
                     this.context.Projects.Add(p);
                     context.SaveChanges();
                     message.AppendLine($"Project {name} is added");
+
                 }
             }
             return message.ToString().TrimEnd();
@@ -131,7 +145,7 @@
             {
                 Project p = this.context.Projects.FirstOrDefault(x => x.Name == name);
                 return p;
-            }         
+            }
         }
         public Project GetProjectByReleaseDate(string date)
         {
@@ -141,7 +155,7 @@
             {
                 throw new ArgumentException("Invalid date time format... ");
             }
-            using (context= new AppDbContext())
+            using (context = new AppDbContext())
             {
                 Project project = this.context.Projects.FirstOrDefault(x => x.ReleaseDate == releaseDate);
                 return project;
@@ -155,7 +169,7 @@
             {
                 Project p = GetProjectById(id);
                 List<Project> finishedProjects = new List<Project>();
-                bool isFinished = p.ReleaseDate < DateTime.Now;
+                bool isFinished = p.ReleaseDate < DateTime.UtcNow;
                 if (isFinished)
                 {
                     finishedProjects.Add(p);
@@ -165,11 +179,11 @@
         }
         public ICollection<Project> GetUnfinishedProjects(int id)
         {
-            using (context= new AppDbContext())
+            using (context = new AppDbContext())
             {
                 Project p = GetProjectById(id);
                 List<Project> unfinishedProjects = new List<Project>();
-                bool isFinished = p.ReleaseDate < DateTime.Now;
+                bool isFinished = p.ReleaseDate < DateTime.UtcNow;
                 if (!isFinished)
                 {
                     unfinishedProjects.Add(p);
@@ -177,8 +191,8 @@
                 return unfinishedProjects;
             }
         }
-       
-        
+
+
 
         public string GetProjectInfo()
         {
@@ -245,9 +259,9 @@
                 sb.AppendLine("Invalid url");
                 isValid = false;
             }
-            using (context= new AppDbContext())
+            using (context = new AppDbContext())
             {
-               Image i= context.Images.FirstOrDefault(x => x.Id == imageId);
+                Image i = context.Images.FirstOrDefault(x => x.Id == imageId);
                 i.Url = url;
                 context.Images.Update(i);
                 context.SaveChanges();
