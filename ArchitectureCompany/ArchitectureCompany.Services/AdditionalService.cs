@@ -11,23 +11,7 @@ namespace ArchitectureCompany.Services
     public class AdditionalService
     {
         private AppDbContext context;
-        public Town GetTownById(int id)
-        {
-            if (id < 0)
-            {
-                throw new ArgumentException("Invalid Town id!");
-            }
-            Town town = this.context.Towns.FirstOrDefault(x => x.Id == (id));
-            return town;
-        }
-        public Address GetAddressById(int id)
-        {
-            using (context = new AppDbContext())
-            {
-                Address address = this.context.Addresses.FirstOrDefault(x => x.Id == (id));
-                return address;
-            }
-        }
+
         public string AddTown(string name)
         {
             StringBuilder message = new StringBuilder();
@@ -49,7 +33,7 @@ namespace ArchitectureCompany.Services
             }
             return message.ToString().TrimEnd();
         }
-        public string AddAddress(string name,string town)
+        public string AddAddress(string name, string town)
         {
             StringBuilder message = new StringBuilder();
             bool isValid = true;
@@ -58,7 +42,7 @@ namespace ArchitectureCompany.Services
                 message.AppendLine($"Invalid Address");
                 isValid = false;
             }
-            
+
             if (string.IsNullOrWhiteSpace(town))
             {
                 message.AppendLine($"Invalid Town");
@@ -69,7 +53,7 @@ namespace ArchitectureCompany.Services
             using (context = new AppDbContext())
             {
                 t = context.Towns.FirstOrDefault(x => x.Name == town);
-                
+
             }
             if (t == null) { t = new Town() { Name = town }; }
             if (isValid)
@@ -89,5 +73,22 @@ namespace ArchitectureCompany.Services
             }
             return message.ToString().TrimEnd();
         }
+        public Town GetTownById(int id)
+        {
+            if (id < 0)
+            {
+                throw new ArgumentException("Invalid Town id!");
+            }
+            Town town = this.context.Towns.FirstOrDefault(x => x.Id == (id));
+            return town;
         }
+        public Address GetAddressById(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Address address = this.context.Addresses.FirstOrDefault(x => x.Id == (id));
+                return address;
+            }
+        }
+    }
 }

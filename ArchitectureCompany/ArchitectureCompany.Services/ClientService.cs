@@ -70,6 +70,20 @@ namespace ArchitectureCompany.Services
             }
             return message.ToString().TrimEnd();
         }
+        public string DeleteClientById(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Client client = context.Clients.Find(id);
+                if (client == null)
+                {
+                    return $"{nameof(Client)} not found!";
+                }
+                context.Clients.Remove(client);
+                context.SaveChanges();
+                return $"{nameof(Client)} {client.FirstName} {client.LastName} stopped working with us!";
+            }
+        }
         public Client GetClientById(int id)
         {
             using (context = new AppDbContext())
@@ -103,19 +117,6 @@ namespace ArchitectureCompany.Services
             return msg.ToString().TrimEnd();
 
         }
-        public string DeleteClientById(int id)
-        {
-            using (context = new AppDbContext())
-            {
-                Client client = context.Clients.Find(id);
-                if (client == null)
-                {
-                    return $"{nameof(Client)} not found!";
-                }
-                context.Clients.Remove(client);
-                context.SaveChanges();
-                return $"{nameof(Client)} {client.FirstName} {client.LastName} stopped working with us!";
-            }
-        }
+       
     }
 }

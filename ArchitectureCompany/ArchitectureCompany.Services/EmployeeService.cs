@@ -81,6 +81,20 @@
             }
             return message.ToString().TrimEnd();
         }
+        public string DeleteEmployeeById(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Employee employee = context.Employees.Find(id);
+                if (employee == null)
+                {
+                    return $"{nameof(Employee)} not found!";
+                }
+                context.Employees.Remove(employee);
+                context.SaveChanges();
+                return $"{nameof(Employee)} {employee.FirstName} {employee.LastName} was fired!";
+            }
+        }
         public string GetEmployeeInfo()
         {
             Employee employee = null;
@@ -139,20 +153,7 @@
 
             return msg.ToString().TrimEnd();
         }
-        public string DeleteEmployeeById(int id)
-        {
-            using (context = new AppDbContext())
-            {
-                Employee employee = context.Employees.Find(id);
-                if (employee == null)
-                {
-                    return $"{nameof(Employee)} not found!";
-                }
-                context.Employees.Remove(employee);
-                context.SaveChanges();
-                return $"{nameof(Employee)} {employee.FirstName} {employee.LastName} was fired!";
-            }
-        }
+        
 
 
     }

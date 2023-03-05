@@ -14,6 +14,104 @@
     public class ProjectService
     {
         private AppDbContext context;
+        public string AddProject(string name, string builidingType, int capacity, DateTime releaseDate, int totalFloorArea, int numberOfFloors, string address, string town, string url)
+        {
+            StringBuilder message = new StringBuilder();
+            bool isValid = true;
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                message.AppendLine($"Invalid {(nameof(name))}");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(builidingType))
+            {
+                message.AppendLine($"Invalid {(nameof(builidingType))}");
+                isValid = false;
+            }
+            if (capacity < 0)
+            {
+                message.AppendLine("Capacity cannot be less than zero");
+                isValid = false;
+            }
+            if (totalFloorArea < 0)
+            {
+                message.AppendLine("Floor Area cannot be less than zero");
+                isValid = false;
+            }
+            if (numberOfFloors < 0)
+            {
+                message.AppendLine("Floor number cannot be less than zero");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(address))
+            {
+                message.AppendLine($"Invalid {(nameof(address))}");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(builidingType))
+            {
+                message.AppendLine($"Invalid {(nameof(builidingType))}");
+                isValid = false;
+            }
+            if (string.IsNullOrWhiteSpace(url))
+            {
+                message.AppendLine($"Invalid {(nameof(url))}");
+                isValid = false;
+            }
+            Project p = GetProjectByName(name);
+            Address a = null;
+            Town t = null;
+            BuildingType bt = null;
+            Image i = null;
+            using (context = new AppDbContext())
+            {
+                if (p != null)
+                {
+                    message.AppendLine($"Project {name} already exists!");
+                }
+                a = context.Addresses.FirstOrDefault(x => x.Name == address);
+                t = context.Towns.FirstOrDefault(x => x.Name == town);
+                bt = context.BuildingTypes.FirstOrDefault(x => x.TypeName == builidingType);
+                i = context.Images.FirstOrDefault(x => x.Url == url);
+                if (a == null) { a = new Address() { Name = address, Town = t }; }
+                if (t == null) { t = new Town() { Name = town }; }
+                if (bt == null) { bt = new BuildingType() { TypeName = builidingType }; }
+                if (i == null) { i = new Image() { Url = url }; }
+
+            }
+
+            if (isValid)
+            {
+                using (context = new AppDbContext())
+                {
+                    p = new Project()
+                    {
+                        Name = name,
+                        BuildingsType = bt,
+                        ReleaseDate = releaseDate,
+                        TotalFloorArea = totalFloorArea,
+                        NumberOfFloors = numberOfFloors,
+                        Address = a,
+                        //images
+                    };
+                    this.context.Projects.Add(p);
+                    context.SaveChanges();
+                    message.AppendLine($"Project {name} is added");
+                }
+            }
+            return message.ToString().TrimEnd();
+        }
+        public string DeleteProjectById(int id)
+        {
+            Project project = GetProjectById(id);
+            if (project == null)
+            {
+                return $"Project not found!";
+            }
+            context.Projects.Remove(project);
+            context.SaveChanges();
+            return "Project is suspended!";
+        }
         public Project GetProjectById(int id)
         {
             if (id < 0)
@@ -79,104 +177,8 @@
                 return unfinishedProjects;
             }
         }
-        public string AddProject(string name, string builidingType, int capacity, DateTime releaseDate, int totalFloorArea, int numberOfFloors, string address, string town, string url)
-        {
-            StringBuilder message = new StringBuilder();
-            bool isValid = true;
-            if (string.IsNullOrWhiteSpace(name))
-            {
-                message.AppendLine($"Invalid {(nameof(name))}");
-                isValid = false;
-            }
-            if (string.IsNullOrWhiteSpace(builidingType))
-            {
-                message.AppendLine($"Invalid {(nameof(builidingType))}");
-                isValid = false;
-            }
-            if (capacity < 0)
-            {
-                message.AppendLine("Capacity cannot be less than zero");
-                isValid = false;
-            }
-            if (totalFloorArea < 0)
-            {
-                message.AppendLine("Floor Area cannot be less than zero");
-                isValid = false;
-            }
-            if (numberOfFloors < 0)
-            {
-                message.AppendLine("Floor number cannot be less than zero");
-                isValid = false;
-            }
-            if (string.IsNullOrWhiteSpace(address))
-            {
-                message.AppendLine($"Invalid {(nameof(address))}");
-                isValid = false;
-            }
-            if (string.IsNullOrWhiteSpace(builidingType))
-            {
-                message.AppendLine($"Invalid {(nameof(builidingType))}");
-                isValid = false;
-            }
-            if (string.IsNullOrWhiteSpace(url))
-            {
-                message.AppendLine($"Invalid {(nameof(url))}");
-                isValid = false;
-            }
-            Project p = GetProjectByName(name);
-            Address a = null;
-            Town t = null;
-            BuildingType bt = null;
-            Image i = null;
-            using (context = new AppDbContext())
-            {
-                if (p != null)
-                {
-                    message.AppendLine($"Project {name} already exists!");
-                }
-                a = context.Addresses.FirstOrDefault(x => x.Name == address);
-                t = context.Towns.FirstOrDefault(x => x.Name == town);
-                bt = context.BuildingTypes.FirstOrDefault(x => x.TypeName == builidingType);
-                i = context.Images.FirstOrDefault(x => x.Url == url);
-                if (a == null) { a = new Address() { Name = address, Town = t }; }
-                if (t == null) { t = new Town() { Name = town }; }
-                if (bt == null) { bt = new BuildingType() { TypeName = builidingType }; }
-                if (i == null) { i = new Image() { Url = url };}
-
-            }
-
-            if (isValid)
-            {
-                using (context = new AppDbContext())
-                {
-                    p = new Project()
-                    {
-                        Name = name,
-                        BuildingsType = bt,
-                        ReleaseDate = releaseDate,
-                        TotalFloorArea = totalFloorArea,
-                        NumberOfFloors = numberOfFloors,
-                        Address = a,
-                        //images
-                    };
-                    this.context.Projects.Add(p);
-                    context.SaveChanges();
-                    message.AppendLine($"Project {name} is added");
-                }
-            }
-            return message.ToString().TrimEnd();
-        }
-        public string DeleteProjectById(int id)
-        {
-            Project project = GetProjectById(id);
-            if (project==null)
-            {
-                return $"Project not found!";
-            }
-            context.Projects.Remove(project);
-            context.SaveChanges();
-            return "Project is suspended!";
-        }
+       
+        
 
         public string GetProjectInfo()
         {
