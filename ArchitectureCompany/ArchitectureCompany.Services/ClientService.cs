@@ -46,11 +46,17 @@ namespace ArchitectureCompany.Services
             using (context = new AppDbContext())
             {
                 t = context.Towns.FirstOrDefault(x => x.Name == town);
-                if (t == null) { t = new Town() { Name = town }; }
-                context.SaveChanges();
+                if (t == null) 
+                {
+                    t = new Town() { Name = town };
+                    context.SaveChanges();
+                }
                 a = context.Addresses.FirstOrDefault(x => x.Name == address);
-                if (a == null) { a = new Address() { Name = address,TownId=t.Id }; }
-                context.SaveChanges();
+                if (a == null) 
+                {
+                    a = new Address() { Name = address,Town=t };
+                    context.SaveChanges();
+                }
                 if (isValid)
                 {
                     Client client = new Client()
@@ -95,9 +101,9 @@ namespace ArchitectureCompany.Services
         public string GetAllClientsInfo(int page = 1, int count = 10)
         {
             StringBuilder msg = new StringBuilder();
-            string firstRow = $"| {"Id",-4} | {"First name",-12} | {"Last name",-12} | {"Adress: ",-3} | {"Phone number",-10} | {"Email",-9}";
+            string firstRow = $"| {"Id",-4} | {"First name",-12} | {"Last name",-12} | {"Adress: ",-8} | {"Phone number",-25} | {"Email",-9} |";
 
-            string line = $"|{new string('-', firstRow.Length - 2)}|";
+            string line = $"|{new string('-', firstRow.Length - 2)}| ";
 
             using (context = new AppDbContext())
             {
@@ -106,7 +112,7 @@ namespace ArchitectureCompany.Services
                 msg.AppendLine(line);
                 foreach (var c in clients)
                 {
-                    string info = $"| {c.Id,-4} | {c.FirstName,-12} | {c.LastName,-12} | {c.AddressId,-3} | {c.PhoneNumber,-10}| {c.Email,-9} |";
+                    string info = $"| {c.Id,-4} | {c.FirstName,-12} | {c.LastName,-12} | {c.AddressId,-8} | {c.PhoneNumber,-25} | {c.Email,-9} |";
                     msg.AppendLine(info);
                     msg.AppendLine(line);
                 }
@@ -117,6 +123,30 @@ namespace ArchitectureCompany.Services
             return msg.ToString().TrimEnd();
 
         }
-
+        public string GetClientInfoById(int id)
+        {
+            Client client = null;
+            using (context = new AppDbContext())
+            {
+                client = context.Clients.Find(id);
+            }
+            if (client != null)
+            {
+                StringBuilder msg = new StringBuilder();
+                msg.AppendLine($"{nameof(Client)} info: ");
+                msg.AppendLine($"\tId: {client.Id}");
+                msg.AppendLine($"\tFirst name: {client.FirstName}");
+                msg.AppendLine($"\tLast name: {client.LastName}");
+                string addressName = client.Address.Name;
+                msg.AppendLine($"\tAddress: {addressName}");
+                msg.AppendLine($"\tPhone number: {client.PhoneNumber}");
+                msg.AppendLine($"\tEmail: {client.Email}");
+                return msg.ToString().TrimEnd();
+            }
+            else
+            {
+                return $"{nameof(Client)} not found!";
+            }
+        }
     }
 }

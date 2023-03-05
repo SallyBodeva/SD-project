@@ -53,17 +53,28 @@
             Town t = null;
             using (context = new AppDbContext())
             {
+                t = context.Towns.FirstOrDefault(t => t.Name == town);
                 a = context.Addresses.FirstOrDefault(a => a.Name == address);
                 d = context.Departments.FirstOrDefault(d => d.Name == department);
                 t = context.Towns.FirstOrDefault(t => t.Name == town);
-                if (t == null) { t = new Town() { Name = town }; }
-                if (d == null) { d = new Department() { Name = department }; }
-                if (a == null) { a = new Address() { Name = address, Town = t }; }
-            }
+                if (t == null)
+                {
+                    t = new Town() { Name = town };
+                    context.SaveChanges();
+                }
+                if (d == null)
+                {
+                    d = new Department() { Name = department };
+                    context.SaveChanges();
+                }
+                if (a == null)
 
-            if (isValid)
-            {
-                using (context = new AppDbContext())
+                {
+                    a = new Address() { Name = address, Town = t };
+                    context.SaveChanges();
+                }
+
+                if (isValid)
                 {
                     Employee employee = new Employee()
                     {
@@ -77,9 +88,11 @@
                     context.Employees.Add(employee);
                     context.SaveChanges();
                     message.AppendLine($"Employee {firstName} {lastName} is added!");
+
                 }
+                return message.ToString().TrimEnd();
             }
-            return message.ToString().TrimEnd();
+
         }
         public string DeleteEmployeeById(int id)
         {
@@ -95,24 +108,24 @@
                 return $"{nameof(Employee)} {employee.FirstName} {employee.LastName} was fired!";
             }
         }
-        public string GetEmployeeInfo()
+        public string GetEmployeeInfo(int id)
         {
             Employee employee = null;
             using (context = new AppDbContext())
             {
-                employee = context.Employees.Find(employee);
+                employee = context.Employees.Find(id);
             }
             if (employee != null)
             {
                 StringBuilder masege = new StringBuilder();
-                masege.AppendLine($"{nameof(employee)} info: ");
+                masege.AppendLine($"Employee info: ");
                 masege.AppendLine($"\tId: {employee.Id}");
                 masege.AppendLine($"\tFirst name: {employee.FirstName}");
                 masege.AppendLine($"\tLast name: {employee.LastName}");
                 masege.AppendLine($"\tAddres id: {employee.AddressId}");
                 masege.AppendLine($"\tDepartment id: {employee.DepartmentId}");
-                masege.AppendLine($"\tPhobe number: {employee.PhoneNumber}");
-                masege.AppendLine($"\t Email: {employee.Email}");
+                masege.AppendLine($"\tPhone number: {employee.PhoneNumber}");
+                masege.AppendLine($"\tEmail: {employee.Email}");
                 return masege.ToString().TrimEnd();
             }
             else
@@ -132,7 +145,7 @@
         public string GetAllEmployeesInfo(int page = 1, int count = 10)
         {
             StringBuilder msg = new StringBuilder();
-            string firstRow = $"| {"Id",-4} | {"First name",-12} | {"Last name",-12} | {"Adress id",-3} | {"Dpartmenmt id",-3} | {"Phone number",-3} | {"Email",-15}";
+            string firstRow = $"| {"Id",-4} | {"First name",-12} | {"Last name",-12} | {"Adress id",-3} | {"Dpartmenmt id",-3} | {"Phone number",-15} | {"Email",-15} |";
 
             string line = $"|{new string('-', firstRow.Length - 2)}|";
 
@@ -143,7 +156,7 @@
                 msg.AppendLine(line);
                 foreach (var e in employees)
                 {
-                    string info = $"| {e.Id,-4} | {e.FirstName,-12} | {e.LastName,-12} | {e.AddressId,-20} | {e.DepartmentId,-10} | {e.PhoneNumber,-15}| {e.Email,-15} |";
+                    string info = $"| {e.Id,-4} | {e.FirstName,-12} | {e.LastName,-12} | {e.AddressId,-3} | {e.DepartmentId,-3} | {e.PhoneNumber,-15}| {e.Email,-15} |";
                     msg.AppendLine(info);
                     msg.AppendLine(line);
                 }
@@ -153,7 +166,7 @@
 
             return msg.ToString().TrimEnd();
         }
-        
+
 
 
     }
