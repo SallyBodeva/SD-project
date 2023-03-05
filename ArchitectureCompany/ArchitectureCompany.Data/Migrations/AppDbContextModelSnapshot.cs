@@ -4,16 +4,14 @@ using ArchitectureCompany.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
-namespace ArchitectureCompany.Data.Data.Migrations
+namespace ArchitectureCompany.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230228194407_initial1")]
-    partial class initial1
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,6 +33,9 @@ namespace ArchitectureCompany.Data.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("TypeName")
+                        .IsUnique();
+
                     b.ToTable("BuildingTypes");
                 });
 
@@ -51,6 +52,9 @@ namespace ArchitectureCompany.Data.Data.Migrations
                         .HasMaxLength(100);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Departments");
                 });
@@ -138,6 +142,9 @@ namespace ArchitectureCompany.Data.Data.Migrations
                         .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.HasIndex("TownId");
 
@@ -276,6 +283,9 @@ namespace ArchitectureCompany.Data.Data.Migrations
                         .HasMaxLength(200);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Towns");
                 });

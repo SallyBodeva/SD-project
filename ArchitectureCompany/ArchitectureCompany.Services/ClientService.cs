@@ -46,13 +46,12 @@ namespace ArchitectureCompany.Services
             using (context = new AppDbContext())
             {
                 t = context.Towns.FirstOrDefault(x => x.Name == town);
+                if (t == null) { t = new Town() { Name = town }; }
+                context.SaveChanges();
                 a = context.Addresses.FirstOrDefault(x => x.Name == address);
-            }
-            if (t == null) { t = new Town() { Name = town }; }
-            if (a == null) { a = new Address() { Name = address, Town = t }; }
-            if (isValid)
-            {
-                using (context = new AppDbContext())
+                if (a == null) { a = new Address() { Name = address,TownId=t.Id }; }
+                context.SaveChanges();
+                if (isValid)
                 {
                     Client client = new Client()
                     {
@@ -66,6 +65,7 @@ namespace ArchitectureCompany.Services
                     context.Clients.Add(client);
                     context.SaveChanges();
                     message.AppendLine($"New client {firstName} {lastName} is added!");
+
                 }
             }
             return message.ToString().TrimEnd();
@@ -91,7 +91,7 @@ namespace ArchitectureCompany.Services
                 return context.Clients.FirstOrDefault(x => x.Id == id);
             }
         }
-       
+
         public string GetAllClientsInfo(int page = 1, int count = 10)
         {
             StringBuilder msg = new StringBuilder();
@@ -117,6 +117,6 @@ namespace ArchitectureCompany.Services
             return msg.ToString().TrimEnd();
 
         }
-       
+
     }
 }

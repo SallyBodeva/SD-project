@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ArchitectureCompany.Data.Data.Migrations
+namespace ArchitectureCompany.Data.Migrations
 {
-    public partial class initial1 : Migration
+    public partial class SetTownToUnique : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -282,6 +282,12 @@ namespace ArchitectureCompany.Data.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Projects_Name",
                 table: "Projects",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Towns_Name",
+                table: "Towns",
                 column: "Name",
                 unique: true);
         }

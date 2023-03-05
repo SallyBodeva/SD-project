@@ -35,6 +35,10 @@ namespace ArchitectureCompany.Services
         }
         public Department GetDepartmentById(int id)
         {
+            if (id<0)
+            {
+                throw new ArgumentException("Invalid department id");
+            }
             using (context = new AppDbContext())
             {
                 Department d = context.Departments.FirstOrDefault(x => x.Id == id);

@@ -1,6 +1,4 @@
-﻿
-
-namespace ArchitectureCompany.Services
+﻿namespace ArchitectureCompany.Services
 {
     using ArchitectureCompany.Data;
     using ArchitectureCompany.Models;
@@ -53,12 +51,8 @@ namespace ArchitectureCompany.Services
             using (context = new AppDbContext())
             {
                 t = context.Towns.FirstOrDefault(x => x.Name == town);
-
-            }
-            if (t == null) { t = new Town() { Name = town }; }
-            if (isValid)
-            {
-                using (context = new AppDbContext())
+                if (t == null) { t = new Town() { Name = town }; }
+                if (isValid)
                 {
                     Address address = new Address()
                     {
@@ -68,7 +62,7 @@ namespace ArchitectureCompany.Services
 
                     context.Addresses.Add(address);
                     context.SaveChanges();
-                    message.AppendLine($"New address is added in {t}: {name} ");
+                    message.AppendLine($"New address is added in {t.Name}: {name} ");
                 }
             }
             return message.ToString().TrimEnd();
@@ -84,6 +78,10 @@ namespace ArchitectureCompany.Services
         }
         public Address GetAddressById(int id)
         {
+            if (id<0)
+            {
+                throw new ArgumentException("Invalid address id");
+            }
             using (context = new AppDbContext())
             {
                 Address address = this.context.Addresses.FirstOrDefault(x => x.Id == (id));
