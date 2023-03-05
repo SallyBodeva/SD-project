@@ -20,5 +20,74 @@ namespace ArchitectureCompany.Services
             Town town = this.context.Towns.FirstOrDefault(x => x.Id == (id));
             return town;
         }
-    }
+        public Address GetAddressById(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Address address = this.context.Addresses.FirstOrDefault(x => x.Id == (id));
+                return address;
+            }
+        }
+        public string AddTown(string name)
+        {
+            StringBuilder message = new StringBuilder();
+            bool isValid = true;
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                message.AppendLine($"Invalid Town");
+                isValid = false;
+            }
+            if (isValid)
+            {
+                Town t = new Town() { Name = name };
+                using (context = new AppDbContext())
+                {
+                    context.Add(t);
+                    context.SaveChanges();
+                    message.AppendLine($"{nameof(Town)} {name} is added");
+                }
+            }
+            return message.ToString().TrimEnd();
+        }
+        public string AddAddress(string name,string town)
+        {
+            StringBuilder message = new StringBuilder();
+            bool isValid = true;
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                message.AppendLine($"Invalid Address");
+                isValid = false;
+            }
+            
+            if (string.IsNullOrWhiteSpace(town))
+            {
+                message.AppendLine($"Invalid Town");
+                isValid = false;
+            }
+
+            Town t = null;
+            using (context = new AppDbContext())
+            {
+                t = context.Towns.FirstOrDefault(x => x.Name == town);
+                
+            }
+            if (t == null) { t = new Town() { Name = town }; }
+            if (isValid)
+            {
+                using (context = new AppDbContext())
+                {
+                    Address address = new Address()
+                    {
+                        Name = name,
+                        Town = t
+                    };
+
+                    context.Addresses.Add(address);
+                    context.SaveChanges();
+                    message.AppendLine($"New address is added in {t}: {name} ");
+                }
+            }
+            return message.ToString().TrimEnd();
+        }
+        }
 }
