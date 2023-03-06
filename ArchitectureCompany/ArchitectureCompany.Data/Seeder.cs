@@ -1,14 +1,12 @@
 ﻿namespace ArchitectureCompany.Data
 {
     using ArchitectureCompany.Models;
-  
-
     using System;
     using System.Collections.Generic;
-
+    using System.Linq;
     public class Seeder
     {
-       
+        
         public Seeder()
         {
             SeedTowns();
@@ -19,6 +17,8 @@
             
             List<Town> towns = new List<Town>();
             List<Project> projects = new List<Project>();
+            List<BuildingType> buildingTypes = new List<BuildingType>();
+            List<Address> adreses = new List<Address>();
 
             towns.Add(new Town() { Id = 1, Name = "Plovdiv" });
             towns.Add(new Town() { Id = 2, Name = "Pazardzhik" });
@@ -71,7 +71,42 @@
             towns.Add(new Town() { Id = 49, Name = "Belovo" });
             towns.Add(new Town() { Id = 50, Name = "Ihtiman" });
 
-        
+            projects.Add(new Project() { Id = 1, Name = "Museum design" });
+            projects.Add(new Project() { Id = 2, Name = "Theater design" });
+            projects.Add(new Project() { Id = 3, Name = "Kino design" });
+            projects.Add(new Project() { Id = 4, Name = "Renovation of old buildings" });
+            projects.Add(new Project() { Id = 5, Name = "Modern office" });
+            projects.Add(new Project() { Id = 6, Name = "Modern house" });
+            projects.Add(new Project() { Id = 7, Name = "Old house" });
+            projects.Add(new Project() { Id = 8, Name = "Restaurant renovation" });
+            projects.Add(new Project() { Id = 9, Name = "Renovation of a residential complex" });
+            projects.Add(new Project() { Id = 10, Name = "Mansion design" });
+            projects.Add(new Project() { Id = 11, Name = " Leaf fall" });
+            projects.Add(new Project() { Id = 12, Name = " Oasis" });
+            projects.Add(new Project() { Id = 13, Name = "Cristal city" });
+            projects.Add(new Project() { Id = 14, Name = "Golden river" });
+            projects.Add(new Project() { Id = 15, Name = "Golden street" });
+            projects.Add(new Project() { Id = 16, Name = "Dream land" });
+            projects.Add(new Project() { Id = 17, Name = "Children's corner " });
+            projects.Add(new Project() { Id = 18, Name = "A beaytifull park" });
+            projects.Add(new Project() { Id = 19, Name = "Subway" });
+            projects.Add(new Project() { Id = 20, Name = "Bus station" });
+            projects.Add(new Project() { Id = 21, Name = "Renovation of an old church" });
+
+            buildingTypes.Add(new BuildingType() { Id = 1, TypeName = "house" });
+            buildingTypes.Add(new BuildingType() { Id = 2, TypeName = "appartmant" });
+            buildingTypes.Add(new BuildingType() { Id = 3, TypeName = "mansion" });
+
+            buildingTypes.Add(new BuildingType() { Id = 4, TypeName = "farm" });
+            buildingTypes.Add(new BuildingType() { Id = 5, TypeName = "skyscaper" });
+            buildingTypes.Add(new BuildingType() { Id = 6, TypeName = "compani" });
+
+            buildingTypes.Add(new BuildingType() { Id = 7, TypeName = "office" });
+            buildingTypes.Add(new BuildingType() { Id = 8, TypeName = "restaurant" });
+            buildingTypes.Add(new BuildingType() { Id = 9, TypeName = "kino" });
+            buildingTypes.Add(new BuildingType() { Id = 10, TypeName = "theater" });
+
+
         }
     }
 }
