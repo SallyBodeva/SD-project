@@ -253,12 +253,31 @@
                 Project p = context.Projects.Find(projectId);
                 if (p == null)
                 {
-                    return " not found";
+                    return "Project not found";
                 }
                 Image i = new Image() { Url = url, Project = p };
                 context.SaveChanges();
+                return "Image added successfully!";
             }
-            return null;
+        }
+        public string DeleteImageToProject(int projectId, string url)
+        {
+            using (context = new AppDbContext())
+            {
+                Project p = context.Projects.Find(projectId);
+                Image i = context.Images.FirstOrDefault(x => x.Url == url);
+                if (p == null)
+                {
+                    return "Project not found";
+                }
+                if (i==null)
+                {
+                    return "Image not found!";
+                }
+                context.Images.Remove(i);
+                context.SaveChanges();
+                return "Image added successfully!";
+            }
         }
     }
 }
