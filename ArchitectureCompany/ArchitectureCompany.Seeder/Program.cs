@@ -9,6 +9,7 @@ namespace ArchitectureCompany.Seeder
     public class Program
     {
         private static AdditionalService addiotionalService = new AdditionalService();
+        private static DepartmentService departmentService = new DepartmentService();
         static void Main()
         {
             SeedTowns();
@@ -16,7 +17,49 @@ namespace ArchitectureCompany.Seeder
 
         List<Project> projects = new List<Project>();
         List<BuildingType> buildingTypes = new List<BuildingType>();
-        List<Address> adreses = new List<Address>();
+        
+        public static void SeedDepartments()
+        {
+            List<string> d = new List<string>();
+            d.Add("Residential Architecture");
+            d.Add("Commercial Architecture");
+            d.Add("Interior Design");
+            d.Add("Green Design Architecture");
+            d.Add("Landscape Architecture");
+            d.Add("Urban Design");
+            d.Add("Industrial Architecture");
+            d.Add("PR management");
+            for (int i = 0; i < 8; i++)
+            {
+                string name = d[i];
+                Console.WriteLine(departmentService.AddDepartment(name));
+            }
+
+        }
+        public static void SeedAddresses()
+        {
+            List<string> a = new List<string>();
+            
+        }
+        public static void SeedEmployee()
+        {
+            List<string> firstName = new List<string>() { "Jane", "Lenore", "Susy", "Genna", "Viki", "Toni","Serkan","Eda","Kiraz","Selin","Engin","Steven","Barbara","Kiara","Kerem","Aleph","Quintessa","Margarette","Oscar","Sebastian","Zane","Mabel","Leo","Scarlett","Yasemin","Caleb" };
+            List<string> lastName = new List<string>() { "Stove", "Lobile", "Dykas", "Larne", "Romera", "Borrel","Bolat","Yaldiz","Karadaa", "Smith", "Williams", "Johnson", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson" };
+            
+            Random random = new Random();
+
+            for (int i = 0; i < 50; i++)
+            {
+                //int employeeFirstName = random.Next(0, firstName.Count);
+                //int employeeLastName = random.Next(0, lastName.Count);
+                
+                //Console.WriteLine(EmployeeService.AddEmployee(firstName[employeeFirstName], lastName [employeeLastName]));
+            }
+        }
+        public static void SeedClient()
+        {
+
+        }
 
         public static void SeedTowns()
         { 
