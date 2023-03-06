@@ -28,7 +28,7 @@
         public int AddressId { get; set; }
         public virtual Address Address { get; set; }
 
-        public int ImageId { get; set; }
+        public int? ImageId { get; set; }
         
         public virtual ICollection<Image> Images { get; } = new List<Image>();
         public virtual ICollection<ProjectEmployee> ProjectsEmployee { get; set; } = new List<ProjectEmployee>();

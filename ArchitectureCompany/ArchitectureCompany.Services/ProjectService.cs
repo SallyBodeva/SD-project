@@ -14,7 +14,7 @@
     public class ProjectService
     {
         private AppDbContext context;
-        public string AddProject(string name, string builidingType, int capacity, DateTime releaseDate, int totalFloorArea, int numberOfFloors, string address, string town, string url)
+        public string AddProject(string name, string builidingType, int capacity, string releaseDate, int totalFloorArea, int numberOfFloors, string address, string town, string url)
         {
             StringBuilder message = new StringBuilder();
             bool isValid = true;
@@ -69,43 +69,41 @@
                 {
                     message.AppendLine($"Project {name} already exists!");
                 }
-                a = context.Addresses.FirstOrDefault(x => x.Name == address);
                 t = context.Towns.FirstOrDefault(x => x.Name == town);
+                a = context.Addresses.FirstOrDefault(x => x.Name == address&& x.Town.Name==town);
                 bt = context.BuildingTypes.FirstOrDefault(x => x.TypeName == builidingType);
                 i = context.Images.FirstOrDefault(x => x.Url == url);
-                if (a == null)
-                {
-                    a = new Address() { Name = address, Town = t };
-                    context.SaveChanges();
-                }
                 if (t == null)
                 {
                     t = new Town() { Name = town };
-                    context.SaveChanges();
+                }
+                if (a == null)
+                {
+                    a = new Address() { Name = address, Town = t };
                 }
                 if (bt == null)
 
                 {
                     bt = new BuildingType() { TypeName = builidingType };
-                    context.SaveChanges();
                 }
                 if (i == null)
                 {
                     i = new Image() { Url = url };
-                    context.SaveChanges();
                 }
                 if (isValid)
                 {
-
+                    DateTime data = new DateTime();
+                    bool v =DateTime.TryParseExact(releaseDate, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data);
                     p = new Project()
                     {
                         Name = name,
                         BuildingsType = bt,
-                        ReleaseDate = releaseDate,
+                        Capacity=capacity,
+                        ReleaseDate = data,
                         TotalFloorArea = totalFloorArea,
                         NumberOfFloors = numberOfFloors,
                         Address = a,
-                        //
+                        ImageId = i.Id
                     };
                     this.context.Projects.Add(p);
                     context.SaveChanges();
@@ -163,7 +161,7 @@
         }
 
 
-        public ICollection<Project> GetFinishedProjects(int id)
+        public List<Project> GetFinishedProjects(int id)
         {
             using (context = new AppDbContext())
             {
@@ -177,7 +175,7 @@
                 return finishedProjects;
             }
         }
-        public ICollection<Project> GetUnfinishedProjects(int id)
+        public List<Project> GetUnfinishedProjects(int id)
         {
             using (context = new AppDbContext())
             {
@@ -191,9 +189,6 @@
                 return unfinishedProjects;
             }
         }
-
-
-
         public string GetProjectInfo()
         {
             Project project = null;
@@ -213,7 +208,6 @@
                 message.AppendLine($"\tTotal floor area: {project.TotalFloorArea}");
                 message.AppendLine($"\tNumber of floors: {project.NumberOfFloors}");
                 message.AppendLine($"\tAddres id: {project.AddressId}");
-                message.AppendLine($"\t Image id: {project.ImageId}");
                 return message.ToString().TrimEnd();
             }
             else
@@ -224,7 +218,7 @@
         public string GetAllProjectsInfo(int page = 1, int count = 10)
         {
             StringBuilder msg = new StringBuilder();
-            string firstRow = $"| {"Id",-4} | {"Name",-12} | {"Building Type Id: ",-4} | {"Capacity",-5} | {"Release date",-10} | {"Total Floor area",-9} | {"Number of Floors",-3} | {"Address id",-3} | {"Image id",-3}";
+            string firstRow = $"| {"Id",-4} | {"Name",-12} | {"Building Type Id: ",-4} | {"Capacity",-5} | {"Release date",-10} | {"Total Floor area",-9} | {"Number of Floors",-3} | {"Address id",-3}|";
 
             string line = $"|{new string('-', firstRow.Length - 2)}|";
 
@@ -235,7 +229,7 @@
                 msg.AppendLine(line);
                 foreach (var c in projects)
                 {
-                    string info = $"| {"Id",-4} | {"Name",-12} | {"Building Type Id: ",-4} | {"Capacity",-5} | {"Release date",-10} | {"Total Floor area",-9} | {"Number of Floors",-3} | {"Address id",-3} | {"Image id",-3}";
+                    string info = $"| {"Id",-4} | {"Name",-12} | {"Building Type Id: ",-4} | {"Capacity",-5} | {"Release date",-10} | {"Total Floor area",-9} | {"Number of Floors",-3} | {"Address id",-3}|";
                     msg.AppendLine(info);
                     msg.AppendLine(line);
                 }
@@ -256,6 +250,7 @@
                     return "Project not found";
                 }
                 Image i = new Image() { Url = url, Project = p };
+                context.Images.Add(i);
                 context.SaveChanges();
                 return "Image added successfully!";
             }
