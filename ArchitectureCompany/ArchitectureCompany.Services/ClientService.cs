@@ -129,23 +129,24 @@ namespace ArchitectureCompany.Services
             using (context = new AppDbContext())
             {
                 client = context.Clients.Find(id);
-            }
-            if (client != null)
-            {
-                StringBuilder msg = new StringBuilder();
-                msg.AppendLine($"{nameof(Client)} info: ");
-                msg.AppendLine($"\tId: {client.Id}");
-                msg.AppendLine($"\tFirst name: {client.FirstName}");
-                msg.AppendLine($"\tLast name: {client.LastName}");
-                string addressName = client.Address.Name;
-                msg.AppendLine($"\tAddress: {addressName}");
-                msg.AppendLine($"\tPhone number: {client.PhoneNumber}");
-                msg.AppendLine($"\tEmail: {client.Email}");
-                return msg.ToString().TrimEnd();
-            }
-            else
-            {
-                return $"{nameof(Client)} not found!";
+
+                if (client != null)
+                {
+                    StringBuilder msg = new StringBuilder();
+                    msg.AppendLine($"{nameof(Client)} info: ");
+                    msg.AppendLine($"\tId: {client.Id}");
+                    msg.AppendLine($"\tFirst name: {client.FirstName}");
+                    msg.AppendLine($"\tLast name: {client.LastName}");
+                    string addressName = client.Address.Name;
+                    msg.AppendLine($"\tAddress: {addressName}");
+                    msg.AppendLine($"\tPhone number: {client.PhoneNumber}");
+                    msg.AppendLine($"\tEmail: {client.Email}");
+                    return msg.ToString().TrimEnd();
+                }
+                else
+                {
+                    return $"{nameof(Client)} not found!";
+                }
             }
         }
     }

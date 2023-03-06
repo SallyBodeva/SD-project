@@ -10,7 +10,7 @@ namespace ArchitectureCompany.Data
 
     public class AppDbContext : DbContext
     {
-        private const string connectionString = @"Server=DESKTOP-0FTTVGR; Initial Catalog=ArchitectureCompanyNewEf; Integrated Security=true; Trusted_Connection=true";
+        private const string connectionString = @"Server=DESKTOP-0FTTVGR; Initial Catalog=ArchitectureCompanyNewEf3; Integrated Security=true; Trusted_Connection=true";
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<BuildingType> BuildingTypes { get; set; }
         public virtual DbSet<Client> Clients { get; set; }
@@ -49,12 +49,10 @@ namespace ArchitectureCompany.Data
             modelBuilder.Entity<Client>(option =>
             {
                 option.HasIndex(x => x.PhoneNumber).IsUnique(true);
-                option.Property(x => x.PhoneNumber).IsFixedLength(true);
             });
             modelBuilder.Entity<Employee>(option =>
             {
                 option.HasIndex(x => x.PhoneNumber).IsUnique(true);
-                option.Property(x => x.PhoneNumber).IsFixedLength(true);
             });
             modelBuilder.Entity<Town>(option =>
             {
@@ -82,7 +80,7 @@ namespace ArchitectureCompany.Data
             modelBuilder.Entity<Employee>()
                 .HasMany(pe=>pe.ProjectsEmployee)
                 .WithOne(e=>e.Employee)
-                .HasForeignKey(pc => pc.ProjectId)
+                .HasForeignKey(pc => pc.EmployeeId)
                 .OnDelete(DeleteBehavior.Restrict);
 
         }

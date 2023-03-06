@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArchitectureCompany.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230305134838_SetTownToUnique")]
-    partial class SetTownToUnique
+    [Migration("20230306113331_RemoveFixLength2")]
+    partial class RemoveFixLength2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,6 +35,9 @@ namespace ArchitectureCompany.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("TypeName")
+                        .IsUnique();
+
                     b.ToTable("BuildingTypes");
                 });
 
@@ -51,6 +54,9 @@ namespace ArchitectureCompany.Data.Migrations
                         .HasMaxLength(100);
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Departments");
                 });
@@ -84,8 +90,7 @@ namespace ArchitectureCompany.Data.Migrations
                         .HasMaxLength(50);
 
                     b.Property<string>("PhoneNumber")
-                        .HasColumnType("nchar(450)")
-                        .IsFixedLength(true);
+                        .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
@@ -139,6 +144,9 @@ namespace ArchitectureCompany.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.HasIndex("TownId");
 
                     b.ToTable("Addresses");
@@ -170,8 +178,7 @@ namespace ArchitectureCompany.Data.Migrations
 
                     b.Property<string>("PhoneNumber")
                         .IsRequired()
-                        .HasColumnType("nchar(10)")
-                        .IsFixedLength(true)
+                        .HasColumnType("nvarchar(10)")
                         .HasMaxLength(10);
 
                     b.HasKey("Id");
@@ -253,12 +260,9 @@ namespace ArchitectureCompany.Data.Migrations
                     b.Property<int>("EmployeeId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProjectId1")
-                        .HasColumnType("int");
-
                     b.HasKey("ProjectId", "EmployeeId");
 
-                    b.HasIndex("ProjectId1");
+                    b.HasIndex("EmployeeId");
 
                     b.ToTable("ProjectEmployees");
                 });
@@ -357,13 +361,13 @@ namespace ArchitectureCompany.Data.Migrations
                 {
                     b.HasOne("ArchitectureCompany.Data.Employee", "Employee")
                         .WithMany("ProjectsEmployee")
-                        .HasForeignKey("ProjectId")
+                        .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("ArchitectureCompany.Models.Project", "Project")
                         .WithMany("ProjectsEmployee")
-                        .HasForeignKey("ProjectId1")
+                        .HasForeignKey("ProjectId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

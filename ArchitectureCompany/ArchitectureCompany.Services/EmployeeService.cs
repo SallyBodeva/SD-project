@@ -54,24 +54,21 @@
             using (context = new AppDbContext())
             {
                 t = context.Towns.FirstOrDefault(t => t.Name == town);
-                a = context.Addresses.FirstOrDefault(a => a.Name == address);
+                a = context.Addresses.FirstOrDefault(a => a.Name == address && a.Town.Name==town);
                 d = context.Departments.FirstOrDefault(d => d.Name == department);
                 t = context.Towns.FirstOrDefault(t => t.Name == town);
                 if (t == null)
                 {
                     t = new Town() { Name = town };
-                    context.SaveChanges();
                 }
                 if (d == null)
                 {
                     d = new Department() { Name = department };
-                    context.SaveChanges();
                 }
                 if (a == null)
 
                 {
                     a = new Address() { Name = address, Town = t };
-                    context.SaveChanges();
                 }
 
                 if (isValid)

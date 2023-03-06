@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ArchitectureCompany.Data.Migrations
 {
-    public partial class SetTownToUnique : Migration
+    public partial class RemoveFixLength2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -75,7 +75,7 @@ namespace ArchitectureCompany.Data.Migrations
                     FirstName = table.Column<string>(maxLength: 30, nullable: false),
                     LastName = table.Column<string>(maxLength: 45, nullable: false),
                     AddressId = table.Column<int>(nullable: false),
-                    PhoneNumber = table.Column<string>(fixedLength: true, maxLength: 10, nullable: false),
+                    PhoneNumber = table.Column<string>(maxLength: 10, nullable: false),
                     Email = table.Column<string>(maxLength: 100, nullable: true)
                 },
                 constraints: table =>
@@ -99,7 +99,7 @@ namespace ArchitectureCompany.Data.Migrations
                     LastName = table.Column<string>(maxLength: 50, nullable: false),
                     AddressId = table.Column<int>(nullable: false),
                     DepartmentId = table.Column<int>(nullable: false),
-                    PhoneNumber = table.Column<string>(fixedLength: true, nullable: true),
+                    PhoneNumber = table.Column<string>(nullable: true),
                     Email = table.Column<string>(maxLength: 100, nullable: false)
                 },
                 constraints: table =>
@@ -200,30 +200,41 @@ namespace ArchitectureCompany.Data.Migrations
                 columns: table => new
                 {
                     ProjectId = table.Column<int>(nullable: false),
-                    EmployeeId = table.Column<int>(nullable: false),
-                    ProjectId1 = table.Column<int>(nullable: false)
+                    EmployeeId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_ProjectEmployees", x => new { x.ProjectId, x.EmployeeId });
                     table.ForeignKey(
-                        name: "FK_ProjectEmployees_Employees_ProjectId",
-                        column: x => x.ProjectId,
+                        name: "FK_ProjectEmployees_Employees_EmployeeId",
+                        column: x => x.EmployeeId,
                         principalTable: "Employees",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_ProjectEmployees_Projects_ProjectId1",
-                        column: x => x.ProjectId1,
+                        name: "FK_ProjectEmployees_Projects_ProjectId",
+                        column: x => x.ProjectId,
                         principalTable: "Projects",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Addresses_Name",
+                table: "Addresses",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Addresses_TownId",
                 table: "Addresses",
                 column: "TownId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_BuildingTypes_TypeName",
+                table: "BuildingTypes",
+                column: "TypeName",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Clients_AddressId",
@@ -234,6 +245,12 @@ namespace ArchitectureCompany.Data.Migrations
                 name: "IX_Clients_PhoneNumber",
                 table: "Clients",
                 column: "PhoneNumber",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Departments_Name",
+                table: "Departments",
+                column: "Name",
                 unique: true);
 
             migrationBuilder.CreateIndex(
@@ -264,9 +281,9 @@ namespace ArchitectureCompany.Data.Migrations
                 column: "ClientId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ProjectEmployees_ProjectId1",
+                name: "IX_ProjectEmployees_EmployeeId",
                 table: "ProjectEmployees",
-                column: "ProjectId1");
+                column: "EmployeeId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Projects_AddressId",

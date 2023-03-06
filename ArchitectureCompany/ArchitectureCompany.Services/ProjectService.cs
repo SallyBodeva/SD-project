@@ -73,18 +73,18 @@
                 t = context.Towns.FirstOrDefault(x => x.Name == town);
                 bt = context.BuildingTypes.FirstOrDefault(x => x.TypeName == builidingType);
                 i = context.Images.FirstOrDefault(x => x.Url == url);
-                if (a == null) 
+                if (a == null)
                 {
                     a = new Address() { Name = address, Town = t };
                     context.SaveChanges();
                 }
-                if (t == null) 
+                if (t == null)
                 {
                     t = new Town() { Name = town };
                     context.SaveChanges();
                 }
                 if (bt == null)
-                
+
                 {
                     bt = new BuildingType() { TypeName = builidingType };
                     context.SaveChanges();
@@ -245,32 +245,20 @@
 
             return msg.ToString().TrimEnd();
         }
-        public string UpdateImages(int imageId, string url)
+        
+        public string AddImageToProject(int projectId, string url)
         {
-            StringBuilder sb = new StringBuilder();
-            bool isValid = true;
-            if (imageId < 0)
-            {
-                sb.AppendLine("Invalid image id");
-                isValid = false;
-            }
-            if (string.IsNullOrWhiteSpace(url))
-            {
-                sb.AppendLine("Invalid url");
-                isValid = false;
-            }
             using (context = new AppDbContext())
             {
-                Image i = context.Images.FirstOrDefault(x => x.Id == imageId);
-                i.Url = url;
-                context.Images.Update(i);
+                Project p = context.Projects.Find(projectId);
+                if (p == null)
+                {
+                    return " not found";
+                }
+                Image i = new Image() { Url = url, Project = p };
                 context.SaveChanges();
             }
-            if (isValid)
-            {
-                sb.AppendLine("Project images are updated!");
-            }
-            return sb.ToString().TrimEnd();
+            return null;
         }
     }
 }
