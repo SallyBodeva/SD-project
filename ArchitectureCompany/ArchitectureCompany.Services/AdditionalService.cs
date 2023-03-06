@@ -67,6 +67,23 @@
             }
             return message.ToString().TrimEnd();
         }
+        public string DeleteTown(int id)
+        {
+            using (context= new AppDbContext())
+            {
+                Town t = context.Towns.Find(id);
+                if (t==null)
+                {
+                    return "not found";
+                }
+                else
+                {
+                    context.Towns.Remove(t);
+                    context.SaveChanges();
+                    return "Town was removed from our database";
+                }
+            }
+        }
         public Town GetTownById(int id)
         {
             if (id < 0)

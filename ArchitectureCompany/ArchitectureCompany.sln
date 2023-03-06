@@ -11,7 +11,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchitectureCompany.Service
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchitectureCompany.ConsoleApp", "ArchitectureCompany.ConsoleApp\ArchitectureCompany.ConsoleApp.csproj", "{1E33DEC8-9D6D-4DD8-889F-1155E2A45157}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureCompany.FormApplication", "ArchitectureCompany.FormApplication\ArchitectureCompany.FormApplication.csproj", "{F599E42C-AB57-4057-A1A6-2AAFA41331AC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchitectureCompany.FormApplication", "ArchitectureCompany.FormApplication\ArchitectureCompany.FormApplication.csproj", "{F599E42C-AB57-4057-A1A6-2AAFA41331AC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureCompany.Seeder", "ArchitectureCompany.Seeder\ArchitectureCompany.Seeder.csproj", "{04C9D269-569D-4661-87F3-9E6FFAB27C18}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{F599E42C-AB57-4057-A1A6-2AAFA41331AC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F599E42C-AB57-4057-A1A6-2AAFA41331AC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F599E42C-AB57-4057-A1A6-2AAFA41331AC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{04C9D269-569D-4661-87F3-9E6FFAB27C18}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{04C9D269-569D-4661-87F3-9E6FFAB27C18}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{04C9D269-569D-4661-87F3-9E6FFAB27C18}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{04C9D269-569D-4661-87F3-9E6FFAB27C18}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
