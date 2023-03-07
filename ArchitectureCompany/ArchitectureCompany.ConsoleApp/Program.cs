@@ -10,7 +10,8 @@
             ClientService cs = new ClientService();
             DepartmentService ds = new DepartmentService();
             AdditionalService ads = new AdditionalService();
-            ProjectService ps = new ProjectService();    
+            ProjectService ps = new ProjectService();
+            Console.WriteLine(ds.AddDepartment("PR"));
         }
     }
 

@@ -6,6 +6,7 @@
     using System.Text;
     using ArchitectureCompany.Data;
     using System.Linq;
+    using Microsoft.Practices.EnterpriseLibrary.Common.Utility;
 
     public class EmployeeService
     {
@@ -164,7 +165,7 @@
             return msg.ToString().TrimEnd();
         }
 
-
+       
 
     }
 }

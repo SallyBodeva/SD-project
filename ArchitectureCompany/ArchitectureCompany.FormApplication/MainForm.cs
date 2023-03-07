@@ -21,11 +21,16 @@ namespace ArchitectureCompany.FormApplication
         {
 
         }
+
         private void btnEmployee_Click(object sender, EventArgs e)
         {
             EmployeeForm ef = new EmployeeForm();
-            ShowDialog();
+            ef.ShowDialog();
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

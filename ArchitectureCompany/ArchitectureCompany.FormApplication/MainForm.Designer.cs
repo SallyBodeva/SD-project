@@ -28,12 +28,34 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            this.btnEmployee = new System.Windows.Forms.Button();
+            this.SuspendLayout();
+            // 
+            // btnEmployee
+            // 
+            this.btnEmployee.Location = new System.Drawing.Point(257, 267);
+            this.btnEmployee.Name = "btnEmployee";
+            this.btnEmployee.Size = new System.Drawing.Size(75, 23);
+            this.btnEmployee.TabIndex = 0;
+            this.btnEmployee.Text = "button1";
+            this.btnEmployee.UseVisualStyleBackColor = true;
+            this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
+            // 
+            // MainForm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(607, 397);
+            this.Controls.Add(this.btnEmployee);
+            this.Name = "MainForm";
+            this.Text = "MainFormApp";
+            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
+
+        private System.Windows.Forms.Button btnEmployee;
     }
 }

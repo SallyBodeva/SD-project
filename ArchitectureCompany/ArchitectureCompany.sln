@@ -15,8 +15,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchitectureCompany.FormApp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchitectureCompany.Seeder", "ArchitectureCompany.Seeder\ArchitectureCompany.Seeder.csproj", "{04C9D269-569D-4661-87F3-9E6FFAB27C18}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureCompany.FormApp", "ArchitectureCompany.FormApp\ArchitectureCompany.FormApp.csproj", "{57EA7FCA-F680-45D4-AD1A-4DC7CEB94F0F}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,10 +45,6 @@ Global
 		{04C9D269-569D-4661-87F3-9E6FFAB27C18}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{04C9D269-569D-4661-87F3-9E6FFAB27C18}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{04C9D269-569D-4661-87F3-9E6FFAB27C18}.Release|Any CPU.Build.0 = Release|Any CPU
-		{57EA7FCA-F680-45D4-AD1A-4DC7CEB94F0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{57EA7FCA-F680-45D4-AD1A-4DC7CEB94F0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{57EA7FCA-F680-45D4-AD1A-4DC7CEB94F0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{57EA7FCA-F680-45D4-AD1A-4DC7CEB94F0F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

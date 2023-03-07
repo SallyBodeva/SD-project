@@ -22,6 +22,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ArchitectureCompany.Models\ArchitectureCompany.Models.csproj" />
+    <ProjectReference Include="..\ArchitectureCompany.Services\ArchitectureCompany.Services.csproj" />
   </ItemGroup>
 
   <ItemGroup>

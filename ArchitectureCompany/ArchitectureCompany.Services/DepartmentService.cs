@@ -66,5 +66,13 @@ namespace ArchitectureCompany.Services
                 return context.Departments.Count();
             }
         }
+        public List<string> GetDepartmentName()
+        {
+            using (context = new AppDbContext())
+            {
+                List<string> departmentsNames = context.Departments.Select(x => x.Name).ToList();
+                return departmentsNames;
+            }
+        }
     }
 }
