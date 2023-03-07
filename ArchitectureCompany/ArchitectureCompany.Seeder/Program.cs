@@ -138,9 +138,126 @@ namespace ArchitectureCompany.Seeder
                 Console.WriteLine(addiotionalService.AddTown(name));
             }
         }
-        
+        public static void SeedBulidingTypes()
+        {
+            List<string> bt = new List<string>();
+            //bt.Add("Residential Buildings");
+            //bt.Add("Commercial Buildings ");
+            //bt.Add("Industrial Buildings");
+            //bt.Add("Educational Buildings");
+            //bt.Add("Institutional Buildings");
+            //bt.Add("Religious Buildings ");
+            //bt.Add("Recreational Buildings ");
+            //bt.Add("Transportation Buildings ");
+            //bt.Add("Skyscrapers ");
+            // bt.Add("Museums");
+            // bt.Add("Hotels");
+            //bt.Add("Residential Care Facilities ");
 
+            //for (int i = 0; i < 12; i++)
+            //{
+            //   string name = bt[i];
+            // Console.WriteLine(projectService.AddProject(buildingTypeId));
+            //}
+        }
+        // public static void SeedAdresses()
+        // {
+        //   List<string> a = new List<string>();
+        // a.Add("Main Street");
+        //a.Add("Main Street");
+        // a.Add("Park Avenue");
+        // a.Add("Broadway");
+        // a.Add("Oak Street");
+        // a.Add("High Street");
+        //a.Add("Maple Avenue");
+        //a.Add("Market Street");
+        //a.Add("Pine Street");
+        //a.Add("Church Street");
+        //a.Add("King Street");
+        //a.Add("Lombard Street");
+        //a.Add("5th Avenue");
+        //a.Add("Sunset Boulevard");
+        //a.Add("Canal Street");
+        //a.Add("Peachtree Street");
+        //a.Add("Bourbon Street");
+        //a.Add("Rodeo Drive");
+        //a.Add("Mongolia Avenue");
+        //a.Add("Via del Corso");
+        //a.Add("Via dei Fori");
+        //a.Add("Via Vento");
+        //a.Add("Via Appia Antica");
+        // a.Add("Vitosha Boulevard");
+        //a.Add("Graf Ignatiev");
+        //a.Add("Macedonia Street");
+        // a.Add("Varna Boulevard");
 
-
+        //  for (int i = 0; i < 27; i++)
+        // {
+        //     string name = a[i];
+        //    Console.WriteLine(addiotionalService.AddAddress(name));
+        // }
     }
+
+
+    //  public static void SeedProjects()
+    // {
+    //  List<string> p = new List<string>();
+    //  p.Add("The Opera house");
+    // p.Add("The Lighthouse");
+    //p.Add("The National Musem");
+    //p.Add("The EcoARK");
+    //p.Add("The Fallingwater");
+    //p.Add("The National Centetr for the Performings Art");
+    // p.Add("The Museum of Islamic Art");
+    //p.Add("The Disney Concert Hall");
+    // p.Add("The Olimpic Stadium");
+    // p.Add("The Stadium");
+    // p.Add("The Sky Garden");
+    // p.Add("The Floating City");
+    // p.Add("The Time Travel Museum");
+    // p.Add("The Nexus Tower");
+    // p.Add("The Hydrogen House");
+    // p.Add("The Oasis");
+    // p.Add("The Arcology");
+    // p.Add("The Cloud");
+    // p.Add("The Eden Project");
+    // p.Add("The Kinder Garden");
+    // p.Add("The Children's Corner");
+    // p.Add("The Beach House");
+    // p.Add("The Lake House");
+    // p.Add("The Mansion");
+    // p.Add("The Farm");
+    // p.Add("The Skyscraper");
+    // p.Add("The Theater");
+    // p.Add("The Kino");
+    // p.Add("The Fitness");
+    // p.Add("The Hotel");
+    // p.Add("The Hospital");
+    // p.Add("The Police");
+    // p.Add("The Mall");
+    // p.Add("The Appartment");
+    // p.Add("The Office");
+    //p.Add("The Resturant");
+    //p.Add("The School");
+    //p.Add("The University");
+    // p.Add("The Library");
+    // p.Add("The Government");
+    // p.Add("The Church");
+    // p.Add("The Stubway");
+    //p.Add("The Rehabilitation Center");
+
+
+
+
+    //for (int i = 0; i < 30; i++)
+    //{
+    //   string name = p[i];
+    //   Console.WriteLine(projectService.AddProject(name));
+    //}
 }
+
+
+
+
+   
+ 
