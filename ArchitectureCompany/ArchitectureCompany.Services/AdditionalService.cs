@@ -105,5 +105,13 @@
                 return address;
             }
         }
+        public List<string> GetTownsNames()
+        {
+            using (context= new AppDbContext())
+            {
+                List<string> towns = context.Towns.Select(x => x.Name).ToList();
+                return towns;
+            }
+        }
     }
 }

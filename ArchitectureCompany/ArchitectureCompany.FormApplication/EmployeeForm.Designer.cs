@@ -35,13 +35,15 @@
             this.labelPhoneNumber = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.groupBoxInfo = new System.Windows.Forms.GroupBox();
+            this.comboBoxCities = new System.Windows.Forms.ComboBox();
+            this.labelTown = new System.Windows.Forms.Label();
             this.comboBoxDepartment = new System.Windows.Forms.ComboBox();
-            this.comboBoxAddress = new System.Windows.Forms.ComboBox();
             this.textBoxEmail = new System.Windows.Forms.TextBox();
             this.textBoxPhoneNum = new System.Windows.Forms.TextBox();
             this.textBoxLastName = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
+            this.txtBoxAddress = new System.Windows.Forms.TextBox();
             this.groupBoxInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -75,7 +77,7 @@
             // labelDepartment
             // 
             this.labelDepartment.AutoSize = true;
-            this.labelDepartment.Location = new System.Drawing.Point(31, 137);
+            this.labelDepartment.Location = new System.Drawing.Point(31, 182);
             this.labelDepartment.Name = "labelDepartment";
             this.labelDepartment.Size = new System.Drawing.Size(70, 15);
             this.labelDepartment.TabIndex = 3;
@@ -84,7 +86,7 @@
             // labelPhoneNumber
             // 
             this.labelPhoneNumber.AutoSize = true;
-            this.labelPhoneNumber.Location = new System.Drawing.Point(31, 179);
+            this.labelPhoneNumber.Location = new System.Drawing.Point(31, 219);
             this.labelPhoneNumber.Name = "labelPhoneNumber";
             this.labelPhoneNumber.Size = new System.Drawing.Size(89, 15);
             this.labelPhoneNumber.TabIndex = 4;
@@ -93,7 +95,7 @@
             // labelEmail
             // 
             this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(31, 212);
+            this.labelEmail.Location = new System.Drawing.Point(31, 252);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(39, 15);
             this.labelEmail.TabIndex = 5;
@@ -101,8 +103,10 @@
             // 
             // groupBoxInfo
             // 
+            this.groupBoxInfo.Controls.Add(this.txtBoxAddress);
+            this.groupBoxInfo.Controls.Add(this.comboBoxCities);
+            this.groupBoxInfo.Controls.Add(this.labelTown);
             this.groupBoxInfo.Controls.Add(this.comboBoxDepartment);
-            this.groupBoxInfo.Controls.Add(this.comboBoxAddress);
             this.groupBoxInfo.Controls.Add(this.textBoxEmail);
             this.groupBoxInfo.Controls.Add(this.textBoxPhoneNum);
             this.groupBoxInfo.Controls.Add(this.textBoxLastName);
@@ -115,37 +119,46 @@
             this.groupBoxInfo.Controls.Add(this.labelName);
             this.groupBoxInfo.Location = new System.Drawing.Point(16, 25);
             this.groupBoxInfo.Name = "groupBoxInfo";
-            this.groupBoxInfo.Size = new System.Drawing.Size(291, 254);
+            this.groupBoxInfo.Size = new System.Drawing.Size(291, 293);
             this.groupBoxInfo.TabIndex = 6;
             this.groupBoxInfo.TabStop = false;
             this.groupBoxInfo.Text = "Information";
             // 
+            // comboBoxCities
+            // 
+            this.comboBoxCities.FormattingEnabled = true;
+            this.comboBoxCities.Location = new System.Drawing.Point(126, 137);
+            this.comboBoxCities.Name = "comboBoxCities";
+            this.comboBoxCities.Size = new System.Drawing.Size(144, 23);
+            this.comboBoxCities.TabIndex = 13;
+            // 
+            // labelTown
+            // 
+            this.labelTown.AutoSize = true;
+            this.labelTown.Location = new System.Drawing.Point(31, 140);
+            this.labelTown.Name = "labelTown";
+            this.labelTown.Size = new System.Drawing.Size(31, 15);
+            this.labelTown.TabIndex = 12;
+            this.labelTown.Text = "City:";
+            // 
             // comboBoxDepartment
             // 
             this.comboBoxDepartment.FormattingEnabled = true;
-            this.comboBoxDepartment.Location = new System.Drawing.Point(126, 134);
+            this.comboBoxDepartment.Location = new System.Drawing.Point(126, 174);
             this.comboBoxDepartment.Name = "comboBoxDepartment";
             this.comboBoxDepartment.Size = new System.Drawing.Size(144, 23);
             this.comboBoxDepartment.TabIndex = 11;
             // 
-            // comboBoxAddress
-            // 
-            this.comboBoxAddress.FormattingEnabled = true;
-            this.comboBoxAddress.Location = new System.Drawing.Point(126, 98);
-            this.comboBoxAddress.Name = "comboBoxAddress";
-            this.comboBoxAddress.Size = new System.Drawing.Size(144, 23);
-            this.comboBoxAddress.TabIndex = 10;
-            // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(126, 209);
+            this.textBoxEmail.Location = new System.Drawing.Point(126, 249);
             this.textBoxEmail.Name = "textBoxEmail";
             this.textBoxEmail.Size = new System.Drawing.Size(144, 23);
             this.textBoxEmail.TabIndex = 9;
             // 
             // textBoxPhoneNum
             // 
-            this.textBoxPhoneNum.Location = new System.Drawing.Point(126, 176);
+            this.textBoxPhoneNum.Location = new System.Drawing.Point(126, 216);
             this.textBoxPhoneNum.Name = "textBoxPhoneNum";
             this.textBoxPhoneNum.Size = new System.Drawing.Size(144, 23);
             this.textBoxPhoneNum.TabIndex = 8;
@@ -166,12 +179,20 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(47, 300);
+            this.btnAdd.Location = new System.Drawing.Point(42, 324);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(94, 34);
             this.btnAdd.TabIndex = 7;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // txtBoxAddress
+            // 
+            this.txtBoxAddress.Location = new System.Drawing.Point(126, 98);
+            this.txtBoxAddress.Name = "txtBoxAddress";
+            this.txtBoxAddress.Size = new System.Drawing.Size(147, 23);
+            this.txtBoxAddress.TabIndex = 14;
             // 
             // EmployeeForm
             // 
@@ -199,11 +220,13 @@
         private System.Windows.Forms.Label labelEmail;
         private System.Windows.Forms.GroupBox groupBoxInfo;
         private System.Windows.Forms.ComboBox comboBoxDepartment;
-        private System.Windows.Forms.ComboBox comboBoxAddress;
         private System.Windows.Forms.TextBox textBoxEmail;
         private System.Windows.Forms.TextBox textBoxPhoneNum;
         private System.Windows.Forms.TextBox textBoxLastName;
         private System.Windows.Forms.TextBox textBoxName;
         private System.Windows.Forms.Button btnAdd;
+        private System.Windows.Forms.ComboBox comboBoxCities;
+        private System.Windows.Forms.Label labelTown;
+        private System.Windows.Forms.TextBox txtBoxAddress;
     }
 }

@@ -165,7 +165,14 @@
             return msg.ToString().TrimEnd();
         }
 
-       
+        public List<string> GetEmployeeNames()
+        {
+            using (context = new AppDbContext())
+            {
+                List<string> employeeNames = context.Employees.Select(x => x.Address.Name).ToList();
+                return employeeNames;
+            }
+        }
 
     }
 }
