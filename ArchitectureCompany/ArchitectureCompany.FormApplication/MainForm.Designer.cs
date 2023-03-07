@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnEmployee = new System.Windows.Forms.Button();
+            this.Welcomelabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnEmployee
@@ -41,21 +43,34 @@
             this.btnEmployee.UseVisualStyleBackColor = true;
             this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
             // 
+            // Welcomelabel
+            // 
+            this.Welcomelabel.AutoSize = true;
+            this.Welcomelabel.Location = new System.Drawing.Point(274, 90);
+            this.Welcomelabel.Name = "Welcomelabel";
+            this.Welcomelabel.Size = new System.Drawing.Size(38, 15);
+            this.Welcomelabel.TabIndex = 1;
+            this.Welcomelabel.Text = "label1";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(607, 397);
+            this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.ClientSize = new System.Drawing.Size(610, 348);
+            this.Controls.Add(this.Welcomelabel);
             this.Controls.Add(this.btnEmployee);
             this.Name = "MainForm";
             this.Text = "MainFormApp";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button btnEmployee;
+        private System.Windows.Forms.Label Welcomelabel;
     }
 }

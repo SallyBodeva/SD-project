@@ -164,7 +164,18 @@
 
             return msg.ToString().TrimEnd();
         }
-
+        public List<string> GetEmployeeBasicInfo(int page =1,int count =10)
+        {
+            List<string> list = null;
+            using (context= new AppDbContext())
+            {
+                list = context.Employees
+                    .Skip((page - 1) * count)
+                    .Take(count).Select(x => $"{x.Id} - {x.FirstName} {x.LastName}")
+                    .ToList();
+            }
+            return list;
+        }
         public List<string> GetEmployeeNames()
         {
             using (context = new AppDbContext())

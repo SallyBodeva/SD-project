@@ -35,6 +35,9 @@
             this.labelPhoneNumber = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.groupBoxInfo = new System.Windows.Forms.GroupBox();
+            this.rBtnDelete = new System.Windows.Forms.RadioButton();
+            this.rBtnAdd = new System.Windows.Forms.RadioButton();
+            this.txtBoxAddress = new System.Windows.Forms.TextBox();
             this.comboBoxCities = new System.Windows.Forms.ComboBox();
             this.labelTown = new System.Windows.Forms.Label();
             this.comboBoxDepartment = new System.Windows.Forms.ComboBox();
@@ -43,7 +46,7 @@
             this.textBoxLastName = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
-            this.txtBoxAddress = new System.Windows.Forms.TextBox();
+            this.listBoxEmployee = new System.Windows.Forms.ListBox();
             this.groupBoxInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -103,6 +106,8 @@
             // 
             // groupBoxInfo
             // 
+            this.groupBoxInfo.Controls.Add(this.rBtnDelete);
+            this.groupBoxInfo.Controls.Add(this.rBtnAdd);
             this.groupBoxInfo.Controls.Add(this.txtBoxAddress);
             this.groupBoxInfo.Controls.Add(this.comboBoxCities);
             this.groupBoxInfo.Controls.Add(this.labelTown);
@@ -119,10 +124,41 @@
             this.groupBoxInfo.Controls.Add(this.labelName);
             this.groupBoxInfo.Location = new System.Drawing.Point(16, 25);
             this.groupBoxInfo.Name = "groupBoxInfo";
-            this.groupBoxInfo.Size = new System.Drawing.Size(291, 293);
+            this.groupBoxInfo.Size = new System.Drawing.Size(342, 330);
             this.groupBoxInfo.TabIndex = 6;
             this.groupBoxInfo.TabStop = false;
             this.groupBoxInfo.Text = "Information";
+            // 
+            // rBtnDelete
+            // 
+            this.rBtnDelete.AutoSize = true;
+            this.rBtnDelete.Location = new System.Drawing.Point(93, 293);
+            this.rBtnDelete.Name = "rBtnDelete";
+            this.rBtnDelete.Size = new System.Drawing.Size(77, 19);
+            this.rBtnDelete.TabIndex = 16;
+            this.rBtnDelete.TabStop = true;
+            this.rBtnDelete.Text = "Discharge";
+            this.rBtnDelete.UseVisualStyleBackColor = true;
+            this.rBtnDelete.CheckedChanged += new System.EventHandler(this.rBtnDelete_CheckedChanged);
+            // 
+            // rBtnAdd
+            // 
+            this.rBtnAdd.AutoSize = true;
+            this.rBtnAdd.Location = new System.Drawing.Point(16, 293);
+            this.rBtnAdd.Name = "rBtnAdd";
+            this.rBtnAdd.Size = new System.Drawing.Size(47, 19);
+            this.rBtnAdd.TabIndex = 15;
+            this.rBtnAdd.TabStop = true;
+            this.rBtnAdd.Text = "Hire";
+            this.rBtnAdd.UseVisualStyleBackColor = true;
+            this.rBtnAdd.CheckedChanged += new System.EventHandler(this.rBtnAdd_CheckedChanged);
+            // 
+            // txtBoxAddress
+            // 
+            this.txtBoxAddress.Location = new System.Drawing.Point(126, 98);
+            this.txtBoxAddress.Name = "txtBoxAddress";
+            this.txtBoxAddress.Size = new System.Drawing.Size(147, 23);
+            this.txtBoxAddress.TabIndex = 14;
             // 
             // comboBoxCities
             // 
@@ -179,7 +215,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(42, 324);
+            this.btnAdd.Location = new System.Drawing.Point(23, 373);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(94, 34);
             this.btnAdd.TabIndex = 7;
@@ -187,18 +223,21 @@
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
-            // txtBoxAddress
+            // listBoxEmployee
             // 
-            this.txtBoxAddress.Location = new System.Drawing.Point(126, 98);
-            this.txtBoxAddress.Name = "txtBoxAddress";
-            this.txtBoxAddress.Size = new System.Drawing.Size(147, 23);
-            this.txtBoxAddress.TabIndex = 14;
+            this.listBoxEmployee.FormattingEnabled = true;
+            this.listBoxEmployee.ItemHeight = 15;
+            this.listBoxEmployee.Location = new System.Drawing.Point(376, 33);
+            this.listBoxEmployee.Name = "listBoxEmployee";
+            this.listBoxEmployee.Size = new System.Drawing.Size(317, 274);
+            this.listBoxEmployee.TabIndex = 8;
             // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(668, 370);
+            this.ClientSize = new System.Drawing.Size(721, 434);
+            this.Controls.Add(this.listBoxEmployee);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.groupBoxInfo);
             this.Name = "EmployeeForm";
@@ -228,5 +267,8 @@
         private System.Windows.Forms.ComboBox comboBoxCities;
         private System.Windows.Forms.Label labelTown;
         private System.Windows.Forms.TextBox txtBoxAddress;
+        private System.Windows.Forms.RadioButton rBtnDelete;
+        private System.Windows.Forms.RadioButton rBtnAdd;
+        private System.Windows.Forms.ListBox listBoxEmployee;
     }
 }
