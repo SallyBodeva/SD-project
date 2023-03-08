@@ -12,6 +12,7 @@ namespace ArchitectureCompany.Seeder
         private static DepartmentService departmentService = new DepartmentService();
         private static ProjectService projectService = new ProjectService();
         private static EmployeeService employeeService = new EmployeeService();
+        private static ClientService clientService = new ClientService();
 
         List<Project> projects = new List<Project>();
         List<BuildingType> buildingTypes = new List<BuildingType>();
@@ -55,7 +56,7 @@ namespace ArchitectureCompany.Seeder
             t.Add("Barcelona");
             t.Add("Porto");
 
-            for (int i = 0; i < 65; i++)
+            for (int i = 0; i < 30; i++)
             {
                 string name = t[i];
                 Console.WriteLine(addiotionalService.AddTown(name));
@@ -72,6 +73,7 @@ namespace ArchitectureCompany.Seeder
             d.Add("Urban Design");
             d.Add("Industrial Architecture");
             d.Add("PR management");
+
             for (int i = 0; i < 8; i++)
             {
                 string name = d[i];
@@ -81,89 +83,6 @@ namespace ArchitectureCompany.Seeder
         }
 
         public static void SeedAddresses()
-        {
-            Random r = new Random();
-            for (int i = 0; i < a.Count; i++)
-            {
-                string name = a[i];
-                string town = t[r.Next(1, a.Count)];
-                Console.WriteLine(addiotionalService.AddAddress(name, town));
-            }
-        }
-
-        public static void SeedEmployee()
-        {
-            List<string> firstName = new List<string>() { "Jane", "Lenore", "Susy", "Genna", "Viki", "Toni", "Serkan", "Eda", "Kiraz", "Selin", "Engin", "Steven", "Barbara", "Kiara", "Kerem", "Aleph", "Quintessa", "Margarette", "Oscar", "Sebastian", "Zane", "Mabel", "Leo", "Scarlett", "Yasemin", "Caleb" };
-            List<string> lastName = new List<string>() { "Stove", "Lobile", "Dykas", "Larne", "Romera", "Borrel", "Bolat", "Yaldiz", "Karadaa", "Smith", "Williams", "Johnson", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson" };
-
-            List<string> phoneNumber = new List<string>() { "08547936248", "0889654785", "0874856921", "0889523652", "0985746985", "0887441563", "0888525252", "0896323235", "0888897562", "0814766666", "0888877456", "0889955555", "08547936240", "08547936247", "08547936245", "08547936278", "085479362948", "08547036248", "09547936248", "09747936248", "09847936248", "09047936248", "09549936248", "09447936248", "09247936248", "09547939248" };
-            List<string> emails = new List<string>() { "architect_j@gmail.com", "arttLife1@gmail.com", "building_constructor@abv.bg", "architecture_company@gmail.com", "sb_artlife@gmail.com", "ey_architecture@gmail.com", "artlife_kb@abv.bg", "ny_architecture@gmail.com", "bp_architecture@gmail.com", "ct_architecture@gmail.com", "et_architecture@gmail.com", "eda_architecture@gmail.com", "ey_architect@gmail.com", "brr_architecture@gmail.com", "da_architecture@gmail.com", "project_architecture@gmail.com" };
-            Random random = new Random();
-
-            for (int i = 0; i < 25; i++)
-            {
-                int employeeFirstName = random.Next(0, firstName.Count);
-                int employeeLastName = random.Next(0, lastName.Count);
-                // a problem with foreign key- the collection(e.g. "a" )is not found)
-                int address = random.Next(0, firstName.Count);
-                int town = random.Next(0, lastName.Count);
-                int department = random.Next(0, d.Count);
-                int email = random.Next(0, emails.Count);
-                for (int j = 0; i < phoneNumber.Count; i++)
-                {
-                    int pNum = random.Next(0, phoneNumber.Count);
-                    string phone = phoneNumber[i];
-                    Console.WriteLine(employeeService.AddEmployee(firstName[employeeFirstName], lastName[employeeLastName], a[address], t[town], d[department], phone, emails[email]));
-                }
-            }
-
-        }
-        public static void SeedClient()
-        {
-
-            List<string> firstName = new List<string>() { "Jane", "Lenore", "Susy", "Genna", "Viki", "Toni", "Serkan", "Eda", "Kiraz", "Selin", "Engin", "Steven", "Barbara", "Kiara", "Kerem", "Aleph", "Quintessa", "Margarette", "Oscar", "Sebastian", "Zane", "Mabel", "Leo", "Scarlett", "Yasemin", "Caleb" };
-            List<string> lastName = new List<string>() { "Stove", "Lobile", "Dykas", "Larne", "Romera", "Borrel", "Bolat", "Yaldiz", "Karadaa", "Smith", "Williams", "Johnson", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson" };
-
-            List<string> phoneNumber = new List<string>() { "08547936248", "0889654785", "0874856921", "0889523652", "0985746985", "0887441563", "0888525252", "0896323235", "0888897562", "0814766666", "0888877456", "0889955555" };
-            List<string> emails = new List<string>() { "architect_j@gmail.com", "arttLife1@gmail.com", "building_constructor@abv.bg", "architecture_company@gmail.com", "sb_artlife@gmail.com", "ey_architecture@gmail.com", "artlife_kb@abv.bg", "ny_architecture@gmail.com", "bp_architecture@gmail.com", "ct_architecture@gmail.com", "et_architecture@gmail.com", "eda_architecture@gmail.com", "ey_architect@gmail.com", "brr_architecture@gmail.com", "da_architecture@gmail.com", "project_architecture@gmail.com" };
-            Random random = new Random();
-
-            for (int i = 0; i < 50; i++)
-            {
-                // a problem with foreign key- the collection(e.g. "a" )is not found)
-                int employeeFirstName = random.Next(0, firstName.Count);
-                int employeeLastName = random.Next(0, lastName.Count);
-                string address = a[random.Next(1, 20)];
-                string town = t[random.Next(1, 20)];
-                int phoneNum = random.Next(0, phoneNumber.Count);
-                int email = random.Next(0, emails.Count);
-                //  Console.WriteLine(.AddEmployee(firstName[employeeFirstName], lastName[employeeLastName], address, town, phoneNumber[phoneNum], emails[email]));
-            }
-        }
-
-
-        public static void SeedBulidingTypes()
-        {
-            List<string> bt = new List<string>();
-            //bt.Add("Residential Buildings");
-            //bt.Add("Commercial Buildings ");
-            //bt.Add("Industrial Buildings");
-            //bt.Add("Educational Buildings");
-            //bt.Add("Institutional Buildings");
-            //bt.Add("Religious Buildings ");
-            //bt.Add("Recreational Buildings ");
-            //bt.Add("Transportation Buildings ");
-            //bt.Add("Skyscrapers ");           
-            // bt.Add("Hotels");
-            //bt.Add("Residential Care Facilities ");
-
-            //for (int i = 0; i < 12; i++)
-            //{
-            //   string name = bt[i];
-            // Console.WriteLine(projectService.AddProject(buildingTypeId));
-            //}
-        }
-        public static void AddAddrss()
         {
             a.Add("Main Street 23");
             a.Add("Main Street 7");
@@ -192,7 +111,88 @@ namespace ArchitectureCompany.Seeder
             a.Add("Graf Ignatiev 10");
             a.Add("Macedonia Street 10");
             a.Add("Varna Boulevard 10");
+            Random r = new Random();
+            for (int i = 0; i < a.Count; i++)
+            {
+                string name = a[i];
+                string town = t[r.Next(1, a.Count)];
+                Console.WriteLine(addiotionalService.AddAddress(name, town));
+            }
+            
         }
+
+        public static void SeedEmployee()
+        {
+            List<string> firstName = new List<string>() { "Jane", "Lenore", "Susy", "Genna", "Viki", "Toni", "Serkan", "Eda", "Kiraz", "Selin", "Engin", "Steven", "Barbara", "Kiara", "Kerem", "Aleph", "Quintessa", "Margarette", "Oscar", "Sebastian", "Zane", "Mabel", "Leo", "Scarlett", "Yasemin", "Caleb" };
+            List<string> lastName = new List<string>() { "Stove", "Lobile", "Dykas", "Larne", "Romera", "Borrel", "Bolat", "Yaldiz", "Karadaa", "Smith", "Williams", "Johnson", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson" };
+
+            List<string> phoneNumber = new List<string>() { "08547936248", "0889654785", "0874856921", "0889523652", "0985746985", "0887441563", "0888525252", "0896323235", "0888897562", "0814766666", "0888877456", "0889955555", "08547936240", "08547936247", "08547936245", "08547936278", "085479362948", "08547036248", "09547936248", "09747936248", "09847936248", "09047936248", "09549936248", "09447936248", "09247936248", "09547939248","0879658758","0123589745","0897452122","0888550000","0800226547" };
+            List<string> emails = new List<string>() { "architect_j@gmail.com", "arttLife1@gmail.com", "building_constructor@abv.bg", "architecture_company@gmail.com", "sb_artlife@gmail.com", "ey_architecture@gmail.com", "artlife_kb@abv.bg", "ny_architecture@gmail.com", "bp_architecture@gmail.com", "ct_architecture@gmail.com", "et_architecture@gmail.com", "eda_architecture@gmail.com", "ey_architect@gmail.com", "brr_architecture@gmail.com", "da_architecture@gmail.com", "project_architecture@gmail.com" };
+            Random random = new Random();
+
+            for (int i = 0; i < 30; i++)
+            {
+                int employeeFirstName = random.Next(0, firstName.Count);
+                int employeeLastName = random.Next(0, lastName.Count);              
+                int address = random.Next(0, firstName.Count);
+                int town = random.Next(0, lastName.Count);
+                int department = random.Next(0, d.Count);
+                int email = random.Next(0, emails.Count);
+                for (int j = 0; j < phoneNumber.Count; j++)
+                {
+                    int pNum = random.Next(0, phoneNumber.Count);
+                    string phone = phoneNumber[i];
+                    Console.WriteLine(employeeService.AddEmployee(firstName[employeeFirstName], lastName[employeeLastName], a[address], t[town], d[department], phone, emails[email]));
+                }
+            }
+
+        }
+        public static void SeedClient()
+        {
+
+            List<string> firstName = new List<string>() { "Jane", "Lenore", "Susy", "Genna", "Viki", "Toni", "Serkan", "Eda", "Kiraz", "Selin", "Engin", "Steven", "Barbara", "Kiara", "Kerem", "Aleph", "Quintessa", "Margarette", "Oscar", "Sebastian", "Zane", "Mabel", "Leo", "Scarlett", "Yasemin", "Caleb" };
+            List<string> lastName = new List<string>() { "Stove", "Lobile", "Dykas", "Larne", "Romera", "Borrel", "Bolat", "Yaldiz", "Karadaa", "Smith", "Williams", "Johnson", "Brown", "Jones", "Garcia", "Miller", "Davis", "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson" };
+
+            List<string> phoneNumber = new List<string>() { "08547936248", "0889654785", "0874856921", "0889523652", "0985746985", "0887441563", "0888525252", "0896323235", "0888897562", "0814766666", "0888877456", "0889955555" };
+            List<string> emails = new List<string>() { "architect_j@gmail.com", "arttLife1@gmail.com", "building_constructor@abv.bg", "architecture_company@gmail.com", "sb_artlife@gmail.com", "ey_architecture@gmail.com", "artlife_kb@abv.bg", "ny_architecture@gmail.com", "bp_architecture@gmail.com", "ct_architecture@gmail.com", "et_architecture@gmail.com", "eda_architecture@gmail.com", "ey_architect@gmail.com", "brr_architecture@gmail.com", "da_architecture@gmail.com", "project_architecture@gmail.com" };
+            Random random = new Random();
+
+            for (int i = 0; i < 50; i++)
+            {
+               
+                int employeeFirstName = random.Next(0, firstName.Count);
+                int employeeLastName = random.Next(0, lastName.Count);
+                string address = a[random.Next(1, 20)];
+                string town = t[random.Next(1, 20)];
+                int phoneNum = random.Next(0, phoneNumber.Count);
+                int email = random.Next(0, emails.Count);
+                 Console.WriteLine(clientService.AddClient(firstName[employeeFirstName], lastName[employeeLastName], address, town, phoneNumber[phoneNum], emails[email]));
+            }
+        }
+
+
+        public static void SeedBulidingTypes()
+        {
+            List<string> bt = new List<string>();
+            //bt.Add("Residential Buildings");
+            //bt.Add("Commercial Buildings ");
+            //bt.Add("Industrial Buildings");
+            //bt.Add("Educational Buildings");
+            //bt.Add("Institutional Buildings");
+            //bt.Add("Religious Buildings ");
+            //bt.Add("Recreational Buildings ");
+            //bt.Add("Transportation Buildings ");
+            //bt.Add("Skyscrapers ");           
+            // bt.Add("Hotels");
+            //bt.Add("Residential Care Facilities ");
+
+            //for (int i = 0; i < 12; i++)
+            //{
+            //   string name = bt[i];
+            // Console.WriteLine(projectService.AddProject(buildingTypeId));
+            //}
+        }
+        
 
 
         //  public static void SeedProjects()
