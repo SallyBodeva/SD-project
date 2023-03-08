@@ -16,9 +16,8 @@ namespace ArchitectureCompany.Seeder
 
         List<Project> projects = new List<Project>();
         List<BuildingType> buildingTypes = new List<BuildingType>();
-        static List<string> t = new List<string>();
-        static List<string> a = new List<string>();
         static List<string> d = new List<string>();
+        static List<string> t = new List<string>();
         static void Main()
         {
 
@@ -84,6 +83,7 @@ namespace ArchitectureCompany.Seeder
 
         public static void SeedAddresses()
         {
+            List<string> a = new List<string>();
             a.Add("Main Street 23");
             a.Add("Main Street 7");
             a.Add("Park Avenue 9");
@@ -114,9 +114,9 @@ namespace ArchitectureCompany.Seeder
             Random r = new Random();
             for (int i = 0; i < a.Count; i++)
             {
-                string name = a[i];
-                string town = t[r.Next(1, a.Count)];
-                Console.WriteLine(addiotionalService.AddAddress(name, town));
+               string name = a[i];
+               string town = 
+               Console.WriteLine(addiotionalService.AddAddress(name, town));
             }
             
         }
@@ -142,7 +142,7 @@ namespace ArchitectureCompany.Seeder
                 {
                     int pNum = random.Next(0, phoneNumber.Count);
                     string phone = phoneNumber[i];
-                    Console.WriteLine(employeeService.AddEmployee(firstName[employeeFirstName], lastName[employeeLastName], a[address], t[town], d[department], phone, emails[email]));
+                 //   Console.WriteLine(employeeService.AddEmployee(firstName[employeeFirstName], lastName[employeeLastName], a[address], t[town], d[department], phone, emails[email]));
                 }
             }
 
@@ -162,11 +162,11 @@ namespace ArchitectureCompany.Seeder
                
                 int employeeFirstName = random.Next(0, firstName.Count);
                 int employeeLastName = random.Next(0, lastName.Count);
-                string address = a[random.Next(1, 20)];
-                string town = t[random.Next(1, 20)];
+               // string address = a[random.Next(1, 20)];
+           //     string town = t[random.Next(1, 20)];
                 int phoneNum = random.Next(0, phoneNumber.Count);
                 int email = random.Next(0, emails.Count);
-                 Console.WriteLine(clientService.AddClient(firstName[employeeFirstName], lastName[employeeLastName], address, town, phoneNumber[phoneNum], emails[email]));
+                // Console.WriteLine(clientService.AddClient(firstName[employeeFirstName], lastName[employeeLastName], address, town, phoneNumber[phoneNum], emails[email]));
             }
         }
 

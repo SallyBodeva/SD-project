@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ArchitectureCompany.Models\ArchitectureCompany.Models.csproj" />
+    <ProjectReference Include="..\ArchitectureCompany.Services\ArchitectureCompany.Services.csproj" />
+  </ItemGroup>
+
+</Project>
