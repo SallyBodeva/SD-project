@@ -35,6 +35,7 @@
             this.labelPhoneNumber = new System.Windows.Forms.Label();
             this.labelEmail = new System.Windows.Forms.Label();
             this.groupBoxInfo = new System.Windows.Forms.GroupBox();
+            this.radioButtonUpdate = new System.Windows.Forms.RadioButton();
             this.rBtnDelete = new System.Windows.Forms.RadioButton();
             this.rBtnAdd = new System.Windows.Forms.RadioButton();
             this.txtBoxAddress = new System.Windows.Forms.TextBox();
@@ -48,6 +49,10 @@
             this.btnAdd = new System.Windows.Forms.Button();
             this.listBoxEmployee = new System.Windows.Forms.ListBox();
             this.btnDischarge = new System.Windows.Forms.Button();
+            this.btnUpdate = new System.Windows.Forms.Button();
+            this.btnPrevious = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.labelPageNum = new System.Windows.Forms.Label();
             this.groupBoxInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -107,6 +112,7 @@
             // 
             // groupBoxInfo
             // 
+            this.groupBoxInfo.Controls.Add(this.radioButtonUpdate);
             this.groupBoxInfo.Controls.Add(this.rBtnDelete);
             this.groupBoxInfo.Controls.Add(this.rBtnAdd);
             this.groupBoxInfo.Controls.Add(this.txtBoxAddress);
@@ -129,6 +135,18 @@
             this.groupBoxInfo.TabIndex = 6;
             this.groupBoxInfo.TabStop = false;
             this.groupBoxInfo.Text = "Information";
+            // 
+            // radioButtonUpdate
+            // 
+            this.radioButtonUpdate.AutoSize = true;
+            this.radioButtonUpdate.Location = new System.Drawing.Point(203, 294);
+            this.radioButtonUpdate.Name = "radioButtonUpdate";
+            this.radioButtonUpdate.Size = new System.Drawing.Size(63, 19);
+            this.radioButtonUpdate.TabIndex = 17;
+            this.radioButtonUpdate.TabStop = true;
+            this.radioButtonUpdate.Text = "Update";
+            this.radioButtonUpdate.UseVisualStyleBackColor = true;
+            this.radioButtonUpdate.CheckedChanged += new System.EventHandler(this.radioButtonUpdate_CheckedChanged);
             // 
             // rBtnDelete
             // 
@@ -216,11 +234,11 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(23, 373);
+            this.btnAdd.Location = new System.Drawing.Point(16, 366);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(94, 34);
+            this.btnAdd.Size = new System.Drawing.Size(94, 49);
             this.btnAdd.TabIndex = 7;
-            this.btnAdd.Text = "Add";
+            this.btnAdd.Text = "HIre";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
@@ -228,26 +246,70 @@
             // 
             this.listBoxEmployee.FormattingEnabled = true;
             this.listBoxEmployee.ItemHeight = 15;
-            this.listBoxEmployee.Location = new System.Drawing.Point(376, 33);
+            this.listBoxEmployee.Location = new System.Drawing.Point(383, 29);
             this.listBoxEmployee.Name = "listBoxEmployee";
             this.listBoxEmployee.Size = new System.Drawing.Size(317, 274);
             this.listBoxEmployee.TabIndex = 8;
+            this.listBoxEmployee.DoubleClick += new System.EventHandler(this.listBoxEmployee_DoubleClick_1);
             // 
             // btnDischarge
             // 
-            this.btnDischarge.Location = new System.Drawing.Point(133, 373);
+            this.btnDischarge.Location = new System.Drawing.Point(133, 366);
             this.btnDischarge.Name = "btnDischarge";
-            this.btnDischarge.Size = new System.Drawing.Size(94, 34);
+            this.btnDischarge.Size = new System.Drawing.Size(94, 49);
             this.btnDischarge.TabIndex = 9;
             this.btnDischarge.Text = "Discharge";
             this.btnDischarge.UseVisualStyleBackColor = true;
             this.btnDischarge.Click += new System.EventHandler(this.btnDischarge_Click);
+            // 
+            // btnUpdate
+            // 
+            this.btnUpdate.Location = new System.Drawing.Point(251, 366);
+            this.btnUpdate.Name = "btnUpdate";
+            this.btnUpdate.Size = new System.Drawing.Size(107, 49);
+            this.btnUpdate.TabIndex = 10;
+            this.btnUpdate.Text = "Update phone number";
+            this.btnUpdate.UseVisualStyleBackColor = true;
+            this.btnUpdate.Click += new System.EventHandler(this.btnUpdate_Click);
+            // 
+            // btnPrevious
+            // 
+            this.btnPrevious.Location = new System.Drawing.Point(429, 332);
+            this.btnPrevious.Name = "btnPrevious";
+            this.btnPrevious.Size = new System.Drawing.Size(93, 23);
+            this.btnPrevious.TabIndex = 11;
+            this.btnPrevious.Text = "Previous page";
+            this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(565, 332);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(93, 22);
+            this.btnNext.TabIndex = 12;
+            this.btnNext.Text = "Next page";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // labelPageNum
+            // 
+            this.labelPageNum.AutoSize = true;
+            this.labelPageNum.Location = new System.Drawing.Point(528, 315);
+            this.labelPageNum.Name = "labelPageNum";
+            this.labelPageNum.Size = new System.Drawing.Size(32, 15);
+            this.labelPageNum.TabIndex = 13;
+            this.labelPageNum.Text = "label";
             // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 434);
+            this.Controls.Add(this.labelPageNum);
+            this.Controls.Add(this.btnNext);
+            this.Controls.Add(this.btnPrevious);
+            this.Controls.Add(this.btnUpdate);
             this.Controls.Add(this.btnDischarge);
             this.Controls.Add(this.listBoxEmployee);
             this.Controls.Add(this.btnAdd);
@@ -258,6 +320,7 @@
             this.groupBoxInfo.ResumeLayout(false);
             this.groupBoxInfo.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -283,5 +346,10 @@
         private System.Windows.Forms.RadioButton rBtnAdd;
         private System.Windows.Forms.ListBox listBoxEmployee;
         private System.Windows.Forms.Button btnDischarge;
+        private System.Windows.Forms.Button btnUpdate;
+        private System.Windows.Forms.RadioButton radioButtonUpdate;
+        private System.Windows.Forms.Button btnPrevious;
+        private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Label labelPageNum;
     }
 }

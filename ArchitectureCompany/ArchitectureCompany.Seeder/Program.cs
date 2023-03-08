@@ -115,8 +115,8 @@ namespace ArchitectureCompany.Seeder
             for (int i = 0; i < a.Count; i++)
             {
                string name = a[i];
-               string town = 
-               Console.WriteLine(addiotionalService.AddAddress(name, town));
+            //   string town = 
+          //     Console.WriteLine(addiotionalService.AddAddress(name, town));
             }
             
         }

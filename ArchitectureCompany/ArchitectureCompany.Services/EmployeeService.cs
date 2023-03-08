@@ -55,7 +55,7 @@
             using (context = new AppDbContext())
             {
                 t = context.Towns.FirstOrDefault(t => t.Name == town);
-                a = context.Addresses.FirstOrDefault(a => a.Name == address && a.Town.Name==town);
+                a = context.Addresses.FirstOrDefault(a => a.Name == address && a.Town.Name == town);
                 d = context.Departments.FirstOrDefault(d => d.Name == department);
                 t = context.Towns.FirstOrDefault(t => t.Name == town);
                 if (t == null)
@@ -67,7 +67,6 @@
                     d = new Department() { Name = department };
                 }
                 if (a == null)
-
                 {
                     a = new Address() { Name = address, Town = t };
                 }
@@ -137,7 +136,6 @@
             {
                 Employee e = context.Employees.FirstOrDefault(x => x.Id == id);
                 return e;
-
             }
         }
         public string GetAllEmployeesInfo(int page = 1, int count = 10)
@@ -164,10 +162,10 @@
 
             return msg.ToString().TrimEnd();
         }
-        public List<string> GetEmployeeBasicInfo(int page =1,int count =10)
+        public List<string> GetEmployeeBasicInfo(int page = 1, int count = 10)
         {
             List<string> list = null;
-            using (context= new AppDbContext())
+            using (context = new AppDbContext())
             {
                 list = context.Employees
                     .Skip((page - 1) * count)
@@ -184,8 +182,50 @@
                 return employeeNames;
             }
         }
+        public string GetAddresssName(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Employee e = context.Employees.Find(id);
+                return e.Address.Name.ToString();
 
+            }
+        }
+        public string GetTownName(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Employee e = context.Employees.Find(id);
+                return e.Address.Town.Name.ToString();
+
+            }
+        }
+        public string GetDepartmentName(int id)
+        {
+            using (context = new AppDbContext())
+            {
+                Employee e = context.Employees.Find(id);
+                return e.Department.Name.ToString();
+
+            }
+        }
+        public string UpdateEmployeePhoneNum(int id, string num)
+        {
+            using (context = new AppDbContext())
+            {
+                Employee e = context.Employees.Find(id);
+                if (e == null)
+                {
+                    return $"Employee not found!";
+                }
+                e.PhoneNumber = num;
+                context.Employees.Update(e);
+                context.SaveChanges();
+                return $"Employee {e.FirstName} {e.LastName} has new phone number: {num}";
+            }
+        }
     }
+
 }
 
 

@@ -31,13 +31,15 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.btnEmployee = new System.Windows.Forms.Button();
             this.Welcomelabel = new System.Windows.Forms.Label();
+            this.labelTo = new System.Windows.Forms.Label();
+            this.labelArtLife = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnEmployee
             // 
-            this.btnEmployee.Location = new System.Drawing.Point(257, 267);
+            this.btnEmployee.Location = new System.Drawing.Point(23, 275);
             this.btnEmployee.Name = "btnEmployee";
-            this.btnEmployee.Size = new System.Drawing.Size(75, 23);
+            this.btnEmployee.Size = new System.Drawing.Size(134, 41);
             this.btnEmployee.TabIndex = 0;
             this.btnEmployee.Text = "button1";
             this.btnEmployee.UseVisualStyleBackColor = true;
@@ -46,11 +48,36 @@
             // Welcomelabel
             // 
             this.Welcomelabel.AutoSize = true;
-            this.Welcomelabel.Location = new System.Drawing.Point(274, 90);
+            this.Welcomelabel.BackColor = System.Drawing.Color.Transparent;
+            this.Welcomelabel.CausesValidation = false;
+            this.Welcomelabel.Font = new System.Drawing.Font("Tempus Sans ITC", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
+            this.Welcomelabel.Location = new System.Drawing.Point(193, 9);
             this.Welcomelabel.Name = "Welcomelabel";
-            this.Welcomelabel.Size = new System.Drawing.Size(38, 15);
+            this.Welcomelabel.Size = new System.Drawing.Size(221, 62);
             this.Welcomelabel.TabIndex = 1;
-            this.Welcomelabel.Text = "label1";
+            this.Welcomelabel.Text = "Welcome";
+            // 
+            // labelTo
+            // 
+            this.labelTo.AutoSize = true;
+            this.labelTo.BackColor = System.Drawing.Color.Transparent;
+            this.labelTo.Font = new System.Drawing.Font("Tempus Sans ITC", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelTo.Location = new System.Drawing.Point(271, 71);
+            this.labelTo.Name = "labelTo";
+            this.labelTo.Size = new System.Drawing.Size(72, 62);
+            this.labelTo.TabIndex = 2;
+            this.labelTo.Text = "to";
+            // 
+            // labelArtLife
+            // 
+            this.labelArtLife.AutoSize = true;
+            this.labelArtLife.BackColor = System.Drawing.Color.Transparent;
+            this.labelArtLife.Font = new System.Drawing.Font("Pristina", 72F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
+            this.labelArtLife.Location = new System.Drawing.Point(161, 124);
+            this.labelArtLife.Name = "labelArtLife";
+            this.labelArtLife.Size = new System.Drawing.Size(295, 126);
+            this.labelArtLife.TabIndex = 3;
+            this.labelArtLife.Text = "ArtLife";
             // 
             // MainForm
             // 
@@ -58,6 +85,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(610, 348);
+            this.Controls.Add(this.labelArtLife);
+            this.Controls.Add(this.labelTo);
             this.Controls.Add(this.Welcomelabel);
             this.Controls.Add(this.btnEmployee);
             this.Name = "MainForm";
@@ -72,5 +101,7 @@
 
         private System.Windows.Forms.Button btnEmployee;
         private System.Windows.Forms.Label Welcomelabel;
+        private System.Windows.Forms.Label labelTo;
+        private System.Windows.Forms.Label labelArtLife;
     }
 }

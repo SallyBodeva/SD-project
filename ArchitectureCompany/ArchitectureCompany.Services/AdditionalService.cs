@@ -69,10 +69,10 @@
         }
         public string DeleteTown(int id)
         {
-            using (context= new AppDbContext())
+            using (context = new AppDbContext())
             {
                 Town t = context.Towns.Find(id);
-                if (t==null)
+                if (t == null)
                 {
                     return "not found";
                 }
@@ -95,7 +95,7 @@
         }
         public Address GetAddressById(int id)
         {
-            if (id<0)
+            if (id < 0)
             {
                 throw new ArgumentException("Invalid address id");
             }
@@ -105,13 +105,35 @@
                 return address;
             }
         }
+        public List<string> GetAddressNames()
+        {
+            using (context = new AppDbContext())
+            {
+                List<string> addresses = context.Addresses.Select(x => x.Name).ToList();
+                return addresses;
+            }
+        }
         public List<string> GetTownsNames()
         {
-            using (context= new AppDbContext())
+            using (context = new AppDbContext())
             {
                 List<string> towns = context.Towns.Select(x => x.Name).ToList();
                 return towns;
             }
         }
+        public string GetTownOfAddressByName(string name)
+        {
+            using ( context = new AppDbContext())
+            {
+                var foundAddress = context.Addresses.FirstOrDefault(x=>x.Name==name);
+
+                if (foundAddress != null)
+                {
+                    return foundAddress.Town.Name;
+                }
+                return null;
+            }
+        }
+
     }
 }
