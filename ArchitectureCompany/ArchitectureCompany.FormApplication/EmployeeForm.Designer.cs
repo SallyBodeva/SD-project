@@ -47,6 +47,7 @@
             this.textBoxName = new System.Windows.Forms.TextBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.listBoxEmployee = new System.Windows.Forms.ListBox();
+            this.btnDischarge = new System.Windows.Forms.Button();
             this.groupBoxInfo.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -232,11 +233,22 @@
             this.listBoxEmployee.Size = new System.Drawing.Size(317, 274);
             this.listBoxEmployee.TabIndex = 8;
             // 
+            // btnDischarge
+            // 
+            this.btnDischarge.Location = new System.Drawing.Point(133, 373);
+            this.btnDischarge.Name = "btnDischarge";
+            this.btnDischarge.Size = new System.Drawing.Size(94, 34);
+            this.btnDischarge.TabIndex = 9;
+            this.btnDischarge.Text = "Discharge";
+            this.btnDischarge.UseVisualStyleBackColor = true;
+            this.btnDischarge.Click += new System.EventHandler(this.btnDischarge_Click);
+            // 
             // EmployeeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 434);
+            this.Controls.Add(this.btnDischarge);
             this.Controls.Add(this.listBoxEmployee);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.groupBoxInfo);
@@ -270,5 +282,6 @@
         private System.Windows.Forms.RadioButton rBtnDelete;
         private System.Windows.Forms.RadioButton rBtnAdd;
         private System.Windows.Forms.ListBox listBoxEmployee;
+        private System.Windows.Forms.Button btnDischarge;
     }
 }

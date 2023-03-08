@@ -102,9 +102,9 @@
                         ReleaseDate = data,
                         TotalFloorArea = totalFloorArea,
                         NumberOfFloors = numberOfFloors,
-                        Address = a,
-                        ImageId = i.Id
+                        Address = a
                     };
+                    context.Images.Add(i);
                     this.context.Projects.Add(p);
                     context.SaveChanges();
                     message.AppendLine($"Project {name} is added");
@@ -145,7 +145,7 @@
                 return p;
             }
         }
-        public Project GetProjectByReleaseDate(string date)
+        public List<Project> GetProjectByReleaseDate(string date)
         {
             DateTime releaseDate = new DateTime();
             bool isValid = DateTime.TryParseExact(date, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out releaseDate);
@@ -155,23 +155,17 @@
             }
             using (context = new AppDbContext())
             {
-                Project project = this.context.Projects.FirstOrDefault(x => x.ReleaseDate == releaseDate);
-                return project;
+                List<Project> projects = this.context.Projects.Where(x => x.ReleaseDate == releaseDate).ToList();
+                return projects;
             }
         }
 
 
-        public List<Project> GetFinishedProjects(int id)
+        public List<Project> GetFinishedProjects()
         {
             using (context = new AppDbContext())
             {
-                Project p = GetProjectById(id);
-                List<Project> finishedProjects = new List<Project>();
-                bool isFinished = p.ReleaseDate < DateTime.UtcNow;
-                if (isFinished)
-                {
-                    finishedProjects.Add(p);
-                }
+                List<Project> finishedProjects = context.Projects.Where(x => x.ReleaseDate < DateTime.UtcNow).ToList();
                 return finishedProjects;
             }
         }
@@ -179,14 +173,8 @@
         {
             using (context = new AppDbContext())
             {
-                Project p = GetProjectById(id);
-                List<Project> unfinishedProjects = new List<Project>();
-                bool isFinished = p.ReleaseDate < DateTime.UtcNow;
-                if (!isFinished)
-                {
-                    unfinishedProjects.Add(p);
-                }
-                return unfinishedProjects;
+                List<Project> unFinishedProjects = context.Projects.Where(x => x.ReleaseDate > DateTime.UtcNow).ToList();
+                return unFinishedProjects;
             }
         }
         public string GetProjectInfo()

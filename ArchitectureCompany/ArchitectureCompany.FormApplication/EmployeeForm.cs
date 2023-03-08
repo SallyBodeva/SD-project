@@ -18,6 +18,7 @@ namespace ArchitectureCompany.FormApplication
         EmployeeService eService;
         DepartmentService dService;
         AdditionalService adService;
+        private int currentEmployeeIndex = 0;
         public EmployeeForm()
         {
             InitializeComponent();
@@ -41,25 +42,19 @@ namespace ArchitectureCompany.FormApplication
         private void btnAdd_Click(object sender, EventArgs e)
         {
             string result = null;
-            if (btnAdd.Text=="Add")
-            {
-                string name = textBoxName.Text;
-                string lastName = textBoxLastName.Text;
-                string address = txtBoxAddress.Text;
-                string ciry = comboBoxCities.Text;
-                string departments = comboBoxDepartment.Text;
-                string phoneNum = textBoxPhoneNum.Text;
-                string email = textBoxEmail.Text;
 
-                result = eService.AddEmployee(name, lastName, address, ciry, departments, phoneNum, email);
+            string name = textBoxName.Text;
+            string lastName = textBoxLastName.Text;
+            string address = txtBoxAddress.Text;
+            string ciry = comboBoxCities.Text;
+            string departments = comboBoxDepartment.Text;
+            string phoneNum = textBoxPhoneNum.Text;
+            string email = textBoxEmail.Text;
 
-                MessageBox.Show(result);
-            }
-            else if (btnAdd.Text== "Discharge")
-            {
-                result = eService.DeleteEmployeeById(listBoxEmployee.SelectedIndex+1);
-                MessageBox.Show(result);
-            }
+            result = eService.AddEmployee(name, lastName, address, ciry, departments, phoneNum, email);
+
+            MessageBox.Show(result);
+
             ClearAddGroupBox();
         }
         private void ClearAddGroupBox()
@@ -76,19 +71,45 @@ namespace ArchitectureCompany.FormApplication
 
         private void rBtnDelete_CheckedChanged(object sender, EventArgs e)
         {
-            //textBoxName.Enabled = false;
-            //textBoxLastName.Enabled = false
-            btnAdd.Text = "Discharge";
-            txtBoxAddress.Enabled = false;
-            comboBoxCities.Enabled = false;
-            comboBoxDepartment.Enabled = false;
-            textBoxPhoneNum.Enabled = false;
-            textBoxEmail.Enabled = false;
+            
+            btnAdd.Enabled = false;
+            btnDischarge.Enabled = true;
+            string employeeInfo = listBoxEmployee.Text;
+            currentEmployeeIndex = int.Parse(employeeInfo.Split(' ').First());
+            MessageBox.Show(eService.DeleteEmployeeById(currentEmployeeIndex));
         }
 
         private void rBtnAdd_CheckedChanged(object sender, EventArgs e)
         {
-            btnAdd.Text = "Add";
+            textBoxName.Enabled = true;
+            textBoxLastName.Enabled = true;
+            txtBoxAddress.Enabled = true;
+            comboBoxCities.Enabled = true;
+            comboBoxDepartment.Enabled = true;
+            textBoxPhoneNum.Enabled = true;
+            textBoxEmail.Enabled = true;
+            btnAdd.Enabled = true;
+            btnDischarge.Enabled = false;
+        }
+
+        private void btnDischarge_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void listBoxEmployee_DoubleClick(object sender, EventArgs e)
+        {
+            string employeeInfo = listBoxEmployee.Text;
+            currentEmployeeIndex = int.Parse(employeeInfo.Split(' ').First());
+            Employee employee = eService.GetEmployeeById(currentEmployeeIndex);
+            if (employee != null)
+            {
+                textBoxName.Text = employee.FirstName;
+                textBoxLastName.Text = employee.LastName;
+                txtBoxAddress.Text = employee.Address.Name;
+                comboBoxCities.Text = employee.Address.Town.Name;
+                comboBoxDepartment.Text = employee.Department.Name;
+            }
         }
     }
 }
