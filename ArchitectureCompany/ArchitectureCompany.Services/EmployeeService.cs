@@ -224,6 +224,13 @@
                 return $"Employee {e.FirstName} {e.LastName} has new phone number: {num}";
             }
         }
+        public int GetEmployeePagesCount(int count)
+        {
+            using (context = new AppDbContext())
+            {
+                return (int)Math.Ceiling(context.Employees.Count() / (double)count);
+            }
+        }
     }
 
 }

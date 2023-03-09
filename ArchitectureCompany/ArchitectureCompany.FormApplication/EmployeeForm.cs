@@ -40,6 +40,14 @@ namespace ArchitectureCompany.FormApplication
             comboBoxCities.SelectedIndex = 0;
             List<string> employees = eService.GetEmployeeBasicInfo();
             employees.ForEach(x => listBoxEmployee.Items.Add(x));
+
+           //totalPages = eService.GetEmployeePagesCount(itemsPerPage);
+           //List<string> employees = =eService.GetAllEmployeesInfo(order, currentPage, itemsPerPage);
+           //aircrafts.ForEach(x => listBox1.Items.Add(x));
+           //
+           //comboBoxItemsPerPage.SelectedIndex = 1;
+           //comboBoxOrder.SelectedIndex = 0;
+           //labelPageInfo.Text = $"{currentPage} / {totalPage}";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
