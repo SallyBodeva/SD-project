@@ -41,13 +41,12 @@ namespace ArchitectureCompany.FormApplication
             List<string> employees = eService.GetEmployeeBasicInfo();
             employees.ForEach(x => listBoxEmployee.Items.Add(x));
 
-           //totalPages = eService.GetEmployeePagesCount(itemsPerPage);
-           //List<string> employees = =eService.GetAllEmployeesInfo(order, currentPage, itemsPerPage);
-           //aircrafts.ForEach(x => listBox1.Items.Add(x));
-           //
-           //comboBoxItemsPerPage.SelectedIndex = 1;
-           //comboBoxOrder.SelectedIndex = 0;
-           //labelPageInfo.Text = $"{currentPage} / {totalPage}";
+           totalPages = eService.GetEmployeePagesCount(itemsPerPage);
+           List<string> eS =eService.GetEmployeeBasicInfo( currentPage, itemsPerPage);
+           eS.ForEach(x => listBoxEmployee.Items.Add(x));
+           
+          
+           labelPageNum.Text = $"{currentPage} / {totalPages}";
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
@@ -169,11 +168,11 @@ namespace ArchitectureCompany.FormApplication
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-            if (currentPage <= 1) { return; }
-            listBoxEmployee.Items.Clear();
-            List<string> list = eService.GetEmployeeBasicInfo(--currentPage, itemsPerPage);
-            list.ForEach(p => listBoxEmployee.Items.Add(p));
-            labelPageNum.Text = $"{currentPage} / {totalPages}";
+           if (currentPage <= 1) { return; }
+           listBoxEmployee.Items.Clear();
+           List<string> list = eService.GetEmployeeBasicInfo(--currentPage, itemsPerPage);
+           list.ForEach(p => listBoxEmployee.Items.Add(p));
+           labelPageNum.Text = $"{currentPage} / {totalPages}";
         }
 
         private void btnNext_Click(object sender, EventArgs e)

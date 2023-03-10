@@ -33,6 +33,7 @@
             this.Welcomelabel = new System.Windows.Forms.Label();
             this.labelTo = new System.Windows.Forms.Label();
             this.labelArtLife = new System.Windows.Forms.Label();
+            this.btnClient = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEmployee
@@ -41,7 +42,7 @@
             this.btnEmployee.Name = "btnEmployee";
             this.btnEmployee.Size = new System.Drawing.Size(134, 41);
             this.btnEmployee.TabIndex = 0;
-            this.btnEmployee.Text = "button1";
+            this.btnEmployee.Text = "Our Employees";
             this.btnEmployee.UseVisualStyleBackColor = true;
             this.btnEmployee.Click += new System.EventHandler(this.btnEmployee_Click);
             // 
@@ -79,12 +80,23 @@
             this.labelArtLife.TabIndex = 3;
             this.labelArtLife.Text = "ArtLife";
             // 
+            // btnClient
+            // 
+            this.btnClient.Location = new System.Drawing.Point(177, 275);
+            this.btnClient.Name = "btnClient";
+            this.btnClient.Size = new System.Drawing.Size(134, 41);
+            this.btnClient.TabIndex = 4;
+            this.btnClient.Text = "Become our client";
+            this.btnClient.UseVisualStyleBackColor = true;
+            this.btnClient.Click += new System.EventHandler(this.btnClient_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(610, 348);
+            this.Controls.Add(this.btnClient);
             this.Controls.Add(this.labelArtLife);
             this.Controls.Add(this.labelTo);
             this.Controls.Add(this.Welcomelabel);
@@ -103,5 +115,6 @@
         private System.Windows.Forms.Label Welcomelabel;
         private System.Windows.Forms.Label labelTo;
         private System.Windows.Forms.Label labelArtLife;
+        private System.Windows.Forms.Button btnClient;
     }
 }

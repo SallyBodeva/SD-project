@@ -12,7 +12,7 @@ namespace Architecture.Company.DataSeeder
         private static AdditionalService aService = new AdditionalService();
         static void Main()
         {
-            SeedAddress();
+            SeedEmployee();
         }
         public static void SeedDepartments()
         {
@@ -110,32 +110,6 @@ namespace Architecture.Company.DataSeeder
                 Console.WriteLine(aService.AddAddress(addressname, towns[i]));
             }
         }
-        public static void SeedEmployeeFail()
-        {
-            List<string> a = new List<string>();
-            List<string> firstName = new List<string>() {  "Zane", "Mabel", "Leo", "Scarlett", "Yasemin", "Caleb" };
-            List<string> lastName = new List<string>() {   "Rodriguez", "Martinez", "Hernandez", "Lopez", "Gonzalez", "Wilson", "Anderson" };
-            List<string> phoneNumber = new List<string>() {  "0889523652", "0985746985", "0887441563", "0888525252", "0896323235", "0888897562", "0814766666", "0888877456", "0889955555", "08547936240", "08547936247", "08547936245", "08547936278", "085479362948", "08547036248", "09547936248", "09747936248", "09847936248", "09047936248", "09549936248", "09447936248", "09247936248", "09547939248", "0879658758", "0123589745", "0897452122", "0888550000", "0800226547" };
-            List<string> addresses = new List<string>() { "Main Street 7", "Park Avenue 9", "Broadway 10", "Oak Street 9", "High Street 7", "Maple Avenue 7", "Market Street 9", "Pine Street 4", "Church Street 3", "King Street 5", "Lombard Street 7", "5th Avenue 9", "Sunset Boulevard 8", "Canal Street 5", "Peachtree Street 23", "Bourbon Street 12", "Rodeo Drive 13", "Mongolia Avenue 14", "Via del Corso 15", "Via dei Fori 16", "Via Vento 8", "Via Appia Antica 10", "Vitosha Boulevard 10", "Graf Ignatiev 10", "Macedonia Street 10", "Varna Boulevard 10" };
-            List<string> emails = new List<string>() {  "architecture_company@gmail.com", "sb_artlife@gmail.com", "ey_architecture@gmail.com", "artlife_kb@abv.bg", "ny_architecture@gmail.com", "bp_architecture@gmail.com", "ct_architecture@gmail.com", "et_architecture@gmail.com", "eda_architecture@gmail.com", "ey_architect@gmail.com", "brr_architecture@gmail.com", "da_architecture@gmail.com", "project_architecture@gmail.com" };
-            Random random = new Random();
-            for (int i = 0; i < 25; i++)
-            {
-                int employeeFirstName = random.Next(0, firstName.Count);
-                int employeeLastName = random.Next(0, lastName.Count);
-                int addrsssIndex = 0;
-                string addressname = addresses[addrsssIndex];
-                string town = aService.GetTownOfAddressByName(addressname);
-                List<string> departments = dService.GetDepartmentName();
-                int email = random.Next(0, emails.Count);
-                int phoneIndex = 0;
-                string phone = phoneNumber[phoneIndex];
-                Console.WriteLine(eService.AddEmployee(firstName[employeeFirstName], lastName[employeeLastName], addresses[addrsssIndex], town, departments[i], phone, emails[email]));
-                ++phoneIndex;
-                ++addrsssIndex;
-            }
-
-        }
         public static void SeedEmployee()
         {
             Console.WriteLine(eService.AddEmployee("Serkan","Bolat", "Rodeo Drive 13","New York", "Industrial Architecture", "0054703620", "architect_ceo@gmail.com"));
@@ -156,7 +130,7 @@ namespace Architecture.Company.DataSeeder
             Console.WriteLine(eService.AddEmployee("Caleb",  "Lopez", "Peachtree Street 23", "Montevideo", "Industrial Architecture", "1547333248", "architect_lopez@gmail.com"));
             Console.WriteLine(eService.AddEmployee("Greg", "Gonzalez", "Bourbon Street 12", "Munchen", "Commercial Architecture", "7547936248", "architect_g@gmail.com"));
             Console.WriteLine(eService.AddEmployee("Amalia", "Wilson", "Mongolia Avenue 14", "Normandy", "Landscape Architecture", "8547936248", "architect_willson@gmail.com"));
-            Console.WriteLine(eService.AddEmployee("Kaira", "Anderson ",  "Via del Corso 15", "Otawa", "Commercial Architecture", "0547936248", "architect_anderson@gmail.com"));
+            Console.WriteLine(eService.AddEmployee("Kaira", "Anderson ",  "Via del Corso 15", "Otawa", "Commercial Architecture", "0947936248", "architect_anderson@gmail.com"));
             Console.WriteLine(eService.AddEmployee("Rebeca", "Wimbley", "Via dei Fori 16", "Paris", "PR management", "08547936248", "architect_wimbley@gmail.com"));
             Console.WriteLine(eService.AddEmployee("Stephany", "Baker", "Via Vento 8", "Pazardzhik", "Commercial Architecture", "0847936248", "architect_baker@gmail.com"));
             Console.WriteLine(eService.AddEmployee("Atidje", "Bursin", "Via Appia Antica 10", "Pernik", "Interior Design", "0854793624", "architect_bursin@gmail.com"));
@@ -165,8 +139,6 @@ namespace Architecture.Company.DataSeeder
             Console.WriteLine(eService.AddEmployee("Bryan", "Conar", "Hristo Botev str 25", "Blagoevgrad", "Residential Architecture", "08547777248", "architect_conar@gmail.com"));
             Console.WriteLine(eService.AddEmployee("Jeremiah", "Connard", "--", "---", "Interior Design", "08547985858", "architect_connard@gmail.com"));
            
-
-
         }
     }
 }

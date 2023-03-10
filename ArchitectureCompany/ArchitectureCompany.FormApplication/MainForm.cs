@@ -32,5 +32,11 @@ namespace ArchitectureCompany.FormApplication
         {
 
         }
+
+        private void btnClient_Click(object sender, EventArgs e)
+        {
+            ClientFormApp cf = new ClientFormApp();
+            cf.ShowDialog();
+        }
     }
 }
