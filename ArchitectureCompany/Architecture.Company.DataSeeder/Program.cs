@@ -12,7 +12,7 @@ namespace Architecture.Company.DataSeeder
         private static AdditionalService aService = new AdditionalService();
         static void Main()
         {
-            SeedEmployee();
+
         }
         public static void SeedDepartments()
         {
