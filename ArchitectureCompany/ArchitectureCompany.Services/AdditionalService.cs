@@ -31,6 +31,27 @@
             }
             return message.ToString().TrimEnd();
         }
+        public string AddBuildingType(string name)
+        {
+            StringBuilder msg = new StringBuilder();
+            bool isValid = true;
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                msg.AppendLine($"Invalid building type ");
+                isValid = false;
+            }
+            if (isValid)
+            {
+                BuildingType bt = new BuildingType() { TypeName = name };
+                using (context = new AppDbContext())
+                {
+                    context.Add(bt);
+                    context.SaveChanges();
+                    msg.AppendLine($"{nameof(BuildingType)} {name} is created");
+                }
+            }
+            return msg.ToString().TrimEnd();
+        }
         public string AddAddress(string name, string town)
         {
             StringBuilder message = new StringBuilder();
