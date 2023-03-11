@@ -57,106 +57,115 @@
             this.pBImage = new System.Windows.Forms.PictureBox();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonDeleat = new System.Windows.Forms.Button();
+            this.groupBoxClientInfo = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.pBImage)).BeginInit();
+            this.groupBoxClientInfo.SuspendLayout();
             this.SuspendLayout();
             // 
             // labelEnterInfo
             // 
             this.labelEnterInfo.AutoSize = true;
-            this.labelEnterInfo.Location = new System.Drawing.Point(24, 55);
+            this.labelEnterInfo.Font = new System.Drawing.Font("Kristen ITC", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.labelEnterInfo.Location = new System.Drawing.Point(24, 11);
             this.labelEnterInfo.Name = "labelEnterInfo";
-            this.labelEnterInfo.Size = new System.Drawing.Size(38, 15);
+            this.labelEnterInfo.Size = new System.Drawing.Size(271, 66);
             this.labelEnterInfo.TabIndex = 0;
-            this.labelEnterInfo.Text = "label1";
+            this.labelEnterInfo.Text = "Enter info";
             // 
             // labelFirstName
             // 
             this.labelFirstName.AutoSize = true;
-            this.labelFirstName.Location = new System.Drawing.Point(24, 81);
+            this.labelFirstName.Location = new System.Drawing.Point(28, 31);
             this.labelFirstName.Name = "labelFirstName";
-            this.labelFirstName.Size = new System.Drawing.Size(38, 15);
+            this.labelFirstName.Size = new System.Drawing.Size(62, 15);
             this.labelFirstName.TabIndex = 1;
-            this.labelFirstName.Text = "label1";
+            this.labelFirstName.Text = "First name";
+            this.labelFirstName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.labelFirstName.Click += new System.EventHandler(this.label1_Click);
             // 
             // tbFirstName
             // 
-            this.tbFirstName.Location = new System.Drawing.Point(92, 73);
+            this.tbFirstName.Location = new System.Drawing.Point(123, 23);
             this.tbFirstName.Name = "tbFirstName";
-            this.tbFirstName.Size = new System.Drawing.Size(100, 23);
+            this.tbFirstName.Size = new System.Drawing.Size(165, 23);
             this.tbFirstName.TabIndex = 2;
             // 
             // labelLastName
             // 
             this.labelLastName.AutoSize = true;
-            this.labelLastName.Location = new System.Drawing.Point(24, 109);
+            this.labelLastName.Location = new System.Drawing.Point(29, 69);
             this.labelLastName.Name = "labelLastName";
-            this.labelLastName.Size = new System.Drawing.Size(38, 15);
+            this.labelLastName.Size = new System.Drawing.Size(61, 15);
             this.labelLastName.TabIndex = 3;
-            this.labelLastName.Text = "label1";
+            this.labelLastName.Text = "Last name";
+            this.labelLastName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tbLastName
             // 
-            this.tbLastName.Location = new System.Drawing.Point(92, 102);
+            this.tbLastName.Location = new System.Drawing.Point(123, 59);
             this.tbLastName.Name = "tbLastName";
-            this.tbLastName.Size = new System.Drawing.Size(100, 23);
+            this.tbLastName.Size = new System.Drawing.Size(165, 23);
             this.tbLastName.TabIndex = 5;
             // 
             // labelAdresses
             // 
             this.labelAdresses.AutoSize = true;
-            this.labelAdresses.Location = new System.Drawing.Point(24, 131);
+            this.labelAdresses.Location = new System.Drawing.Point(30, 102);
             this.labelAdresses.Name = "labelAdresses";
-            this.labelAdresses.Size = new System.Drawing.Size(38, 15);
+            this.labelAdresses.Size = new System.Drawing.Size(49, 15);
             this.labelAdresses.TabIndex = 6;
-            this.labelAdresses.Text = "label1";
+            this.labelAdresses.Text = "Address";
+            this.labelAdresses.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tbAdresses
             // 
-            this.tbAdresses.Location = new System.Drawing.Point(92, 131);
+            this.tbAdresses.Location = new System.Drawing.Point(123, 94);
             this.tbAdresses.Name = "tbAdresses";
-            this.tbAdresses.Size = new System.Drawing.Size(100, 23);
+            this.tbAdresses.Size = new System.Drawing.Size(165, 23);
             this.tbAdresses.TabIndex = 7;
             // 
             // labelPhoneNumber
             // 
             this.labelPhoneNumber.AutoSize = true;
-            this.labelPhoneNumber.Location = new System.Drawing.Point(24, 159);
+            this.labelPhoneNumber.Location = new System.Drawing.Point(29, 141);
             this.labelPhoneNumber.Name = "labelPhoneNumber";
-            this.labelPhoneNumber.Size = new System.Drawing.Size(38, 15);
+            this.labelPhoneNumber.Size = new System.Drawing.Size(86, 15);
             this.labelPhoneNumber.TabIndex = 8;
-            this.labelPhoneNumber.Text = "label1";
+            this.labelPhoneNumber.Text = "Phone number";
+            this.labelPhoneNumber.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tbPhoneNumber
             // 
-            this.tbPhoneNumber.Location = new System.Drawing.Point(92, 160);
+            this.tbPhoneNumber.Location = new System.Drawing.Point(123, 133);
             this.tbPhoneNumber.Name = "tbPhoneNumber";
-            this.tbPhoneNumber.Size = new System.Drawing.Size(100, 23);
+            this.tbPhoneNumber.Size = new System.Drawing.Size(165, 23);
             this.tbPhoneNumber.TabIndex = 9;
+            this.tbPhoneNumber.TextChanged += new System.EventHandler(this.tbPhoneNumber_TextChanged);
             // 
             // labelEmail
             // 
             this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(24, 189);
+            this.labelEmail.Location = new System.Drawing.Point(30, 174);
             this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(38, 15);
+            this.labelEmail.Size = new System.Drawing.Size(36, 15);
             this.labelEmail.TabIndex = 10;
-            this.labelEmail.Text = "label1";
+            this.labelEmail.Text = "Email";
+            this.labelEmail.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(92, 189);
+            this.tbEmail.Location = new System.Drawing.Point(123, 166);
             this.tbEmail.Name = "tbEmail";
-            this.tbEmail.Size = new System.Drawing.Size(100, 23);
+            this.tbEmail.Size = new System.Drawing.Size(165, 23);
             this.tbEmail.TabIndex = 11;
             // 
             // buttonRegist
             // 
-            this.buttonRegist.Location = new System.Drawing.Point(24, 256);
+            this.buttonRegist.Location = new System.Drawing.Point(30, 233);
             this.buttonRegist.Name = "buttonRegist";
-            this.buttonRegist.Size = new System.Drawing.Size(85, 58);
+            this.buttonRegist.Size = new System.Drawing.Size(258, 70);
             this.buttonRegist.TabIndex = 12;
-            this.buttonRegist.Text = "button1";
+            this.buttonRegist.Text = "Sign up";
             this.buttonRegist.UseVisualStyleBackColor = true;
             // 
             // labelProject
@@ -300,11 +309,32 @@
             this.buttonDeleat.Text = "button1";
             this.buttonDeleat.UseVisualStyleBackColor = true;
             // 
+            // groupBoxClientInfo
+            // 
+            this.groupBoxClientInfo.Controls.Add(this.buttonRegist);
+            this.groupBoxClientInfo.Controls.Add(this.tbEmail);
+            this.groupBoxClientInfo.Controls.Add(this.labelEmail);
+            this.groupBoxClientInfo.Controls.Add(this.tbPhoneNumber);
+            this.groupBoxClientInfo.Controls.Add(this.labelPhoneNumber);
+            this.groupBoxClientInfo.Controls.Add(this.tbAdresses);
+            this.groupBoxClientInfo.Controls.Add(this.labelAdresses);
+            this.groupBoxClientInfo.Controls.Add(this.tbLastName);
+            this.groupBoxClientInfo.Controls.Add(this.labelLastName);
+            this.groupBoxClientInfo.Controls.Add(this.tbFirstName);
+            this.groupBoxClientInfo.Controls.Add(this.labelFirstName);
+            this.groupBoxClientInfo.Location = new System.Drawing.Point(24, 87);
+            this.groupBoxClientInfo.Name = "groupBoxClientInfo";
+            this.groupBoxClientInfo.Size = new System.Drawing.Size(334, 334);
+            this.groupBoxClientInfo.TabIndex = 30;
+            this.groupBoxClientInfo.TabStop = false;
+            this.groupBoxClientInfo.Text = "Be our client";
+            // 
             // ClientFormApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.groupBoxClientInfo);
             this.Controls.Add(this.buttonDeleat);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.pBImage);
@@ -322,21 +352,13 @@
             this.Controls.Add(this.tbProjectName);
             this.Controls.Add(this.labelProjectName);
             this.Controls.Add(this.labelProject);
-            this.Controls.Add(this.buttonRegist);
-            this.Controls.Add(this.tbEmail);
-            this.Controls.Add(this.labelEmail);
-            this.Controls.Add(this.tbPhoneNumber);
-            this.Controls.Add(this.labelPhoneNumber);
-            this.Controls.Add(this.tbAdresses);
-            this.Controls.Add(this.labelAdresses);
-            this.Controls.Add(this.tbLastName);
-            this.Controls.Add(this.labelLastName);
-            this.Controls.Add(this.tbFirstName);
-            this.Controls.Add(this.labelFirstName);
             this.Controls.Add(this.labelEnterInfo);
             this.Name = "ClientFormApp";
             this.Text = "ClientFormApp";
+            this.Load += new System.EventHandler(this.ClientFormApp_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pBImage)).EndInit();
+            this.groupBoxClientInfo.ResumeLayout(false);
+            this.groupBoxClientInfo.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -373,5 +395,6 @@
         private System.Windows.Forms.PictureBox pBImage;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonDeleat;
+        private System.Windows.Forms.GroupBox groupBoxClientInfo;
     }
 }

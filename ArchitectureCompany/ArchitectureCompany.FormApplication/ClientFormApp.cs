@@ -14,10 +14,19 @@ namespace ArchitectureCompany.FormApplication
         {
             InitializeComponent();
         }
+        private void ClientFormApp_Load(object sender, EventArgs e)
+        {
 
+        }
         private void label1_Click(object sender, EventArgs e)
         {
 
         }
+
+        private void tbPhoneNumber_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
     }
 }

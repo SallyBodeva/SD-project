@@ -95,7 +95,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
-            this.ClientSize = new System.Drawing.Size(610, 348);
+            this.ClientSize = new System.Drawing.Size(610, 336);
             this.Controls.Add(this.btnClient);
             this.Controls.Add(this.labelArtLife);
             this.Controls.Add(this.labelTo);
