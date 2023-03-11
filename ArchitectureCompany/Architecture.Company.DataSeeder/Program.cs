@@ -13,7 +13,7 @@ namespace Architecture.Company.DataSeeder
         private static ClientService cService = new ClientService();
         static void Main()
         {
-
+            SeedClient();
         }
         public static void SeedDepartments()
         {

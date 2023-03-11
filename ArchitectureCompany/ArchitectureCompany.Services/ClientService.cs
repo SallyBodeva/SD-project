@@ -70,7 +70,7 @@ namespace ArchitectureCompany.Services
 
                     context.Clients.Add(client);
                     context.SaveChanges();
-                    message.AppendLine($"New client {firstName} {lastName} is added!");
+                    message.AppendLine($"{firstName} {lastName} became our client!");
 
                 }
             }
