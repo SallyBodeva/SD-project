@@ -10,6 +10,7 @@ namespace Architecture.Company.DataSeeder
         private static DepartmentService dService = new DepartmentService();
         private static EmployeeService eService = new EmployeeService();
         private static AdditionalService aService = new AdditionalService();
+        private static ClientService cService = new ClientService();
         static void Main()
         {
 
@@ -171,5 +172,28 @@ namespace Architecture.Company.DataSeeder
                 Console.WriteLine(aService.AddAddress(addressname, towns[i]));
             }
         }
-    }
+        public static void SeedClient()
+        {
+            Console.WriteLine(cService.AddClient("Samanta","Gregory","Abana Path","Bansko","0888552200","samanta_12@gmail.com"));
+            Console.WriteLine(cService.AddClient("Olivia", "Rodrigo", "Abasco Court", "Barcelona", "0833333333", "oliviarodrigo1@abv.bg"));
+            Console.WriteLine(cService.AddClient("Kate", "Pausley", "Abney Avenue", "Berlin", "0777777777", "katep@abv.bg"));
+            Console.WriteLine(cService.AddClient("Darvin", "Smith", "Adrienne Way", "Blagoevgrad", "0123456789", "darvin@abv.bg"));
+            Console.WriteLine(cService.AddClient("Francis", "Genoa", "Aintree Lane", "Buenos Aires", "7894561230", "francis@abv.bg"));
+            Console.WriteLine(cService.AddClient("Paola", "Pedres", "Brampton Street", "Burgas", "0111111111", "paola@abv.bg"));
+            Console.WriteLine(cService.AddClient("Carlos", "Stone", "Brandy Street", "Ciro", "0222225555", "carlos2gmail.com"));
+            Console.WriteLine(cService.AddClient("Derin", "Denizli", "Dyson Loop", "Dubai", "9023201562", "derin@gmail.com"));
+            Console.WriteLine(cService.AddClient("Preslava", "Filipova", "Eaton Terrace", "Helzinki", "7000099999", "presi@abv.bg"));
+            Console.WriteLine(cService.AddClient("Amaya", "Mitchel", "Foxbridge Terrace", "Limasol", "0993333000", "amaya@abv.bg"));
+            Console.WriteLine(cService.AddClient("Sara", "Cameron", "Franklin Court", "Lisbon", "5987469874", "sara@gmail.com"));
+            Console.WriteLine(cService.AddClient("Samuel", "Ibrahimovic", "Guerra Avenue", "London", "7310555666", "samuel@abv.bg"));
+            Console.WriteLine(cService.AddClient("Benjamin", "Fronch", "Harston Trail", "Madrid", "5333322015", "benju@abv.bg"));
+            Console.WriteLine(cService.AddClient("Elizabeth", "Robby", "Harleston Street", "Manchester", "6666666520", "beth@abv.bg"));
+            Console.WriteLine(cService.AddClient("Darian", "Gibert", "Jetta Way", "Monaco", "1177445544", "darian@gmail.com"));
+            Console.WriteLine(cService.AddClient("Nilson", "Pitcher", "Joiner Place", "Montevideo", "5532000000", "nil@abv.bg"));
+            Console.WriteLine(cService.AddClient("Halil", "Goztepe", "Medford Place", "Munchen", "9990044444", "halil@gmail.com"));
+            Console.WriteLine(cService.AddClient("Ferid", "Azanci", "Milhorn Loop", "New York", "5555222222", "ferid@abv.bg"));
+            Console.WriteLine(cService.AddClient("Casteel", "Atlantic", "Odell Circle", "Normandy", "4444000000", "cas@abv.bg"));
+
+        }
+        }
 }
