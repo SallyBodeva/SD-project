@@ -58,6 +58,8 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonDeleat = new System.Windows.Forms.Button();
             this.groupBoxClientInfo = new System.Windows.Forms.GroupBox();
+            this.labelTown = new System.Windows.Forms.Label();
+            this.tbTown = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pBImage)).BeginInit();
             this.groupBoxClientInfo.SuspendLayout();
             this.SuspendLayout();
@@ -127,7 +129,7 @@
             // labelPhoneNumber
             // 
             this.labelPhoneNumber.AutoSize = true;
-            this.labelPhoneNumber.Location = new System.Drawing.Point(29, 141);
+            this.labelPhoneNumber.Location = new System.Drawing.Point(29, 163);
             this.labelPhoneNumber.Name = "labelPhoneNumber";
             this.labelPhoneNumber.Size = new System.Drawing.Size(86, 15);
             this.labelPhoneNumber.TabIndex = 8;
@@ -136,7 +138,7 @@
             // 
             // tbPhoneNumber
             // 
-            this.tbPhoneNumber.Location = new System.Drawing.Point(123, 133);
+            this.tbPhoneNumber.Location = new System.Drawing.Point(123, 155);
             this.tbPhoneNumber.Name = "tbPhoneNumber";
             this.tbPhoneNumber.Size = new System.Drawing.Size(165, 23);
             this.tbPhoneNumber.TabIndex = 9;
@@ -145,7 +147,7 @@
             // labelEmail
             // 
             this.labelEmail.AutoSize = true;
-            this.labelEmail.Location = new System.Drawing.Point(30, 174);
+            this.labelEmail.Location = new System.Drawing.Point(30, 196);
             this.labelEmail.Name = "labelEmail";
             this.labelEmail.Size = new System.Drawing.Size(36, 15);
             this.labelEmail.TabIndex = 10;
@@ -154,7 +156,7 @@
             // 
             // tbEmail
             // 
-            this.tbEmail.Location = new System.Drawing.Point(123, 166);
+            this.tbEmail.Location = new System.Drawing.Point(123, 188);
             this.tbEmail.Name = "tbEmail";
             this.tbEmail.Size = new System.Drawing.Size(165, 23);
             this.tbEmail.TabIndex = 11;
@@ -311,6 +313,8 @@
             // 
             // groupBoxClientInfo
             // 
+            this.groupBoxClientInfo.Controls.Add(this.tbTown);
+            this.groupBoxClientInfo.Controls.Add(this.labelTown);
             this.groupBoxClientInfo.Controls.Add(this.buttonRegist);
             this.groupBoxClientInfo.Controls.Add(this.tbEmail);
             this.groupBoxClientInfo.Controls.Add(this.labelEmail);
@@ -328,6 +332,22 @@
             this.groupBoxClientInfo.TabIndex = 30;
             this.groupBoxClientInfo.TabStop = false;
             this.groupBoxClientInfo.Text = "Be our client";
+            // 
+            // labelTown
+            // 
+            this.labelTown.AutoSize = true;
+            this.labelTown.Location = new System.Drawing.Point(31, 133);
+            this.labelTown.Name = "labelTown";
+            this.labelTown.Size = new System.Drawing.Size(35, 15);
+            this.labelTown.TabIndex = 31;
+            this.labelTown.Text = "Town";
+            // 
+            // tbTown
+            // 
+            this.tbTown.Location = new System.Drawing.Point(123, 125);
+            this.tbTown.Name = "tbTown";
+            this.tbTown.Size = new System.Drawing.Size(165, 23);
+            this.tbTown.TabIndex = 32;
             // 
             // ClientFormApp
             // 
@@ -396,5 +416,7 @@
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonDeleat;
         private System.Windows.Forms.GroupBox groupBoxClientInfo;
+        private System.Windows.Forms.TextBox tbTown;
+        private System.Windows.Forms.Label labelTown;
     }
 }
