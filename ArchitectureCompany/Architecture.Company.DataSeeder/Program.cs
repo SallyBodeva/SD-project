@@ -140,5 +140,36 @@ namespace Architecture.Company.DataSeeder
             Console.WriteLine(eService.AddEmployee("Jeremiah", "Connard", "--", "---", "Interior Design", "08547985858", "architect_connard@gmail.com"));
            
         }
+        public static void SeedClientAddress()
+        {
+            List<string> a = new List<string>();
+            a.Add("Aalto Place");
+            a.Add("Abana Path");
+            a.Add("Abasco Court");
+            a.Add("Abney Avenue");
+            a.Add("Adrienne Way");
+            a.Add("Aintree Lane");
+            a.Add("Brampton Street");
+            a.Add("Brandy Street ");
+            a.Add("Dyson Loop");
+            a.Add("Eaton Terrace");
+            a.Add("Foxbridge Terrace");
+            a.Add("Franklin Court");
+            a.Add("Guerra Avenue");
+            a.Add("Harston Trail");
+            a.Add("Harleston Street");
+            a.Add("Jetta Way");
+            a.Add("Joiner Place");
+            a.Add("Medford Place");
+            a.Add("Millhorn Loop");
+            a.Add("Odell Circle");
+            for (int i = 0; i < 25; i++)
+            {
+                Random r = new Random();
+                string addressname = a[i];
+                List<string> towns = aService.GetTownsNames();
+                Console.WriteLine(aService.AddAddress(addressname, towns[i]));
+            }
+        }
     }
 }
