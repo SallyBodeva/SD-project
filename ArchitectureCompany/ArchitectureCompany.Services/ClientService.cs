@@ -46,15 +46,15 @@ namespace ArchitectureCompany.Services
             using (context = new AppDbContext())
             {
                 t = context.Towns.FirstOrDefault(x => x.Name == town);
-                if (t == null) 
+                if (t == null)
                 {
                     t = new Town() { Name = town };
                     context.SaveChanges();
                 }
                 a = context.Addresses.FirstOrDefault(x => x.Name == address);
-                if (a == null) 
+                if (a == null)
                 {
-                    a = new Address() { Name = address,Town=t };
+                    a = new Address() { Name = address, Town = t };
                     context.SaveChanges();
                 }
                 if (isValid)
@@ -147,6 +147,21 @@ namespace ArchitectureCompany.Services
                 {
                     return $"{nameof(Client)} not found!";
                 }
+            }
+        }
+        public int GetClientIdByPhoneNum(string phoneNum)
+        {
+            using (context = new AppDbContext())
+            {
+                return context.Clients.FirstOrDefault(x => x.PhoneNumber == phoneNum).Id;
+            }
+        }
+        public List<string> GetProjectsName(int idClient)
+        {
+            using (context= new AppDbContext())
+            {
+                List<string> currentClientProjects = context.ProjectClients.Where(x => x.ClientId == idClient).Select(x=>x.Project.Name).ToList();
+                return currentClientProjects;
             }
         }
     }

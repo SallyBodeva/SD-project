@@ -44,6 +44,7 @@
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.groupBoxProject = new System.Windows.Forms.GroupBox();
+            this.comboBoxProjects = new System.Windows.Forms.ComboBox();
             this.bSingIn = new System.Windows.Forms.Button();
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.labelEmail = new System.Windows.Forms.Label();
@@ -60,7 +61,6 @@
             this.groupBoxClient = new System.Windows.Forms.GroupBox();
             this.btnAlradyWork = new System.Windows.Forms.Button();
             this.labelStem1 = new System.Windows.Forms.Label();
-            this.comboBoxProjects = new System.Windows.Forms.ComboBox();
             this.groupBoxProject.SuspendLayout();
             this.groupBoxClient.SuspendLayout();
             this.SuspendLayout();
@@ -181,6 +181,7 @@
             this.buttonAdd.TabIndex = 30;
             this.buttonAdd.Text = "Add";
             this.buttonAdd.UseVisualStyleBackColor = true;
+            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // buttonDelete
             // 
@@ -213,6 +214,14 @@
             this.groupBoxProject.TabIndex = 33;
             this.groupBoxProject.TabStop = false;
             this.groupBoxProject.Text = "Give your project idea";
+            // 
+            // comboBoxProjects
+            // 
+            this.comboBoxProjects.FormattingEnabled = true;
+            this.comboBoxProjects.Location = new System.Drawing.Point(132, 30);
+            this.comboBoxProjects.Name = "comboBoxProjects";
+            this.comboBoxProjects.Size = new System.Drawing.Size(130, 23);
+            this.comboBoxProjects.TabIndex = 38;
             // 
             // bSingIn
             // 
@@ -352,6 +361,7 @@
             this.btnAlradyWork.TabIndex = 36;
             this.btnAlradyWork.Text = "Already work with us?";
             this.btnAlradyWork.UseVisualStyleBackColor = true;
+            this.btnAlradyWork.Click += new System.EventHandler(this.btnAlradyWork_Click);
             // 
             // labelStem1
             // 
@@ -362,14 +372,6 @@
             this.labelStem1.TabIndex = 37;
             this.labelStem1.Text = "Step 1";
             this.labelStem1.TextChanged += new System.EventHandler(this.labelStem1_TextChanged);
-            // 
-            // comboBoxProjects
-            // 
-            this.comboBoxProjects.FormattingEnabled = true;
-            this.comboBoxProjects.Location = new System.Drawing.Point(132, 30);
-            this.comboBoxProjects.Name = "comboBoxProjects";
-            this.comboBoxProjects.Size = new System.Drawing.Size(130, 23);
-            this.comboBoxProjects.TabIndex = 38;
             // 
             // FormAppClient
             // 

@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
+using ArchitectureCompany.Models;
 using ArchitectureCompany.Services;
 
 namespace ArchitectureCompany.FormApplication
@@ -13,7 +14,7 @@ namespace ArchitectureCompany.FormApplication
     {
         private ClientService clientService;
         private AdditionalService aService;
-
+        private int ClientThatWorkWithUs = 0;
         public FormAppClient()
         {
             InitializeComponent();
@@ -58,6 +59,20 @@ namespace ArchitectureCompany.FormApplication
                 groupBoxClient.Enabled = false;
                 groupBoxProject.Enabled = true;
             }
+        }
+
+        private void btnAlradyWork_Click(object sender, EventArgs e)
+        {
+            ClientThatWorkWithUs = clientService.GetClientIdByPhoneNum(tbPhoneNumber.Text);
+            List<string> projectNames = clientService.GetProjectsName(ClientThatWorkWithUs);
+            projectNames.ForEach(x => comboBoxProjects.Items.Add(x));
+            List<string> buildingsNames = aService.GetBuildingsTypes();
+            buildingsNames.ForEach(x => cbBulidingType.Items.Add(x));
+        }
+
+        private void buttonAdd_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }
