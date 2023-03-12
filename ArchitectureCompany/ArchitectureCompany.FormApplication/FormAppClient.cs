@@ -14,12 +14,14 @@ namespace ArchitectureCompany.FormApplication
     {
         private ClientService clientService;
         private AdditionalService aService;
+        private ProjectService projectService;
         private int ClientThatWorkWithUs = 0;
         public FormAppClient()
         {
             InitializeComponent();
             clientService = new ClientService();
             aService = new AdditionalService();
+            projectService = new ProjectService();
         }
 
         private void FormAppClient_Load(object sender, EventArgs e)
@@ -27,6 +29,12 @@ namespace ArchitectureCompany.FormApplication
             List<string> towns = aService.GetTownsNames();
             towns.ForEach(x => cbTown.Items.Add(x));
             cbTown.SelectedIndex = 0;
+            List<string> types = aService.GetBuildingsTypes();
+            types.ForEach(x => cbBulidingType.Items.Add(x));
+            cbTown.SelectedIndex = 0;
+            List<string> townsProject = aService.GetTownsNames();
+            towns.ForEach(x => comboBoxProjectTown.Items.Add(x));
+            comboBoxProjectTown.SelectedIndex = 0;
             groupBoxProject.Enabled = false;
         }
 
@@ -40,6 +48,7 @@ namespace ArchitectureCompany.FormApplication
             string email = tbEmail.Text;
 
             string result = clientService.AddClient(name, lastName, addressClient, town, phoneNum, email);
+
             MessageBox.Show(result);
 
             groupBoxClient.Enabled = false;
@@ -61,18 +70,21 @@ namespace ArchitectureCompany.FormApplication
             }
         }
 
-        private void btnAlradyWork_Click(object sender, EventArgs e)
-        {
-            ClientThatWorkWithUs = clientService.GetClientIdByPhoneNum(tbPhoneNumber.Text);
-            List<string> projectNames = clientService.GetProjectsName(ClientThatWorkWithUs);
-            projectNames.ForEach(x => comboBoxProjects.Items.Add(x));
-            List<string> buildingsNames = aService.GetBuildingsTypes();
-            buildingsNames.ForEach(x => cbBulidingType.Items.Add(x));
-        }
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            
-        }
+            string projectName = tbProjectName.Text;
+            string buildingType = cbBulidingType.Text;
+            int capacity = int.Parse(tbCapasity.Text);
+            string releasedDate = tbReleasedDate.Text;
+            int totalFloorArea = int.Parse(tbArea.Text);
+            int floors = int.Parse(tbFllor.Text);
+            string address = tbProjectAdress.Text;
+            string town = comboBoxProjectTown.Text;
+            string result = projectService.AddProject(projectName, buildingType, capacity, releasedDate, totalFloorArea, floors, address, town);
+
+            MessageBox.Show(result);
+
+        }   
     }
 }

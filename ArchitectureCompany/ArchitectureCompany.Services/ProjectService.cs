@@ -14,7 +14,7 @@
     public class ProjectService
     {
         private AppDbContext context;
-        public string AddProject(string name, string builidingType, int capacity, string releaseDate, int totalFloorArea, int numberOfFloors, string address, string town, string url)
+        public string AddProject(string name, string builidingType, int capacity, string releaseDate, int totalFloorArea, int numberOfFloors, string address, string town)
         {
             StringBuilder message = new StringBuilder();
             bool isValid = true;
@@ -53,16 +53,10 @@
                 message.AppendLine($"Invalid {(nameof(builidingType))}");
                 isValid = false;
             }
-            if (string.IsNullOrWhiteSpace(url))
-            {
-                message.AppendLine($"Invalid {(nameof(url))}");
-                isValid = false;
-            }
             Project p = GetProjectByName(name);
             Address a = null;
             Town t = null;
             BuildingType bt = null;
-            Image i = null;
             using (context = new AppDbContext())
             {
                 if (p != null)
@@ -72,7 +66,6 @@
                 t = context.Towns.FirstOrDefault(x => x.Name == town);
                 a = context.Addresses.FirstOrDefault(x => x.Name == address&& x.Town.Name==town);
                 bt = context.BuildingTypes.FirstOrDefault(x => x.TypeName == builidingType);
-                i = context.Images.FirstOrDefault(x => x.Url == url);
                 if (t == null)
                 {
                     t = new Town() { Name = town };
@@ -85,10 +78,6 @@
 
                 {
                     bt = new BuildingType() { TypeName = builidingType };
-                }
-                if (i == null)
-                {
-                    i = new Image() { Url = url };
                 }
                 if (isValid)
                 {
@@ -104,7 +93,6 @@
                         NumberOfFloors = numberOfFloors,
                         Address = a
                     };
-                    context.Images.Add(i);
                     this.context.Projects.Add(p);
                     context.SaveChanges();
                     message.AppendLine($"Project {name} is added");
@@ -262,5 +250,6 @@
                 return "Image added successfully!";
             }
         }
+        
     }
 }

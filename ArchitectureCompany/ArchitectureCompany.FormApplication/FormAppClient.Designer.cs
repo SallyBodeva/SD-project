@@ -42,9 +42,12 @@
             this.tbFllor = new System.Windows.Forms.TextBox();
             this.tbProjectAdress = new System.Windows.Forms.TextBox();
             this.buttonAdd = new System.Windows.Forms.Button();
-            this.buttonDelete = new System.Windows.Forms.Button();
             this.groupBoxProject = new System.Windows.Forms.GroupBox();
-            this.comboBoxProjects = new System.Windows.Forms.ComboBox();
+            this.comboBoxProjectTown = new System.Windows.Forms.ComboBox();
+            this.labelProjectTown = new System.Windows.Forms.Label();
+            this.tbReleasedDate = new System.Windows.Forms.TextBox();
+            this.lableReleasedDate = new System.Windows.Forms.Label();
+            this.tbProjectName = new System.Windows.Forms.TextBox();
             this.bSingIn = new System.Windows.Forms.Button();
             this.tbEmail = new System.Windows.Forms.TextBox();
             this.labelEmail = new System.Windows.Forms.Label();
@@ -59,7 +62,6 @@
             this.labelFirstName = new System.Windows.Forms.Label();
             this.cbTown = new System.Windows.Forms.ComboBox();
             this.groupBoxClient = new System.Windows.Forms.GroupBox();
-            this.btnAlradyWork = new System.Windows.Forms.Button();
             this.labelStem1 = new System.Windows.Forms.Label();
             this.groupBoxProject.SuspendLayout();
             this.groupBoxClient.SuspendLayout();
@@ -86,7 +88,7 @@
             // labelProjctName
             // 
             this.labelProjctName.AutoSize = true;
-            this.labelProjctName.Location = new System.Drawing.Point(19, 30);
+            this.labelProjctName.Location = new System.Drawing.Point(29, 33);
             this.labelProjctName.Name = "labelProjctName";
             this.labelProjctName.Size = new System.Drawing.Size(77, 15);
             this.labelProjctName.TabIndex = 15;
@@ -95,7 +97,7 @@
             // labelBulidingType
             // 
             this.labelBulidingType.AutoSize = true;
-            this.labelBulidingType.Location = new System.Drawing.Point(19, 68);
+            this.labelBulidingType.Location = new System.Drawing.Point(29, 71);
             this.labelBulidingType.Name = "labelBulidingType";
             this.labelBulidingType.Size = new System.Drawing.Size(78, 15);
             this.labelBulidingType.TabIndex = 16;
@@ -104,7 +106,7 @@
             // labelCapasity
             // 
             this.labelCapasity.AutoSize = true;
-            this.labelCapasity.Location = new System.Drawing.Point(28, 109);
+            this.labelCapasity.Location = new System.Drawing.Point(29, 112);
             this.labelCapasity.Name = "labelCapasity";
             this.labelCapasity.Size = new System.Drawing.Size(53, 15);
             this.labelCapasity.TabIndex = 17;
@@ -113,7 +115,7 @@
             // labelArea
             // 
             this.labelArea.AutoSize = true;
-            this.labelArea.Location = new System.Drawing.Point(28, 145);
+            this.labelArea.Location = new System.Drawing.Point(29, 179);
             this.labelArea.Name = "labelArea";
             this.labelArea.Size = new System.Drawing.Size(31, 15);
             this.labelArea.TabIndex = 18;
@@ -122,7 +124,7 @@
             // labelFloor
             // 
             this.labelFloor.AutoSize = true;
-            this.labelFloor.Location = new System.Drawing.Point(28, 182);
+            this.labelFloor.Location = new System.Drawing.Point(29, 216);
             this.labelFloor.Name = "labelFloor";
             this.labelFloor.Size = new System.Drawing.Size(39, 15);
             this.labelFloor.TabIndex = 19;
@@ -131,7 +133,7 @@
             // labelProjectAddress
             // 
             this.labelProjectAddress.AutoSize = true;
-            this.labelProjectAddress.Location = new System.Drawing.Point(28, 219);
+            this.labelProjectAddress.Location = new System.Drawing.Point(29, 253);
             this.labelProjectAddress.Name = "labelProjectAddress";
             this.labelProjectAddress.Size = new System.Drawing.Size(49, 15);
             this.labelProjectAddress.TabIndex = 20;
@@ -139,7 +141,7 @@
             // 
             // tbCapasity
             // 
-            this.tbCapasity.Location = new System.Drawing.Point(132, 101);
+            this.tbCapasity.Location = new System.Drawing.Point(162, 101);
             this.tbCapasity.Name = "tbCapasity";
             this.tbCapasity.Size = new System.Drawing.Size(130, 23);
             this.tbCapasity.TabIndex = 24;
@@ -147,55 +149,49 @@
             // cbBulidingType
             // 
             this.cbBulidingType.FormattingEnabled = true;
-            this.cbBulidingType.Location = new System.Drawing.Point(132, 60);
+            this.cbBulidingType.Location = new System.Drawing.Point(162, 60);
             this.cbBulidingType.Name = "cbBulidingType";
             this.cbBulidingType.Size = new System.Drawing.Size(130, 23);
             this.cbBulidingType.TabIndex = 25;
             // 
             // tbArea
             // 
-            this.tbArea.Location = new System.Drawing.Point(132, 137);
+            this.tbArea.Location = new System.Drawing.Point(162, 171);
             this.tbArea.Name = "tbArea";
             this.tbArea.Size = new System.Drawing.Size(130, 23);
             this.tbArea.TabIndex = 26;
             // 
             // tbFllor
             // 
-            this.tbFllor.Location = new System.Drawing.Point(132, 173);
+            this.tbFllor.Location = new System.Drawing.Point(162, 207);
             this.tbFllor.Name = "tbFllor";
             this.tbFllor.Size = new System.Drawing.Size(130, 23);
             this.tbFllor.TabIndex = 27;
             // 
             // tbProjectAdress
             // 
-            this.tbProjectAdress.Location = new System.Drawing.Point(132, 213);
+            this.tbProjectAdress.Location = new System.Drawing.Point(162, 247);
             this.tbProjectAdress.Name = "tbProjectAdress";
             this.tbProjectAdress.Size = new System.Drawing.Size(130, 23);
             this.tbProjectAdress.TabIndex = 28;
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(17, 251);
+            this.buttonAdd.Location = new System.Drawing.Point(29, 313);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(111, 52);
+            this.buttonAdd.Size = new System.Drawing.Size(275, 34);
             this.buttonAdd.TabIndex = 30;
-            this.buttonAdd.Text = "Add";
+            this.buttonAdd.Text = "Submit";
             this.buttonAdd.UseVisualStyleBackColor = true;
             this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
-            // buttonDelete
-            // 
-            this.buttonDelete.Location = new System.Drawing.Point(151, 251);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(111, 52);
-            this.buttonDelete.TabIndex = 31;
-            this.buttonDelete.Text = "Delete";
-            this.buttonDelete.UseVisualStyleBackColor = true;
-            // 
             // groupBoxProject
             // 
-            this.groupBoxProject.Controls.Add(this.comboBoxProjects);
-            this.groupBoxProject.Controls.Add(this.buttonDelete);
+            this.groupBoxProject.Controls.Add(this.comboBoxProjectTown);
+            this.groupBoxProject.Controls.Add(this.labelProjectTown);
+            this.groupBoxProject.Controls.Add(this.tbReleasedDate);
+            this.groupBoxProject.Controls.Add(this.lableReleasedDate);
+            this.groupBoxProject.Controls.Add(this.tbProjectName);
             this.groupBoxProject.Controls.Add(this.buttonAdd);
             this.groupBoxProject.Controls.Add(this.tbProjectAdress);
             this.groupBoxProject.Controls.Add(this.tbFllor);
@@ -210,24 +206,56 @@
             this.groupBoxProject.Controls.Add(this.labelProjctName);
             this.groupBoxProject.Location = new System.Drawing.Point(414, 55);
             this.groupBoxProject.Name = "groupBoxProject";
-            this.groupBoxProject.Size = new System.Drawing.Size(332, 328);
+            this.groupBoxProject.Size = new System.Drawing.Size(332, 366);
             this.groupBoxProject.TabIndex = 33;
             this.groupBoxProject.TabStop = false;
             this.groupBoxProject.Text = "Give your project idea";
             // 
-            // comboBoxProjects
+            // comboBoxProjectTown
             // 
-            this.comboBoxProjects.FormattingEnabled = true;
-            this.comboBoxProjects.Location = new System.Drawing.Point(132, 30);
-            this.comboBoxProjects.Name = "comboBoxProjects";
-            this.comboBoxProjects.Size = new System.Drawing.Size(130, 23);
-            this.comboBoxProjects.TabIndex = 38;
+            this.comboBoxProjectTown.FormattingEnabled = true;
+            this.comboBoxProjectTown.Location = new System.Drawing.Point(161, 284);
+            this.comboBoxProjectTown.Name = "comboBoxProjectTown";
+            this.comboBoxProjectTown.Size = new System.Drawing.Size(131, 23);
+            this.comboBoxProjectTown.TabIndex = 35;
+            // 
+            // labelProjectTown
+            // 
+            this.labelProjectTown.AutoSize = true;
+            this.labelProjectTown.Location = new System.Drawing.Point(30, 285);
+            this.labelProjectTown.Name = "labelProjectTown";
+            this.labelProjectTown.Size = new System.Drawing.Size(35, 15);
+            this.labelProjectTown.TabIndex = 34;
+            this.labelProjectTown.Text = "Town";
+            // 
+            // tbReleasedDate
+            // 
+            this.tbReleasedDate.Location = new System.Drawing.Point(162, 137);
+            this.tbReleasedDate.Name = "tbReleasedDate";
+            this.tbReleasedDate.Size = new System.Drawing.Size(130, 23);
+            this.tbReleasedDate.TabIndex = 33;
+            // 
+            // lableReleasedDate
+            // 
+            this.lableReleasedDate.AutoSize = true;
+            this.lableReleasedDate.Location = new System.Drawing.Point(29, 145);
+            this.lableReleasedDate.Name = "lableReleasedDate";
+            this.lableReleasedDate.Size = new System.Drawing.Size(127, 15);
+            this.lableReleasedDate.TabIndex = 32;
+            this.lableReleasedDate.Text = "Expected released date";
+            // 
+            // tbProjectName
+            // 
+            this.tbProjectName.Location = new System.Drawing.Point(161, 27);
+            this.tbProjectName.Name = "tbProjectName";
+            this.tbProjectName.Size = new System.Drawing.Size(131, 23);
+            this.tbProjectName.TabIndex = 31;
             // 
             // bSingIn
             // 
-            this.bSingIn.Location = new System.Drawing.Point(74, 249);
+            this.bSingIn.Location = new System.Drawing.Point(73, 264);
             this.bSingIn.Name = "bSingIn";
-            this.bSingIn.Size = new System.Drawing.Size(197, 26);
+            this.bSingIn.Size = new System.Drawing.Size(197, 52);
             this.bSingIn.TabIndex = 13;
             this.bSingIn.Text = "Become our client";
             this.bSingIn.UseVisualStyleBackColor = true;
@@ -332,7 +360,6 @@
             // 
             // groupBoxClient
             // 
-            this.groupBoxClient.Controls.Add(this.btnAlradyWork);
             this.groupBoxClient.Controls.Add(this.labelFirstName);
             this.groupBoxClient.Controls.Add(this.cbTown);
             this.groupBoxClient.Controls.Add(this.tbLastName);
@@ -348,25 +375,15 @@
             this.groupBoxClient.Controls.Add(this.tbEmail);
             this.groupBoxClient.Location = new System.Drawing.Point(20, 57);
             this.groupBoxClient.Name = "groupBoxClient";
-            this.groupBoxClient.Size = new System.Drawing.Size(341, 326);
+            this.groupBoxClient.Size = new System.Drawing.Size(341, 364);
             this.groupBoxClient.TabIndex = 36;
             this.groupBoxClient.TabStop = false;
             this.groupBoxClient.Text = "Be our client";
             // 
-            // btnAlradyWork
-            // 
-            this.btnAlradyWork.Location = new System.Drawing.Point(74, 281);
-            this.btnAlradyWork.Name = "btnAlradyWork";
-            this.btnAlradyWork.Size = new System.Drawing.Size(197, 26);
-            this.btnAlradyWork.TabIndex = 36;
-            this.btnAlradyWork.Text = "Already work with us?";
-            this.btnAlradyWork.UseVisualStyleBackColor = true;
-            this.btnAlradyWork.Click += new System.EventHandler(this.btnAlradyWork_Click);
-            // 
             // labelStem1
             // 
             this.labelStem1.AutoSize = true;
-            this.labelStem1.Location = new System.Drawing.Point(369, 401);
+            this.labelStem1.Location = new System.Drawing.Point(368, 432);
             this.labelStem1.Name = "labelStem1";
             this.labelStem1.Size = new System.Drawing.Size(39, 15);
             this.labelStem1.TabIndex = 37;
@@ -377,7 +394,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(809, 440);
+            this.ClientSize = new System.Drawing.Size(809, 484);
             this.Controls.Add(this.labelStem1);
             this.Controls.Add(this.groupBoxClient);
             this.Controls.Add(this.groupBoxProject);
@@ -410,7 +427,6 @@
         private System.Windows.Forms.TextBox tbFllor;
         private System.Windows.Forms.TextBox tbProjectAdress;
         private System.Windows.Forms.Button buttonAdd;
-        private System.Windows.Forms.Button buttonDelete;
         private System.Windows.Forms.GroupBox groupBoxProject;
         private System.Windows.Forms.Button bSingIn;
         private System.Windows.Forms.TextBox tbEmail;
@@ -426,8 +442,11 @@
         private System.Windows.Forms.Label labelFirstName;
         private System.Windows.Forms.ComboBox cbTown;
         private System.Windows.Forms.GroupBox groupBoxClient;
-        private System.Windows.Forms.Button btnAlradyWork;
         private System.Windows.Forms.Label labelStem1;
-        private System.Windows.Forms.ComboBox comboBoxProjects;
+        private System.Windows.Forms.TextBox tbProjectName;
+        private System.Windows.Forms.TextBox tbReleasedDate;
+        private System.Windows.Forms.Label lableReleasedDate;
+        private System.Windows.Forms.ComboBox comboBoxProjectTown;
+        private System.Windows.Forms.Label labelProjectTown;
     }
 }
