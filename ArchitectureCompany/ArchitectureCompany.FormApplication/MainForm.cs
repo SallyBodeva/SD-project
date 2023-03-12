@@ -38,5 +38,11 @@ namespace ArchitectureCompany.FormApplication
             FormAppClient formAppClient = new FormAppClient();
             formAppClient.ShowDialog();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ProjectsToEmployeeForm projectsToEmployeeForm = new ProjectsToEmployeeForm();
+            projectsToEmployeeForm.ShowDialog();
+        }
     }
 }

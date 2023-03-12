@@ -11,6 +11,7 @@ namespace Architecture.Company.DataSeeder
         private static EmployeeService eService = new EmployeeService();
         private static AdditionalService aService = new AdditionalService();
         private static ClientService cService = new ClientService();
+        private static ProjectService pService=new ProjectService();
         static void Main()
         {
             SeedClient();
@@ -215,6 +216,29 @@ namespace Architecture.Company.DataSeeder
                 string name = bt[i];
                 Console.WriteLine(aService.AddBuildingType(name));
             }
+        }
+        public static void SeedProjects()
+        {
+            //Console.WriteLine(pService.AddProject("The Opera house", "Industrial Buildings",500,"12-03-2009",1500,5,);
+            //Console.WriteLine(pService.AddProject("The Lighthouse");
+            //Console.WriteLine(pService.AddProject("The Museum of Islamic Art");
+            //Console.WriteLine(pService.AddProject("The Disney Concert Hall");
+            //Console.WriteLine(pService.AddProject("The Olimpic Stadium");
+            //Console.WriteLine(pService.AddProject("The Stadium");
+            //Console.WriteLine(pService.AddProject("The Sky Garden");
+            //Console.WriteLine(pService.AddProject("The Floating City");
+            //Console.WriteLine(pService.AddProject("The Time Travel Museum");
+            //Console.WriteLine(pService.AddProject("The Nexus Tower");
+            //Console.WriteLine(pService.AddProject("The Hydrogen House");
+            //Console.WriteLine(pService.AddProject("The Oasis");
+            //Console.WriteLine(pService.AddProject("The Eden Project");
+            //Console.WriteLine(pService.AddProject("The Kinder Garden");
+            //Console.WriteLine(pService.AddProject("The Children's Corner");
+            //Console.WriteLine(pService.AddProject("The Beach House");
+            //Console.WriteLine(pService.AddProject("The Lake House");
+            //Console.WriteLine(pService.AddProject("The Mansion");
+            //Console.WriteLine(pService.AddProject("The Farm");
+            //Console.WriteLine(pService.AddProject("The Skyscraper");
         }
 
     }

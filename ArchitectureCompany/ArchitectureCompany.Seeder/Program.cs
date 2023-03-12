@@ -192,38 +192,11 @@ namespace ArchitectureCompany.Seeder
             // Console.WriteLine(projectService.AddProject(buildingTypeId));
             //}
         }
-        
 
 
-        //  public static void SeedProjects()
-        // {
-        //  List<string> p = new List<string>();
-        //  p.Add("The Opera house");
-        // p.Add("The Lighthouse");
-        //p.Add("The National Musem");
-        //p.Add("The EcoARK");
-        //p.Add("The Fallingwater");
-        //p.Add("The National Centetr for the Performings Art");
-        // p.Add("The Museum of Islamic Art");
-        //p.Add("The Disney Concert Hall");
-        // p.Add("The Olimpic Stadium");
-        // p.Add("The Stadium");
-        // p.Add("The Sky Garden");
-        // p.Add("The Floating City");
-        // p.Add("The Time Travel Museum");
-        // p.Add("The Nexus Tower");
-        // p.Add("The Hydrogen House");
-        // p.Add("The Oasis");
-        // p.Add("The Arcology");
-        // p.Add("The Cloud");
-        // p.Add("The Eden Project");
-        // p.Add("The Kinder Garden");
-        // p.Add("The Children's Corner");
-        // p.Add("The Beach House");
-        // p.Add("The Lake House");
-        // p.Add("The Mansion");
-        // p.Add("The Farm");
-        // p.Add("The Skyscraper");
+
+
+
         // p.Add("The Theater");
         // p.Add("The Kino");
         // p.Add("The Fitness");
@@ -236,11 +209,7 @@ namespace ArchitectureCompany.Seeder
         //p.Add("The Resturant");
         //p.Add("The School");
         //p.Add("The University");
-        // p.Add("The Library");
-        // p.Add("The Government");
-        // p.Add("The Church");
-        // p.Add("The Stubway");
-        //p.Add("The Rehabilitation Center");
+
 
 
 

@@ -155,6 +155,14 @@
                 return null;
             }
         }
+        public List<string> GetBuildingsTypes()
+        {
+            using (context =new AppDbContext())
+            {
+                List<string> names = context.BuildingTypes.Select(x => x.TypeName).ToList();
+                return names;
+            }
+        }
 
     }
 }
