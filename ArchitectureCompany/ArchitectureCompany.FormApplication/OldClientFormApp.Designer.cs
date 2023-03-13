@@ -121,6 +121,7 @@
             this.buttonAddmage.TabIndex = 36;
             this.buttonAddmage.Text = "Add image";
             this.buttonAddmage.UseVisualStyleBackColor = true;
+            this.buttonAddmage.Click += new System.EventHandler(this.buttonAddmage_Click);
             // 
             // comboBoxProjectTown
             // 

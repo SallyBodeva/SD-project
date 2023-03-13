@@ -11,7 +11,7 @@
             DepartmentService ds = new DepartmentService();
             AdditionalService ads = new AdditionalService();
             ProjectService ps = new ProjectService();
+          //  Console.WriteLine(String.Join(" ",cs.GetClientsProjects(38)));
         }
     }
-
 }

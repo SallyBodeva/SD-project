@@ -237,7 +237,7 @@
                 {
                     return "Project not found";
                 }
-                Image i = new Image() { Url = url, Project = p };
+                Image i = new Image() { Project = p, Url = url };
                 context.Images.Add(i);
                 context.SaveChanges();
                 return "Image added successfully!";

@@ -89,5 +89,11 @@ namespace ArchitectureCompany.FormApplication
             string resultMatches = clientService.MatchClientToProject(clientId, projectId);
             MessageBox.Show(resultMatches);
         }
+
+        private void buttonAddmage_Click(object sender, EventArgs e)
+        {
+            ImageAddFormApp imageAddFormApp = new ImageAddFormApp();
+            imageAddFormApp.ShowDialog();
+        }
     }
 }

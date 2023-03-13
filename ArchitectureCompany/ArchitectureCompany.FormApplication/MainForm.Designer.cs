@@ -36,6 +36,8 @@
             this.btnClient = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.btnOldClient = new System.Windows.Forms.Button();
+            this.btnAddImageToProject = new System.Windows.Forms.Button();
+            this.btnCatalog = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnEmployee
@@ -113,12 +115,34 @@
             this.btnOldClient.UseVisualStyleBackColor = true;
             this.btnOldClient.Click += new System.EventHandler(this.btnOldClient_Click);
             // 
+            // btnAddImageToProject
+            // 
+            this.btnAddImageToProject.Location = new System.Drawing.Point(23, 139);
+            this.btnAddImageToProject.Name = "btnAddImageToProject";
+            this.btnAddImageToProject.Size = new System.Drawing.Size(93, 44);
+            this.btnAddImageToProject.TabIndex = 7;
+            this.btnAddImageToProject.Text = "Add image to project";
+            this.btnAddImageToProject.UseVisualStyleBackColor = true;
+            this.btnAddImageToProject.Click += new System.EventHandler(this.btnAddImageToProject_Click);
+            // 
+            // btnCatalog
+            // 
+            this.btnCatalog.Location = new System.Drawing.Point(479, 147);
+            this.btnCatalog.Name = "btnCatalog";
+            this.btnCatalog.Size = new System.Drawing.Size(75, 23);
+            this.btnCatalog.TabIndex = 8;
+            this.btnCatalog.Text = "Catalog";
+            this.btnCatalog.UseVisualStyleBackColor = true;
+            this.btnCatalog.Click += new System.EventHandler(this.btnCatalog_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
             this.ClientSize = new System.Drawing.Size(610, 336);
+            this.Controls.Add(this.btnCatalog);
+            this.Controls.Add(this.btnAddImageToProject);
             this.Controls.Add(this.btnOldClient);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.btnClient);
@@ -143,5 +167,7 @@
         private System.Windows.Forms.Button btnClient;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnOldClient;
+        private System.Windows.Forms.Button btnAddImageToProject;
+        private System.Windows.Forms.Button btnCatalog;
     }
 }

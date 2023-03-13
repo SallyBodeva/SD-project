@@ -91,6 +91,12 @@ namespace ArchitectureCompany.FormApplication
             buttonSubmit.Enabled = false;
             buttonAddmage.Enabled = true;
 
-        }   
+        }
+
+        private void buttonAddmage_Click(object sender, EventArgs e)
+        {
+            ImageAddFormApp imageAddFormApp = new ImageAddFormApp();
+            imageAddFormApp.ShowDialog();
+        }
     }
 }

@@ -43,6 +43,7 @@
             this.tbProjectAdress = new System.Windows.Forms.TextBox();
             this.buttonSubmit = new System.Windows.Forms.Button();
             this.groupBoxProject = new System.Windows.Forms.GroupBox();
+            this.buttonAddmage = new System.Windows.Forms.Button();
             this.comboBoxProjectTown = new System.Windows.Forms.ComboBox();
             this.labelProjectTown = new System.Windows.Forms.Label();
             this.tbReleasedDate = new System.Windows.Forms.TextBox();
@@ -63,7 +64,6 @@
             this.cbTown = new System.Windows.Forms.ComboBox();
             this.groupBoxClient = new System.Windows.Forms.GroupBox();
             this.labelStem1 = new System.Windows.Forms.Label();
-            this.buttonAddmage = new System.Windows.Forms.Button();
             this.groupBoxProject.SuspendLayout();
             this.groupBoxClient.SuspendLayout();
             this.SuspendLayout();
@@ -212,6 +212,16 @@
             this.groupBoxProject.TabIndex = 33;
             this.groupBoxProject.TabStop = false;
             this.groupBoxProject.Text = "Project idea";
+            // 
+            // buttonAddmage
+            // 
+            this.buttonAddmage.Location = new System.Drawing.Point(198, 320);
+            this.buttonAddmage.Name = "buttonAddmage";
+            this.buttonAddmage.Size = new System.Drawing.Size(119, 41);
+            this.buttonAddmage.TabIndex = 36;
+            this.buttonAddmage.Text = "Add image";
+            this.buttonAddmage.UseVisualStyleBackColor = true;
+            this.buttonAddmage.Click += new System.EventHandler(this.buttonAddmage_Click);
             // 
             // comboBoxProjectTown
             // 
@@ -391,15 +401,6 @@
             this.labelStem1.TabIndex = 37;
             this.labelStem1.Text = "Step 1";
             this.labelStem1.TextChanged += new System.EventHandler(this.labelStem1_TextChanged);
-            // 
-            // buttonAddmage
-            // 
-            this.buttonAddmage.Location = new System.Drawing.Point(198, 320);
-            this.buttonAddmage.Name = "buttonAddmage";
-            this.buttonAddmage.Size = new System.Drawing.Size(119, 41);
-            this.buttonAddmage.TabIndex = 36;
-            this.buttonAddmage.Text = "Add image";
-            this.buttonAddmage.UseVisualStyleBackColor = true;
             // 
             // FormAppClient
             // 

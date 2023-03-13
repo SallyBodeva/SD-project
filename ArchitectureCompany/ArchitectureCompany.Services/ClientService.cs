@@ -1,10 +1,8 @@
 ﻿using ArchitectureCompany.Data;
 using ArchitectureCompany.Models;
-using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net.Sockets;
 using System.Text;
 
 namespace ArchitectureCompany.Services
@@ -196,11 +194,30 @@ namespace ArchitectureCompany.Services
             }
             return list;
         }
+        public List<string> GetClientBasicInfo()
+        {
+            List<string> list = null;
+            using (context = new AppDbContext())
+            {
+                list = context.Clients.Select(x => $"{x.Id} - {x.FirstName} {x.LastName}")
+                    .ToList();
+            }
+            return list;
+        }
         public int GetClientPagesCount(int count)
         {
             using (context = new AppDbContext())
             {
                 return (int)Math.Ceiling(context.Clients.Count() / (double)count);
+            }
+        }
+        public List<string> GetClientsProjects(int clientId)
+        {
+            using (var context = new AppDbContext())
+            {
+                return context.ProjectClients
+                    .Where(x => x.ClientId == clientId)
+                    .Select(x => x.Project.Name).ToList();
             }
         }
     }

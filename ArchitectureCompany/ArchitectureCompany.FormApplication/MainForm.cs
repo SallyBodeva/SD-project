@@ -50,5 +50,17 @@ namespace ArchitectureCompany.FormApplication
             OldClientFormApp oldClientFormApp = new OldClientFormApp();
             oldClientFormApp.ShowDialog();
         }
+
+        private void btnAddImageToProject_Click(object sender, EventArgs e)
+        {
+            ImageAddFormApp imageAddFormApp = new ImageAddFormApp();
+            imageAddFormApp.ShowDialog();
+        }
+
+        private void btnCatalog_Click(object sender, EventArgs e)
+        {
+            CatalogToProjects catalogToProjects = new CatalogToProjects();
+            catalogToProjects.ShowDialog();
+        }
     }
 }
