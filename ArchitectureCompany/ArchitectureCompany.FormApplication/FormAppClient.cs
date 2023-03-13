@@ -23,7 +23,6 @@ namespace ArchitectureCompany.FormApplication
             aService = new AdditionalService();
             projectService = new ProjectService();
         }
-
         private void FormAppClient_Load(object sender, EventArgs e)
         {
             List<string> towns = aService.GetTownsNames();
@@ -66,6 +65,7 @@ namespace ArchitectureCompany.FormApplication
             else
             {
                 groupBoxClient.Enabled = false;
+                buttonAddmage.Enabled = false;
                 groupBoxProject.Enabled = true;
             }
         }
@@ -84,6 +84,12 @@ namespace ArchitectureCompany.FormApplication
             string result = projectService.AddProject(projectName, buildingType, capacity, releasedDate, totalFloorArea, floors, address, town);
 
             MessageBox.Show(result);
+            int clientId = clientService.GetClientIdByPhoneNum(tbPhoneNumber.Text);
+            int projectId = projectService.GetProjectIdByName(tbProjectName.Text);
+            string resultMatches = clientService.MatchClientToProject(clientId, projectId);
+            MessageBox.Show(resultMatches);
+            buttonSubmit.Enabled = false;
+            buttonAddmage.Enabled = true;
 
         }   
     }

@@ -133,6 +133,18 @@
                 return p;
             }
         }
+        public int GetProjectIdByName(string name)
+        {
+            if (string.IsNullOrWhiteSpace(name))
+            {
+                throw new ArgumentException("Invalid project name...");
+            }
+            using (context = new AppDbContext())
+            {
+                Project p = this.context.Projects.FirstOrDefault(x => x.Name == name);
+                return p.Id;
+            }
+        }
         public List<Project> GetProjectByReleaseDate(string date)
         {
             DateTime releaseDate = new DateTime();
@@ -216,11 +228,11 @@
             return msg.ToString().TrimEnd();
         }
         
-        public string AddImageToProject(int projectId, string url)
+        public string AddImageToProject(string projectName, string url)
         {
             using (context = new AppDbContext())
             {
-                Project p = context.Projects.Find(projectId);
+                Project p = context.Projects.FirstOrDefault(x=>x.Name==projectName);
                 if (p == null)
                 {
                     return "Project not found";

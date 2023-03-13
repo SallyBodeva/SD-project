@@ -41,7 +41,7 @@
             this.tbArea = new System.Windows.Forms.TextBox();
             this.tbFllor = new System.Windows.Forms.TextBox();
             this.tbProjectAdress = new System.Windows.Forms.TextBox();
-            this.buttonAdd = new System.Windows.Forms.Button();
+            this.buttonSubmit = new System.Windows.Forms.Button();
             this.groupBoxProject = new System.Windows.Forms.GroupBox();
             this.comboBoxProjectTown = new System.Windows.Forms.ComboBox();
             this.labelProjectTown = new System.Windows.Forms.Label();
@@ -63,6 +63,7 @@
             this.cbTown = new System.Windows.Forms.ComboBox();
             this.groupBoxClient = new System.Windows.Forms.GroupBox();
             this.labelStem1 = new System.Windows.Forms.Label();
+            this.buttonAddmage = new System.Windows.Forms.Button();
             this.groupBoxProject.SuspendLayout();
             this.groupBoxClient.SuspendLayout();
             this.SuspendLayout();
@@ -175,24 +176,25 @@
             this.tbProjectAdress.Size = new System.Drawing.Size(130, 23);
             this.tbProjectAdress.TabIndex = 28;
             // 
-            // buttonAdd
+            // buttonSubmit
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(29, 313);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(275, 34);
-            this.buttonAdd.TabIndex = 30;
-            this.buttonAdd.Text = "Submit";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.buttonSubmit.Location = new System.Drawing.Point(29, 324);
+            this.buttonSubmit.Name = "buttonSubmit";
+            this.buttonSubmit.Size = new System.Drawing.Size(141, 37);
+            this.buttonSubmit.TabIndex = 30;
+            this.buttonSubmit.Text = "Submit";
+            this.buttonSubmit.UseVisualStyleBackColor = true;
+            this.buttonSubmit.Click += new System.EventHandler(this.buttonAdd_Click);
             // 
             // groupBoxProject
             // 
+            this.groupBoxProject.Controls.Add(this.buttonAddmage);
             this.groupBoxProject.Controls.Add(this.comboBoxProjectTown);
             this.groupBoxProject.Controls.Add(this.labelProjectTown);
             this.groupBoxProject.Controls.Add(this.tbReleasedDate);
             this.groupBoxProject.Controls.Add(this.lableReleasedDate);
             this.groupBoxProject.Controls.Add(this.tbProjectName);
-            this.groupBoxProject.Controls.Add(this.buttonAdd);
+            this.groupBoxProject.Controls.Add(this.buttonSubmit);
             this.groupBoxProject.Controls.Add(this.tbProjectAdress);
             this.groupBoxProject.Controls.Add(this.tbFllor);
             this.groupBoxProject.Controls.Add(this.tbArea);
@@ -206,10 +208,10 @@
             this.groupBoxProject.Controls.Add(this.labelProjctName);
             this.groupBoxProject.Location = new System.Drawing.Point(414, 55);
             this.groupBoxProject.Name = "groupBoxProject";
-            this.groupBoxProject.Size = new System.Drawing.Size(332, 366);
+            this.groupBoxProject.Size = new System.Drawing.Size(332, 367);
             this.groupBoxProject.TabIndex = 33;
             this.groupBoxProject.TabStop = false;
-            this.groupBoxProject.Text = "Give your project idea";
+            this.groupBoxProject.Text = "Project idea";
             // 
             // comboBoxProjectTown
             // 
@@ -253,11 +255,11 @@
             // 
             // bSingIn
             // 
-            this.bSingIn.Location = new System.Drawing.Point(73, 264);
+            this.bSingIn.Location = new System.Drawing.Point(73, 282);
             this.bSingIn.Name = "bSingIn";
             this.bSingIn.Size = new System.Drawing.Size(197, 52);
             this.bSingIn.TabIndex = 13;
-            this.bSingIn.Text = "Become our client";
+            this.bSingIn.Text = "Add";
             this.bSingIn.UseVisualStyleBackColor = true;
             this.bSingIn.Click += new System.EventHandler(this.bSingIn_Click);
             // 
@@ -375,20 +377,29 @@
             this.groupBoxClient.Controls.Add(this.tbEmail);
             this.groupBoxClient.Location = new System.Drawing.Point(20, 57);
             this.groupBoxClient.Name = "groupBoxClient";
-            this.groupBoxClient.Size = new System.Drawing.Size(341, 364);
+            this.groupBoxClient.Size = new System.Drawing.Size(341, 365);
             this.groupBoxClient.TabIndex = 36;
             this.groupBoxClient.TabStop = false;
-            this.groupBoxClient.Text = "Be our client";
+            this.groupBoxClient.Text = "Add new client";
             // 
             // labelStem1
             // 
             this.labelStem1.AutoSize = true;
-            this.labelStem1.Location = new System.Drawing.Point(368, 432);
+            this.labelStem1.Location = new System.Drawing.Point(371, 451);
             this.labelStem1.Name = "labelStem1";
             this.labelStem1.Size = new System.Drawing.Size(39, 15);
             this.labelStem1.TabIndex = 37;
             this.labelStem1.Text = "Step 1";
             this.labelStem1.TextChanged += new System.EventHandler(this.labelStem1_TextChanged);
+            // 
+            // buttonAddmage
+            // 
+            this.buttonAddmage.Location = new System.Drawing.Point(198, 320);
+            this.buttonAddmage.Name = "buttonAddmage";
+            this.buttonAddmage.Size = new System.Drawing.Size(119, 41);
+            this.buttonAddmage.TabIndex = 36;
+            this.buttonAddmage.Text = "Add image";
+            this.buttonAddmage.UseVisualStyleBackColor = true;
             // 
             // FormAppClient
             // 
@@ -426,7 +437,7 @@
         private System.Windows.Forms.TextBox tbArea;
         private System.Windows.Forms.TextBox tbFllor;
         private System.Windows.Forms.TextBox tbProjectAdress;
-        private System.Windows.Forms.Button buttonAdd;
+        private System.Windows.Forms.Button buttonSubmit;
         private System.Windows.Forms.GroupBox groupBoxProject;
         private System.Windows.Forms.Button bSingIn;
         private System.Windows.Forms.TextBox tbEmail;
@@ -448,5 +459,6 @@
         private System.Windows.Forms.Label lableReleasedDate;
         private System.Windows.Forms.ComboBox comboBoxProjectTown;
         private System.Windows.Forms.Label labelProjectTown;
+        private System.Windows.Forms.Button buttonAddmage;
     }
 }

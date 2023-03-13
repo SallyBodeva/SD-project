@@ -4,6 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 
 namespace ArchitectureCompany.Services
@@ -162,6 +163,44 @@ namespace ArchitectureCompany.Services
             {
                 List<string> currentClientProjects = context.ProjectClients.Where(x => x.ClientId == idClient).Select(x=>x.Project.Name).ToList();
                 return currentClientProjects;
+            }
+        }
+        public string MatchClientToProject(int clientId,int  projectId)
+        {
+            using (context = new AppDbContext())
+            {
+                Client c = context.Clients.Find(clientId);
+                Project p = context.Projects.Find(projectId);
+                if (c==null)
+                {
+                    return "Client not found!";
+                }
+                if (p==null)
+                {
+                    return "Project not found!";
+                }
+                context.ProjectClients.Add(new ProjectClient() { Client=c,Project=p});
+                context.SaveChanges();
+                return "Client matches his project!";
+            }
+        }
+        public List<string> GetClientBasicInfo(int page = 1, int count = 10)
+        {
+            List<string> list = null;
+            using (context = new AppDbContext())
+            {
+                list = context.Clients
+                    .Skip((page - 1) * count)
+                    .Take(count).Select(x => $"{x.Id} - {x.FirstName} {x.LastName}")
+                    .ToList();
+            }
+            return list;
+        }
+        public int GetClientPagesCount(int count)
+        {
+            using (context = new AppDbContext())
+            {
+                return (int)Math.Ceiling(context.Clients.Count() / (double)count);
             }
         }
     }

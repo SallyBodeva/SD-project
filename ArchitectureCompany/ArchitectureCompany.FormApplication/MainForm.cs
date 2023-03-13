@@ -44,5 +44,11 @@ namespace ArchitectureCompany.FormApplication
             ProjectsToEmployeeForm projectsToEmployeeForm = new ProjectsToEmployeeForm();
             projectsToEmployeeForm.ShowDialog();
         }
+
+        private void btnOldClient_Click(object sender, EventArgs e)
+        {
+            OldClientFormApp oldClientFormApp = new OldClientFormApp();
+            oldClientFormApp.ShowDialog();
+        }
     }
 }
