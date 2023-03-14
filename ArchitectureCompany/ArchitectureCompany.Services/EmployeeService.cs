@@ -11,8 +11,46 @@
     public class EmployeeService
     {
         private AppDbContext context;
-
-        public string AddEmployee(string firstName, string lastName, string address, string town, string department, string phoneNumber, string email)
+        public string AddProjectTeam(int projectId, List<int> teamId)
+        {
+            StringBuilder message = new StringBuilder();
+            using (context = new AppDbContext())
+            {
+                Project project = context.Projects.Find(projectId);
+                if (project == null)
+                {
+                    message.AppendLine($"{nameof(Project)} not found!");
+                    return message.ToString().TrimEnd();
+                }
+                List<Employee> employees = new List<Employee>();
+                foreach (var id in teamId)
+                {
+                    Employee employee = context.Employees.Find(id);
+                    if (employee != null)
+                    {
+                        employees.Add(employee);
+                    }
+                }
+                if (employees.Count == 0)
+                {
+                    message.AppendLine($"{nameof(Employee)}s not found!");
+                    return message.ToString().TrimEnd();
+                }
+                message.AppendLine($"{projectId} {project.Name} team: ");
+                foreach (var employee in employees)
+                {
+                    context.ProjectEmployees.Add(new ProjectEmployee
+                    {
+                        Project = project,
+                        Employee = employee
+                    });
+                    message.AppendLine($"\t{employee.FirstName} {employee.LastName}");
+                }
+                context.SaveChanges();
+                return message.ToString().TrimEnd();
+            }
+            }
+            public string AddEmployee(string firstName, string lastName, string address, string town, string department, string phoneNumber, string email)
         {
             StringBuilder message = new StringBuilder();
             bool isValid = true;
