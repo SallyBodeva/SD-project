@@ -37,13 +37,21 @@ namespace ArchitectureCompany.FormApplication
 
         private void ProjectsToEmployeeForm_Load(object sender, EventArgs e)
         {
-            comboBoxECount.SelectedIndex = 0;
-            comboBoxECount.Enabled = false;
-
             listBoxEmployees.Items.Clear();
             listBoxProjects.Items.Clear();
             listBoxTeam.Items.Clear();
             labelProject.Text = "-";
+
+            List<string> projects = projectService.GetProjectsInfo();
+            projects.ForEach(a => listBoxProjects.Items.Add(a));
+
+            List<string> employees = employeeService.GetEmployeeBasicInfo();
+            employees.ForEach(p => listBoxEmployees.Items.Add(p));
+
+            comboBoxECount.SelectedIndex = 0;
+            comboBoxECount.Enabled = false;
+          
+            labelSteps.Text = "Step 1: choose project";
 
             totalProjectPage = projectService.GetProjectsPagesCount();
             labelProjectPages.Text = $"{currentProjectPage} / {totalProjectPage}";
@@ -61,11 +69,6 @@ namespace ArchitectureCompany.FormApplication
 
             btnAdd.Enabled = false;
 
-            List<string> projects = projectService.GetProjectsInfo();
-            projects.ForEach(a => listBoxProjects.Items.Add(a));
-
-            List<string> employees = employeeService.GetEmployeeBasicInfo();
-            employees.ForEach(p => listBoxEmployees.Items.Add(p));
 
             btnPreviousE.Enabled = true;
             btnNextE.Enabled = true;
@@ -76,7 +79,7 @@ namespace ArchitectureCompany.FormApplication
             comboBoxECount.Enabled = true;
             listBoxEmployees.Enabled = true;
             listBoxProjects.Enabled = false;
-            labelProject.Text = "Step 2 - select employees";
+            labelSteps.Text = "Step 2 - select employees";
 
             labelProject.Text = listBoxProjects.Text;
             btnPreviousP.Enabled = false;
@@ -109,7 +112,7 @@ namespace ArchitectureCompany.FormApplication
                 btnNextE.Enabled = false;
                 btnPreviousE.Enabled = false;
 
-                labelProject.Text = "Step 3 - Confirm data";
+                labelSteps.Text = "Step 3 - Confirm data";
                 comboBoxECount.Enabled = false;
             }
 
@@ -186,5 +189,7 @@ namespace ArchitectureCompany.FormApplication
         {
             listBoxTeam.Items.Clear();
         }
+
+      
     }
 }

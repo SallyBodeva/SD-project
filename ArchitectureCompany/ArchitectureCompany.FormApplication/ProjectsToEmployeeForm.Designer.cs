@@ -41,71 +41,73 @@
             this.listBoxTeam = new System.Windows.Forms.ListBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.comboBoxECount = new System.Windows.Forms.ComboBox();
-            this.comboBoxPCount = new System.Windows.Forms.ComboBox();
             this.SuspendLayout();
             // 
             // listBoxProjects
             // 
             this.listBoxProjects.FormattingEnabled = true;
-            this.listBoxProjects.ItemHeight = 20;
-            this.listBoxProjects.Location = new System.Drawing.Point(27, 85);
+            this.listBoxProjects.ItemHeight = 15;
+            this.listBoxProjects.Location = new System.Drawing.Point(24, 64);
+            this.listBoxProjects.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxProjects.Name = "listBoxProjects";
-            this.listBoxProjects.Size = new System.Drawing.Size(270, 344);
+            this.listBoxProjects.Size = new System.Drawing.Size(237, 259);
             this.listBoxProjects.TabIndex = 0;
             this.listBoxProjects.DoubleClick += new System.EventHandler(this.listBoxProjects_DoubleClick);
             // 
             // listBoxEmployees
             // 
             this.listBoxEmployees.FormattingEnabled = true;
-            this.listBoxEmployees.ItemHeight = 20;
-            this.listBoxEmployees.Location = new System.Drawing.Point(388, 85);
+            this.listBoxEmployees.ItemHeight = 15;
+            this.listBoxEmployees.Location = new System.Drawing.Point(340, 64);
+            this.listBoxEmployees.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxEmployees.Name = "listBoxEmployees";
-            this.listBoxEmployees.Size = new System.Drawing.Size(275, 344);
+            this.listBoxEmployees.Size = new System.Drawing.Size(241, 259);
             this.listBoxEmployees.TabIndex = 1;
             this.listBoxEmployees.DoubleClick += new System.EventHandler(this.listBoxEmployees_DoubleClick);
             // 
             // labelSteps
             // 
             this.labelSteps.AutoSize = true;
-            this.labelSteps.Location = new System.Drawing.Point(466, 37);
+            this.labelSteps.Location = new System.Drawing.Point(408, 28);
             this.labelSteps.Name = "labelSteps";
-            this.labelSteps.Size = new System.Drawing.Size(50, 20);
+            this.labelSteps.Size = new System.Drawing.Size(38, 15);
             this.labelSteps.TabIndex = 2;
             this.labelSteps.Text = "label1";
             // 
             // labelProject
             // 
             this.labelProject.AutoSize = true;
-            this.labelProject.Location = new System.Drawing.Point(790, 37);
+            this.labelProject.Location = new System.Drawing.Point(691, 28);
             this.labelProject.Name = "labelProject";
-            this.labelProject.Size = new System.Drawing.Size(50, 20);
+            this.labelProject.Size = new System.Drawing.Size(38, 15);
             this.labelProject.TabIndex = 3;
             this.labelProject.Text = "label1";
             // 
             // labelProjectPages
             // 
             this.labelProjectPages.AutoSize = true;
-            this.labelProjectPages.Location = new System.Drawing.Point(129, 432);
+            this.labelProjectPages.Location = new System.Drawing.Point(113, 324);
             this.labelProjectPages.Name = "labelProjectPages";
-            this.labelProjectPages.Size = new System.Drawing.Size(50, 20);
+            this.labelProjectPages.Size = new System.Drawing.Size(38, 15);
             this.labelProjectPages.TabIndex = 4;
             this.labelProjectPages.Text = "label1";
             // 
             // labelEmployeesPages
             // 
             this.labelEmployeesPages.AutoSize = true;
-            this.labelEmployeesPages.Location = new System.Drawing.Point(466, 432);
+            this.labelEmployeesPages.Location = new System.Drawing.Point(408, 324);
             this.labelEmployeesPages.Name = "labelEmployeesPages";
-            this.labelEmployeesPages.Size = new System.Drawing.Size(50, 20);
+            this.labelEmployeesPages.Size = new System.Drawing.Size(38, 15);
             this.labelEmployeesPages.TabIndex = 5;
             this.labelEmployeesPages.Text = "label1";
             this.labelEmployeesPages.Click += new System.EventHandler(this.labelEmployeesPages_Click);
             // 
             // btnPreviousE
             // 
-            this.btnPreviousE.Location = new System.Drawing.Point(388, 464);
+            this.btnPreviousE.Location = new System.Drawing.Point(340, 348);
+            this.btnPreviousE.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPreviousE.Name = "btnPreviousE";
-            this.btnPreviousE.Size = new System.Drawing.Size(94, 29);
+            this.btnPreviousE.Size = new System.Drawing.Size(82, 22);
             this.btnPreviousE.TabIndex = 6;
             this.btnPreviousE.Text = "<<";
             this.btnPreviousE.UseVisualStyleBackColor = true;
@@ -113,9 +115,10 @@
             // 
             // btnNextE
             // 
-            this.btnNextE.Location = new System.Drawing.Point(503, 464);
+            this.btnNextE.Location = new System.Drawing.Point(440, 348);
+            this.btnNextE.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNextE.Name = "btnNextE";
-            this.btnNextE.Size = new System.Drawing.Size(94, 29);
+            this.btnNextE.Size = new System.Drawing.Size(82, 22);
             this.btnNextE.TabIndex = 7;
             this.btnNextE.Text = ">>";
             this.btnNextE.UseVisualStyleBackColor = true;
@@ -123,9 +126,10 @@
             // 
             // btnPreviousP
             // 
-            this.btnPreviousP.Location = new System.Drawing.Point(38, 464);
+            this.btnPreviousP.Location = new System.Drawing.Point(33, 348);
+            this.btnPreviousP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnPreviousP.Name = "btnPreviousP";
-            this.btnPreviousP.Size = new System.Drawing.Size(94, 29);
+            this.btnPreviousP.Size = new System.Drawing.Size(82, 22);
             this.btnPreviousP.TabIndex = 8;
             this.btnPreviousP.Text = "<<";
             this.btnPreviousP.UseVisualStyleBackColor = true;
@@ -133,9 +137,10 @@
             // 
             // btnNextP
             // 
-            this.btnNextP.Location = new System.Drawing.Point(163, 463);
+            this.btnNextP.Location = new System.Drawing.Point(143, 347);
+            this.btnNextP.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnNextP.Name = "btnNextP";
-            this.btnNextP.Size = new System.Drawing.Size(94, 29);
+            this.btnNextP.Size = new System.Drawing.Size(82, 22);
             this.btnNextP.TabIndex = 9;
             this.btnNextP.Text = ">>";
             this.btnNextP.UseVisualStyleBackColor = true;
@@ -144,17 +149,19 @@
             // listBoxTeam
             // 
             this.listBoxTeam.FormattingEnabled = true;
-            this.listBoxTeam.ItemHeight = 20;
-            this.listBoxTeam.Location = new System.Drawing.Point(771, 85);
+            this.listBoxTeam.ItemHeight = 15;
+            this.listBoxTeam.Location = new System.Drawing.Point(675, 64);
+            this.listBoxTeam.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.listBoxTeam.Name = "listBoxTeam";
-            this.listBoxTeam.Size = new System.Drawing.Size(230, 344);
+            this.listBoxTeam.Size = new System.Drawing.Size(202, 259);
             this.listBoxTeam.TabIndex = 10;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(824, 452);
+            this.btnAdd.Location = new System.Drawing.Point(721, 339);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(133, 50);
+            this.btnAdd.Size = new System.Drawing.Size(116, 38);
             this.btnAdd.TabIndex = 11;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
@@ -163,26 +170,25 @@
             // comboBoxECount
             // 
             this.comboBoxECount.FormattingEnabled = true;
-            this.comboBoxECount.Location = new System.Drawing.Point(621, 435);
+            this.comboBoxECount.Items.AddRange(new object[] {
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7"});
+            this.comboBoxECount.Location = new System.Drawing.Point(543, 326);
+            this.comboBoxECount.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBoxECount.Name = "comboBoxECount";
-            this.comboBoxECount.Size = new System.Drawing.Size(42, 28);
+            this.comboBoxECount.Size = new System.Drawing.Size(37, 23);
             this.comboBoxECount.TabIndex = 12;
             this.comboBoxECount.SelectedIndexChanged += new System.EventHandler(this.comboBoxECount_SelectedIndexChanged);
             // 
-            // comboBoxPCount
-            // 
-            this.comboBoxPCount.FormattingEnabled = true;
-            this.comboBoxPCount.Location = new System.Drawing.Point(268, 432);
-            this.comboBoxPCount.Name = "comboBoxPCount";
-            this.comboBoxPCount.Size = new System.Drawing.Size(29, 28);
-            this.comboBoxPCount.TabIndex = 13;
-            // 
             // ProjectsToEmployeeForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1102, 514);
-            this.Controls.Add(this.comboBoxPCount);
+            this.ClientSize = new System.Drawing.Size(964, 386);
             this.Controls.Add(this.comboBoxECount);
             this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.listBoxTeam);
@@ -196,6 +202,7 @@
             this.Controls.Add(this.labelSteps);
             this.Controls.Add(this.listBoxEmployees);
             this.Controls.Add(this.listBoxProjects);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "ProjectsToEmployeeForm";
             this.Text = "ProjectsToEmployee";
             this.Load += new System.EventHandler(this.ProjectsToEmployeeForm_Load);
@@ -219,6 +226,5 @@
         private System.Windows.Forms.ListBox listBoxTeam;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ComboBox comboBoxECount;
-        private System.Windows.Forms.ComboBox comboBoxPCount;
     }
 }
