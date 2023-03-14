@@ -278,5 +278,27 @@
                 return imageUrls;
             }
         }
+        public int GetProjectsPagesCount(int count = 10)
+        {
+            using (context = new AppDbContext())
+            {
+                return (int)Math.Ceiling(context.Projects.Where(x => !x.ProjectClients.Any()).Count() / (double)count);
+            }
+        }
+        public List<string> GetProjectsInfo(int page = 1, int count = 10)
+        {
+            List<string> projects = null;
+            using (context = new AppDbContext())
+            {
+
+                projects = context.Projects
+                    .Where(x => !x.ProjectsEmployee.Any())
+                    .Skip((page - 1) * count)
+                    .Take(count)
+                    .Select(x => $"{x.Id} - {x.Name}")
+                    .ToList();
+            }
+            return projects;
+        }
     }
 }

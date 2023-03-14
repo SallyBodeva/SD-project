@@ -38,7 +38,7 @@
             this.btnNextE = new System.Windows.Forms.Button();
             this.btnPreviousP = new System.Windows.Forms.Button();
             this.btnNextP = new System.Windows.Forms.Button();
-            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.listBoxTeam = new System.Windows.Forms.ListBox();
             this.btnAdd = new System.Windows.Forms.Button();
             this.comboBoxECount = new System.Windows.Forms.ComboBox();
             this.comboBoxPCount = new System.Windows.Forms.ComboBox();
@@ -52,6 +52,7 @@
             this.listBoxProjects.Name = "listBoxProjects";
             this.listBoxProjects.Size = new System.Drawing.Size(270, 344);
             this.listBoxProjects.TabIndex = 0;
+            this.listBoxProjects.DoubleClick += new System.EventHandler(this.listBoxProjects_DoubleClick);
             // 
             // listBoxEmployees
             // 
@@ -61,6 +62,7 @@
             this.listBoxEmployees.Name = "listBoxEmployees";
             this.listBoxEmployees.Size = new System.Drawing.Size(275, 344);
             this.listBoxEmployees.TabIndex = 1;
+            this.listBoxEmployees.DoubleClick += new System.EventHandler(this.listBoxEmployees_DoubleClick);
             // 
             // labelSteps
             // 
@@ -107,6 +109,7 @@
             this.btnPreviousE.TabIndex = 6;
             this.btnPreviousE.Text = "<<";
             this.btnPreviousE.UseVisualStyleBackColor = true;
+            this.btnPreviousE.Click += new System.EventHandler(this.btnPreviousE_Click);
             // 
             // btnNextE
             // 
@@ -116,6 +119,7 @@
             this.btnNextE.TabIndex = 7;
             this.btnNextE.Text = ">>";
             this.btnNextE.UseVisualStyleBackColor = true;
+            this.btnNextE.Click += new System.EventHandler(this.btnNextE_Click);
             // 
             // btnPreviousP
             // 
@@ -125,6 +129,7 @@
             this.btnPreviousP.TabIndex = 8;
             this.btnPreviousP.Text = "<<";
             this.btnPreviousP.UseVisualStyleBackColor = true;
+            this.btnPreviousP.Click += new System.EventHandler(this.btnPreviousP_Click);
             // 
             // btnNextP
             // 
@@ -134,15 +139,16 @@
             this.btnNextP.TabIndex = 9;
             this.btnNextP.Text = ">>";
             this.btnNextP.UseVisualStyleBackColor = true;
+            this.btnNextP.Click += new System.EventHandler(this.btnNextP_Click);
             // 
-            // listBox1
+            // listBoxTeam
             // 
-            this.listBox1.FormattingEnabled = true;
-            this.listBox1.ItemHeight = 20;
-            this.listBox1.Location = new System.Drawing.Point(771, 85);
-            this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(230, 344);
-            this.listBox1.TabIndex = 10;
+            this.listBoxTeam.FormattingEnabled = true;
+            this.listBoxTeam.ItemHeight = 20;
+            this.listBoxTeam.Location = new System.Drawing.Point(771, 85);
+            this.listBoxTeam.Name = "listBoxTeam";
+            this.listBoxTeam.Size = new System.Drawing.Size(230, 344);
+            this.listBoxTeam.TabIndex = 10;
             // 
             // btnAdd
             // 
@@ -152,6 +158,7 @@
             this.btnAdd.TabIndex = 11;
             this.btnAdd.Text = "Add";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // comboBoxECount
             // 
@@ -160,6 +167,7 @@
             this.comboBoxECount.Name = "comboBoxECount";
             this.comboBoxECount.Size = new System.Drawing.Size(42, 28);
             this.comboBoxECount.TabIndex = 12;
+            this.comboBoxECount.SelectedIndexChanged += new System.EventHandler(this.comboBoxECount_SelectedIndexChanged);
             // 
             // comboBoxPCount
             // 
@@ -177,7 +185,7 @@
             this.Controls.Add(this.comboBoxPCount);
             this.Controls.Add(this.comboBoxECount);
             this.Controls.Add(this.btnAdd);
-            this.Controls.Add(this.listBox1);
+            this.Controls.Add(this.listBoxTeam);
             this.Controls.Add(this.btnNextP);
             this.Controls.Add(this.btnPreviousP);
             this.Controls.Add(this.btnNextE);
@@ -190,6 +198,7 @@
             this.Controls.Add(this.listBoxProjects);
             this.Name = "ProjectsToEmployeeForm";
             this.Text = "ProjectsToEmployee";
+            this.Load += new System.EventHandler(this.ProjectsToEmployeeForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -207,7 +216,7 @@
         private System.Windows.Forms.Button btnNextE;
         private System.Windows.Forms.Button btnPreviousP;
         private System.Windows.Forms.Button btnNextP;
-        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.ListBox listBoxTeam;
         private System.Windows.Forms.Button btnAdd;
         private System.Windows.Forms.ComboBox comboBoxECount;
         private System.Windows.Forms.ComboBox comboBoxPCount;
