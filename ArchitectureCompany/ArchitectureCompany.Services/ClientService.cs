@@ -217,7 +217,7 @@ namespace ArchitectureCompany.Services
             {
                 return context.ProjectClients
                     .Where(x => x.ClientId == clientId)
-                    .Select(x => x.Project.Name).ToList();
+                    .Select(x => x.Project.Name).Distinct().ToList();
             }
         }
     }

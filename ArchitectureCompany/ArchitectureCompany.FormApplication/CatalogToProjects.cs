@@ -16,6 +16,7 @@ namespace ArchitectureCompany.FormApplication
     {
         private ClientService clientService;
         private ProjectService projectService;
+        private int imageIndex = 0;
         public CatalogToProjects()
         {
             InitializeComponent();
@@ -36,7 +37,6 @@ namespace ArchitectureCompany.FormApplication
 
             string pilotInfo = cbClient.Text;
             int currentClientId = int.Parse(pilotInfo.Split(' ').First());
-
             tbClientid.Text = currentClientId.ToString();
         }
 
@@ -50,12 +50,16 @@ namespace ArchitectureCompany.FormApplication
             int cliendId = int.Parse(tbClientid.Text);
             List<string> projects = clientService.GetClientsProjects(cliendId);
             projects.ForEach(x => cbProject.Items.Add(x));
+
         }
 
         private void cbProject_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int pId = projectService.GetProjectIdByName(cbProject.Text);
-            Project p = projectService.GetProjectById(pId);
-        }
+            List<string> urls = projectService.GetProjectImages(cbProject.Text);
+            for (int i = 0; i < urls.Count; i++)
+            {
+                pictureBox1.Load(urls[imageIndex]);
+            }
+        } 
     }
 }

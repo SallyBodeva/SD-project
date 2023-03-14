@@ -118,7 +118,7 @@
             {
                 throw new ArgumentException("Invalid Project id!");
             }
-            Project project = this.context.Projects.FirstOrDefault(x => x.Id == (id));
+            Project project = this.context.Projects.Find(id);
             return project;
         }
         public Project GetProjectByName(string name)
@@ -262,6 +262,21 @@
                 return "Image added successfully!";
             }
         }
-        
+        public List<string> GetProjectImages()
+        {
+            return null;
+        }
+        public List<string> GetProjectImages(string projectName)
+        {
+            using (context= new AppDbContext())
+            {
+                Project p = context.Projects.FirstOrDefault(x => x.Name == projectName);
+                List<string> imageUrls = context.Images
+                            .Where(i => i.Project == p)
+                            .Select(i => i.Url)
+                            .ToList();
+                return imageUrls;
+            }
+        }
     }
 }
