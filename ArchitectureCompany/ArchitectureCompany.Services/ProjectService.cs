@@ -177,12 +177,12 @@
                 return unFinishedProjects;
             }
         }
-        public string GetProjectInfo()
+        public string GetProjectInfo(int id)
         {
             Project project = null;
             using (context = new AppDbContext())
             {
-                project = context.Projects.Find(project);
+                project = context.Projects.Find(id);
             }
             if (project != null)
             {
@@ -192,7 +192,7 @@
                 message.AppendLine($"\tName: {project.Name}");
                 message.AppendLine($"\tBuildingTypeId id: {project.BuildingTypeId}");
                 message.AppendLine($"\tCapacity: {project.Capacity}");
-                message.AppendLine($"\tRelease date: {project.ReleaseDate}");
+                message.AppendLine($"\tRelease date: {project.ReleaseDate.ToString("dd-MM-yyyy")}");
                 message.AppendLine($"\tTotal floor area: {project.TotalFloorArea}");
                 message.AppendLine($"\tNumber of floors: {project.NumberOfFloors}");
                 message.AppendLine($"\tAddres id: {project.AddressId}");
@@ -206,7 +206,7 @@
         public string GetAllProjectsInfo(int page = 1, int count = 10)
         {
             StringBuilder msg = new StringBuilder();
-            string firstRow = $"| {"Id",-4} | {"Name",-12} | {"Building Type Id: ",-4} | {"Capacity",-5} | {"Release date",-10} | {"Total Floor area",-9} | {"Number of Floors",-3} | {"Address id",-3}|";
+            string firstRow = $"|{"Id",-4} | {"Name",-20} | {"Type Id: ",-9} | {"Capacity",-12} | {"Release date",-12} | {"Floor area",-9} | {"Floors",-9} | {"Address id",-12}|";
 
             string line = $"|{new string('-', firstRow.Length - 2)}|";
 
@@ -217,7 +217,7 @@
                 msg.AppendLine(line);
                 foreach (var c in projects)
                 {
-                    string info = $"| {"Id",-4} | {"Name",-12} | {"Building Type Id: ",-4} | {"Capacity",-5} | {"Release date",-10} | {"Total Floor area",-9} | {"Number of Floors",-3} | {"Address id",-3}|";
+                    string info = $"|{c.Id,-4} | {c.Name,-20} | {c.BuildingTypeId,-9} | {c.Capacity,-12} | {c.ReleaseDate.ToString("yyyy-MM-dd"),-12} | {c.TotalFloorArea,-9} | {c.NumberOfFloors,-9} | {c.AddressId,-12}|";
                     msg.AppendLine(info);
                     msg.AppendLine(line);
                 }

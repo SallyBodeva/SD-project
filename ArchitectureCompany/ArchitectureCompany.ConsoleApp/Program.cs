@@ -6,12 +6,7 @@
     {
         static void Main()
         {
-            EmployeeService es = new EmployeeService();
-            ClientService cs = new ClientService();
-            DepartmentService ds = new DepartmentService();
-            AdditionalService ads = new AdditionalService();
-            ProjectService ps = new ProjectService();
-          //  Console.WriteLine(String.Join(" ",cs.GetClientsProjects(38)));
+            Engine e = new Engine();
         }
     }
 }

@@ -100,7 +100,7 @@ namespace ArchitectureCompany.Services
         public string GetAllClientsInfo(int page = 1, int count = 10)
         {
             StringBuilder msg = new StringBuilder();
-            string firstRow = $"| {"Id",-4} | {"First name",-12} | {"Last name",-12} | {"Adress: ",-8} | {"Phone number",-25} | {"Email",-9} |";
+            string firstRow = $"| {"Id",-4} | {"First name",-12} | {"Last name",-12} | {"Adress id: ",-15} | {"Phone number",-12} | {"Email",-30} |";
 
             string line = $"|{new string('-', firstRow.Length - 2)}| ";
 
@@ -111,7 +111,7 @@ namespace ArchitectureCompany.Services
                 msg.AppendLine(line);
                 foreach (var c in clients)
                 {
-                    string info = $"| {c.Id,-4} | {c.FirstName,-12} | {c.LastName,-12} | {c.AddressId,-8} | {c.PhoneNumber,-25} | {c.Email,-9} |";
+                    string info = $"| {c.Id,-4} | {c.FirstName,-12} | {c.LastName,-12} | {c.AddressId,-15} | {c.PhoneNumber,-12} | {c.Email,-30} |";
                     msg.AppendLine(info);
                     msg.AppendLine(line);
                 }

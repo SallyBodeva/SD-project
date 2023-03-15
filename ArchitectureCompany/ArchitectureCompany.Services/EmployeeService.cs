@@ -179,7 +179,7 @@
         public string GetAllEmployeesInfo(int page = 1, int count = 10)
         {
             StringBuilder msg = new StringBuilder();
-            string firstRow = $"| {"Id",-4} | {"First name",-12} | {"Last name",-12} | {"Adress id",-3} | {"Dpartmenmt id",-3} | {"Phone number",-15} | {"Email",-15} |";
+            string firstRow = $"| {"Id",-4} | {"First name",-12} | {"Last name",-12} | {"Adress id",-10} | {"Dpartmenmt id",-15} | {"Phone number",-12} | {"Email",-30} |";
 
             string line = $"|{new string('-', firstRow.Length - 2)}|";
 
@@ -190,7 +190,7 @@
                 msg.AppendLine(line);
                 foreach (var e in employees)
                 {
-                    string info = $"| {e.Id,-4} | {e.FirstName,-12} | {e.LastName,-12} | {e.AddressId,-3} | {e.DepartmentId,-3} | {e.PhoneNumber,-15}| {e.Email,-15} |";
+                    string info = $"| {e.Id,-4} | {e.FirstName,-12} | {e.LastName,-12} | {e.AddressId,-10} | {e.DepartmentId,-15} | {e.PhoneNumber,-12} | {e.Email,-30} |";
                     msg.AppendLine(info);
                     msg.AppendLine(line);
                 }
