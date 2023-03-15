@@ -10,7 +10,7 @@ namespace ArchitectureCompany.Data
 
     public class AppDbContext : DbContext
     {
-        private const string connectionString = @"Server=DESKTOP-0FTTVGR; Initial Catalog=ArchitectureCompanyNewEf3; Integrated Security=true; Trusted_Connection=true";
+        private const string connectionString = @"Server=DESKTOP-0FTTVGR; Initial Catalog=ArchitectureCompanyEf; Integrated Security=true; Trusted_Connection=true";
         public virtual DbSet<Address> Addresses { get; set; }
         public virtual DbSet<BuildingType> BuildingTypes { get; set; }
         public virtual DbSet<Client> Clients { get; set; }

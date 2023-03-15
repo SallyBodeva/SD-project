@@ -110,7 +110,7 @@ namespace ArchitectureCompany.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ProjectId")
+                    b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
                     b.Property<string>("Url")
@@ -301,7 +301,9 @@ namespace ArchitectureCompany.Data.Migrations
                 {
                     b.HasOne("ArchitectureCompany.Models.Project", "Project")
                         .WithMany("Images")
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ArchitectureCompany.Models.Address", b =>

@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ArchitectureCompany.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230308124149_withoutImId")]
-    partial class withoutImId
+    [Migration("20230315174246_lastMigration2")]
+    partial class lastMigration2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -112,7 +112,7 @@ namespace ArchitectureCompany.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("ProjectId")
+                    b.Property<int>("ProjectId")
                         .HasColumnType("int");
 
                     b.Property<string>("Url")
@@ -303,7 +303,9 @@ namespace ArchitectureCompany.Data.Migrations
                 {
                     b.HasOne("ArchitectureCompany.Models.Project", "Project")
                         .WithMany("Images")
-                        .HasForeignKey("ProjectId");
+                        .HasForeignKey("ProjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ArchitectureCompany.Models.Address", b =>

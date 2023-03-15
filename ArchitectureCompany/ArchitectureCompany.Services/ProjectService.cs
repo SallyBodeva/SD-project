@@ -237,7 +237,7 @@
                 {
                     return "Project not found";
                 }
-                Image i = new Image() { Project = p, Url = url };
+                Image i = new Image() {Url = url, ProjectId=p.Id };
                 context.Images.Add(i);
                 context.SaveChanges();
                 return "Image added successfully!";
@@ -299,6 +299,13 @@
                     .ToList();
             }
             return projects;
+        }
+        public List<string> GetProjectsNames()
+        {
+            using (context= new AppDbContext())
+            {
+                return context.Projects.Select(x => x.Name).ToList();
+            }
         }
     }
 }

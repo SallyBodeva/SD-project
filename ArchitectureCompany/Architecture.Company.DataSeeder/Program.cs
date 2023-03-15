@@ -14,7 +14,9 @@ namespace Architecture.Company.DataSeeder
         private static ProjectService pService=new ProjectService();
         static void Main()
         {
-            SeedClient();
+            
+            SeedEmployee();
+            
         }
         public static void SeedDepartments()
         {
@@ -30,7 +32,7 @@ namespace Architecture.Company.DataSeeder
                 d.Add("Industrial Architecture");
                 d.Add("PR management");
 
-                for (int i = 0; i < 8; i++)
+                for (int i = 0; i < d.Count; i++)
                 {
                     string name = d[i];
                     Console.WriteLine(dService.AddDepartment(name));
@@ -77,7 +79,7 @@ namespace Architecture.Company.DataSeeder
                 t.Add("Barcelona");
                 t.Add("Porto");
 
-                for (int i = 0; i < 30; i++)
+                for (int i = 0; i < t.Count; i++)
                 {
                     string name = t[i];
                     Console.WriteLine(aService.AddTown(name));
@@ -121,9 +123,8 @@ namespace Architecture.Company.DataSeeder
                 a.Add("Graf Ignatiev 10");
                 a.Add("Macedonia Street 10");
                 a.Add("Varna Boulevard 10");
-                for (int i = 0; i < 25; i++)
+                for (int i = 0; i < a.Count; i++)
                 {
-                    Random r = new Random();
                     string addressname = a[i];
                     List<string> towns = aService.GetTownsNames();
                     Console.WriteLine(aService.AddAddress(addressname, towns[i]));
@@ -170,7 +171,9 @@ namespace Architecture.Company.DataSeeder
             catch (Exception)
             {
 
+              
             }
+               
            
         }
         public static void SeedClientAddress()
@@ -198,9 +201,8 @@ namespace Architecture.Company.DataSeeder
                 a.Add("Medford Place");
                 a.Add("Millhorn Loop");
                 a.Add("Odell Circle");
-                for (int i = 0; i < 25; i++)
+                for (int i = 0; i < a.Count; i++)
                 {
-                    Random r = new Random();
                     string addressname = a[i];
                     List<string> towns = aService.GetTownsNames();
                     Console.WriteLine(aService.AddAddress(addressname, towns[i]));
@@ -260,7 +262,7 @@ namespace Architecture.Company.DataSeeder
                 bt.Add("Hotels");
                 bt.Add("Residential Care Facilities ");
 
-                for (int i = 0; i < 12; i++)
+                for (int i = 0; i < bt.Count; i++)
                 {
                     string name = bt[i];
                     Console.WriteLine(aService.AddBuildingType(name));

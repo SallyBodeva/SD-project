@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ArchitectureCompany.Data.Migrations
 {
-    public partial class RemoveFixLength2 : Migration
+    public partial class lastMigration2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -131,8 +131,7 @@ namespace ArchitectureCompany.Data.Migrations
                     ReleaseDate = table.Column<DateTime>(nullable: false),
                     TotalFloorArea = table.Column<int>(nullable: false),
                     NumberOfFloors = table.Column<int>(nullable: false),
-                    AddressId = table.Column<int>(nullable: false),
-                    ImageId = table.Column<int>(nullable: false)
+                    AddressId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -158,7 +157,7 @@ namespace ArchitectureCompany.Data.Migrations
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Url = table.Column<string>(maxLength: 50, nullable: false),
-                    ProjectId = table.Column<int>(nullable: true)
+                    ProjectId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -168,7 +167,7 @@ namespace ArchitectureCompany.Data.Migrations
                         column: x => x.ProjectId,
                         principalTable: "Projects",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
