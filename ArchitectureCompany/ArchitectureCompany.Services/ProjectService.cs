@@ -228,7 +228,7 @@
             return msg.ToString().TrimEnd();
         }
         
-        public string AddImageToProject(string projectName, string url)
+        public string AddImageToProject(string projectName, string url) 
         {
             using (context = new AppDbContext())
             {

@@ -88,6 +88,21 @@ namespace ArchitectureCompany.FormApplication
             int projectId = projectService.GetProjectIdByName(tbProjectName.Text);
             string resultMatches = clientService.MatchClientToProject(clientId, projectId);
             MessageBox.Show(resultMatches);
+
+            ClearProjectInfo();
+        }
+
+        private void ClearProjectInfo()
+        {
+            tbClientId.Text = string.Empty;
+            tbProjectName.Text = string.Empty;
+            cbBulidingType.SelectedIndex = 0;
+            tbCapasity.Text = string.Empty;
+            tbReleasedDate.Text = string.Empty;
+            tbFllor.Text = string.Empty;
+            tbArea.Text = string.Empty;
+            tbProjectAdress.Text = string.Empty;
+            comboBoxProjectTown.Text = string.Empty;
         }
 
         private void buttonAddmage_Click(object sender, EventArgs e)
