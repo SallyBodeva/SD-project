@@ -148,13 +148,13 @@ namespace ArchitectureCompany.Services
                 }
             }
         }
-        public int GetClientIdByPhoneNum(string phoneNum)
-        {
-            using (context = new AppDbContext())
-            {
-                return context.Clients.FirstOrDefault(x => x.PhoneNumber == phoneNum).Id;
-            }
-        }
+       public int GetClientIdByPhoneNum(string phoneNum)
+       {
+           using (context = new AppDbContext())
+           {
+               return context.Clients.FirstOrDefault(x => x.PhoneNumber == phoneNum).Id;
+           }
+       }
         public List<string> GetProjectsName(int idClient)
         {
             using (context= new AppDbContext())
@@ -204,7 +204,7 @@ namespace ArchitectureCompany.Services
             }
             return list;
         }
-        public int GetClientPagesCount(int count)
+        public int GetClientPagesCount(int count=10)
         {
             using (context = new AppDbContext())
             {

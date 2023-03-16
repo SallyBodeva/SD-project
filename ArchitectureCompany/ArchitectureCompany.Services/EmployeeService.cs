@@ -262,7 +262,7 @@
                 return $"Employee {e.FirstName} {e.LastName} has new phone number: {num}";
             }
         }
-        public int GetEmployeePagesCount(int count)
+        public int GetEmployeePagesCount(int count=10)
         {
             using (context = new AppDbContext())
             {

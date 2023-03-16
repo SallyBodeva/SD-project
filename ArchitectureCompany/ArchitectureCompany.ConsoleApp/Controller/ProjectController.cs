@@ -62,10 +62,9 @@ namespace ArchitectureCompany.ConsoleApp.Controller
         }
         public void AddNewProject()
         {
-            Console.Write($"> Enter the phone number of the client: ");
-            string clientPN = Console.ReadLine();
-            int clientId = cs.GetClientIdByPhoneNum(clientPN);
-            Console.Write($"> Enter name: ");
+            Console.Write($"> Enter the id of the client: ");
+            int clientId = int.Parse(Console.ReadLine());
+            Console.Write($"> Enter project name: ");
             string name = Console.ReadLine();
             Console.Write($"> Enter building type : ");
             string bt = Console.ReadLine();

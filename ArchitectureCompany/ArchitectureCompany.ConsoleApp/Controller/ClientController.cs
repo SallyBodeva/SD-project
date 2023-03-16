@@ -53,9 +53,28 @@ namespace ArchitectureCompany.ConsoleApp.Controller
         }
         public void PrintClientsInfo()
         {
-            string result = cs.GetAllClientsInfo();
-            Console.WriteLine(result);
-            WaitPressKey();
+            int currentPage = 1;
+            int pageCount = cs.GetClientPagesCount();
+            while (true)
+            {
+                Console.Clear();
+                string result = cs.GetAllClientsInfo();
+                Console.WriteLine(result);
+                Console.WriteLine("Commands: 0:Back, 1:Previous page, 2:Next page ");
+                Console.Write("Enter command: ");
+                string cmd = Console.ReadLine();
+                switch (cmd)
+                {
+                    case "0":
+                        return;
+                    case "1":
+                        if (currentPage > 1) { currentPage--; }
+                        break;
+                    case "2":
+                        if (currentPage < pageCount) { currentPage++; }
+                        break;
+                }
+            }
         }
         public void AddNewClient()
         {
