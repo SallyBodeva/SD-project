@@ -276,26 +276,28 @@ namespace Architecture.Company.DataSeeder
         }
         public static void SeedProjects()
         {
-            //Console.WriteLine(pService.AddProject("The Opera house", "Industrial Buildings",500,"12-03-2009",1500,5,Eaton Terrace,Helzinki);
-            //Console.WriteLine(pService.AddProject("The Lighthouse","");
-            //Console.WriteLine(pService.AddProject("The Museum of Islamic Art");
-            //Console.WriteLine(pService.AddProject("The Disney Concert Hall");
-            //Console.WriteLine(pService.AddProject("The Olimpic Stadium");
-            //Console.WriteLine(pService.AddProject("The Stadium");
-            //Console.WriteLine(pService.AddProject("The Sky Garden");
-            //Console.WriteLine(pService.AddProject("The Floating City");
-            //Console.WriteLine(pService.AddProject("The Time Travel Museum");
-            //Console.WriteLine(pService.AddProject("The Nexus Tower");
-            //Console.WriteLine(pService.AddProject("The Hydrogen House");
-            //Console.WriteLine(pService.AddProject("The Oasis");
-            //Console.WriteLine(pService.AddProject("The Eden Project");
-            //Console.WriteLine(pService.AddProject("The Kinder Garden");
-            //Console.WriteLine(pService.AddProject("The Children's Corner");
-            //Console.WriteLine(pService.AddProject("The Beach House");
-            //Console.WriteLine(pService.AddProject("The Lake House");
-            //Console.WriteLine(pService.AddProject("The Mansion");
-            //Console.WriteLine(pService.AddProject("The Farm");
-            //Console.WriteLine(pService.AddProject("The Skyscraper");
+            try
+            {
+                Console.WriteLine(pService.AddProject("The Opera house", "Industrial Buildings", 500, "12-03-2009", 1500, 5, "Eaton Terrace", "Helzinki"));
+                Console.WriteLine(pService.AddProject("The Lighthouse", "Residential Buildings", 70, "25-02-2015", 700, 3, "Via dei Fori 16", "Paris"));
+                Console.WriteLine(pService.AddProject("The Disney Concert Hall", "Commercial Buildings", 490, "25-06-2020", 1500, 3, "Foxbridge Terrace", "Limasol"));
+                Console.WriteLine(pService.AddProject("The Olimpic Stadium", "Institutional Buildings", 2000, "14-11-2023", 2900, 1, "Abney Avenue", "Berlin"));
+                Console.WriteLine(pService.AddProject("The Stadium", "Institutional Buildings", 1000, "20-09-2022", 2000, 1, "Joiner Place", "Montevideo"));
+                Console.WriteLine(pService.AddProject("The Sky Garden", "Hotels", 1000, "18-10-20019", 895, 5, "Duson Loop", "Dubai"));
+                Console.WriteLine(pService.AddProject("The Floating City", "Skyscrapers ", 1200, "25-05-2022", 490, 50, "Chirch Street 3", "Limasol"));
+                Console.WriteLine(pService.AddProject("The Oasis", "Hotels", 526, "20-03-2000", 59, 6, "Harston Trail", "Madrid"));
+                Console.WriteLine(pService.AddProject("The Beach House", "Recreational Buildings ", 565, "10-02-2012", 545, 5, "Brampton Street", "Burgas"));
+                Console.WriteLine(pService.AddProject("The Lake House", "Commercial Buildings ", 55, "20-12-2022", 566, 5, "5th Avenue 9", "Madrid"));
+                Console.WriteLine(pService.AddProject("The Mansion", "Residential Care Facilities ", 50, "29-01-2021", 456, 7, "Bor str 15", "Plovdiv"));
+                Console.WriteLine(pService.AddProject("The Skyscraper", "Skyscrapers ", 598, "20-06-2022", 989, 50, "Via Vento 8", "Pazardzhik"));
+            }
+            catch (Exception)
+            {
+
+                
+            }
+           
+          
         }
 
     }
