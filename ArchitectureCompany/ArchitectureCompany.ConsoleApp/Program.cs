@@ -1,8 +1,10 @@
-﻿namespace ArchitectureCompany.ConsoleApp
+﻿using System;
+using System.Text;
+using ArchitectureCompany.Services;
+using ArchitectureCompany.ConsoleApp.Controller;
+using System.Collections.Generic;
+namespace ArchitectureCompany.ConsoleApp
 {
-    using System;
-    using System.Text;
-    using Services;
     internal class Program
     {
         public static void Main()
@@ -18,7 +20,13 @@
                     case "0":
                         return;
                     case "1":
-                        new EmployeeService();
+                        new EmployeeController();
+                        break;
+                    case "2":
+                        new ClientController();
+                        break;
+                    case "3":
+                        new ProjectController();
                         break;
                     default:
                         Console.WriteLine("Invalid command!");
@@ -29,10 +37,11 @@
         public static void Commands()
         {
             StringBuilder sb = new StringBuilder();
-            sb.AppendLine($"Pilots menu:");
+            sb.AppendLine($"Art life menu:");
             sb.AppendLine($"\t0: Back");
             sb.AppendLine($"\t1: Employees");
-            sb.AppendLine($"\t2: ");
+            sb.AppendLine($"\t2: Clients");
+            sb.AppendLine($"\t3: Projects");
             Console.WriteLine(sb.ToString().TrimEnd());
         }
     }

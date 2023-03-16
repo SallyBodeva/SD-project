@@ -9,8 +9,7 @@ namespace ArchitectureCompany.ConsoleApp.Controller
 {
     public class EmployeeController
     {
-        private static AppDbContext context = new AppDbContext();
-        EmployeeService es;
+        private EmployeeService es;
         public EmployeeController()
         {
             es = new EmployeeService();
@@ -25,10 +24,11 @@ namespace ArchitectureCompany.ConsoleApp.Controller
                 {
                     Console.Clear();
                     Commands();
+                    Console.Write("> Enter command:");
                     string cmd = Console.ReadLine();
                     switch (cmd)
                     {
-                        case "0":
+                        case"0":
                             return;
                         case "1":
                             PrintEmployeesInfo();
@@ -36,15 +36,19 @@ namespace ArchitectureCompany.ConsoleApp.Controller
                         case "2":
                             HireNewEmployee();
                             break;
-                        case "3":
+                        case"3":
                             DeleteEmployee();
                             break;
                         case "4":
                             UpdateEmployeePhoneNumber();
                             break;
+                        case "5":
+                            GetExactEmployeeInfo();
+                            break;
                         default:
                             Console.WriteLine("Invalid command!");
                             WaitPressKey();
+                            
                             break;
                     }
                 }
@@ -57,15 +61,9 @@ namespace ArchitectureCompany.ConsoleApp.Controller
         }
         public void PrintEmployeesInfo()
         {
-            if (context.Employees.Any())
-            {
-                string result = es.GetAllEmployeesInfo();
-                Console.WriteLine(result);
-            }
-            else
-            {
-                Console.WriteLine("The company has no hired employees");
-            }
+            string result = es.GetAllEmployeesInfo();
+            Console.WriteLine(result);
+            WaitPressKey();
         }
         public void HireNewEmployee()
         {
@@ -85,22 +83,25 @@ namespace ArchitectureCompany.ConsoleApp.Controller
             string email = Console.ReadLine();
             string result = es.AddEmployee(name, lastName, address, town, department, number, email);
             Console.WriteLine(result);
+            WaitPressKey();
         }
         public void DeleteEmployee()
-         {
+        {
             try
             {
                 Console.Write($"> Enter employee's id: ");
                 int id = int.Parse(Console.ReadLine());
                 string result = es.DeleteEmployeeById(id);
                 Console.WriteLine(result);
+                WaitPressKey();
             }
             catch (Exception)
             {
                 Console.WriteLine("This employee cannot be discharge, his projects are still remainig...");
+                WaitPressKey();
             }
-             
-         }
+
+        }
         public void UpdateEmployeePhoneNumber()
         {
             Console.Write($"> Enter employee's id: ");
@@ -109,6 +110,15 @@ namespace ArchitectureCompany.ConsoleApp.Controller
             string pN = Console.ReadLine();
             string result = es.UpdateEmployeePhoneNum(id, pN);
             Console.WriteLine(result);
+            WaitPressKey();
+        }
+        public void GetExactEmployeeInfo()
+        {
+            Console.Write($"> Enter employee's id: ");
+            int id = int.Parse(Console.ReadLine());
+            string result = es.GetEmployeeInfo(id);
+            Console.WriteLine(result);
+            WaitPressKey();
         }
         private static void WaitPressKey()
         {
@@ -124,6 +134,7 @@ namespace ArchitectureCompany.ConsoleApp.Controller
             sb.AppendLine($"\t2: Hire new employee");
             sb.AppendLine($"\t3: Discharge employee");
             sb.AppendLine($"\t4: Update employee phone number");
+            sb.AppendLine($"\t5: Get exact employee info");
             Console.WriteLine(sb.ToString().TrimEnd());
         }
     }
