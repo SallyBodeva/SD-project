@@ -42,19 +42,21 @@
             // 
             // cbClient
             // 
+            this.cbClient.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbClient.FormattingEnabled = true;
-            this.cbClient.Location = new System.Drawing.Point(106, 24);
+            this.cbClient.Location = new System.Drawing.Point(113, 25);
             this.cbClient.Name = "cbClient";
-            this.cbClient.Size = new System.Drawing.Size(140, 23);
+            this.cbClient.Size = new System.Drawing.Size(140, 24);
             this.cbClient.TabIndex = 0;
             this.cbClient.SelectedIndexChanged += new System.EventHandler(this.cbClient_SelectedIndexChanged);
             // 
             // cbProject
             // 
+            this.cbProject.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.cbProject.FormattingEnabled = true;
-            this.cbProject.Location = new System.Drawing.Point(483, 24);
+            this.cbProject.Location = new System.Drawing.Point(508, 27);
             this.cbProject.Name = "cbProject";
-            this.cbProject.Size = new System.Drawing.Size(121, 23);
+            this.cbProject.Size = new System.Drawing.Size(121, 24);
             this.cbProject.TabIndex = 1;
             this.cbProject.SelectedIndexChanged += new System.EventHandler(this.cbProject_SelectedIndexChanged);
             this.cbProject.TextChanged += new System.EventHandler(this.cbProject_TextChanged);
@@ -62,18 +64,20 @@
             // labelClients
             // 
             this.labelClients.AutoSize = true;
+            this.labelClients.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelClients.Location = new System.Drawing.Point(52, 28);
             this.labelClients.Name = "labelClients";
-            this.labelClients.Size = new System.Drawing.Size(38, 15);
+            this.labelClients.Size = new System.Drawing.Size(55, 16);
             this.labelClients.TabIndex = 2;
             this.labelClients.Text = "Client";
             // 
             // labelProject
             // 
             this.labelProject.AutoSize = true;
+            this.labelProject.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelProject.Location = new System.Drawing.Point(439, 27);
             this.labelProject.Name = "labelProject";
-            this.labelProject.Size = new System.Drawing.Size(44, 15);
+            this.labelProject.Size = new System.Drawing.Size(63, 16);
             this.labelProject.TabIndex = 3;
             this.labelProject.Text = "Project";
             // 
@@ -87,38 +91,46 @@
             // 
             // btnPrevious
             // 
-            this.btnPrevious.Location = new System.Drawing.Point(483, 387);
+            this.btnPrevious.BackColor = System.Drawing.Color.DarkKhaki;
+            this.btnPrevious.Font = new System.Drawing.Font("SimSun", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnPrevious.ForeColor = System.Drawing.Color.Black;
+            this.btnPrevious.Location = new System.Drawing.Point(438, 382);
             this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(75, 23);
+            this.btnPrevious.Size = new System.Drawing.Size(117, 35);
             this.btnPrevious.TabIndex = 5;
             this.btnPrevious.Text = "Previous";
-            this.btnPrevious.UseVisualStyleBackColor = true;
+            this.btnPrevious.UseVisualStyleBackColor = false;
             this.btnPrevious.Click += new System.EventHandler(this.btnPrevious_Click);
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(597, 387);
+            this.btnNext.BackColor = System.Drawing.Color.DarkKhaki;
+            this.btnNext.Font = new System.Drawing.Font("SimSun", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnNext.ForeColor = System.Drawing.Color.Black;
+            this.btnNext.Location = new System.Drawing.Point(587, 382);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.Size = new System.Drawing.Size(117, 35);
             this.btnNext.TabIndex = 6;
             this.btnNext.Text = "Next";
-            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.UseVisualStyleBackColor = false;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // tbClientid
             // 
+            this.tbClientid.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.tbClientid.Location = new System.Drawing.Point(352, 25);
             this.tbClientid.Name = "tbClientid";
-            this.tbClientid.Size = new System.Drawing.Size(46, 23);
+            this.tbClientid.Size = new System.Drawing.Size(46, 26);
             this.tbClientid.TabIndex = 7;
             this.tbClientid.TextChanged += new System.EventHandler(this.tbClientid_TextChanged);
             // 
             // labelArrow
             // 
             this.labelArrow.AutoSize = true;
+            this.labelArrow.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.labelArrow.Location = new System.Drawing.Point(291, 27);
             this.labelArrow.Name = "labelArrow";
-            this.labelArrow.Size = new System.Drawing.Size(23, 15);
+            this.labelArrow.Size = new System.Drawing.Size(23, 16);
             this.labelArrow.TabIndex = 8;
             this.labelArrow.Text = "=>";
             // 
@@ -126,6 +138,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.PeachPuff;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.labelArrow);
             this.Controls.Add(this.tbClientid);

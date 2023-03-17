@@ -1,9 +1,9 @@
 ﻿using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
-namespace ArchitectureCompany.Data.Migrations
+namespace ArchitectureCompany.Data.Data.Migrations
 {
-    public partial class lastMigration2 : Migration
+    public partial class RemoveMaxLength : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -156,7 +156,7 @@ namespace ArchitectureCompany.Data.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Url = table.Column<string>(maxLength: 50, nullable: false),
+                    Url = table.Column<string>(nullable: false),
                     ProjectId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
@@ -217,12 +217,6 @@ namespace ArchitectureCompany.Data.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Addresses_Name",
-                table: "Addresses",
-                column: "Name",
-                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_Addresses_TownId",
@@ -298,12 +292,6 @@ namespace ArchitectureCompany.Data.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Projects_Name",
                 table: "Projects",
-                column: "Name",
-                unique: true);
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Towns_Name",
-                table: "Towns",
                 column: "Name",
                 unique: true);
         }

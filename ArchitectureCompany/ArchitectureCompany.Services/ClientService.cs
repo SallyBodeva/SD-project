@@ -48,13 +48,11 @@ namespace ArchitectureCompany.Services
                 if (t == null)
                 {
                     t = new Town() { Name = town };
-                    context.SaveChanges();
                 }
                 a = context.Addresses.FirstOrDefault(x => x.Name == address);
                 if (a == null)
                 {
                     a = new Address() { Name = address, Town = t };
-                    context.SaveChanges();
                 }
                 if (isValid)
                 {

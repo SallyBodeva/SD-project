@@ -13,7 +13,6 @@ namespace ArchitectureCompany.Data
         public int Id { get; set; }
 
         [Required]
-        [MaxLength(50)]
         public string Url { get; set; }
         public int ProjectId { get; set; }
 

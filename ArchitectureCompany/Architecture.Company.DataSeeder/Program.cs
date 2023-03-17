@@ -14,9 +14,14 @@ namespace Architecture.Company.DataSeeder
         private static ProjectService pService=new ProjectService();
         static void Main()
         {
-            
-            SeedEmployee();
-            
+          // SeedTowns();
+          // SeedBuildingType();
+          // SeedDepartments();
+          // SeedAddress();
+          // SeedEmployee();
+          // SeedClientAddress();
+          // SeedClient();
+          // SeedProjects();
         }
         public static void SeedDepartments()
         {
@@ -165,8 +170,7 @@ namespace Architecture.Company.DataSeeder
                 Console.WriteLine(eService.AddEmployee("Salihe", "Ercel", "Vitosha Boulevard 10", "Plovdiv", "Industrial Architecture", "0854793628", "architect_ercel@gmail.com"));
                 Console.WriteLine(eService.AddEmployee("Avishe", "Kaya", "Graf Ignatiev 10", "Porto", "Landscape Architecture", "0817936248", "architect_kaya@gmail.com"));
                 Console.WriteLine(eService.AddEmployee("Bryan", "Conar", "Hristo Botev str 25", "Blagoevgrad", "Residential Architecture", "08547777248", "architect_conar@gmail.com"));
-                Console.WriteLine(eService.AddEmployee("Jeremiah", "Connard", "--", "---", "Interior Design", "08547985858", "architect_connard@gmail.com"));
-
+              
             }
             catch (Exception)
             {
@@ -276,9 +280,7 @@ namespace Architecture.Company.DataSeeder
         }
         public static void SeedProjects()
         {
-            try
-            {
-                Console.WriteLine(pService.AddProject("The Opera house", "Industrial Buildings", 500, "12-03-2009", 1500, 5, "Eaton Terrace", "Helzinki"));
+                Console.WriteLine(pService.AddProject("The Opera house", "Industrial Buildings", 500, "12-03-2009", 1500, 5, "Eaton Terrace", "Sofia"));
                 Console.WriteLine(pService.AddProject("The Lighthouse", "Residential Buildings", 70, "25-02-2015", 700, 3, "Via dei Fori 16", "Paris"));
                 Console.WriteLine(pService.AddProject("The Disney Concert Hall", "Commercial Buildings", 490, "25-06-2020", 1500, 3, "Foxbridge Terrace", "Limasol"));
                 Console.WriteLine(pService.AddProject("The Olimpic Stadium", "Institutional Buildings", 2000, "14-11-2023", 2900, 1, "Abney Avenue", "Berlin"));
@@ -290,12 +292,7 @@ namespace Architecture.Company.DataSeeder
                 Console.WriteLine(pService.AddProject("The Lake House", "Commercial Buildings ", 55, "20-12-2022", 566, 5, "5th Avenue 9", "Madrid"));
                 Console.WriteLine(pService.AddProject("The Mansion", "Residential Care Facilities ", 50, "29-01-2021", 456, 7, "Bor str 15", "Plovdiv"));
                 Console.WriteLine(pService.AddProject("The Skyscraper", "Skyscrapers ", 598, "20-06-2022", 989, 50, "Via Vento 8", "Pazardzhik"));
-            }
-            catch (Exception)
-            {
-
-                
-            }
+           
            
           
         }

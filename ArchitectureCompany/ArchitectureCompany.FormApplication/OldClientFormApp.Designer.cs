@@ -60,11 +60,12 @@
             // 
             // listBoxClients
             // 
+            this.listBoxClients.BackColor = System.Drawing.Color.Cornsilk;
             this.listBoxClients.FormattingEnabled = true;
-            this.listBoxClients.ItemHeight = 15;
+            this.listBoxClients.ItemHeight = 16;
             this.listBoxClients.Location = new System.Drawing.Point(4, 21);
             this.listBoxClients.Name = "listBoxClients";
-            this.listBoxClients.Size = new System.Drawing.Size(271, 304);
+            this.listBoxClients.Size = new System.Drawing.Size(271, 292);
             this.listBoxClients.TabIndex = 0;
             this.listBoxClients.DoubleClick += new System.EventHandler(this.listBoxClients_DoubleClick);
             // 
@@ -90,6 +91,7 @@
             this.groupBoxProject.Controls.Add(this.labelCapasity);
             this.groupBoxProject.Controls.Add(this.labelBulidingType);
             this.groupBoxProject.Controls.Add(this.labelProjctName);
+            this.groupBoxProject.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBoxProject.Location = new System.Drawing.Point(338, 54);
             this.groupBoxProject.Name = "groupBoxProject";
             this.groupBoxProject.Size = new System.Drawing.Size(326, 395);
@@ -100,9 +102,9 @@
             // labelClientId
             // 
             this.labelClientId.AutoSize = true;
-            this.labelClientId.Location = new System.Drawing.Point(41, 35);
+            this.labelClientId.Location = new System.Drawing.Point(5, 34);
             this.labelClientId.Name = "labelClientId";
-            this.labelClientId.Size = new System.Drawing.Size(51, 15);
+            this.labelClientId.Size = new System.Drawing.Size(79, 16);
             this.labelClientId.TabIndex = 39;
             this.labelClientId.Text = "Client Id";
             // 
@@ -110,17 +112,18 @@
             // 
             this.tbClientId.Location = new System.Drawing.Point(173, 27);
             this.tbClientId.Name = "tbClientId";
-            this.tbClientId.Size = new System.Drawing.Size(131, 23);
+            this.tbClientId.Size = new System.Drawing.Size(131, 26);
             this.tbClientId.TabIndex = 38;
             // 
             // buttonAddmage
             // 
+            this.buttonAddmage.BackColor = System.Drawing.Color.Wheat;
             this.buttonAddmage.Location = new System.Drawing.Point(185, 344);
             this.buttonAddmage.Name = "buttonAddmage";
             this.buttonAddmage.Size = new System.Drawing.Size(119, 41);
             this.buttonAddmage.TabIndex = 36;
             this.buttonAddmage.Text = "Add image";
-            this.buttonAddmage.UseVisualStyleBackColor = true;
+            this.buttonAddmage.UseVisualStyleBackColor = false;
             this.buttonAddmage.Click += new System.EventHandler(this.buttonAddmage_Click);
             // 
             // comboBoxProjectTown
@@ -128,15 +131,15 @@
             this.comboBoxProjectTown.FormattingEnabled = true;
             this.comboBoxProjectTown.Location = new System.Drawing.Point(173, 315);
             this.comboBoxProjectTown.Name = "comboBoxProjectTown";
-            this.comboBoxProjectTown.Size = new System.Drawing.Size(131, 23);
+            this.comboBoxProjectTown.Size = new System.Drawing.Size(131, 24);
             this.comboBoxProjectTown.TabIndex = 35;
             // 
             // labelProjectTown
             // 
             this.labelProjectTown.AutoSize = true;
-            this.labelProjectTown.Location = new System.Drawing.Point(42, 316);
+            this.labelProjectTown.Location = new System.Drawing.Point(6, 315);
             this.labelProjectTown.Name = "labelProjectTown";
-            this.labelProjectTown.Size = new System.Drawing.Size(35, 15);
+            this.labelProjectTown.Size = new System.Drawing.Size(39, 16);
             this.labelProjectTown.TabIndex = 34;
             this.labelProjectTown.Text = "Town";
             // 
@@ -144,54 +147,55 @@
             // 
             this.tbReleasedDate.Location = new System.Drawing.Point(174, 168);
             this.tbReleasedDate.Name = "tbReleasedDate";
-            this.tbReleasedDate.Size = new System.Drawing.Size(130, 23);
+            this.tbReleasedDate.Size = new System.Drawing.Size(130, 26);
             this.tbReleasedDate.TabIndex = 33;
             // 
             // lableReleasedDate
             // 
             this.lableReleasedDate.AutoSize = true;
-            this.lableReleasedDate.Location = new System.Drawing.Point(41, 176);
+            this.lableReleasedDate.Location = new System.Drawing.Point(5, 175);
             this.lableReleasedDate.Name = "lableReleasedDate";
-            this.lableReleasedDate.Size = new System.Drawing.Size(127, 15);
+            this.lableReleasedDate.Size = new System.Drawing.Size(111, 16);
             this.lableReleasedDate.TabIndex = 32;
-            this.lableReleasedDate.Text = "Expected released date";
+            this.lableReleasedDate.Text = "Released date";
             // 
             // tbProjectName
             // 
             this.tbProjectName.Location = new System.Drawing.Point(173, 58);
             this.tbProjectName.Name = "tbProjectName";
-            this.tbProjectName.Size = new System.Drawing.Size(131, 23);
+            this.tbProjectName.Size = new System.Drawing.Size(131, 26);
             this.tbProjectName.TabIndex = 31;
             // 
             // buttonSubmit
             // 
+            this.buttonSubmit.BackColor = System.Drawing.Color.Wheat;
             this.buttonSubmit.Location = new System.Drawing.Point(29, 348);
             this.buttonSubmit.Name = "buttonSubmit";
             this.buttonSubmit.Size = new System.Drawing.Size(141, 37);
             this.buttonSubmit.TabIndex = 30;
             this.buttonSubmit.Text = "Submit";
-            this.buttonSubmit.UseVisualStyleBackColor = true;
+            this.buttonSubmit.UseVisualStyleBackColor = false;
             this.buttonSubmit.Click += new System.EventHandler(this.buttonSubmit_Click);
             // 
             // tbProjectAdress
             // 
             this.tbProjectAdress.Location = new System.Drawing.Point(174, 278);
             this.tbProjectAdress.Name = "tbProjectAdress";
-            this.tbProjectAdress.Size = new System.Drawing.Size(130, 23);
+            this.tbProjectAdress.Size = new System.Drawing.Size(130, 26);
             this.tbProjectAdress.TabIndex = 28;
             // 
             // tbFllor
             // 
             this.tbFllor.Location = new System.Drawing.Point(174, 238);
             this.tbFllor.Name = "tbFllor";
-            this.tbFllor.Size = new System.Drawing.Size(130, 23);
+            this.tbFllor.Size = new System.Drawing.Size(130, 26);
             this.tbFllor.TabIndex = 27;
             // 
             // tbArea
             // 
             this.tbArea.Location = new System.Drawing.Point(174, 202);
             this.tbArea.Name = "tbArea";
-            this.tbArea.Size = new System.Drawing.Size(130, 23);
+            this.tbArea.Size = new System.Drawing.Size(130, 26);
             this.tbArea.TabIndex = 26;
             // 
             // cbBulidingType
@@ -199,96 +203,98 @@
             this.cbBulidingType.FormattingEnabled = true;
             this.cbBulidingType.Location = new System.Drawing.Point(174, 91);
             this.cbBulidingType.Name = "cbBulidingType";
-            this.cbBulidingType.Size = new System.Drawing.Size(130, 23);
+            this.cbBulidingType.Size = new System.Drawing.Size(130, 24);
             this.cbBulidingType.TabIndex = 25;
             // 
             // tbCapasity
             // 
             this.tbCapasity.Location = new System.Drawing.Point(174, 132);
             this.tbCapasity.Name = "tbCapasity";
-            this.tbCapasity.Size = new System.Drawing.Size(130, 23);
+            this.tbCapasity.Size = new System.Drawing.Size(130, 26);
             this.tbCapasity.TabIndex = 24;
             // 
             // labelProjectAddress
             // 
             this.labelProjectAddress.AutoSize = true;
-            this.labelProjectAddress.Location = new System.Drawing.Point(41, 284);
+            this.labelProjectAddress.Location = new System.Drawing.Point(5, 283);
             this.labelProjectAddress.Name = "labelProjectAddress";
-            this.labelProjectAddress.Size = new System.Drawing.Size(49, 15);
+            this.labelProjectAddress.Size = new System.Drawing.Size(63, 16);
             this.labelProjectAddress.TabIndex = 20;
             this.labelProjectAddress.Text = "Address";
             // 
             // labelFloor
             // 
             this.labelFloor.AutoSize = true;
-            this.labelFloor.Location = new System.Drawing.Point(41, 247);
+            this.labelFloor.Location = new System.Drawing.Point(5, 246);
             this.labelFloor.Name = "labelFloor";
-            this.labelFloor.Size = new System.Drawing.Size(39, 15);
+            this.labelFloor.Size = new System.Drawing.Size(55, 16);
             this.labelFloor.TabIndex = 19;
             this.labelFloor.Text = "Floors";
             // 
             // labelArea
             // 
             this.labelArea.AutoSize = true;
-            this.labelArea.Location = new System.Drawing.Point(41, 210);
+            this.labelArea.Location = new System.Drawing.Point(5, 209);
             this.labelArea.Name = "labelArea";
-            this.labelArea.Size = new System.Drawing.Size(31, 15);
+            this.labelArea.Size = new System.Drawing.Size(39, 16);
             this.labelArea.TabIndex = 18;
             this.labelArea.Text = "Area";
             // 
             // labelCapasity
             // 
             this.labelCapasity.AutoSize = true;
-            this.labelCapasity.Location = new System.Drawing.Point(41, 143);
+            this.labelCapasity.Location = new System.Drawing.Point(5, 142);
             this.labelCapasity.Name = "labelCapasity";
-            this.labelCapasity.Size = new System.Drawing.Size(53, 15);
+            this.labelCapasity.Size = new System.Drawing.Size(71, 16);
             this.labelCapasity.TabIndex = 17;
             this.labelCapasity.Text = "Capacity";
             // 
             // labelBulidingType
             // 
             this.labelBulidingType.AutoSize = true;
-            this.labelBulidingType.Location = new System.Drawing.Point(41, 102);
+            this.labelBulidingType.Location = new System.Drawing.Point(5, 101);
             this.labelBulidingType.Name = "labelBulidingType";
-            this.labelBulidingType.Size = new System.Drawing.Size(78, 15);
+            this.labelBulidingType.Size = new System.Drawing.Size(111, 16);
             this.labelBulidingType.TabIndex = 16;
             this.labelBulidingType.Text = "Buliding Type";
             // 
             // labelProjctName
             // 
             this.labelProjctName.AutoSize = true;
-            this.labelProjctName.Location = new System.Drawing.Point(41, 64);
+            this.labelProjctName.Location = new System.Drawing.Point(5, 63);
             this.labelProjctName.Name = "labelProjctName";
-            this.labelProjctName.Size = new System.Drawing.Size(77, 15);
+            this.labelProjctName.Size = new System.Drawing.Size(103, 16);
             this.labelProjctName.TabIndex = 15;
             this.labelProjctName.Text = "Project name";
             // 
             // buttonPrevious
             // 
-            this.buttonPrevious.Location = new System.Drawing.Point(45, 348);
+            this.buttonPrevious.BackColor = System.Drawing.Color.Wheat;
+            this.buttonPrevious.Location = new System.Drawing.Point(37, 348);
             this.buttonPrevious.Name = "buttonPrevious";
-            this.buttonPrevious.Size = new System.Drawing.Size(75, 40);
+            this.buttonPrevious.Size = new System.Drawing.Size(83, 40);
             this.buttonPrevious.TabIndex = 35;
             this.buttonPrevious.Text = "Previous page";
-            this.buttonPrevious.UseVisualStyleBackColor = true;
+            this.buttonPrevious.UseVisualStyleBackColor = false;
             this.buttonPrevious.Click += new System.EventHandler(this.buttonPrevious_Click);
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(163, 348);
+            this.button1.BackColor = System.Drawing.Color.Wheat;
+            this.button1.Location = new System.Drawing.Point(162, 349);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 40);
             this.button1.TabIndex = 36;
             this.button1.Text = "Next page";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // labelPages
             // 
             this.labelPages.AutoSize = true;
-            this.labelPages.Location = new System.Drawing.Point(124, 328);
+            this.labelPages.Location = new System.Drawing.Point(113, 323);
             this.labelPages.Name = "labelPages";
-            this.labelPages.Size = new System.Drawing.Size(38, 15);
+            this.labelPages.Size = new System.Drawing.Size(55, 16);
             this.labelPages.TabIndex = 37;
             this.labelPages.Text = "label1";
             // 
@@ -298,6 +304,7 @@
             this.groupBoxClients.Controls.Add(this.button1);
             this.groupBoxClients.Controls.Add(this.buttonPrevious);
             this.groupBoxClients.Controls.Add(this.listBoxClients);
+            this.groupBoxClients.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBoxClients.Location = new System.Drawing.Point(12, 54);
             this.groupBoxClients.Name = "groupBoxClients";
             this.groupBoxClients.Size = new System.Drawing.Size(294, 395);
@@ -309,6 +316,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LemonChiffon;
             this.ClientSize = new System.Drawing.Size(676, 471);
             this.Controls.Add(this.groupBoxClients);
             this.Controls.Add(this.groupBoxProject);

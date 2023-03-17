@@ -61,7 +61,7 @@
             this.labelName.AutoSize = true;
             this.labelName.Location = new System.Drawing.Point(31, 36);
             this.labelName.Name = "labelName";
-            this.labelName.Size = new System.Drawing.Size(42, 15);
+            this.labelName.Size = new System.Drawing.Size(47, 15);
             this.labelName.TabIndex = 0;
             this.labelName.Text = "Name:";
             // 
@@ -70,7 +70,7 @@
             this.labelLastName.AutoSize = true;
             this.labelLastName.Location = new System.Drawing.Point(31, 67);
             this.labelLastName.Name = "labelLastName";
-            this.labelLastName.Size = new System.Drawing.Size(57, 15);
+            this.labelLastName.Size = new System.Drawing.Size(71, 15);
             this.labelLastName.TabIndex = 1;
             this.labelLastName.Text = "Surname:";
             // 
@@ -79,7 +79,7 @@
             this.labelAddress.AutoSize = true;
             this.labelAddress.Location = new System.Drawing.Point(31, 101);
             this.labelAddress.Name = "labelAddress";
-            this.labelAddress.Size = new System.Drawing.Size(49, 15);
+            this.labelAddress.Size = new System.Drawing.Size(63, 15);
             this.labelAddress.TabIndex = 2;
             this.labelAddress.Text = "Address";
             // 
@@ -88,7 +88,7 @@
             this.labelDepartment.AutoSize = true;
             this.labelDepartment.Location = new System.Drawing.Point(31, 182);
             this.labelDepartment.Name = "labelDepartment";
-            this.labelDepartment.Size = new System.Drawing.Size(70, 15);
+            this.labelDepartment.Size = new System.Drawing.Size(87, 15);
             this.labelDepartment.TabIndex = 3;
             this.labelDepartment.Text = "Department";
             // 
@@ -97,7 +97,7 @@
             this.labelPhoneNumber.AutoSize = true;
             this.labelPhoneNumber.Location = new System.Drawing.Point(31, 219);
             this.labelPhoneNumber.Name = "labelPhoneNumber";
-            this.labelPhoneNumber.Size = new System.Drawing.Size(89, 15);
+            this.labelPhoneNumber.Size = new System.Drawing.Size(111, 15);
             this.labelPhoneNumber.TabIndex = 4;
             this.labelPhoneNumber.Text = "Phone number:";
             // 
@@ -106,7 +106,7 @@
             this.labelEmail.AutoSize = true;
             this.labelEmail.Location = new System.Drawing.Point(31, 252);
             this.labelEmail.Name = "labelEmail";
-            this.labelEmail.Size = new System.Drawing.Size(39, 15);
+            this.labelEmail.Size = new System.Drawing.Size(55, 15);
             this.labelEmail.TabIndex = 5;
             this.labelEmail.Text = "Email:";
             // 
@@ -129,6 +129,7 @@
             this.groupBoxInfo.Controls.Add(this.labelAddress);
             this.groupBoxInfo.Controls.Add(this.labelLastName);
             this.groupBoxInfo.Controls.Add(this.labelName);
+            this.groupBoxInfo.Font = new System.Drawing.Font("SimSun-ExtB", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBoxInfo.Location = new System.Drawing.Point(16, 25);
             this.groupBoxInfo.Name = "groupBoxInfo";
             this.groupBoxInfo.Size = new System.Drawing.Size(342, 330);
@@ -141,7 +142,7 @@
             this.radioButtonUpdate.AutoSize = true;
             this.radioButtonUpdate.Location = new System.Drawing.Point(203, 294);
             this.radioButtonUpdate.Name = "radioButtonUpdate";
-            this.radioButtonUpdate.Size = new System.Drawing.Size(63, 19);
+            this.radioButtonUpdate.Size = new System.Drawing.Size(73, 19);
             this.radioButtonUpdate.TabIndex = 17;
             this.radioButtonUpdate.TabStop = true;
             this.radioButtonUpdate.Text = "Update";
@@ -153,7 +154,7 @@
             this.rBtnDelete.AutoSize = true;
             this.rBtnDelete.Location = new System.Drawing.Point(93, 293);
             this.rBtnDelete.Name = "rBtnDelete";
-            this.rBtnDelete.Size = new System.Drawing.Size(77, 19);
+            this.rBtnDelete.Size = new System.Drawing.Size(97, 19);
             this.rBtnDelete.TabIndex = 16;
             this.rBtnDelete.TabStop = true;
             this.rBtnDelete.Text = "Discharge";
@@ -165,7 +166,7 @@
             this.rBtnAdd.AutoSize = true;
             this.rBtnAdd.Location = new System.Drawing.Point(16, 293);
             this.rBtnAdd.Name = "rBtnAdd";
-            this.rBtnAdd.Size = new System.Drawing.Size(47, 19);
+            this.rBtnAdd.Size = new System.Drawing.Size(57, 19);
             this.rBtnAdd.TabIndex = 15;
             this.rBtnAdd.TabStop = true;
             this.rBtnAdd.Text = "Hire";
@@ -174,15 +175,15 @@
             // 
             // txtBoxAddress
             // 
-            this.txtBoxAddress.Location = new System.Drawing.Point(126, 98);
+            this.txtBoxAddress.Location = new System.Drawing.Point(171, 99);
             this.txtBoxAddress.Name = "txtBoxAddress";
-            this.txtBoxAddress.Size = new System.Drawing.Size(147, 23);
+            this.txtBoxAddress.Size = new System.Drawing.Size(147, 22);
             this.txtBoxAddress.TabIndex = 14;
             // 
             // comboBoxCities
             // 
             this.comboBoxCities.FormattingEnabled = true;
-            this.comboBoxCities.Location = new System.Drawing.Point(126, 137);
+            this.comboBoxCities.Location = new System.Drawing.Point(171, 138);
             this.comboBoxCities.Name = "comboBoxCities";
             this.comboBoxCities.Size = new System.Drawing.Size(144, 23);
             this.comboBoxCities.TabIndex = 13;
@@ -192,71 +193,75 @@
             this.labelTown.AutoSize = true;
             this.labelTown.Location = new System.Drawing.Point(31, 140);
             this.labelTown.Name = "labelTown";
-            this.labelTown.Size = new System.Drawing.Size(31, 15);
+            this.labelTown.Size = new System.Drawing.Size(47, 15);
             this.labelTown.TabIndex = 12;
             this.labelTown.Text = "City:";
             // 
             // comboBoxDepartment
             // 
             this.comboBoxDepartment.FormattingEnabled = true;
-            this.comboBoxDepartment.Location = new System.Drawing.Point(126, 174);
+            this.comboBoxDepartment.Location = new System.Drawing.Point(171, 175);
             this.comboBoxDepartment.Name = "comboBoxDepartment";
             this.comboBoxDepartment.Size = new System.Drawing.Size(144, 23);
             this.comboBoxDepartment.TabIndex = 11;
             // 
             // textBoxEmail
             // 
-            this.textBoxEmail.Location = new System.Drawing.Point(126, 249);
+            this.textBoxEmail.Location = new System.Drawing.Point(171, 250);
             this.textBoxEmail.Name = "textBoxEmail";
-            this.textBoxEmail.Size = new System.Drawing.Size(144, 23);
+            this.textBoxEmail.Size = new System.Drawing.Size(144, 22);
             this.textBoxEmail.TabIndex = 9;
             // 
             // textBoxPhoneNum
             // 
-            this.textBoxPhoneNum.Location = new System.Drawing.Point(126, 216);
+            this.textBoxPhoneNum.Location = new System.Drawing.Point(171, 217);
             this.textBoxPhoneNum.Name = "textBoxPhoneNum";
-            this.textBoxPhoneNum.Size = new System.Drawing.Size(144, 23);
+            this.textBoxPhoneNum.Size = new System.Drawing.Size(144, 22);
             this.textBoxPhoneNum.TabIndex = 8;
             // 
             // textBoxLastName
             // 
-            this.textBoxLastName.Location = new System.Drawing.Point(126, 64);
+            this.textBoxLastName.Location = new System.Drawing.Point(171, 65);
             this.textBoxLastName.Name = "textBoxLastName";
-            this.textBoxLastName.Size = new System.Drawing.Size(144, 23);
+            this.textBoxLastName.Size = new System.Drawing.Size(144, 22);
             this.textBoxLastName.TabIndex = 7;
             // 
             // textBoxName
             // 
-            this.textBoxName.Location = new System.Drawing.Point(126, 28);
+            this.textBoxName.Location = new System.Drawing.Point(171, 29);
             this.textBoxName.Name = "textBoxName";
-            this.textBoxName.Size = new System.Drawing.Size(144, 23);
+            this.textBoxName.Size = new System.Drawing.Size(144, 22);
             this.textBoxName.TabIndex = 6;
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(16, 366);
+            this.btnAdd.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnAdd.Location = new System.Drawing.Point(16, 376);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(94, 49);
+            this.btnAdd.Size = new System.Drawing.Size(165, 31);
             this.btnAdd.TabIndex = 7;
-            this.btnAdd.Text = "HIre";
+            this.btnAdd.Text = "Hire";
             this.btnAdd.UseVisualStyleBackColor = true;
             this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
             // 
             // listBoxEmployee
             // 
+            this.listBoxEmployee.BackColor = System.Drawing.Color.LavenderBlush;
+            this.listBoxEmployee.Font = new System.Drawing.Font("Myanmar Text", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.listBoxEmployee.FormattingEnabled = true;
-            this.listBoxEmployee.ItemHeight = 15;
+            this.listBoxEmployee.ItemHeight = 29;
             this.listBoxEmployee.Location = new System.Drawing.Point(383, 29);
             this.listBoxEmployee.Name = "listBoxEmployee";
-            this.listBoxEmployee.Size = new System.Drawing.Size(317, 274);
+            this.listBoxEmployee.Size = new System.Drawing.Size(317, 265);
             this.listBoxEmployee.TabIndex = 8;
             this.listBoxEmployee.DoubleClick += new System.EventHandler(this.listBoxEmployee_DoubleClick_1);
             // 
             // btnDischarge
             // 
-            this.btnDischarge.Location = new System.Drawing.Point(133, 366);
+            this.btnDischarge.Font = new System.Drawing.Font("Sitka Banner", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnDischarge.Location = new System.Drawing.Point(187, 376);
             this.btnDischarge.Name = "btnDischarge";
-            this.btnDischarge.Size = new System.Drawing.Size(94, 49);
+            this.btnDischarge.Size = new System.Drawing.Size(171, 31);
             this.btnDischarge.TabIndex = 9;
             this.btnDischarge.Text = "Discharge";
             this.btnDischarge.UseVisualStyleBackColor = true;
@@ -264,9 +269,10 @@
             // 
             // btnUpdate
             // 
-            this.btnUpdate.Location = new System.Drawing.Point(251, 366);
+            this.btnUpdate.Font = new System.Drawing.Font("Sitka Banner", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnUpdate.Location = new System.Drawing.Point(97, 413);
             this.btnUpdate.Name = "btnUpdate";
-            this.btnUpdate.Size = new System.Drawing.Size(107, 49);
+            this.btnUpdate.Size = new System.Drawing.Size(174, 37);
             this.btnUpdate.TabIndex = 10;
             this.btnUpdate.Text = "Update phone number";
             this.btnUpdate.UseVisualStyleBackColor = true;
@@ -274,9 +280,10 @@
             // 
             // btnPrevious
             // 
-            this.btnPrevious.Location = new System.Drawing.Point(429, 332);
+            this.btnPrevious.Font = new System.Drawing.Font("Sitka Display", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.btnPrevious.Location = new System.Drawing.Point(415, 332);
             this.btnPrevious.Name = "btnPrevious";
-            this.btnPrevious.Size = new System.Drawing.Size(93, 23);
+            this.btnPrevious.Size = new System.Drawing.Size(120, 31);
             this.btnPrevious.TabIndex = 11;
             this.btnPrevious.Text = "Previous page";
             this.btnPrevious.UseVisualStyleBackColor = true;
@@ -284,9 +291,10 @@
             // 
             // btnNext
             // 
+            this.btnNext.Font = new System.Drawing.Font("Sitka Display", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.btnNext.Location = new System.Drawing.Point(565, 332);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(93, 22);
+            this.btnNext.Size = new System.Drawing.Size(93, 31);
             this.btnNext.TabIndex = 12;
             this.btnNext.Text = "Next page";
             this.btnNext.UseVisualStyleBackColor = true;
@@ -305,7 +313,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(721, 434);
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(224)))), ((int)(((byte)(192)))));
+            this.ClientSize = new System.Drawing.Size(721, 462);
             this.Controls.Add(this.labelPageNum);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnPrevious);
