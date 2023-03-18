@@ -58,7 +58,7 @@ namespace ArchitectureCompany.ConsoleApp.Controller
             while (true)
             {
                 Console.Clear();
-                string result = cs.GetAllClientsInfo();
+                string result = cs.GetAllClientsInfo(currentPage);
                 Console.WriteLine(result);
                 Console.WriteLine("Commands: 0:Back, 1:Previous page, 2:Next page ");
                 Console.Write("Enter command: ");

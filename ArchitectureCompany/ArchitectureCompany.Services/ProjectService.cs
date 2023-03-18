@@ -206,7 +206,7 @@
         public string GetAllProjectsInfo(int page = 1, int count = 10)
         {
             StringBuilder msg = new StringBuilder();
-            string firstRow = $"|{"Id",-4} | {"Name",-20} | {"Type Id: ",-9} | {"Capacity",-12} | {"Release date",-12} | {"Floor area",-9} | {"Floors",-9} | {"Address id",-12}|";
+            string firstRow = $"| {"Id",-4} | {"Name",-25} | {"Type Id: ",-9} | {"Capacity",-12} | {"Release date",-12} | {"Floor area",-9} | {"Floors",-9} | {"Address id",-12} |";
 
             string line = $"|{new string('-', firstRow.Length - 2)}|";
 
@@ -217,7 +217,7 @@
                 msg.AppendLine(line);
                 foreach (var c in projects)
                 {
-                    string info = $"|{c.Id,-4} | {c.Name,-20} | {c.BuildingTypeId,-9} | {c.Capacity,-12} | {c.ReleaseDate.ToString("yyyy-MM-dd"),-12} | {c.TotalFloorArea,-9} | {c.NumberOfFloors,-9} | {c.AddressId,-12}|";
+                    string info = $"| {c.Id,-4} | {c.Name,-25} | {c.BuildingTypeId,-9} | {c.Capacity,-12} | {c.ReleaseDate.ToString("yyyy-MM-dd"),-12} | {c.TotalFloorArea,-9}  | {c.NumberOfFloors,-9} | {c.AddressId,-12} |";
                     msg.AppendLine(info);
                     msg.AppendLine(line);
                 }

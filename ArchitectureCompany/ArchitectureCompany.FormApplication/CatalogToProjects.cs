@@ -27,10 +27,12 @@ namespace ArchitectureCompany.FormApplication
 
         private void CatalogToProjects_Load(object sender, EventArgs e)
         {
+
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             List<string> clients = clientService.GetClientBasicInfo();
             clients.ForEach(x => cbClient.Items.Add(x));
             cbClient.SelectedIndex = 0;
+
             pictureBox1.Load("https://cdn.vectorstock.com/i/preview-1x/82/99/no-image-available-like-missing-picture-vector-43938299.jpg");
 
         }
@@ -68,18 +70,18 @@ namespace ArchitectureCompany.FormApplication
             else
             {
                 pictureBox1.Load(urls[imageIndex]);
-            }       
+            }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
             urls = projectService.GetProjectImages(cbProject.Text);
 
-            if (imageIndex<urls.Count-1)
+            if (imageIndex < urls.Count - 1)
             {
                 imageIndex++;
             }
-            else if(imageIndex==urls.Count-1)
+            else if (imageIndex == urls.Count - 1)
             {
                 imageIndex = 0;
             }
@@ -92,13 +94,13 @@ namespace ArchitectureCompany.FormApplication
                 MessageBox.Show("Invalid image");
                 pictureBox1.Load(urls[0]);
             }
-           
+
         }
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
             urls = projectService.GetProjectImages(cbProject.Text);
-            if (imageIndex >=1)
+            if (imageIndex >= 1)
             {
                 imageIndex--;
             }
