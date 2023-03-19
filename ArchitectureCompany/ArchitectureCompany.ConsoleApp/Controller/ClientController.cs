@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using ArchitectureCompany.Services;
 namespace ArchitectureCompany.ConsoleApp.Controller
@@ -35,7 +36,7 @@ namespace ArchitectureCompany.ConsoleApp.Controller
                             AddNewClient();
                             break;
                         case "3":
-                           GetExactClientInfo();
+                            GetExactClientInfo();
                             break;
                         default:
                             Console.WriteLine("Invalid command!");
@@ -58,22 +59,31 @@ namespace ArchitectureCompany.ConsoleApp.Controller
             while (true)
             {
                 Console.Clear();
-                string result = cs.GetAllClientsInfo(currentPage);
-                Console.WriteLine(result);
-                Console.WriteLine("Commands: 0:Back, 1:Previous page, 2:Next page ");
-                Console.Write("Enter command: ");
-                string cmd = Console.ReadLine();
-                switch (cmd)
+                try
                 {
-                    case "0":
-                        return;
-                    case "1":
-                        if (currentPage > 1) { currentPage--; }
-                        break;
-                    case "2":
-                        if (currentPage < pageCount) { currentPage++; }
-                        break;
+                    string result = cs.GetAllClientsInfo(currentPage);
+                    Console.WriteLine(result);
+                    Console.WriteLine("Commands: 0:Back, 1:Previous page, 2:Next page ");
+                    Console.Write("Enter command: ");
+                    string cmd = Console.ReadLine();
+                    switch (cmd)
+                    {
+                        case "0":
+                            return;
+                        case "1":
+                            if (currentPage > 1) { currentPage--; }
+                            break;
+                        case "2":
+                            if (currentPage < pageCount) { currentPage++; }
+                            break;
+                    }
                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
+
             }
         }
         public void AddNewClient()
@@ -88,6 +98,12 @@ namespace ArchitectureCompany.ConsoleApp.Controller
             string town = Console.ReadLine();
             Console.Write($"> Enter phone number(it has to be 10 digits only): ");
             string number = Console.ReadLine();
+            if (number.Count() != 10)
+            {
+                Console.WriteLine("Invalid phone number!");
+                WaitPressKey();
+                return;
+            }
             Console.Write($"> Enter email: ");
             string email = Console.ReadLine();
             string result = cs.AddClient(name, lastName, address, town, number, email);
@@ -96,10 +112,18 @@ namespace ArchitectureCompany.ConsoleApp.Controller
         }
         public void GetExactClientInfo()
         {
-            Console.Write($"> Enter client's id: ");
-            int id = int.Parse(Console.ReadLine());
-            string result = cs.GetClientInfoById(id);
-            Console.WriteLine(result);
+            try
+            {
+                Console.Write($"> Enter client's id: ");
+                int id = int.Parse(Console.ReadLine());
+                string result = cs.GetClientInfoById(id);
+                Console.WriteLine(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            
             WaitPressKey();
         }
         private static void WaitPressKey()

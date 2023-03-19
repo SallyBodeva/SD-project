@@ -22,7 +22,7 @@ namespace Architecture.Company.DataSeeder
             // SeedEmployee();
             // SeedClientAddress();
             // SeedClient();
-            //SeedProjects();
+            // SeedProjects();
         }
         public static void SeedDepartments()
         {
@@ -281,21 +281,73 @@ namespace Architecture.Company.DataSeeder
         }
         public static void SeedProjects()
         {
-            string releasedDate = "12-03-2025";
-            DateTime data = new DateTime();
-            bool v = DateTime.TryParseExact(releasedDate, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data);
-            Console.WriteLine(pService.AddProject("The Opera house", "Industrial Buildings", 500, data, 1500, 5, "Eaton Terrace", "Sofia"));
-            Console.WriteLine(pService.AddProject("The Lighthouse", "Residential Buildings", 70, data, 700, 3, "Via dei Fori 16", "Paris"));
-            Console.WriteLine(pService.AddProject("The Disney Concert Hall", "Commercial Buildings", 490, data, 1500, 3, "Foxbridge Terrace", "Limasol"));
-            Console.WriteLine(pService.AddProject("The Olimpic Stadium", "Institutional Buildings", 2000, data, 2900, 1, "Abney Avenue", "Berlin"));
-            Console.WriteLine(pService.AddProject("The Stadium", "Institutional Buildings", 1000, data, 2000, 1, "Joiner Place", "Montevideo"));
-            Console.WriteLine(pService.AddProject("The Sky Garden", "Hotels", 1000, data, 895, 5, "Duson Loop", "Dubai"));
-            Console.WriteLine(pService.AddProject("The Floating City", "Skyscrapers ", 1200, data, 490, 50, "Chirch Street 3", "Limasol"));
-            Console.WriteLine(pService.AddProject("The Oasis", "Hotels", 526, data, 59, 6, "Harston Trail", "Madrid"));
-            Console.WriteLine(pService.AddProject("The Beach House", "Recreational Buildings ", 565, data, 545, 5, "Brampton Street", "Burgas"));
-            Console.WriteLine(pService.AddProject("The Lake House", "Commercial Buildings ", 55, data, 566, 5, "5th Avenue 9", "Madrid"));
-            Console.WriteLine(pService.AddProject("The Mansion", "Residential Care Facilities ", 50, data, 456, 7, "Bor str 15", "Plovdiv"));
-            Console.WriteLine(pService.AddProject("The Skyscraper", "Skyscrapers ", 598, data, 989, 50, "Via Vento 8", "Pazardzhik"));
+            try
+            {
+                string releasedDate = "12-03-2025";
+                DateTime data = new DateTime();
+                bool v = DateTime.TryParseExact(releasedDate, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data);
+                Console.WriteLine(pService.AddProject("The Opera house", "Industrial Buildings", 500, data, 1500, 5, "Eaton Terrace", "Sofia"));
+
+                string releasedDate2 = "09-08-2021";
+                DateTime data2 = new DateTime();
+                bool v2 = DateTime.TryParseExact(releasedDate2, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data2);
+                Console.WriteLine(pService.AddProject("The Lighthouse", "Residential Buildings", 70, data2, 700, 3, "Via dei Fori 16", "Paris"));
+
+                string releasedDate3 = "13-03-2024";
+                DateTime data3 = new DateTime();
+                bool v3 = DateTime.TryParseExact(releasedDate3, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data3);
+                Console.WriteLine(pService.AddProject("The Disney Concert Hall", "Commercial Buildings", 490, data3, 1500, 3, "Foxbridge Terrace", "Limasol"));
+
+                string releasedDate4 = "28-09-2030";
+                DateTime data4 = new DateTime();
+                bool v4 = DateTime.TryParseExact(releasedDate4, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data4);
+                Console.WriteLine(pService.AddProject("The Olimpic Stadium", "Institutional Buildings", 2000, data4, 2900, 1, "Abney Avenue", "Berlin"));
+
+                string releasedDate5 = "04-02-2021";
+                DateTime data5 = new DateTime();
+                bool v5 = DateTime.TryParseExact(releasedDate5, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data5);
+                Console.WriteLine(pService.AddProject("The Stadium", "Institutional Buildings", 1000, data5, 2000, 1, "Joiner Place", "Montevideo"));
+
+                string releasedDate6 = "20-05-2028";
+                DateTime data6 = new DateTime();
+                bool v6 = DateTime.TryParseExact(releasedDate6, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data6);
+                Console.WriteLine(pService.AddProject("The Sky Garden", "Hotels", 1000, data6, 895, 5, "Duson Loop", "Dubai"));
+
+                string releasedDate7 = "28-06-2016";
+                DateTime data7 = new DateTime();
+                bool v7 = DateTime.TryParseExact(releasedDate7, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data7);
+                Console.WriteLine(pService.AddProject("The Floating City", "Skyscrapers ", 1200, data7, 490, 50, "Chirch Street 3", "Limasol"));
+
+                string releasedDate8 = "08-10-2026";
+                DateTime data8 = new DateTime();
+                bool v8 = DateTime.TryParseExact(releasedDate8, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data8);
+                Console.WriteLine(pService.AddProject("The Oasis", "Hotels", 526, data8, 59, 6, "Harston Trail", "Madrid"));
+
+                string releasedDate9 = "9-08-2021";
+                DateTime data9 = new DateTime();
+                bool v9 = DateTime.TryParseExact(releasedDate9, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data9);
+                Console.WriteLine(pService.AddProject("The Beach House", "Recreational Buildings ", 565, data9, 545, 5, "Brampton Street", "Burgas"));
+
+                string releasedDate10 = "12-09-2034";
+                DateTime data10 = new DateTime();
+                bool v10 = DateTime.TryParseExact(releasedDate10, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data10);
+                Console.WriteLine(pService.AddProject("The Lake House", "Commercial Buildings ", 55, data10, 566, 5, "5th Avenue 9", "Madrid"));
+
+                string releasedDate11 = "22-09-2005";
+                DateTime data11 = new DateTime();
+                bool v11 = DateTime.TryParseExact(releasedDate11, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data11);
+                Console.WriteLine(pService.AddProject("The Mansion", "Residential Care Facilities ", 50, data11, 456, 7, "Bor str 15", "Plovdiv"));
+
+                string releasedDate12 = "30-04-2020";
+                DateTime data12 = new DateTime();
+                bool v12 = DateTime.TryParseExact(releasedDate12, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data12);
+                Console.WriteLine(pService.AddProject("The Skyscraper", "Skyscrapers ", 598, data12, 989, 50, "Via Vento 8", "Pazardzhik"));
+            }
+            catch (Exception)
+            {
+
+            }
+
         }
 
     }

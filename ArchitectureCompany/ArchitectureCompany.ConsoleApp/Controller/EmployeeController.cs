@@ -28,7 +28,7 @@ namespace ArchitectureCompany.ConsoleApp.Controller
                     string cmd = Console.ReadLine();
                     switch (cmd)
                     {
-                        case"0":
+                        case "0":
                             return;
                         case "1":
                             PrintEmployeesInfo();
@@ -36,7 +36,7 @@ namespace ArchitectureCompany.ConsoleApp.Controller
                         case "2":
                             HireNewEmployee();
                             break;
-                        case"3":
+                        case "3":
                             DeleteEmployee();
                             break;
                         case "4":
@@ -48,7 +48,7 @@ namespace ArchitectureCompany.ConsoleApp.Controller
                         default:
                             Console.WriteLine("Invalid command!");
                             WaitPressKey();
-                            
+
                             break;
                     }
                 }
@@ -65,44 +65,67 @@ namespace ArchitectureCompany.ConsoleApp.Controller
             int pageCount = es.GetEmployeePagesCount();
             while (true)
             {
-                Console.Clear();
-                string result = es.GetAllEmployeesInfo(currentPage);
-                Console.WriteLine(result);
-                Console.WriteLine("Commands: 0:Back, 1:Previous page, 2:Next page ");
-                Console.Write("Enter command: ");
-                string cmd = Console.ReadLine();
-                switch (cmd)
+                try
                 {
-                    case "0":
-                        return;
-                    case "1":
-                        if (currentPage > 1) { currentPage--; }
-                        break;
-                    case "2":
-                        if (currentPage < pageCount) { currentPage++; }
-                        break;
+                    Console.Clear();
+                    string result = es.GetAllEmployeesInfo(currentPage);
+                    Console.WriteLine(result);
+                    Console.WriteLine("Commands: 0:Back, 1:Previous page, 2:Next page ");
+                    Console.Write("Enter command: ");
+                    string cmd = Console.ReadLine();
+                    switch (cmd)
+                    {
+                        case "0":
+                            return;
+                        case "1":
+                            if (currentPage > 1) { currentPage--; }
+                            break;
+                        case "2":
+                            if (currentPage < pageCount) { currentPage++; }
+                            break;
+                    }
                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+
             }
-            
+
         }
         public void HireNewEmployee()
         {
-            Console.Write($"> Enter first name: ");
-            string name = Console.ReadLine();
-            Console.Write($"> Enter last name: ");
-            string lastName = Console.ReadLine();
-            Console.Write($"> Enter address name: ");
-            string address = Console.ReadLine();
-            Console.Write($"> Enter town: ");
-            string town = Console.ReadLine();
-            Console.Write($"> Enter department: ");
-            string department = Console.ReadLine();
-            Console.Write($"> Enter phone number(it has to be 10 digits only): ");
-            string number = Console.ReadLine();
-            Console.Write($"> Enter email: ");
-            string email = Console.ReadLine();
-            string result = es.AddEmployee(name, lastName, address, town, department, number, email);
-            Console.WriteLine(result);
+            try
+            {
+                Console.Write($"> Enter first name: ");
+                string name = Console.ReadLine();
+                Console.Write($"> Enter last name: ");
+                string lastName = Console.ReadLine();
+                Console.Write($"> Enter address name: ");
+                string address = Console.ReadLine();
+                Console.Write($"> Enter town: ");
+                string town = Console.ReadLine();
+                Console.Write($"> Enter department: ");
+                string department = Console.ReadLine();
+                Console.Write($"> Enter phone number(it has to be 10 digits only): ");
+                string number = Console.ReadLine();
+                if (number.Count() != 10)
+                {
+                    Console.WriteLine("Invalid phone number!");
+                    WaitPressKey();
+                    return;
+                }
+                Console.Write($"> Enter email: ");
+                string email = Console.ReadLine();
+
+                string result = es.AddEmployee(name, lastName, address, town, department, number, email);
+                Console.WriteLine(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+
             WaitPressKey();
         }
         public void DeleteEmployee()
@@ -128,6 +151,12 @@ namespace ArchitectureCompany.ConsoleApp.Controller
             int id = int.Parse(Console.ReadLine());
             Console.Write($"> Enter new phone number : ");
             string pN = Console.ReadLine();
+            if (pN.Count() != 10)
+            {
+                Console.WriteLine("Invalid phone number!");
+                WaitPressKey();
+                return;
+            }
             string result = es.UpdateEmployeePhoneNum(id, pN);
             Console.WriteLine(result);
             WaitPressKey();
@@ -136,8 +165,15 @@ namespace ArchitectureCompany.ConsoleApp.Controller
         {
             Console.Write($"> Enter employee's id: ");
             int id = int.Parse(Console.ReadLine());
-            string result = es.GetEmployeeInfo(id);
-            Console.WriteLine(result);
+            try
+            {
+                string result = es.GetEmployeeInfo(id);
+                Console.WriteLine(result);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
             WaitPressKey();
         }
         private static void WaitPressKey()
