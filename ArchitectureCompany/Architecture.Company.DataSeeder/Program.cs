@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Numerics;
 using ArchitectureCompany.Models;
 using ArchitectureCompany.Services;
@@ -11,17 +12,17 @@ namespace Architecture.Company.DataSeeder
         private static EmployeeService eService = new EmployeeService();
         private static AdditionalService aService = new AdditionalService();
         private static ClientService cService = new ClientService();
-        private static ProjectService pService=new ProjectService();
+        private static ProjectService pService = new ProjectService();
         static void Main()
         {
-          // SeedTowns();
-          // SeedBuildingType();
-          // SeedDepartments();
-          // SeedAddress();
-          // SeedEmployee();
-          // SeedClientAddress();
-          // SeedClient();
-          // SeedProjects();
+            // SeedTowns();
+            // SeedBuildingType();
+            // SeedDepartments();
+            // SeedAddress();
+            // SeedEmployee();
+            // SeedClientAddress();
+            // SeedClient();
+            //SeedProjects();
         }
         public static void SeedDepartments()
         {
@@ -94,7 +95,7 @@ namespace Architecture.Company.DataSeeder
             {
 
             }
-          
+
         }
         public static void SeedAddress()
         {
@@ -139,7 +140,7 @@ namespace Architecture.Company.DataSeeder
             {
 
             }
-           
+
         }
         public static void SeedEmployee()
         {
@@ -170,15 +171,15 @@ namespace Architecture.Company.DataSeeder
                 Console.WriteLine(eService.AddEmployee("Salihe", "Ercel", "Vitosha Boulevard 10", "Plovdiv", "Industrial Architecture", "0854793628", "architect_ercel@gmail.com"));
                 Console.WriteLine(eService.AddEmployee("Avishe", "Kaya", "Graf Ignatiev 10", "Porto", "Landscape Architecture", "0817936248", "architect_kaya@gmail.com"));
                 Console.WriteLine(eService.AddEmployee("Bryan", "Conar", "Hristo Botev str 25", "Blagoevgrad", "Residential Architecture", "08547777248", "architect_conar@gmail.com"));
-              
+
             }
             catch (Exception)
             {
 
-              
+
             }
-               
-           
+
+
         }
         public static void SeedClientAddress()
         {
@@ -216,7 +217,7 @@ namespace Architecture.Company.DataSeeder
             {
 
             }
-           
+
         }
         public static void SeedClient()
         {
@@ -247,7 +248,7 @@ namespace Architecture.Company.DataSeeder
             {
 
             }
-           
+
         }
         public static void SeedBuildingType()
         {
@@ -276,25 +277,25 @@ namespace Architecture.Company.DataSeeder
             {
 
             }
-           
+
         }
         public static void SeedProjects()
         {
-                Console.WriteLine(pService.AddProject("The Opera house", "Industrial Buildings", 500, "12-03-2009", 1500, 5, "Eaton Terrace", "Sofia"));
-                Console.WriteLine(pService.AddProject("The Lighthouse", "Residential Buildings", 70, "25-02-2015", 700, 3, "Via dei Fori 16", "Paris"));
-                Console.WriteLine(pService.AddProject("The Disney Concert Hall", "Commercial Buildings", 490, "25-06-2020", 1500, 3, "Foxbridge Terrace", "Limasol"));
-                Console.WriteLine(pService.AddProject("The Olimpic Stadium", "Institutional Buildings", 2000, "14-11-2023", 2900, 1, "Abney Avenue", "Berlin"));
-                Console.WriteLine(pService.AddProject("The Stadium", "Institutional Buildings", 1000, "20-09-2022", 2000, 1, "Joiner Place", "Montevideo"));
-                Console.WriteLine(pService.AddProject("The Sky Garden", "Hotels", 1000, "18-10-20019", 895, 5, "Duson Loop", "Dubai"));
-                Console.WriteLine(pService.AddProject("The Floating City", "Skyscrapers ", 1200, "25-05-2022", 490, 50, "Chirch Street 3", "Limasol"));
-                Console.WriteLine(pService.AddProject("The Oasis", "Hotels", 526, "20-03-2000", 59, 6, "Harston Trail", "Madrid"));
-                Console.WriteLine(pService.AddProject("The Beach House", "Recreational Buildings ", 565, "10-02-2012", 545, 5, "Brampton Street", "Burgas"));
-                Console.WriteLine(pService.AddProject("The Lake House", "Commercial Buildings ", 55, "20-12-2022", 566, 5, "5th Avenue 9", "Madrid"));
-                Console.WriteLine(pService.AddProject("The Mansion", "Residential Care Facilities ", 50, "29-01-2021", 456, 7, "Bor str 15", "Plovdiv"));
-                Console.WriteLine(pService.AddProject("The Skyscraper", "Skyscrapers ", 598, "20-06-2022", 989, 50, "Via Vento 8", "Pazardzhik"));
-           
-           
-          
+            string releasedDate = "12-03-2025";
+            DateTime data = new DateTime();
+            bool v = DateTime.TryParseExact(releasedDate, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data);
+            Console.WriteLine(pService.AddProject("The Opera house", "Industrial Buildings", 500, data, 1500, 5, "Eaton Terrace", "Sofia"));
+            Console.WriteLine(pService.AddProject("The Lighthouse", "Residential Buildings", 70, data, 700, 3, "Via dei Fori 16", "Paris"));
+            Console.WriteLine(pService.AddProject("The Disney Concert Hall", "Commercial Buildings", 490, data, 1500, 3, "Foxbridge Terrace", "Limasol"));
+            Console.WriteLine(pService.AddProject("The Olimpic Stadium", "Institutional Buildings", 2000, data, 2900, 1, "Abney Avenue", "Berlin"));
+            Console.WriteLine(pService.AddProject("The Stadium", "Institutional Buildings", 1000, data, 2000, 1, "Joiner Place", "Montevideo"));
+            Console.WriteLine(pService.AddProject("The Sky Garden", "Hotels", 1000, data, 895, 5, "Duson Loop", "Dubai"));
+            Console.WriteLine(pService.AddProject("The Floating City", "Skyscrapers ", 1200, data, 490, 50, "Chirch Street 3", "Limasol"));
+            Console.WriteLine(pService.AddProject("The Oasis", "Hotels", 526, data, 59, 6, "Harston Trail", "Madrid"));
+            Console.WriteLine(pService.AddProject("The Beach House", "Recreational Buildings ", 565, data, 545, 5, "Brampton Street", "Burgas"));
+            Console.WriteLine(pService.AddProject("The Lake House", "Commercial Buildings ", 55, data, 566, 5, "5th Avenue 9", "Madrid"));
+            Console.WriteLine(pService.AddProject("The Mansion", "Residential Care Facilities ", 50, data, 456, 7, "Bor str 15", "Plovdiv"));
+            Console.WriteLine(pService.AddProject("The Skyscraper", "Skyscrapers ", 598, data, 989, 50, "Via Vento 8", "Pazardzhik"));
         }
 
     }
