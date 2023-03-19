@@ -14,7 +14,7 @@
     public class ProjectService
     {
         private AppDbContext context;
-        public string AddProject(string name, string builidingType, int capacity, string releaseDate, int totalFloorArea, int numberOfFloors, string address, string town)
+        public string AddProject(string name, string builidingType, int capacity, DateTime releaseDate, int totalFloorArea, int numberOfFloors, string address, string town)
         {
             StringBuilder message = new StringBuilder();
             bool isValid = true;
@@ -81,14 +81,12 @@
                 }
                 if (isValid)
                 {
-                    DateTime data = new DateTime();
-                    bool v =DateTime.TryParseExact(releaseDate, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data);
                     p = new Project()
                     {
                         Name = name,
                         BuildingsType = bt,
                         Capacity=capacity,
-                        ReleaseDate = data,
+                        ReleaseDate = releaseDate,
                         TotalFloorArea = totalFloorArea,
                         NumberOfFloors = numberOfFloors,
                         Address = a

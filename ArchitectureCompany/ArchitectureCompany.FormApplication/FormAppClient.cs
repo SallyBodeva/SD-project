@@ -76,7 +76,7 @@ namespace ArchitectureCompany.FormApplication
             string projectName = tbProjectName.Text;
             string buildingType = cbBulidingType.Text;
             int capacity = int.Parse(tbCapasity.Text);
-            string releasedDate = tbReleasedDate.Text;
+            DateTime releasedDate = dTP.Value;
             int totalFloorArea = int.Parse(tbArea.Text);
             int floors = int.Parse(tbFllor.Text);
             string address = tbProjectAdress.Text;

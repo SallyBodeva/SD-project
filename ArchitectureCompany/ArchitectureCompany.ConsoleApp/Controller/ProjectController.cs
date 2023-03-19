@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Reflection.PortableExecutable;
 using System.Text;
 using ArchitectureCompany.Services;
@@ -83,14 +84,21 @@ namespace ArchitectureCompany.ConsoleApp.Controller
         {
             Console.Write($"> Enter the id of the client: ");
             int clientId = int.Parse(Console.ReadLine());
+
             Console.Write($"> Enter project name: ");
             string name = Console.ReadLine();
+
             Console.Write($"> Enter building type : ");
             string bt = Console.ReadLine();
+
             Console.Write($"> Enter capacity: ");
             int capacity = int.Parse(Console.ReadLine());
+
             Console.Write($"> Enter expected released date(the format must be dd-mm-yyyy): ");
             string releasedDate = Console.ReadLine();
+            DateTime data = new DateTime();
+            bool v = DateTime.TryParseExact(releasedDate, "dd-MM-yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out data);
+
             Console.Write($"> Enter total floor area: ");
             int area = int.Parse(Console.ReadLine());
             Console.Write($"> Enter number of Floors: ");
@@ -99,7 +107,7 @@ namespace ArchitectureCompany.ConsoleApp.Controller
             string address = Console.ReadLine();
             Console.Write($"> Enter town: ");
             string town = Console.ReadLine();
-            string result = ps.AddProject(name, bt, capacity, releasedDate, area, nF, address, town);
+            string result = ps.AddProject(name, bt, capacity, data, area, nF, address, town);
             Console.WriteLine(result);
             int projectId = ps.GetProjectIdByName(name);
             Console.WriteLine(cs.MatchClientToProject(clientId,projectId));

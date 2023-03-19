@@ -30,12 +30,12 @@
         {
             this.listBoxClients = new System.Windows.Forms.ListBox();
             this.groupBoxProject = new System.Windows.Forms.GroupBox();
+            this.dTP = new System.Windows.Forms.DateTimePicker();
             this.labelClientId = new System.Windows.Forms.Label();
             this.tbClientId = new System.Windows.Forms.TextBox();
             this.buttonAddmage = new System.Windows.Forms.Button();
             this.comboBoxProjectTown = new System.Windows.Forms.ComboBox();
             this.labelProjectTown = new System.Windows.Forms.Label();
-            this.tbReleasedDate = new System.Windows.Forms.TextBox();
             this.lableReleasedDate = new System.Windows.Forms.Label();
             this.tbProjectName = new System.Windows.Forms.TextBox();
             this.buttonSubmit = new System.Windows.Forms.Button();
@@ -71,12 +71,12 @@
             // 
             // groupBoxProject
             // 
+            this.groupBoxProject.Controls.Add(this.dTP);
             this.groupBoxProject.Controls.Add(this.labelClientId);
             this.groupBoxProject.Controls.Add(this.tbClientId);
             this.groupBoxProject.Controls.Add(this.buttonAddmage);
             this.groupBoxProject.Controls.Add(this.comboBoxProjectTown);
             this.groupBoxProject.Controls.Add(this.labelProjectTown);
-            this.groupBoxProject.Controls.Add(this.tbReleasedDate);
             this.groupBoxProject.Controls.Add(this.lableReleasedDate);
             this.groupBoxProject.Controls.Add(this.tbProjectName);
             this.groupBoxProject.Controls.Add(this.buttonSubmit);
@@ -94,10 +94,17 @@
             this.groupBoxProject.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.groupBoxProject.Location = new System.Drawing.Point(338, 54);
             this.groupBoxProject.Name = "groupBoxProject";
-            this.groupBoxProject.Size = new System.Drawing.Size(326, 395);
+            this.groupBoxProject.Size = new System.Drawing.Size(345, 395);
             this.groupBoxProject.TabIndex = 34;
             this.groupBoxProject.TabStop = false;
             this.groupBoxProject.Text = "Project idea";
+            // 
+            // dTP
+            // 
+            this.dTP.Location = new System.Drawing.Point(173, 170);
+            this.dTP.Name = "dTP";
+            this.dTP.Size = new System.Drawing.Size(153, 26);
+            this.dTP.TabIndex = 40;
             // 
             // labelClientId
             // 
@@ -112,7 +119,7 @@
             // 
             this.tbClientId.Location = new System.Drawing.Point(173, 27);
             this.tbClientId.Name = "tbClientId";
-            this.tbClientId.Size = new System.Drawing.Size(131, 26);
+            this.tbClientId.Size = new System.Drawing.Size(153, 26);
             this.tbClientId.TabIndex = 38;
             // 
             // buttonAddmage
@@ -131,7 +138,7 @@
             this.comboBoxProjectTown.FormattingEnabled = true;
             this.comboBoxProjectTown.Location = new System.Drawing.Point(173, 315);
             this.comboBoxProjectTown.Name = "comboBoxProjectTown";
-            this.comboBoxProjectTown.Size = new System.Drawing.Size(131, 24);
+            this.comboBoxProjectTown.Size = new System.Drawing.Size(153, 24);
             this.comboBoxProjectTown.TabIndex = 35;
             // 
             // labelProjectTown
@@ -142,13 +149,6 @@
             this.labelProjectTown.Size = new System.Drawing.Size(39, 16);
             this.labelProjectTown.TabIndex = 34;
             this.labelProjectTown.Text = "Town";
-            // 
-            // tbReleasedDate
-            // 
-            this.tbReleasedDate.Location = new System.Drawing.Point(174, 168);
-            this.tbReleasedDate.Name = "tbReleasedDate";
-            this.tbReleasedDate.Size = new System.Drawing.Size(130, 26);
-            this.tbReleasedDate.TabIndex = 33;
             // 
             // lableReleasedDate
             // 
@@ -163,7 +163,7 @@
             // 
             this.tbProjectName.Location = new System.Drawing.Point(173, 58);
             this.tbProjectName.Name = "tbProjectName";
-            this.tbProjectName.Size = new System.Drawing.Size(131, 26);
+            this.tbProjectName.Size = new System.Drawing.Size(153, 26);
             this.tbProjectName.TabIndex = 31;
             // 
             // buttonSubmit
@@ -181,21 +181,21 @@
             // 
             this.tbProjectAdress.Location = new System.Drawing.Point(174, 278);
             this.tbProjectAdress.Name = "tbProjectAdress";
-            this.tbProjectAdress.Size = new System.Drawing.Size(130, 26);
+            this.tbProjectAdress.Size = new System.Drawing.Size(152, 26);
             this.tbProjectAdress.TabIndex = 28;
             // 
             // tbFllor
             // 
             this.tbFllor.Location = new System.Drawing.Point(174, 238);
             this.tbFllor.Name = "tbFllor";
-            this.tbFllor.Size = new System.Drawing.Size(130, 26);
+            this.tbFllor.Size = new System.Drawing.Size(152, 26);
             this.tbFllor.TabIndex = 27;
             // 
             // tbArea
             // 
             this.tbArea.Location = new System.Drawing.Point(174, 202);
             this.tbArea.Name = "tbArea";
-            this.tbArea.Size = new System.Drawing.Size(130, 26);
+            this.tbArea.Size = new System.Drawing.Size(152, 26);
             this.tbArea.TabIndex = 26;
             // 
             // cbBulidingType
@@ -203,14 +203,14 @@
             this.cbBulidingType.FormattingEnabled = true;
             this.cbBulidingType.Location = new System.Drawing.Point(174, 91);
             this.cbBulidingType.Name = "cbBulidingType";
-            this.cbBulidingType.Size = new System.Drawing.Size(130, 24);
+            this.cbBulidingType.Size = new System.Drawing.Size(152, 24);
             this.cbBulidingType.TabIndex = 25;
             // 
             // tbCapasity
             // 
             this.tbCapasity.Location = new System.Drawing.Point(174, 132);
             this.tbCapasity.Name = "tbCapasity";
-            this.tbCapasity.Size = new System.Drawing.Size(130, 26);
+            this.tbCapasity.Size = new System.Drawing.Size(152, 26);
             this.tbCapasity.TabIndex = 24;
             // 
             // labelProjectAddress
@@ -317,7 +317,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
-            this.ClientSize = new System.Drawing.Size(676, 471);
+            this.ClientSize = new System.Drawing.Size(698, 474);
             this.Controls.Add(this.groupBoxClients);
             this.Controls.Add(this.groupBoxProject);
             this.Name = "OldClientFormApp";
@@ -338,7 +338,6 @@
         private System.Windows.Forms.Button buttonAddmage;
         private System.Windows.Forms.ComboBox comboBoxProjectTown;
         private System.Windows.Forms.Label labelProjectTown;
-        private System.Windows.Forms.TextBox tbReleasedDate;
         private System.Windows.Forms.Label lableReleasedDate;
         private System.Windows.Forms.TextBox tbProjectName;
         private System.Windows.Forms.Button buttonSubmit;
@@ -359,5 +358,6 @@
         private System.Windows.Forms.GroupBox groupBoxClients;
         private System.Windows.Forms.Label labelClientId;
         private System.Windows.Forms.TextBox tbClientId;
+        private System.Windows.Forms.DateTimePicker dTP;
     }
 }

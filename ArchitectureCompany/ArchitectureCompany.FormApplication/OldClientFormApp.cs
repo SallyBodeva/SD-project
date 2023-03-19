@@ -77,7 +77,7 @@ namespace ArchitectureCompany.FormApplication
             string name = tbProjectName.Text;
             string buildinType = cbBulidingType.Text;
             int capacity = int.Parse(tbCapasity.Text);
-            string releaseDate = tbReleasedDate.Text;
+            DateTime releaseDate = dTP.Value;
             int area = int.Parse(tbArea.Text);
             int floors = int.Parse(tbFllor.Text);
             string address = tbProjectAdress.Text;
@@ -98,7 +98,7 @@ namespace ArchitectureCompany.FormApplication
             tbProjectName.Text = string.Empty;
             cbBulidingType.SelectedIndex = 0;
             tbCapasity.Text = string.Empty;
-            tbReleasedDate.Text = string.Empty;
+            dTP.Text = string.Empty;
             tbFllor.Text = string.Empty;
             tbArea.Text = string.Empty;
             tbProjectAdress.Text = string.Empty;
