@@ -17,8 +17,6 @@ namespace ArchitectureCompany.ConsoleApp.Controller
             cs = new ClientService();
             Run();
         }
-        // testssss
-        // testssss
         private void Run()
         {
             while (true)

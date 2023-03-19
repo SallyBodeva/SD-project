@@ -32,40 +32,56 @@ namespace ArchitectureCompany.FormApplication
 
         private void EmployeeForm_Load(object sender, EventArgs e)
         {
-            List<string> departments = dService.GetDepartmentName();
-            departments.ForEach(x => comboBoxDepartment.Items.Add(x));
-            comboBoxDepartment.SelectedIndex = 0;
-            List<string> cities = adService.GetTownsNames();
-            cities.ForEach(x => comboBoxCities.Items.Add(x));
-            comboBoxCities.SelectedIndex = 0;
-            List<string> employees = eService.GetEmployeeBasicInfo();
-            employees.ForEach(x => listBoxEmployee.Items.Add(x));
+            try
+            {
+                List<string> departments = dService.GetDepartmentName();
+                departments.ForEach(x => comboBoxDepartment.Items.Add(x));
+                comboBoxDepartment.SelectedIndex = 0;
+                List<string> cities = adService.GetTownsNames();
+                cities.ForEach(x => comboBoxCities.Items.Add(x));
+                comboBoxCities.SelectedIndex = 0;
+                List<string> employees = eService.GetEmployeeBasicInfo();
+                employees.ForEach(x => listBoxEmployee.Items.Add(x));
 
-           totalPages = eService.GetEmployeePagesCount(itemsPerPage);
-           List<string> eS =eService.GetEmployeeBasicInfo( currentPage, itemsPerPage);
-           eS.ForEach(x => listBoxEmployee.Items.Add(x));
-           
-          
-           labelPageNum.Text = $"{currentPage} / {totalPages}";
+                totalPages = eService.GetEmployeePagesCount(itemsPerPage);
+                List<string> eS = eService.GetEmployeeBasicInfo(currentPage, itemsPerPage);
+                eS.ForEach(x => listBoxEmployee.Items.Add(x));
+
+
+                labelPageNum.Text = $"{currentPage} / {totalPages}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void btnAdd_Click(object sender, EventArgs e)
         {
-            string result = null;
+            try
+            {
+                string result = null;
 
-            string name = textBoxName.Text;
-            string lastName = textBoxLastName.Text;
-            string address = txtBoxAddress.Text;
-            string ciry = comboBoxCities.Text;
-            string departments = comboBoxDepartment.Text;
-            string phoneNum = textBoxPhoneNum.Text;
-            string email = textBoxEmail.Text;
+                string name = textBoxName.Text;
+                string lastName = textBoxLastName.Text;
+                string address = txtBoxAddress.Text;
+                string ciry = comboBoxCities.Text;
+                string departments = comboBoxDepartment.Text;
+                string phoneNum = textBoxPhoneNum.Text;
+                string email = textBoxEmail.Text;
 
-            result = eService.AddEmployee(name, lastName, address, ciry, departments, phoneNum, email);
+                result = eService.AddEmployee(name, lastName, address, ciry, departments, phoneNum, email);
 
-            MessageBox.Show(result);
+                MessageBox.Show(result);
 
-            ClearAddGroupBox();
+                ClearAddGroupBox();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
         private void ClearAddGroupBox()
         {
@@ -114,53 +130,77 @@ namespace ArchitectureCompany.FormApplication
 
         private void listBoxEmployee_DoubleClick(object sender, EventArgs e)
         {
-            string employeeInfo = listBoxEmployee.Text;
-            currentEmployeeIndex = int.Parse(employeeInfo.Split(' ').First());
-            Employee employee = eService.GetEmployeeById(currentEmployeeIndex);
-            if (employee != null)
+            try
             {
-                textBoxName.Text = employee.FirstName;
-                textBoxLastName.Text = employee.LastName;
-                txtBoxAddress.Text = employee.Address.Name;
-                comboBoxCities.Text = employee.Address.Town.Name;
-                comboBoxDepartment.Text = employee.Department.Name;
+                string employeeInfo = listBoxEmployee.Text;
+                currentEmployeeIndex = int.Parse(employeeInfo.Split(' ').First());
+                Employee employee = eService.GetEmployeeById(currentEmployeeIndex);
+                if (employee != null)
+                {
+                    textBoxName.Text = employee.FirstName;
+                    textBoxLastName.Text = employee.LastName;
+                    txtBoxAddress.Text = employee.Address.Name;
+                    comboBoxCities.Text = employee.Address.Town.Name;
+                    comboBoxDepartment.Text = employee.Department.Name;
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 
         private void listBoxEmployee_DoubleClick_1(object sender, EventArgs e)
         {
-            string employeeInfo = listBoxEmployee.Text;
-            currentEmployeeIndex = int.Parse(employeeInfo.Split(' ').First());
-            Employee employee = eService.GetEmployeeById(currentEmployeeIndex);
-            if (employee != null)
+            try
             {
+                string employeeInfo = listBoxEmployee.Text;
+                currentEmployeeIndex = int.Parse(employeeInfo.Split(' ').First());
+                Employee employee = eService.GetEmployeeById(currentEmployeeIndex);
+                if (employee != null)
+                {
                     textBoxName.Text = employee.FirstName;
                     textBoxLastName.Text = employee.LastName;
-                  txtBoxAddress.Text = eService.GetAddresssName(currentEmployeeIndex);
-                comboBoxCities.Text = eService.GetTownName(currentEmployeeIndex);
-                comboBoxDepartment.Text = eService.GetDepartmentName(currentEmployeeIndex); 
+                    txtBoxAddress.Text = eService.GetAddresssName(currentEmployeeIndex);
+                    comboBoxCities.Text = eService.GetTownName(currentEmployeeIndex);
+                    comboBoxDepartment.Text = eService.GetDepartmentName(currentEmployeeIndex);
                     textBoxPhoneNum.Text = employee.PhoneNumber;
                     textBoxEmail.Text = employee.Email;
-                
+
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
         {
-            string newNum = textBoxPhoneNum.Text;
-            MessageBox.Show(eService.UpdateEmployeePhoneNum(currentEmployeeIndex,newNum));
-            ClearAddGroupBox();
+            try
+            {
+                string newNum = textBoxPhoneNum.Text;
+                MessageBox.Show(eService.UpdateEmployeePhoneNum(currentEmployeeIndex, newNum));
+                ClearAddGroupBox();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void radioButtonUpdate_CheckedChanged(object sender, EventArgs e)
         {
-            textBoxName.Enabled =false;
-            textBoxLastName.Enabled =false;
-            txtBoxAddress.Enabled =false;
-            comboBoxCities.Enabled =false;
-            comboBoxDepartment.Enabled =false;
-            textBoxPhoneNum.Enabled =true;
-            textBoxEmail.Enabled =false;
+            textBoxName.Enabled = false;
+            textBoxLastName.Enabled = false;
+            txtBoxAddress.Enabled = false;
+            comboBoxCities.Enabled = false;
+            comboBoxDepartment.Enabled = false;
+            textBoxPhoneNum.Enabled = true;
+            textBoxEmail.Enabled = false;
             btnAdd.Enabled = false;
             btnDischarge.Enabled = false;
             btnUpdate.Enabled = true;
@@ -168,20 +208,36 @@ namespace ArchitectureCompany.FormApplication
 
         private void btnPrevious_Click(object sender, EventArgs e)
         {
-           if (currentPage <= 1) { return; }
-           listBoxEmployee.Items.Clear();
-           List<string> list = eService.GetEmployeeBasicInfo(--currentPage, itemsPerPage);
-           list.ForEach(p => listBoxEmployee.Items.Add(p));
-           labelPageNum.Text = $"{currentPage} / {totalPages}";
+            try
+            {
+                if (currentPage <= 1) { return; }
+                listBoxEmployee.Items.Clear();
+                List<string> list = eService.GetEmployeeBasicInfo(--currentPage, itemsPerPage);
+                list.ForEach(p => listBoxEmployee.Items.Add(p));
+                labelPageNum.Text = $"{currentPage} / {totalPages}";
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (currentPage >= totalPages) { return; }
-            listBoxEmployee.Items.Clear();
-            List<string> list = eService.GetEmployeeBasicInfo(++currentPage, itemsPerPage);
-            list.ForEach(p => listBoxEmployee.Items.Add(p));
-            labelPageNum.Text = $"{currentPage} / {totalPages}";
+            try
+            {
+                if (currentPage >= totalPages) { return; }
+                listBoxEmployee.Items.Clear();
+                List<string> list = eService.GetEmployeeBasicInfo(++currentPage, itemsPerPage);
+                list.ForEach(p => listBoxEmployee.Items.Add(p));
+                labelPageNum.Text = $"{currentPage} / {totalPages}";
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

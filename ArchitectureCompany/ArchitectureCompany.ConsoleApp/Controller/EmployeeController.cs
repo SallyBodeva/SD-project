@@ -15,7 +15,6 @@ namespace ArchitectureCompany.ConsoleApp.Controller
             es = new EmployeeService();
             Run();
         }
-        // testsss
         private void Run()
         {
             while (true)

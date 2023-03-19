@@ -13,7 +13,6 @@ namespace ArchitectureCompany.ConsoleApp.Controller
             cs = new ClientService();
             Run();
         }
-        //tetss
         private void Run()
         {
 
