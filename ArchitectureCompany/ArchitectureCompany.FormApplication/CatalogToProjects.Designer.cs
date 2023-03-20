@@ -46,7 +46,7 @@
             this.cbClient.FormattingEnabled = true;
             this.cbClient.Location = new System.Drawing.Point(113, 25);
             this.cbClient.Name = "cbClient";
-            this.cbClient.Size = new System.Drawing.Size(140, 24);
+            this.cbClient.Size = new System.Drawing.Size(172, 24);
             this.cbClient.TabIndex = 0;
             this.cbClient.SelectedIndexChanged += new System.EventHandler(this.cbClient_SelectedIndexChanged);
             // 
@@ -56,7 +56,7 @@
             this.cbProject.FormattingEnabled = true;
             this.cbProject.Location = new System.Drawing.Point(508, 27);
             this.cbProject.Name = "cbProject";
-            this.cbProject.Size = new System.Drawing.Size(121, 24);
+            this.cbProject.Size = new System.Drawing.Size(196, 24);
             this.cbProject.TabIndex = 1;
             this.cbProject.SelectedIndexChanged += new System.EventHandler(this.cbProject_SelectedIndexChanged);
             this.cbProject.TextChanged += new System.EventHandler(this.cbProject_TextChanged);
@@ -128,7 +128,7 @@
             // 
             this.labelArrow.AutoSize = true;
             this.labelArrow.Font = new System.Drawing.Font("SimSun", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelArrow.Location = new System.Drawing.Point(291, 27);
+            this.labelArrow.Location = new System.Drawing.Point(302, 30);
             this.labelArrow.Name = "labelArrow";
             this.labelArrow.Size = new System.Drawing.Size(23, 16);
             this.labelArrow.TabIndex = 8;

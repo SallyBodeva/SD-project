@@ -157,24 +157,6 @@
                 return projects;
             }
         }
-
-
-        public List<Project> GetFinishedProjects()
-        {
-            using (context = new AppDbContext())
-            {
-                List<Project> finishedProjects = context.Projects.Where(x => x.ReleaseDate < DateTime.UtcNow).ToList();
-                return finishedProjects;
-            }
-        }
-        public List<Project> GetUnfinishedProjects(int id)
-        {
-            using (context = new AppDbContext())
-            {
-                List<Project> unFinishedProjects = context.Projects.Where(x => x.ReleaseDate > DateTime.UtcNow).ToList();
-                return unFinishedProjects;
-            }
-        }
         public string GetProjectInfo(int id)
         {
             Project project = null;
@@ -259,10 +241,6 @@
                 context.SaveChanges();
                 return "Image added successfully!";
             }
-        }
-        public List<string> GetProjectImages()
-        {
-            return null;
         }
         public List<string> GetProjectImages(string projectName)
         {
