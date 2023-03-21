@@ -13,10 +13,10 @@ namespace ArchitectureCompany.WebApp.Controllers
         }
         public IActionResult Index(int page =1)
         {
-            ProjectsIndexViewModel model = new ProjectsIndexViewModel();
-            model.PageNumber = page;
-            model = projectService.GetProjects(model);
-            return View(model);
+            ProjectsIndexViewModel models = new ProjectsIndexViewModel();
+            models.PageNumber = page;
+            models = projectService.GetProjects(models);
+            return View(models);
         }
     }
 }

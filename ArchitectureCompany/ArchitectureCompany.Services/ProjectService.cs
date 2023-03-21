@@ -9,7 +9,6 @@
     using System.Drawing;
     using System.Globalization;
     using System.Net;
-    using ArchitectureCompany.WebApp.Models;
 
     public class ProjectService
     {
@@ -284,26 +283,6 @@
             }
         }
         // ********************************Methods for Web App*********************************************
-        public ProjectsIndexViewModel  GetProjects(ProjectsIndexViewModel model)
-        {
-            using (context= new AppDbContext())
-            {
-                model.Projects = context.Projects.Skip((model.PageNumber - 1) * model.ItemsPerPage)
-                .Take(model.ItemsPerPage)
-                .Select(x => new ProjectIndexViewModel()
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    BuildingType = x.BuildingsType.ToString(),
-                    ReleaseDate = x.ReleaseDate,
-                    Area = x.TotalFloorArea,
-                    FloorsCount = x.NumberOfFloors,
-                    Address = x.Address.ToString()
-                })
-                .ToList();
-                model.ElementsCount = context.Projects.Count();
-                return model;
-            }
-        }
+       
     }
 }

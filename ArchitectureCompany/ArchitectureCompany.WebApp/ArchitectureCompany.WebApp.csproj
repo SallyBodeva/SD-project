@@ -11,10 +11,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ArchitectureCompany.Services\ArchitectureCompany.Services.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Views\Projects\" />
+    <ProjectReference Include="..\ArchitectureCompany.ViewModels\ArchitectureCompany.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>

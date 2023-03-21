@@ -21,7 +21,6 @@
   <ItemGroup>
     <ProjectReference Include="..\ArchitectureCompany.Data\ArchitectureCompany.Data.csproj" />
     <ProjectReference Include="..\ArchitectureCompany.Models\ArchitectureCompany.Models.csproj" />
-    <ProjectReference Include="..\ArchitectureCompany.ViewModels\ArchitectureCompany.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
