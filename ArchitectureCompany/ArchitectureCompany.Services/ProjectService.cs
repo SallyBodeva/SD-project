@@ -283,5 +283,25 @@
                 return context.Projects.Select(x => x.Name).ToList();
             }
         }
+        // ********************************Methods for Web App*********************************************
+       // public  GetDestinations(DestinationsIndexViewModel model)
+       // {
+       //     model.Destinations = context.FlightDestinations
+       //         .Skip((model.PageNumber - 1) * model.ItemsPerPage)
+       //         .Take(model.ItemsPerPage)
+       //         .Select(x => new DestinationIndexViewModel()
+       //         {
+       //             Id = x.Id,
+       //             StartAirport = $"{x.Airport.Name} {x.Airport.Country}",
+       //             DestinationAirport = $"{x.DestinationAirport.Name} {x.DestinationAirport.Country}",
+       //             Date = x.Start.ToShortDateString(),
+       //             Price = x.TicketPrice.ToString()
+       //         })
+       //         .ToList();
+       //
+       //     model.ElementsCount = context.FlightDestinations.Count();
+       //
+       //     return model;
+       // }
     }
 }
