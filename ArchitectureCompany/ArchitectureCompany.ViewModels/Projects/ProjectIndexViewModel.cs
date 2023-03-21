@@ -1,4 +1,6 @@
-﻿namespace ArchitectureCompany.WebApp.Models
+﻿using System;
+
+namespace ArchitectureCompany.WebApp.Models
 {
     public class ProjectIndexViewModel
     {
@@ -7,7 +9,7 @@
 
         public string BuildingType { get; set; }
         public int Capacity { get; set; }
-        public string ReleaseDate { get; set; }
+        public DateTime ReleaseDate { get; set; }
         public int Area { get; set; }
         public int FloorsCount { get; set; }
         public string Address { get; set; }

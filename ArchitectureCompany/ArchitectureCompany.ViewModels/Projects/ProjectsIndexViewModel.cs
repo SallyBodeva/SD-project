@@ -4,6 +4,6 @@ namespace ArchitectureCompany.WebApp.Models
 {
     public class ProjectsIndexViewModel:PagingViewModel
     {
-        public List<ProjectIndexViewModel> Destinations { get; set; } = new List<ProjectIndexViewModel>();
+        public List<ProjectIndexViewModel> Projects { get; set; } = new List<ProjectIndexViewModel>();
     }
 }
