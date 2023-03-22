@@ -124,8 +124,16 @@ namespace ArchitectureCompany.FormApplication
 
         private void btnDischarge_Click(object sender, EventArgs e)
         {
-            MessageBox.Show(eService.DeleteEmployeeById(currentEmployeeIndex));
-            ClearAddGroupBox();
+            try
+            {
+                MessageBox.Show(eService.DeleteEmployeeById(currentEmployeeIndex));
+                ClearAddGroupBox();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        
         }
 
         private void listBoxEmployee_DoubleClick(object sender, EventArgs e)
