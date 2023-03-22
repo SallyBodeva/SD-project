@@ -129,9 +129,9 @@ namespace ArchitectureCompany.FormApplication
                 MessageBox.Show(eService.DeleteEmployeeById(currentEmployeeIndex));
                 ClearAddGroupBox();
             }
-            catch (Exception ex)
+            catch (Exception )
             {
-                MessageBox.Show(ex.Message);
+                MessageBox.Show("This employee is currently working on a project and cannot be discharged...");
             }
         
         }
