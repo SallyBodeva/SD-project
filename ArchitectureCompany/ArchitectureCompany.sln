@@ -15,6 +15,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ArchitectureCompany.FormApp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Architecture.Company.DataSeeder", "Architecture.Company.DataSeeder\Architecture.Company.DataSeeder.csproj", "{79E6050C-13B4-4836-A994-4C79DE0697EB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureCompany.WebApp", "ArchitectureCompany.WebApp\ArchitectureCompany.WebApp.csproj", "{FAF4186F-8598-45A8-A74E-C01B5F39B6FD}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ArchitectureCompany.ViewModels", "ArchitectureCompany.ViewModels\ArchitectureCompany.ViewModels.csproj", "{A7C05B39-725A-4C51-9017-EDE093CE65F6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +49,14 @@ Global
 		{79E6050C-13B4-4836-A994-4C79DE0697EB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{79E6050C-13B4-4836-A994-4C79DE0697EB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{79E6050C-13B4-4836-A994-4C79DE0697EB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FAF4186F-8598-45A8-A74E-C01B5F39B6FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FAF4186F-8598-45A8-A74E-C01B5F39B6FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FAF4186F-8598-45A8-A74E-C01B5F39B6FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAF4186F-8598-45A8-A74E-C01B5F39B6FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7C05B39-725A-4C51-9017-EDE093CE65F6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7C05B39-725A-4C51-9017-EDE093CE65F6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7C05B39-725A-4C51-9017-EDE093CE65F6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7C05B39-725A-4C51-9017-EDE093CE65F6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,37 @@
+﻿@model PagingViewModel
+<nav aria-label="..." class="">
+    <ul class="pagination  justify-content-center ">
+        <li class="page-item @if (!Model.HasPreviousPage) { <text>disabled</text> }">
+            <a class="page-link" asp-action="@Model.Action" asp-route-page="@Model.PreviousPageNumber">
+                <i class="fas fa-step-backward"></i>
+                Previous
+            </a>
+        </li>
+        @for (int i = Model.PageNumber - 2; i < Model.PageNumber; i++)
+        {
+            if (i > 0)
+            {
+                <li class="page-item"><a class="page-link" asp-action="@Model.Action" asp-route-page="@i">@i</a></li>
+            }
+        }
+        <li class="page-item active" aria-current="page">
+            <span class="page-link">
+                @Model.PageNumber
+                <span class="sr-only">(current)</span>
+            </span>
+        </li>
+        @for (int i = Model.PageNumber + 1; i <= Model.PageNumber + 2; i++)
+        {
+            if (i <= Model.PagesCount)
+            {
+                <li class="page-item"><a class="page-link" asp-action="@Model.Action" asp-route-page="@i">@i</a></li>
+            }
+        }
+        <li class="page-item @if (!Model.HasNextPage) { <text>disabled</text> }">
+            <a class="page-link" asp-action="@Model.Action" asp-route-page="@Model.NextPageNumber"><i class="fas fa-step-forward"></i>Next</a>
+        </li>
+    </ul>
+</nav>
+
+
+@*<partial name="_PagingPartial" />*@

@@ -9,7 +9,7 @@
     using System.Drawing;
     using System.Globalization;
     using System.Net;
-
+    using ArchitectureCompany.ViewModels.Projects;
     public class ProjectService
     {
         private AppDbContext context;
@@ -283,6 +283,73 @@
             }
         }
         // ********************************Methods for Web App*********************************************
-       
+
+        public ProjectsIndexViewModel GetProjects(ProjectsIndexViewModel model)
+        {
+            using (context= new AppDbContext())
+            {
+                model.Projects = context.Projects
+                   .Skip((model.PageNumber - 1) * model.ItemsPerPage)
+                   .Take(model.ItemsPerPage)
+                   .Select(x => new ProjectIndexViewModel()
+                   {
+                       Id = x.Id,
+                       Name= x.Name,
+                       BuildingType = x.BuildingsType.TypeName,
+                       Capacity= x.Capacity,
+                       ReleaseDate=x.ReleaseDate.ToShortDateString(),
+                       FloorArea= x.TotalFloorArea,
+                       FloorsCount=x.NumberOfFloors,
+                       Address= x.Address.Name
+                   })
+                   .ToList();
+
+                model.ElementsCount = context.Projects.Count();
+
+                return model;
+            }
+        }
+        public List<ProjectIndexViewModel> GetFinishedProjects()
+        {
+            using (context= new AppDbContext())
+            {
+                return context.Projects.Where(x => x.ReleaseDate < DateTime.UtcNow).OrderBy(x=>x.ReleaseDate)
+                   .Select(x => new ProjectIndexViewModel()
+                   {
+                       Id = x.Id,
+                       Name = x.Name,
+                       BuildingType = x.BuildingsType.TypeName,
+                       Capacity = x.Capacity,
+                       ReleaseDate = x.ReleaseDate.ToShortDateString(),
+                       FloorArea = x.TotalFloorArea,
+                       FloorsCount = x.NumberOfFloors,
+                       Address = x.Address.Name
+
+                   })
+                   .ToList();
+            }
+
+        }
+        public List<ProjectIndexViewModel> GetUnFinishedProjects()
+        {
+            using (context = new AppDbContext())
+            {
+                return context.Projects.Where(x => x.ReleaseDate > DateTime.UtcNow).OrderBy(x => x.ReleaseDate)
+                   .Select(x => new ProjectIndexViewModel()
+                   {
+                       Id = x.Id,
+                       Name = x.Name,
+                       BuildingType = x.BuildingsType.TypeName,
+                       Capacity = x.Capacity,
+                       ReleaseDate = x.ReleaseDate.ToShortDateString(),
+                       FloorArea = x.TotalFloorArea,
+                       FloorsCount = x.NumberOfFloors,
+                       Address = x.Address.Name
+
+                   })
+                   .ToList();
+            }
+
+        }
     }
 }

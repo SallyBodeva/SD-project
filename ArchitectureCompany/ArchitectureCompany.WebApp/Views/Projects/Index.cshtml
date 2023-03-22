@@ -1,0 +1,37 @@
+﻿@model ArchitectureCompany.ViewModels.Projects.ProjectsIndexViewModel
+
+
+<h1>Projects page</h1>
+
+
+<table class="table table-bordered table-hover">
+    <thead class="thead-light">
+        <tr>
+            <th>Name</th>
+            <th>Building type</th>
+            <th>Capacity</th>
+            <th>Release date</th>
+            <th>Floor area</th>
+            <th>Floors count</th>
+            <th>Adrress</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var p in Model.Projects)
+        {
+            <tr>
+                <td>@p.Name</td>
+                <td>@p.BuildingType</td>
+                <td>@p.Capacity</td>
+                <td>@p.ReleaseDate</td>
+                <td>@p.FloorArea</td>
+                <td>@p.FloorsCount</td>
+                <td>@p.Address</td>
+                <td><img src="@p.ImageUrl" width="250px" height="150px" /></td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+    </tfoot>
+</table>
+<partial name="_PagingPartial" />
