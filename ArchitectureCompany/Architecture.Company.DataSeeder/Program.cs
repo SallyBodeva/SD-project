@@ -15,14 +15,14 @@ namespace Architecture.Company.DataSeeder
         private static ProjectService pService = new ProjectService();
         static void Main()
         {
-            // SeedTowns();
-            // SeedBuildingType();
-            // SeedDepartments();
-            // SeedAddress();
-            // SeedEmployee();
-            // SeedClientAddress();
-            // SeedClient();
-            // SeedProjects();
+             SeedTowns();
+             SeedBuildingType();
+             SeedDepartments();
+             SeedAddress();
+             SeedEmployee();
+             SeedClientAddress();
+             SeedClient();
+             SeedProjects();
         }
         public static void SeedDepartments()
         {

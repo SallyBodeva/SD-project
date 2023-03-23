@@ -36,7 +36,6 @@ namespace ArchitectureCompany.ConsoleApp
         }
         
 
-        //testing
         public static void Commands()
         {
             StringBuilder sb = new StringBuilder();
