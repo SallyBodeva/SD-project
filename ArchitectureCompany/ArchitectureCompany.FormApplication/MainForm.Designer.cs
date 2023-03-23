@@ -78,7 +78,7 @@
             this.Welcomelabel.BackColor = System.Drawing.Color.Transparent;
             this.Welcomelabel.CausesValidation = false;
             this.Welcomelabel.Font = new System.Drawing.Font("Tempus Sans ITC", 36F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point);
-            this.Welcomelabel.Location = new System.Drawing.Point(93, 38);
+            this.Welcomelabel.Location = new System.Drawing.Point(31, 38);
             this.Welcomelabel.Name = "Welcomelabel";
             this.Welcomelabel.Size = new System.Drawing.Size(221, 62);
             this.Welcomelabel.TabIndex = 1;
@@ -89,7 +89,7 @@
             this.labelTo.AutoSize = true;
             this.labelTo.BackColor = System.Drawing.Color.Transparent;
             this.labelTo.Font = new System.Drawing.Font("Tempus Sans ITC", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.labelTo.Location = new System.Drawing.Point(467, 38);
+            this.labelTo.Location = new System.Drawing.Point(503, 29);
             this.labelTo.Name = "labelTo";
             this.labelTo.Size = new System.Drawing.Size(72, 62);
             this.labelTo.TabIndex = 2;
