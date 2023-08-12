@@ -1,4 +1,4 @@
-# SD-project
+# ArtLife- Architecture company
 Want to try this project?
 
 Follow these steps: 
